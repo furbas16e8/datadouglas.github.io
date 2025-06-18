@@ -1,15 +1,9 @@
 title: DataDouglas
-author:
-   name: furbas16e8
-   email: furbino.d@gmail.com
+author: Douglas Furbino
    
 description: Let the data speak.
 
 theme: minima
-minima:
-  skin: dark
-  nav_pages:
-    - about.md
 
 # Site-wide settings
 # ------------------
