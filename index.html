@@ -58,7 +58,17 @@
       opacity: 0.85;
       font-family: 'Fira Code', 'Courier New', monospace;
       text-align: left;
-      white-space: pre; /* preserva espaçamento de terminal */
+      white-space: pre;
+    }
+
+    .cursor::after {
+      content: "_";
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
     }
   </style>
 </head>
@@ -70,25 +80,25 @@
 
   <div class="emoji">🚧</div>
   <h1>Portfólio em construção</h1>
-  <p class="random" id="frase"></p>
+  <p class="random cursor" id="frase"></p>
 
   <script>
     const frases = [
-      "> Modelando o site...",
-      "> Treinando a versão final...",
-      "> Dados sendo processados...",
-      "> Ajustando os hiperparâmetros do portfólio...",
-      "> Feature engineering em progresso...",
-      "> Construindo o dataset visual...",
-      "> Deploy em breve...",
-      "> Pré-processando ideias...",
-      "> Rodando os primeiros scripts...",
-      "> Explorando os dados do design...",
-      "> Pipeline do site em execução...",
-      "> Em fase de aprendizado supervisionado...",
-      "> Ajustando pesos e vieses...",
-      "> A/B testando a estrutura...",
-      "> Iterando sobre a arquitetura..."
+      "> modelando o site",
+      "> treinando a versão final",
+      "> dados sendo processados",
+      "> ajustando os hiperparâmetros do portfólio",
+      "> feature engineering em progresso",
+      "> construindo o dataset visual",
+      "> deploy em breve",
+      "> pré-processando ideias",
+      "> rodando os primeiros scripts",
+      "> explorando os dados do design",
+      "> pipeline do site em execução",
+      "> em fase de aprendizado supervisionado",
+      "> ajustando pesos e vieses",
+      "> a/b testando a estrutura",
+      "> iterando sobre a arquitetura"
     ];
 
     document.getElementById("frase").textContent =
