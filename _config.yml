@@ -5,6 +5,10 @@ description: Let the data speak.
 
 theme: minima
 
+plugins:
+ jekyll-feed
+ jekyll-seo-tag
+
 # Site-wide settings
 # ------------------
 #
