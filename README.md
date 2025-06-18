@@ -1,1 +1,1 @@
-# Let the data speak.
+Let the data speak.
