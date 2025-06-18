@@ -1,29 +1,17 @@
--title: DataDouglas
--author: Douglas Furbino
-   
--description: Let the data speak.
-+title: DataDouglas
-+author: Douglas Furbino
-+description: Let the data speak.
- 
--theme: minima
-+theme: minima
- 
--plugins:
-- jekyll-feed
-- jekyll-seo-tag
-+plugins:
-+  - jekyll-feed
-+  - jekyll-seo-tag
- 
- minima:
-   skin: dark
-   nav_pages:
-     - about.md
-   show_excerpts: false
-   date_format: "%b %d, %Y"
-   social_links:
-     - title: GitHub
-       icon: github
-       url: "https://github.com/seu-usuario"
-   hide_site_feed_link: false
+title: DataDouglas
+author: Douglas Furbino
+description: Let the data speak.
+
+remote_theme: jekyll/minima@d4d779a
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+minima:
+  skin: dark
+  nav_pages:
+    - about.md
+  show_excerpts: false
+  date_format: "%b %d, %Y"
+  hide_site_feed_link: false
