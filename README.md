@@ -1,3 +1,1 @@
-<p align="center">🔧 Ajustando os hiperparâmetros do portfólio...</p>
-
-<p align="center"><strong>Let the data speak.</strong></p>
+<p align="center"><span style="font-size: 2em;">🔧 Ajustando os hiperparâmetros do portfólio...</span></p>
