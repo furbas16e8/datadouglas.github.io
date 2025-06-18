@@ -4,7 +4,8 @@ author:
    email: furbino.d@gmail.com
 description: Let the data speak.
 theme: jekyll-theme-minimal
-skin: dark
+minima:
+   skin: dark
 
 # Site-wide settings
 # ------------------
