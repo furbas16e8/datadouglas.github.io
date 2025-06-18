@@ -6,18 +6,8 @@ author:
 description: Let the data speak.
 
 theme: minima
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-
-sass:
-  quiet_deps: true
-  silence_deprecations: [import]
-
 minima:
   skin: dark
-
   nav_pages:
     - about.md
 
