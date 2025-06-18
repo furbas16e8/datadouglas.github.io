@@ -1,2 +1,1 @@
-# datadouglas.github.io
-Let the data speak.
+# Trabalhando nos detalhes...
