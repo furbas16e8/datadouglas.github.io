@@ -5,7 +5,7 @@ author:
    
 description: Let the data speak.
 
-theme: jekyll-theme-minimal
+theme: jekyll-theme-minima
 
 plugins:
   - jekyll-feed
@@ -16,7 +16,7 @@ sass:
   silence_deprecations: [import]
 
 minima:
-  skin: classic
+  skin: dark
 
   nav_pages:
     - about.md
