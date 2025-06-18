@@ -4,8 +4,7 @@ author:
    email: furbino.d@gmail.com
 description: Let the data speak.
 theme: minima
-minima:
-   skin: solarized-dark
+
 
 # Site-wide settings
 # ------------------
