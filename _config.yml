@@ -3,7 +3,7 @@ author:
    name: furbas16e8
    email: furbino.d@gmail.com
 description: Let the data speak.
-theme: jekyll-theme-minima
+theme: minima
 minima:
    skin: solarized-dark
 
