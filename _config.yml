@@ -2,9 +2,24 @@ title: DataDouglas
 author:
    name: furbas16e8
    email: furbino.d@gmail.com
+   
 description: Let the data speak.
+
 theme: minima
 
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+sass:
+  quiet_deps: true
+  silence_deprecations: [import]
+
+minima:
+  skin: classic
+
+  nav_pages:
+    - about.md
 
 # Site-wide settings
 # ------------------
