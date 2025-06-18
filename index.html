@@ -32,7 +32,6 @@
       margin: 0;
       font-size: 1.4em;
       font-weight: 600;
-      font-style: semibold;
     }
 
     header p {
@@ -57,8 +56,9 @@
       margin-top: 1em;
       font-size: 0.8em;
       opacity: 0.85;
-      font-style: italic;
       font-family: 'Fira Code', 'Courier New', monospace;
+      text-align: left;
+      white-space: pre; /* preserva espaçamento de terminal */
     }
   </style>
 </head>
@@ -74,25 +74,25 @@
 
   <script>
     const frases = [
-      "🧠 Modelando o site...",
-      "🛠️ Treinando a versão final...",
-      "⏳ Dados sendo processados...",
-      "📈 Ajustando os hiperparâmetros do portfólio...",
-      "🔍 Feature engineering em progresso...",
-      "🧬 Construindo o dataset visual...",
-      "💾 Deploy em breve...",
-      "🧰 Pré-processando ideias...",
-      "🧮 Rodando os primeiros scripts...",
-      "🧭 Explorando os dados do design...",
-      "📦 Pipeline do site em execução...",
-      "🧠 Em fase de aprendizado supervisionado...",
-      "🔧 Ajustando pesos e vieses...",
-      "🧪 A/B testando a estrutura...",
-      "🧬 Iterando sobre a arquitetura..."
+      "> Modelando o site...",
+      "> Treinando a versão final...",
+      "> Dados sendo processados...",
+      "> Ajustando os hiperparâmetros do portfólio...",
+      "> Feature engineering em progresso...",
+      "> Construindo o dataset visual...",
+      "> Deploy em breve...",
+      "> Pré-processando ideias...",
+      "> Rodando os primeiros scripts...",
+      "> Explorando os dados do design...",
+      "> Pipeline do site em execução...",
+      "> Em fase de aprendizado supervisionado...",
+      "> Ajustando pesos e vieses...",
+      "> A/B testando a estrutura...",
+      "> Iterando sobre a arquitetura..."
     ];
 
-    const sorteada = frases[Math.floor(Math.random() * frases.length)];
-    document.getElementById("frase").textContent = sorteada;
+    document.getElementById("frase").textContent =
+      frases[Math.floor(Math.random() * frases.length)];
   </script>
 </body>
 </html>
