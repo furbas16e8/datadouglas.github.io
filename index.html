@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataDouglas</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    .random {
+      margin-top: 1em;
+      font-size: 1.2em;
+      opacity: 0.85;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔧 Portfólio em construção</h1>
+  <p class="random" id="frase"></p>
+
+  <script>
+    const frases = [
+      "🧠 Modelando o site...",
+      "🛠️ Treinando a versão final...",
+      "⏳ Dados sendo processados",
+      "📈 Ajustando os hiperparâmetros do portfólio",
+      "🔍 Feature engineering em progresso",
+      "🧬 Construindo o dataset visual",
+      "💾 Deploy em breve",
+      "🧰 Pré-processando ideias",
+      "🧮 Rodando os primeiros scripts",
+      "🧭 Explorando os dados do design",
+      "📦 Pipeline do site em execução",
+      "🧠 Em fase de aprendizado supervisionado",
+      "🔧 Ajustando pesos e vieses",
+      "🧪 A/B testando a estrutura",
+      "🧬 Iterando sobre a arquitetura"
+    ];
+
+    const sorteada = frases[Math.floor(Math.random() * frases.length)];
+    document.getElementById("frase").textContent = sorteada;
+  </script>
+</body>
+</html>
