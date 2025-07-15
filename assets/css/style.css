@@ -5,44 +5,42 @@
   box-sizing: border-box;
 }
 
-/* Ajuste de escala base para fontes */
+/* Escala base para fontes */
 html {
   font-size: 100%;        /* 16px no desktop */
 }
-
 @media (max-width: 600px) {
   html {
-    font-size: 87.5%;     /* 14px em telas até 600px de largura */
+    font-size: 87.5%;     /* 14px no mobile */
   }
 }
 
-
+/* Corpo da página: fundo claro do antigo card */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #010409;
-  color: #fff;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4em;  /* igual à altura da header */
+  padding-top: 4em;       /* espaço para a header fixa */
 }
 
-/* Barra de navegação */
+/* Barra superior escura, fixa e mais espessa */
 header {
   width: 100%;
-  padding: 1em 2em;
+  height: 4em;
   position: fixed;
   top: 0;
   left: 0;
+  background-color: #010409;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   display: flex;
   justify-content: flex-end;
-  z-index: 10;
-  
-  height: 4em;                     /* torna a barra mais grossa */
-  background-color: #010409;       /* mantém o mesmo tom do body */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  align-items: center;             /* centraliza verticalmente */
+  align-items: center;
+  padding: 0 2em;
+  z-index: 1000;
 }
 
 nav {
@@ -60,46 +58,41 @@ nav a {
 nav a:hover,
 nav a.active {
   color: #58a6ff;
+  border-bottom: 2px solid #58a6ff;
+  padding-bottom: 0.2em;
 }
 
-/* Container principal (card) */
-.main-content {
-  background-color: #f5f5f5;
-  color: #1a1a1a;
-  padding: 4em 2.5em;
-  border-radius: 12px;
-  max-width: 800px;      /* ainda maior */
-  width: 95%;
-  margin-top: 8em;
+/* Conteúdo principal sem card */
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: 2em 1em;
   text-align: center;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.15);
-  position: relative;
 }
 
-/* Foto de perfil */
+/* Foto de perfil circular */
 .profile-photo--home {
   width: 240px;
   height: 240px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #010409;
   margin: 0 auto 1em;
   display: block;
 }
 
-/* Títulos e texto */
-.main-content h1 {
-  font-size: 2.5em;
+/* Títulos e parágrafos com tamanho fixo */
+main h1 {
+  font-size: 2.5rem;      /* 40px */
   margin-bottom: 0.3em;
 }
 
-.main-content p {
-  font-size: 1rem;
-  margin-bottom: 2em;
+main p {
+  font-size: 1rem;        /* 16px desk. / 14px mobile */
   line-height: 1.5;
+  margin-bottom: 1.5em;
 }
 
-/* Botões circulares com fundo igual ao body (#010409) */
+/* Botões circulares com ícones */
 .btn-group {
   display: flex;
   justify-content: center;
@@ -110,12 +103,12 @@ nav a.active {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #010409;   /* mesmo tom do body */
+  background-color: #010409;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.3s;
+  transition: transform 0.2s;
 }
 
 .btn-circle:hover {
