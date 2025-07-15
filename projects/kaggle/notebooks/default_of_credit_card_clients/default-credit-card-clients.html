@@ -7522,12 +7522,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c99e6729">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c99e6729">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Carregando bibliotecas essenciais</span>
@@ -7537,48 +7537,6 @@ a.anchor-link {
 <span class="nf">library</span><span class="p">(</span><span class="n">VIM</span><span class="p">)</span><span class="w">          </span><span class="c1"># Para análise de dados faltantes</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span><span class="w">    </span><span class="c1"># Para múltiplos gráficos</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>── <span class="ansi-bold">Attaching core tidyverse packages</span> ──────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">dplyr    </span> 1.1.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">readr    </span> 2.1.5
-<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">forcats  </span> 1.0.0     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">stringr  </span> 1.5.1
-<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">ggplot2  </span> 3.5.2     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tibble   </span> 3.2.1
-<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">lubridate</span> 1.9.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tidyr    </span> 1.3.1
-<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">purrr    </span> 1.0.4     
-── <span class="ansi-bold">Conflicts</span> ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">filter()</span> masks <span class="ansi-blue-fg">stats</span>::filter()
-<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">lag()</span>    masks <span class="ansi-blue-fg">stats</span>::lag()
-<span class="ansi-cyan-fg">ℹ</span> Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors
-corrplot 0.95 loaded
-Carregando pacotes exigidos: colorspace
-Carregando pacotes exigidos: grid
-VIM is ready to use.
-
-Suggestions and bug-reports can be submitted at: https://github.com/statistikat/VIM/issues
-
-Anexando pacote: ‘VIM’
-
-O seguinte objeto é mascarado por ‘package:datasets’:
-
-    sleep
-
-
-Anexando pacote: ‘gridExtra’
-
-O seguinte objeto é mascarado por ‘package:dplyr’:
-
-    combine
-
-</pre>
 </div>
 </div>
 </div>
@@ -7610,56 +7568,17 @@ O seguinte objeto é mascarado por ‘package:dplyr’:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ad66f77a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ad66f77a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Exibie a estrutura do dataframe para entender os tipos de dados de cada coluna</span>
 <span class="nf">glimpse</span><span class="p">(</span><span class="n">credit_card_df</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Rows: 30,000
-Columns: 25
-$ ID                         <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>4<span style="color: rgb(148,148,148)">, </span>5<span style="color: rgb(148,148,148)">, </span>6<span style="color: rgb(148,148,148)">, </span>7<span style="color: rgb(148,148,148)">, </span>8<span style="color: rgb(148,148,148)">, </span>9<span style="color: rgb(148,148,148)">, </span>10<span style="color: rgb(148,148,148)">, </span>11<span style="color: rgb(148,148,148)">, </span>12<span style="color: rgb(148,148,148)">, </span>13<span style="color: rgb(148,148,148)">, </span>14<span style="color: rgb(148,148,148)">, </span>15<span style="color: rgb(148,148,148)">, </span>16<span style="color: rgb(148,148,148)">, </span>17<span style="color: rgb(148,148,148)">, </span>18<span style="color: rgb(148,148,148)">, </span>19<span style="color: rgb(148,148,148)">, </span>20<span style="color: rgb(148,148,148)">, </span>21<span style="color: rgb(148,148,148)">, </span>22<span style="color: rgb(148,148,148)">, </span>23<span style="color: rgb(148,148,148)">, </span>…
-$ LIMIT_BAL                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 20000<span style="color: rgb(148,148,148)">, </span>120000<span style="color: rgb(148,148,148)">, </span>90000<span style="color: rgb(148,148,148)">, </span>50000<span style="color: rgb(148,148,148)">, </span>50000<span style="color: rgb(148,148,148)">, </span>50000<span style="color: rgb(148,148,148)">, </span>500000<span style="color: rgb(148,148,148)">, </span>100000<span style="color: rgb(148,148,148)">, </span>140000<span style="color: rgb(148,148,148)">, </span>20000<span style="color: rgb(148,148,148)">, </span>200000<span style="color: rgb(148,148,148)">, </span>2…
-$ SEX                        <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">,</span>…
-$ EDUCATION                  <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">,</span>…
-$ MARRIAGE                   <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>3<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">,</span>…
-$ AGE                        <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 24<span style="color: rgb(148,148,148)">, </span>26<span style="color: rgb(148,148,148)">, </span>34<span style="color: rgb(148,148,148)">, </span>37<span style="color: rgb(148,148,148)">, </span>57<span style="color: rgb(148,148,148)">, </span>37<span style="color: rgb(148,148,148)">, </span>29<span style="color: rgb(148,148,148)">, </span>23<span style="color: rgb(148,148,148)">, </span>28<span style="color: rgb(148,148,148)">, </span>35<span style="color: rgb(148,148,148)">, </span>34<span style="color: rgb(148,148,148)">, </span>51<span style="color: rgb(148,148,148)">, </span>41<span style="color: rgb(148,148,148)">, </span>30<span style="color: rgb(148,148,148)">, </span>29<span style="color: rgb(148,148,148)">, </span>23<span style="color: rgb(148,148,148)">, </span>24<span style="color: rgb(148,148,148)">, </span>49<span style="color: rgb(148,148,148)">, </span>49<span style="color: rgb(148,148,148)">, </span>29<span style="color: rgb(148,148,148)">, </span>39<span style="color: rgb(148,148,148)">,</span>…
-$ PAY_0                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0…
-$ PAY_2                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0…
-$ PAY_3                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> -1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0…
-$ PAY_4                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> -1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-1…
-$ PAY_5                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> -2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">,</span>…
-$ PAY_6                      <span style="color: rgb(148,148,148)">&lt;int&gt;</span> -2<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>-1<span style="color: rgb(148,148,148)">, </span>2<span style="color: rgb(148,148,148)">, </span>-2<span style="color: rgb(148,148,148)">, </span>…
-$ BILL_AMT1                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 3913<span style="color: rgb(148,148,148)">, </span>2682<span style="color: rgb(148,148,148)">, </span>29239<span style="color: rgb(148,148,148)">, </span>46990<span style="color: rgb(148,148,148)">, </span>8617<span style="color: rgb(148,148,148)">, </span>64400<span style="color: rgb(148,148,148)">, </span>367965<span style="color: rgb(148,148,148)">, </span>11876<span style="color: rgb(148,148,148)">, </span>11285<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>11073<span style="color: rgb(148,148,148)">, </span>12261<span style="color: rgb(148,148,148)">, </span>12137…
-$ BILL_AMT2                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 3102<span style="color: rgb(148,148,148)">, </span>1725<span style="color: rgb(148,148,148)">, </span>14027<span style="color: rgb(148,148,148)">, </span>48233<span style="color: rgb(148,148,148)">, </span>5670<span style="color: rgb(148,148,148)">, </span>57069<span style="color: rgb(148,148,148)">, </span>412023<span style="color: rgb(148,148,148)">, </span>380<span style="color: rgb(148,148,148)">, </span>14096<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>9787<span style="color: rgb(148,148,148)">, </span>21670<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>67…
-$ BILL_AMT3                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 689<span style="color: rgb(148,148,148)">, </span>2682<span style="color: rgb(148,148,148)">, </span>13559<span style="color: rgb(148,148,148)">, </span>49291<span style="color: rgb(148,148,148)">, </span>35835<span style="color: rgb(148,148,148)">, </span>57608<span style="color: rgb(148,148,148)">, </span>445007<span style="color: rgb(148,148,148)">, </span>601<span style="color: rgb(148,148,148)">, </span>12108<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>5535<span style="color: rgb(148,148,148)">, </span>9966<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>657…
-$ BILL_AMT4                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>3272<span style="color: rgb(148,148,148)">, </span>14331<span style="color: rgb(148,148,148)">, </span>28314<span style="color: rgb(148,148,148)">, </span>20940<span style="color: rgb(148,148,148)">, </span>19394<span style="color: rgb(148,148,148)">, </span>542653<span style="color: rgb(148,148,148)">, </span>221<span style="color: rgb(148,148,148)">, </span>12211<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2513<span style="color: rgb(148,148,148)">, </span>8517<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>66782…
-$ BILL_AMT5                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>3455<span style="color: rgb(148,148,148)">, </span>14948<span style="color: rgb(148,148,148)">, </span>28959<span style="color: rgb(148,148,148)">, </span>19146<span style="color: rgb(148,148,148)">, </span>19619<span style="color: rgb(148,148,148)">, </span>483003<span style="color: rgb(148,148,148)">, </span>-159<span style="color: rgb(148,148,148)">, </span>11793<span style="color: rgb(148,148,148)">, </span>13007<span style="color: rgb(148,148,148)">, </span>1828<span style="color: rgb(148,148,148)">, </span>22287<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">,</span>…
-$ BILL_AMT6                  <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>3261<span style="color: rgb(148,148,148)">, </span>15549<span style="color: rgb(148,148,148)">, </span>29547<span style="color: rgb(148,148,148)">, </span>19131<span style="color: rgb(148,148,148)">, </span>20024<span style="color: rgb(148,148,148)">, </span>473944<span style="color: rgb(148,148,148)">, </span>567<span style="color: rgb(148,148,148)">, </span>3719<span style="color: rgb(148,148,148)">, </span>13912<span style="color: rgb(148,148,148)">, </span>3731<span style="color: rgb(148,148,148)">, </span>13668<span style="color: rgb(148,148,148)">, </span>2870<span style="color: rgb(148,148,148)">, </span>3…
-$ PAY_AMT1                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1518<span style="color: rgb(148,148,148)">, </span>2000<span style="color: rgb(148,148,148)">, </span>2000<span style="color: rgb(148,148,148)">, </span>2500<span style="color: rgb(148,148,148)">, </span>55000<span style="color: rgb(148,148,148)">, </span>380<span style="color: rgb(148,148,148)">, </span>3329<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2306<span style="color: rgb(148,148,148)">, </span>21818<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>3200<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>0…
-$ PAY_AMT2                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 689<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1500<span style="color: rgb(148,148,148)">, </span>2019<span style="color: rgb(148,148,148)">, </span>36681<span style="color: rgb(148,148,148)">, </span>1815<span style="color: rgb(148,148,148)">, </span>40000<span style="color: rgb(148,148,148)">, </span>601<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>12<span style="color: rgb(148,148,148)">, </span>9966<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>1500…
-$ PAY_AMT3                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1200<span style="color: rgb(148,148,148)">, </span>10000<span style="color: rgb(148,148,148)">, </span>657<span style="color: rgb(148,148,148)">, </span>38000<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>432<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>50<span style="color: rgb(148,148,148)">, </span>8583<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>1100…
-$ PAY_AMT4                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1100<span style="color: rgb(148,148,148)">, </span>9000<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>20239<span style="color: rgb(148,148,148)">, </span>581<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>13007<span style="color: rgb(148,148,148)">, </span>300<span style="color: rgb(148,148,148)">, </span>22301<span style="color: rgb(148,148,148)">, </span>6500<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>3…
-$ PAY_AMT5                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1069<span style="color: rgb(148,148,148)">, </span>689<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>13750<span style="color: rgb(148,148,148)">, </span>1687<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>1122<span style="color: rgb(148,148,148)">, </span>3738<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>2870<span style="color: rgb(148,148,148)">, </span>1500<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>13…
-$ PAY_AMT6                   <span style="color: rgb(148,148,148)">&lt;dbl&gt;</span> 0<span style="color: rgb(148,148,148)">, </span>2000<span style="color: rgb(148,148,148)">, </span>5000<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>679<span style="color: rgb(148,148,148)">, </span>800<span style="color: rgb(148,148,148)">, </span>13770<span style="color: rgb(148,148,148)">, </span>1542<span style="color: rgb(148,148,148)">, </span>1000<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>66<span style="color: rgb(148,148,148)">, </span>3640<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>3000<span style="color: rgb(148,148,148)">, </span>1100<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">,</span>…
-$ default.payment.next.month <span style="color: rgb(148,148,148)">&lt;int&gt;</span> 1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">, </span>1<span style="color: rgb(148,148,148)">, </span>0<span style="color: rgb(148,148,148)">,</span>…
-</pre>
 </div>
 </div>
 </div>
@@ -7709,11 +7628,11 @@ $ default.payment.next.month <span style="color: rgb(148,148,148)">&lt;int&gt;</
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Exibe um sumário de todas as colunas</span>
-<span class="nf">summary</span><span class="p">(</span><span class="n">credit_card_df</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">credit_card_df</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="s">"SEX"</span><span class="p">,</span><span class="w"> </span><span class="s">"EDUCATION"</span><span class="p">,</span><span class="w"> </span><span class="s">"MARRIAGE"</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -7724,40 +7643,15 @@ $ default.payment.next.month <span style="color: rgb(148,148,148)">&lt;int&gt;</
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>       ID          LIMIT_BAL       SEX       EDUCATION MARRIAGE       AGE            PAY_0             PAY_2        
- Min.   :    1   Min.   :  10000   1:11888   0:   14   0:   54   Min.   :21.00   Min.   :-2.0000   Min.   :-2.0000  
- 1st Qu.: 7501   1st Qu.:  50000   2:18112   1:10585   1:13659   1st Qu.:28.00   1st Qu.:-1.0000   1st Qu.:-1.0000  
- Median :15000   Median : 140000             2:14030   2:15964   Median :34.00   Median : 0.0000   Median : 0.0000  
- Mean   :15000   Mean   : 167484             3: 4917   3:  323   Mean   :35.49   Mean   :-0.0167   Mean   :-0.1338  
- 3rd Qu.:22500   3rd Qu.: 240000             4:  123             3rd Qu.:41.00   3rd Qu.: 0.0000   3rd Qu.: 0.0000  
- Max.   :30000   Max.   :1000000             5:  280             Max.   :79.00   Max.   : 8.0000   Max.   : 8.0000  
-                                             6:   51                                                                
-     PAY_3             PAY_4             PAY_5             PAY_6           BILL_AMT1         BILL_AMT2     
- Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-165580   Min.   :-69777  
- 1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:   3559   1st Qu.:  2985  
- Median : 0.0000   Median : 0.0000   Median : 0.0000   Median : 0.0000   Median :  22382   Median : 21200  
- Mean   :-0.1662   Mean   :-0.2207   Mean   :-0.2662   Mean   :-0.2911   Mean   :  51223   Mean   : 49179  
- 3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.:  67091   3rd Qu.: 64006  
- Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 964511   Max.   :983931  
-                                                                                                           
-   BILL_AMT3         BILL_AMT4         BILL_AMT5        BILL_AMT6          PAY_AMT1         PAY_AMT2      
- Min.   :-157264   Min.   :-170000   Min.   :-81334   Min.   :-339603   Min.   :     0   Min.   :      0  
- 1st Qu.:   2666   1st Qu.:   2327   1st Qu.:  1763   1st Qu.:   1256   1st Qu.:  1000   1st Qu.:    833  
- Median :  20089   Median :  19052   Median : 18105   Median :  17071   Median :  2100   Median :   2009  
- Mean   :  47013   Mean   :  43263   Mean   : 40311   Mean   :  38872   Mean   :  5664   Mean   :   5921  
- 3rd Qu.:  60165   3rd Qu.:  54506   3rd Qu.: 50191   3rd Qu.:  49198   3rd Qu.:  5006   3rd Qu.:   5000  
- Max.   :1664089   Max.   : 891586   Max.   :927171   Max.   : 961664   Max.   :873552   Max.   :1684259  
-                                                                                                          
-    PAY_AMT3         PAY_AMT4         PAY_AMT5           PAY_AMT6        default.payment.next.month
- Min.   :     0   Min.   :     0   Min.   :     0.0   Min.   :     0.0   0:23364                   
- 1st Qu.:   390   1st Qu.:   296   1st Qu.:   252.5   1st Qu.:   117.8   1: 6636                   
- Median :  1800   Median :  1500   Median :  1500.0   Median :  1500.0                             
- Mean   :  5226   Mean   :  4826   Mean   :  4799.4   Mean   :  5215.5                             
- 3rd Qu.:  4505   3rd Qu.:  4013   3rd Qu.:  4031.5   3rd Qu.:  4000.0                             
- Max.   :896040   Max.   :621000   Max.   :426529.0   Max.   :528666.0                             
-                                                                                                   </pre>
+<pre>      SEX          EDUCATION        MARRIAGE    
+ Min.   :1.000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :2.000   Median :2.000   Median :2.000  
+ Mean   :1.604   Mean   :1.853   Mean   :1.552  
+ 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000  
+ Max.   :2.000   Max.   :6.000   Max.   :3.000  </pre>
 </div>
 </div>
 </div>
@@ -8088,13 +7982,20 @@ $ default.payment.next.month <span style="color: rgb(148,148,148)">&lt;int&gt;</
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>     PAY_0             PAY_2             PAY_3             PAY_4             PAY_5             PAY_6        
- Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000  
- 1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000  
- Median : 0.0000   Median : 0.0000   Median : 0.0000   Median : 0.0000   Median : 0.0000   Median : 0.0000  
- Mean   :-0.0167   Mean   :-0.1338   Mean   :-0.1662   Mean   :-0.2207   Mean   :-0.2662   Mean   :-0.2911  
- 3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000  
- Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000  </pre>
+<pre>     PAY_0             PAY_2             PAY_3             PAY_4        
+ Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000   Min.   :-2.0000  
+ 1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:-1.0000  
+ Median : 0.0000   Median : 0.0000   Median : 0.0000   Median : 0.0000  
+ Mean   :-0.0167   Mean   :-0.1338   Mean   :-0.1662   Mean   :-0.2207  
+ 3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000   3rd Qu.: 0.0000  
+ Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000   Max.   : 8.0000  
+     PAY_5             PAY_6        
+ Min.   :-2.0000   Min.   :-2.0000  
+ 1st Qu.:-1.0000   1st Qu.:-1.0000  
+ Median : 0.0000   Median : 0.0000  
+ Mean   :-0.2662   Mean   :-0.2911  
+ 3rd Qu.: 0.0000   3rd Qu.: 0.0000  
+ Max.   : 8.0000   Max.   : 8.0000  </pre>
 </div>
 </div>
 </div>
@@ -8297,9 +8198,9 @@ $ default.payment.next.month <span style="color: rgb(148,148,148)">&lt;int&gt;</
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre><span class="ansi-bold">Rows: </span><span class="ansi-blue-fg">30000</span> <span class="ansi-bold">Columns: </span><span class="ansi-blue-fg">25</span>
-<span class="ansi-cyan-fg">──</span> <span class="ansi-bold">Column specification</span> <span class="ansi-cyan-fg">────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="ansi-cyan-fg">──</span> <span class="ansi-bold">Column specification</span> <span class="ansi-cyan-fg">──────────────────────────────────────────────────</span>
 <span class="ansi-bold">Delimiter:</span> ","
-<span class="ansi-green-fg">dbl</span> (25): ID, LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, PAY_3, PAY_4, PAY_5, PAY_6, BILL_AMT1, BILL_AM...
+<span class="ansi-green-fg">dbl</span> (25): ID, LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, ...
 
 <span class="ansi-cyan-fg">ℹ</span> Use `spec()` to retrieve the full column specification for this data.
 <span class="ansi-cyan-fg">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.
