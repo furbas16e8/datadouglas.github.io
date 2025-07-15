@@ -1,56 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DataDouglas</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-
-  <meta name="description" content="Portfólio de economista e cientista de dados — Douglas Furbino Queiroz">
-  <link rel="icon" href="/assets/img/favicon.ico">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Douglas Furbino • Início</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <h2>Douglas Furbino</h2>
-    
-    <nav>
-      <a href="/"       >Home</a>
-      <a href="/about.html" class="active">Sobre</a>
-      <a href="/projects.html">Projetos</a>
-      <a href="/contact.html">Contato</a>
-    </nav>
 
+  <header>
+    <nav>
+      <a href="index.html" class="active">Início</a>
+      <a href="about.html">Sobre</a>
+      <a href="projects.html">Projetos</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="resume.html">Currículo</a>
+      <a href="contact.html">Contato</a>
+    </nav>
   </header>
 
+  <main class="main-content">
+    <h1>Douglas Furbino</h1>
+    <p>Economista &amp; Analista de Dados em formação. Transformando números em insights.</p>
+    <div class="btn-group">
+      <a href="https://github.com/furbas16e8" target="_blank" class="btn btn--github">GitHub</a>
+      <a href="https://www.linkedin.com/in/dfurbino" target="_blank" class="btn btn--linkedin">LinkedIn</a>
+    </div>
+  </main>
 
-  <div class="emoji">🚧</div>
-  <h1>Portfólio em construção</h1>
-  <p class="random cursor" id="frase"></p>
-
-  <script>
-    const frases = [
-      "> treinando a versão final",
-      "> dados sendo processados",
-      "> ajustando os hiperparâmetros do modelo",
-      "> feature engineering em progresso",
-      "> construindo o dataset visual",
-      "> deploy em breve",
-      "> pré-processando ideias",
-      "> rodando os primeiros scripts",
-      "> explorando os dados do modelo",
-      "> pipeline do site em execução",
-      "> em fase de aprendizado supervisionado",
-      "> ajustando pesos e vieses",
-      "> a/b testando a estrutura",
-      "> iterando sobre a arquitetura",
-      "> normalizando variáveis"
-    ];
-
-    document.getElementById("frase").textContent =
-      frases[Math.floor(Math.random() * frases.length)];
-  </script>
 </body>
 </html>
