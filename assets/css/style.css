@@ -106,14 +106,29 @@ header nav a:hover {
   margin-bottom: 1.5em;
 }
 
-.social-links a {
-  text-decoration: none;
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
   font-weight: 600;
-  margin: 0 0.5em;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   color: #58a6ff;
 }
 
 .social-links a:hover {
   text-decoration: underline;
 }
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+
 
