@@ -142,7 +142,7 @@ main section p {
   font-size: 1rem;
   margin-bottom: 0.8em;   /* Espaçamento reduzido */
   line-height: 1.4;
-  text-align: center;     /* Centraliza apenas os parágrafos */
+  text-align: left;     /* Define o alinhamento dos parágrafos */
 }
 
 main section a {
