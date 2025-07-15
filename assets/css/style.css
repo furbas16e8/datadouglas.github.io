@@ -82,9 +82,13 @@ nav a.active {
 }
 
 .main-content p {
-  font-size: 1.1em;
+  font-size: 1rem;
   margin-bottom: 2em;
   line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  html { font-size: 87.5%; /* 1rem = 14px */ }
 }
 
 /* Botões circulares com fundo igual ao body (#010409) */
@@ -103,7 +107,7 @@ nav a.active {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.3s;
 }
 
 .btn-circle:hover {
