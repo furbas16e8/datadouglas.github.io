@@ -60,11 +60,11 @@ nav a.active {
 
 /* Foto de perfil */
 .profile-photo--home {
-  width: 140px;
-  height: 140px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #010409;
+  border: 3px solid #010409;
   margin: 0 auto 1em;
   display: block;
 }
