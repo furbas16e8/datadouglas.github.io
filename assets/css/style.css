@@ -5,6 +5,18 @@
   box-sizing: border-box;
 }
 
+/* Ajuste de escala base para fontes */
+html {
+  font-size: 100%;        /* 16px no desktop */
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 87.5%;     /* 14px em telas até 600px de largura */
+  }
+}
+
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #010409;
@@ -85,10 +97,6 @@ nav a.active {
   font-size: 1rem;
   margin-bottom: 2em;
   line-height: 1.5;
-}
-
-@media (max-width: 600px) {
-  html { font-size: 87.5%; /* 1rem = 14px */ }
 }
 
 /* Botões circulares com fundo igual ao body (#010409) */
