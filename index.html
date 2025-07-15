@@ -1,76 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Douglas Furbino • Início</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="about.html">Sobre</a>
-    <a href="projects.html">Projetos</a>
-    <a href="portfolio.html">Portfólio</a>
-    <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
-    <a href="contact.html">Contato</a>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <a href="index.html" class="active">Início</a>
+      <a href="about.html">Sobre</a>
+      <a href="projects.html">Projetos</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
+      <a href="contact.html">Contato</a>
+    </nav>
+  </header>
 
+  <main class="main-content">
+    <img src="assets/img/profile.jpg" alt="Foto de Douglas Furbino" class="profile-photo--home" />
 
-<main class="main-content">
-  <img src="assets/img/profile.jpg" alt="Foto de Douglas Furbino" class="profile-photo--home">
+    <h1>Douglas Furbino</h1>
+    <p>
+      Graduando em Ciências Econômicas na Universidade Federal de Juiz de Fora (UFJF) em Governador Valadares.
+      Com foco em análise de dados aplicada à economia e finanças, meu trabalho é transformar dados complexos em
+      insights acionáveis que possam orientar decisões estratégicas no mundo dos negócios e políticas públicas.
+    </p>
 
-  <h1>Douglas Furbino</h1>
-  <p>Graduando em Ciências Econômicas na Universidade Federal de Juiz de Fora (UFJF) em Governador Valadares. Com foco em análise de dados aplicada à economia e finanças, meu trabalho é transformar dados complexos em insights acionáveis que possam orientar decisões estratégicas no mundo dos negócios e políticas públicas.</p>
-  
-  <div class="btn-group">
-    <!-- GitHub -->
-    <a href="https://github.com/furbas16e8" target="_blank" rel="noopener" class="btn-circle">
-      <img src="assets/img/github.svg" alt="GitHub">
-    </a>
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/dfurbino" target="_blank" rel="noopener" class="btn-circle">
-      <img src="assets/img/linkedin.svg" alt="LinkedIn">
-    </a>
-  </div>
-  
-  <!-- Separador elegante -->
-<hr class="section-divider" />
-
-<!-- Seção de projetos -->
-<section class="home-projects">
-  <h2>Projetos em destaque</h2>
-  <p>Confira alguns dos meus trabalhos recentes envolvendo análise de dados, visualização e modelagem estatística.</p>
-
-  <div class="project-cards">
-    <!-- Projeto 1 -->
-    <div class="project-card">
-      <h3>Análise de inadimplência</h3>
-      <p>Estudo baseado no dataset do Kaggle sobre clientes inadimplentes de cartão de crédito.</p>
-      <a href="projects/kaggle/notebooks/Default%20of%20Credit%20Card%20Clients%20Dataset/default-credit-card-clients.html" target="_blank">Ver projeto</a>
+    <!-- Botões sociais -->
+    <div class="btn-group">
+      <!-- GitHub -->
+      <a href="https://github.com/furbas16e8" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/github.svg" alt="GitHub" />
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/dfurbino" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/linkedin.svg" alt="LinkedIn" />
+      </a>
     </div>
 
-    <!-- Projeto 2 -->
-    <div class="project-card">
-      <h3>Projeto 2</h3>
-      <p>Breve descrição do segundo projeto adicionado recentemente.</p>
-      <a href="#">Ver projeto</a>
+    <!-- Espaçamento extra abaixo dos botões -->
+    <div style="margin-bottom: 6em;"></div>
+
+    <!-- Faixa escura com título -->
+    <div class="highlight-bar">
+      <h2>Projetos em destaque</h2>
     </div>
 
-    <!-- Projeto 3 -->
-    <div class="project-card">
-      <h3>Projeto 3</h3>
-      <p>Breve descrição do terceiro projeto adicionado recentemente.</p>
-      <a href="#">Ver projeto</a>
-    </div>
-  </div>
-</section>
-
-</main>
+    <!-- Seção com projetos -->
+    <section class="home-projects">
+      <div class="project-cards">
+        <!-- Projeto 1 -->
+        <div class="project-card">
+          <h3>Análise de inadimplência</h3>
+          <p>
+            Estudo baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla
+            limpeza dos dados, visualizações e um modelo preditivo de classificação.
+          </p>
+          <a href="projects/kaggle/notebooks/default_of_credit_card_clients/default-credit-card-clients.html" target="_blank">
+            Ver projeto
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
 </body>
 </html>

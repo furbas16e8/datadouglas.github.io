@@ -66,7 +66,7 @@ nav a.active {
   padding-bottom: 0.2em;
 }
 
-/* Conteúdo principal sem card */
+/* Conteúdo principal */
 main {
   width: 100%;
   max-width: 900px;
@@ -86,12 +86,12 @@ main {
 
 /* Títulos e parágrafos com tamanho fixo */
 main h1 {
-  font-size: 2.5rem;      /* 40px */
+  font-size: 2.5rem;
   margin-bottom: 0.3em;
 }
 
 main p {
-  font-size: 1rem;        /* 16px desktop / 14px mobile */
+  font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.5em;
 }
@@ -100,7 +100,9 @@ main p {
 .btn-group {
   display: flex;
   justify-content: center;
-  gap: 1em;
+  gap: 2.5em;         /* espaçamento maior entre botões */
+  margin-top: 1.5em;
+  margin-bottom: 3em; /* espaço abaixo dos botões */
 }
 
 .btn-circle {
@@ -125,55 +127,25 @@ main p {
   display: block;
 }
 
-/* ========== PROJETOS ========== */
-main section {
+/* Faixa escura para seção de destaque */
+.highlight-bar {
+  width: 100%;
+  background-color: #010409;
+  padding: 1em 0;
+  text-align: center;
   margin-bottom: 2em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #ccc;
-  text-align: center;  /* Centraliza todo o conteúdo do projeto */
 }
 
-main section h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5em;
-}
-
-main section p {
-  font-size: 1rem;
-  margin-bottom: 0.8em;   /* Espaçamento reduzido */
-  line-height: 1.4;
-  text-align: left;     /* Define o alinhamento dos parágrafos */
-}
-
-main section a {
-  font-weight: 600;
-  color: #0077b5;
-  text-decoration: none;
-}
-
-main section a:hover {
-  text-decoration: underline;
-}
-
-
-/* Separador elegante */
-.section-divider {
-  margin: 3em auto;
-  width: 60px;
-  border: none;
-  border-top: 3px solid #ccc;
-  opacity: 0.6;
+.highlight-bar h2 {
+  color: #f5f5f5;
+  font-size: 1.8rem;
+  margin: 0;
 }
 
 /* Seção de projetos da home */
 .home-projects {
   margin-top: 2em;
   text-align: center;
-}
-
-.home-projects h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.3em;
 }
 
 .home-projects p {
@@ -196,7 +168,7 @@ main section a:hover {
   padding: 1.5em;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  text-align: left;
+  text-align: left; /* alinhamento à esquerda */
 }
 
 .project-card h3 {
@@ -218,4 +190,13 @@ main section a:hover {
 
 .project-card a:hover {
   text-decoration: underline;
+}
+
+/* Separador elegante */
+.section-divider {
+  margin: 3em auto;
+  width: 60px;
+  border: none;
+  border-top: 3px solid #ccc;
+  opacity: 0.6;
 }
