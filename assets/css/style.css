@@ -9,16 +9,13 @@
 html {
   font-size: 100%;        /* 16px no desktop */
 }
+
 @media (max-width: 600px) {
   html {
     font-size: 87.5%;     /* 14px no mobile */
   }
   main {
-    /* antes era margin: 2em 1em; */
-    margin: 2em 1.5em;   /* aumenta a margem horizontal */
-    /* ou, se preferir, padding interno:
-    padding: 0 1em;
-    */
+    margin: 2em 1.5em;    /* aumenta a margem horizontal */
   }
 }
 
@@ -94,7 +91,7 @@ main h1 {
 }
 
 main p {
-  font-size: 1rem;        /* 16px desk. / 14px mobile */
+  font-size: 1rem;        /* 16px desktop / 14px mobile */
   line-height: 1.5;
   margin-bottom: 1.5em;
 }
@@ -126,4 +123,34 @@ main p {
   width: 28px;
   height: 28px;
   display: block;
+}
+
+/* ========== PROJETOS ========== */
+main section {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+  text-align: center;  /* Centraliza todo o conteúdo do projeto */
+}
+
+main section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5em;
+}
+
+main section p {
+  font-size: 1rem;
+  margin-bottom: 0.8em;   /* Espaçamento reduzido */
+  line-height: 1.4;
+  text-align: center;     /* Centraliza apenas os parágrafos */
+}
+
+main section a {
+  font-weight: 600;
+  color: #0077b5;
+  text-decoration: none;
+}
+
+main section a:hover {
+  text-decoration: underline;
 }
