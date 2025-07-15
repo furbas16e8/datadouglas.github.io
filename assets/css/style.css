@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #010409;  /* fundo solicitado */
+  background-color: #010409;
   color: #fff;
   min-height: 100vh;
   display: flex;
@@ -25,7 +25,6 @@ header {
   display: flex;
   justify-content: flex-end;
   z-index: 10;
-  background: transparent;
 }
 
 nav {
@@ -47,20 +46,33 @@ nav a.active {
 
 /* Container principal (card) */
 .main-content {
-  background-color: #f5f5f5;  /* tom claro */
+  background-color: #f5f5f5;
   color: #1a1a1a;
-  padding: 4em 2.5em;          /* aumenta o padding para card maior */
+  padding: 4em 2.5em;
   border-radius: 12px;
-  max-width: 700px;            /* maior largura */
-  width: 90%;
-  margin-top: 8em;             /* para não ficar atrás da header */
+  max-width: 800px;      /* ainda maior */
+  width: 95%;
+  margin-top: 8em;
   text-align: center;
   box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+  position: relative;
 }
 
+/* Foto de perfil */
+.profile-photo--home {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #010409;
+  margin: 0 auto 1em;
+  display: block;
+}
+
+/* Títulos e texto */
 .main-content h1 {
   font-size: 2.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 .main-content p {
@@ -93,22 +105,18 @@ nav a.active {
   fill: currentColor;
 }
 
-/* GitHub */
 .btn--github {
   background-color: #24292e;
   color: #fff;
 }
-
 .btn--github:hover {
   background-color: #1b1f23;
 }
 
-/* LinkedIn */
 .btn--linkedin {
   background-color: #0077b5;
   color: #fff;
 }
-
 .btn--linkedin:hover {
   background-color: #005582;
 }
