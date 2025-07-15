@@ -81,42 +81,31 @@ nav a.active {
   line-height: 1.5;
 }
 
-/* Botões com ícones */
+/* Botões circulares com fundo igual ao body (#010409) */
 .btn-group {
   display: flex;
   justify-content: center;
   gap: 1em;
 }
 
-.btn {
-  display: inline-flex;
+.btn-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #010409;   /* mesmo tom do body */
+  display: flex;
   align-items: center;
-  padding: 0.75em 1.5em;
-  border-radius: 6px;
+  justify-content: center;
   text-decoration: none;
-  font-weight: 600;
-  transition: background 0.2s;
+  transition: transform 0.2s;
 }
 
-.btn svg {
-  width: 1.2em;
-  height: 1.2em;
-  margin-right: 0.5em;
-  fill: currentColor;
+.btn-circle:hover {
+  transform: scale(1.1);
 }
 
-.btn--github {
-  background-color: #24292e;
-  color: #fff;
-}
-.btn--github:hover {
-  background-color: #1b1f23;
-}
-
-.btn--linkedin {
-  background-color: #0077b5;
-  color: #fff;
-}
-.btn--linkedin:hover {
-  background-color: #005582;
+.btn-circle img {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
