@@ -1,134 +1,104 @@
-body {
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #0d1117;
-  color: #c9d1d9;
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0a1a2a;  /* azul escuro */
+  color: #333;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
+/* Barra de navegação fixa no topo */
 header {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: ghostwhite;
-  text-align: left;
+  width: 100%;
+  background: transparent;
+  padding: 1em 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
 }
 
-header h2 {
-  margin: 0;
-  font-size: 1.4em;
-  font-weight: 600;
+nav {
+  display: flex;
+  gap: 1.5em;
 }
 
-header p {
-  margin: 0;
-  font-size: 0.9em;
-  opacity: 0.7;
-}
-
-.emoji {
-  font-size: 2.5em;
-  margin-bottom: 0.2em;
-}
-
-h1 {
-  font-size: 1.7em;
-  margin: 0.2em 0;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.random {
-  margin-top: 1em;
-  font-size: 0.8em;
-  opacity: 0.85;
-  font-family: 'Fira Code', 'Courier New', monospace;
-  text-align: left;
-  white-space: pre;
-}
-
-.cursor::after {
-  content: "|";
-  animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
-
-header nav {
-  margin-top: 0.5em;
-}
-header nav a {
-  margin-right: 1em;
+nav a {
   text-decoration: none;
   color: #c9d1d9;
-}
-header nav a:hover {
-  text-decoration: underline;
-}
-
-
-/* about page layout */
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2em;
-  max-width: 800px;
-  margin: 0 auto;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1em;
-}
-
-.about-container h1 {
-  font-size: 2em;
-  margin: 0.5em 0;
-}
-
-.about-container p {
-  font-size: 1em;
-  line-height: 1.6;
-  text-align: justify;
-  margin-bottom: 1.5em;
-}
-
-.social-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  font-weight: 600;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
+nav a:hover,
+nav a.active {
   color: #58a6ff;
 }
 
-.social-links a:hover {
-  text-decoration: underline;
+/* Container principal */
+.main-content {
+  background-color: #f5f5f5;  /* tom claro */
+  color: #1a1a1a;
+  padding: 3em 2em;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  margin-top: 8em;  /* para não ficar embaixo da header */
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.social-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.4em;
-  vertical-align: middle;
+.main-content h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
 }
 
+.main-content p {
+  font-size: 1em;
+  margin-bottom: 1.5em;
+  line-height: 1.4;
+}
 
+/* Botões de redes */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn--github {
+  background-color: #24292e;
+  color: #fff;
+}
+
+.btn--linkedin {
+  background-color: #0077b5;
+  color: #fff;
+}
+
+.btn--github:hover {
+  background-color: #1b1f23;
+}
+
+.btn--linkedin:hover {
+  background-color: #005582;
+}
