@@ -13,6 +13,13 @@ html {
   html {
     font-size: 87.5%;     /* 14px no mobile */
   }
+  main {
+    /* antes era margin: 2em 1em; */
+    margin: 2em 1.5em;   /* aumenta a margem horizontal */
+    /* ou, se preferir, padding interno:
+    padding: 0 1em;
+    */
+  }
 }
 
 /* Corpo da página: fundo claro do antigo card */
