@@ -5,14 +5,29 @@
   box-sizing: border-box;
 }
 
+/* → Aqui, insira o :root com suas variáveis ← */
+:root {
+  /* Paleta principal */
+  --color-bg:    #f5f5f5;  /* fundo claro */
+  --color-text:  #1a1a1a;  /* texto escuro */
+  --color-blue:  #0d1b2a;  /* azul bem escuro */
+  --color-green: #14532d;  /* verde escuro */
+  --color-accent:#58a6ff;  /* azul claro para hover/links */
+
+  /* Espaçamentos e bordas */
+  --radius:      0.5rem;
+  --gap:         1.5rem;
+}
+
 /* Escala base para fontes */
 html {
   font-size: 100%;        /* 16px no desktop */
 }
 
+
 @media (max-width: 600px) {
   html {
-    font-size: 87.5%;     /* 14px no mobile */
+    font-size: 87.5%;     /* 14px no mobile */	
   }
   main {
     margin: 2em 1.5em;    /* aumenta a margem horizontal */
