@@ -2,39 +2,85 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Douglas Furbino</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Douglas Furbino • Início</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <!-- HEADER fixa no topo, com nav existente -->
-  <header class="site-header">
-    <div class="container">
-      <a href="#home" class="nav-item">Home</a>
-      <a href="#about" class="nav-item">Sobre</a>
-      <a href="#projects" class="nav-item">Projetos</a>
-      <a href="assets/cv/curriculo-06-2025.pdf" class="nav-item" target="_blank" rel="noopener">Currículo</a>
-    </div>
+
+  <header>
+    <nav>
+      <a href="index.html" class="active">Início</a>
+      <a href="about.html">Sobre</a>
+      <a href="projects.html">Projetos</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
+      <a href="contact.html">Contato</a>
+    </nav>
   </header>
 
-  <!-- HERO: foto, nome abaixo da foto, descrição abaixo do nome -->
-  <section class="hero">
-    <img src="assets/img/profile.jpg" alt="Foto de Douglas Furbino" class="hero__photo" />
-    <h1 class="hero__name">Douglas Furbino</h1>
-    <p class="hero__desc">
-      Graduando em Ciências Econômicas na UFJF‑GV.<br>
-      Foco em análise de dados aplicada à economia.
-    </p>
-  </section>
+  <main class="main-content">
+    <img src="assets/img/profile.jpg" alt="Foto de Douglas Furbino" class="profile-photo--home" />
 
-  <!-- PROJETOS -->
-  <main class="main-content" id="projects">
-    <section class="projects">
-      <h2>Projetos em Destaque</h2>
-      <div class="grid">
-        <!-- cards de projetos -->
+    <h1>Douglas Furbino</h1>
+    <p>
+      Graduando em Ciências Econômicas na Universidade Federal de Juiz de Fora (UFJF) em Governador Valadares.
+      Com foco em análise de dados aplicada à economia e finanças, meu trabalho é transformar dados complexos em
+      insights acionáveis que possam orientar decisões estratégicas no mundo dos negócios e políticas públicas.
+    </p>
+
+    <!-- Botões sociais -->
+    <div class="btn-group">
+      <!-- GitHub -->
+      <a href="https://github.com/furbas16e8" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/github.svg" alt="GitHub" />
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/dfurbino" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/linkedin.svg" alt="LinkedIn" />
+      </a>
+    </div>
+
+    <!-- Espaçamento extra abaixo dos botões -->
+    <div style="margin-bottom: 6em;"></div>
+
+    <!-- Faixa escura com título -->
+    <div class="highlight-bar">
+      <h2>Projetos em destaque</h2>
+    </div>
+
+    <!-- Seção com projetos -->
+    <section class="home-projects">
+      <div class="project-cards">
+        <!-- Projeto 1 -->
+        <div class="project-card">
+          <h3>Análise de inadimplência</h3>
+          <p>
+            Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla
+            limpeza dos dados, visualizações e um modelo preditivo de classificação.
+          </p>
+          <a href="projects/kaggle/notebooks/default_of_credit_card_clients/default-credit-card-clients.html" target="_blank">
+            Ver projeto
+          </a>
+        </div>
       </div>
     </section>
   </main>
+
 </body>
 </html>
+
+
+<section class="hero">
+  <img src="assets/img/profile.jpg"
+       alt="Foto de Douglas Furbino"
+       class="hero__photo" />
+
+  <h1 class="hero__name">Douglas Furbino</h1>
+
+  <p class="hero__desc">
+    Graduando em Ciências Econômicas na UFJF‑GV.<br>
+    Foco em análise de dados aplicada à economia.
+  </p>
+</section>
