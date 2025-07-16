@@ -5,18 +5,18 @@
   box-sizing: border-box;
 }
 
-/* → Aqui, insira o :root com suas variáveis ← */
 :root {
-  /* Paleta principal */
-  --color-bg:    #f5f5f5;  /* fundo claro */
-  --color-text:  #1a1a1a;  /* texto escuro */
-  --color-blue:  #0d1b2a;  /* azul bem escuro */
-  --color-green: #14532d;  /* verde escuro */
-  --color-accent:#58a6ff;  /* azul claro para hover/links */
-
-  /* Espaçamentos e bordas */
-  --radius:      0.5rem;
-  --gap:         1.5rem;
+  /* Paleta original */
+  --color-bg:       #f5f5f5;   /* fundo da página */ 
+  --color-text:     #1a1a1a;   /* texto principal */
+  --color-header:   #010409;   /* fundo do header e botões */
+  --color-nav:      #c9d1d9;   /* links de nav inativos */
+  --color-nav-ac:   #58a6ff;   /* links de nav active/hover */
+  --color-highlight:#010409;   /* faixa de destaque (.highlight-bar) */
+  --color-highlight-text: #f5f5f5; /* texto na faixa de destaque */
+  --color-card-bg:  #ffffff;   /* fundo dos cards de projeto */
+  --color-card-link:#0077b5;   /* link dentro dos cards */
+  --color-muted:    #444;      /* texto secundário (.home-projects p) */
 }
 
 /* Escala base para fontes */
