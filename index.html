@@ -2,94 +2,71 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Douglas Furbino — Home</title>
-
-  <!-- Seu CSS principal -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Douglas Furbino • Início</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="nav">
-    <div class="container">
-      <div class="nav-brand">Douglas Furbino</div>
+  <header>
+    <nav>
+      <a href="index.html" class="active">Início</a>
+      <a href="about.html">Sobre</a>
+      <a href="projects.html">Projetos</a>
+      <a href="portfolio.html">Portfólio</a>
+      <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
+      <a href="contact.html">Contato</a>
+    </nav>
+  </header>
 
-      <!-- checkbox‑hack para o hamburger -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label">
-        <span></span><span></span><span></span>
-      </label>
+  <main class="main-content">
+    <img src="assets/img/profile.jpg" alt="Foto de Douglas Furbino" class="profile-photo--home" />
 
-      <ul class="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#projects">Projetos</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HERO / HOME -->
-  <section id="home">
     <h1>Douglas Furbino</h1>
-    <h2>Graduando em Ciências Econômicas • Analista de Dados</h2>
-    <a href="#projects" class="button">Meus Projetos</a>
-  </section>
-
-  <!-- SOBRE -->
-  <section id="about">
-    <h2 class="title">Sobre Mim</h2>
-    <div class="columns">
-      <div>
-        <img src="assets/img/profile.jpg" alt="Foto de Douglas" />
-      </div>
-      <div>
-        <p>
-          Olá! Sou graduando em Ciências Econômicas pela UFJF e atuo com análise
-          de dados, desenvolvendo soluções que ajudam na tomada de decisão.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJETOS -->
-  <section id="projects">
-    <h2 class="title">Projetos em Destaque</h2>
-    <div class="carousel">
-      <div class="cell">
-        <h3>Análise de Inadimplência</h3>
-        <p>
-          EDA e modelo preditivo usando o conjunto “Default of Credit Card Clients” do Kaggle.
-        </p>
-        <a href="projects/default-credit-card.html" class="button">Ver Projeto</a>
-      </div>
-      <div class="cell">
-        <h3>Dashboard Econômico</h3>
-        <p>
-          Painel interativo em Python/Streamlit com indicadores macroeconômicos.
-        </p>
-        <a href="projects/dashboard-economico.html" class="button">Ver Projeto</a>
-      </div>
-      <!-- Adicione mais .cell conforme seus projetos -->
-    </div>
-  </section>
-
-  <!-- CONTATO / FOOTER -->
-  <section id="contact">
-    <h2 class="title">Vamos Conversar?</h2>
     <p>
-      <a href="mailto:seuemail@exemplo.com" class="icon">
-        <i class="fas fa-envelope fa-2x"></i>
-      </a>
-      <a href="https://github.com/furbas16e8" target="_blank" class="icon">
-        <i class="fab fa-github fa-2x"></i>
-      </a>
-      <a href="https://linkedin.com/in/dfurbino" target="_blank" class="icon">
-        <i class="fab fa-linkedin fa-2x"></i>
-      </a>
+      Graduando em Ciências Econômicas na Universidade Federal de Juiz de Fora (UFJF) em Governador Valadares.
+      Com foco em análise de dados aplicada à economia e finanças, meu trabalho é transformar dados complexos em
+      insights acionáveis que possam orientar decisões estratégicas no mundo dos negócios e políticas públicas.
     </p>
-  </section>
+
+    <!-- Botões sociais -->
+    <div class="btn-group">
+      <!-- GitHub -->
+      <a href="https://github.com/furbas16e8" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/github.svg" alt="GitHub" />
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/dfurbino" target="_blank" rel="noopener" class="btn-circle">
+        <img src="assets/img/linkedin.svg" alt="LinkedIn" />
+      </a>
+    </div>
+
+    <!-- Espaçamento extra abaixo dos botões -->
+    <div style="margin-bottom: 6em;"></div>
+
+    <!-- Faixa escura com título -->
+    <div class="highlight-bar">
+      <h2>Projetos em destaque</h2>
+    </div>
+
+    <!-- Seção com projetos -->
+    <section class="home-projects">
+      <div class="project-cards">
+        <!-- Projeto 1 -->
+        <div class="project-card">
+          <h3>Análise de inadimplência</h3>
+          <p>
+            Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla
+            limpeza dos dados, visualizações e um modelo preditivo de classificação.
+          </p>
+          <a href="projects/kaggle/notebooks/default_of_credit_card_clients/default-credit-card-clients.html" target="_blank">
+            Ver projeto
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
 </body>
 </html>

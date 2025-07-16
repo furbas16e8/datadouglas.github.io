@@ -1,275 +1,217 @@
-/* ===================================================================
-   style.css — Tema inspirado no Devfolio, paleta e Montserrat
-   =================================================================== */
-
-/* ===== Import Montserrat via Google Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
-/* ===== Variáveis de Tema ===== */
-:root {
-  --font-base: 'Montserrat', sans-serif;
-
-  /* Substitua pelas suas cores */
-  --color-primary: #123456;
-  --color-secondary: #abcdef;
-  --color-bg: #f5f5f5;
-  --color-text: #333333;
-  --color-light: #ffffff;
-
-  --transition: 0.3s ease;
-}
-
-/* ===== Reset & Global ===== */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  /* Paleta original */
+  --color-bg:       		#f5f5f5;   		/* fundo da página */ 
+  --color-text:     		#1a1a1a;   		/* texto principal */
+  --color-header:   		#010409;   		/* fundo do header e botões */
+  --color-nav:      		#c9d1d9;   		/* links de nav inativos */
+  --color-nav-ac:   		#58a6ff;   		/* links de nav active/hover */
+  --color-highlight:		#010409;   		/* faixa de destaque (.highlight-bar) */
+  --color-highlight-text: 	#f5f5f5; 		/* texto na faixa de destaque */
+  --color-card-bg:  		#ffffff;   		/* fundo dos cards de projeto */
+  --color-card-link:		#0077b5;   		/* link dentro dos cards */
+  --color-muted:    		#444;      		/* texto secundário (.home-projects p) */
+}		
+
+/* Escala base para fontes */
 html {
-  font-family: var(--font-base);
-  font-size: 16px;
-  scroll-behavior: smooth;
-  background: var(--color-bg);
-  color: var(--color-text);
-}
-body {
-  line-height: 1.6;
-}
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-a:hover {
-  color: var(--color-secondary);
-}
-section {
-  padding: 4rem 2rem;
-}
-.container {
-  width: min(100% - 2rem, 1200px);
-  margin-inline: auto;
+  font-size: 100%;        /* 16px no desktop */
 }
 
-/* ===================================================================
-   NAVBAR — Hamburger menu CSS-only
-   =================================================================== */
-.nav {
+
+@media (max-width: 600px) {
+  html {
+    font-size: 87.5%;     /* 14px no mobile */	
+  }
+  main {
+    margin: 2em 1.5em;    /* aumenta a margem horizontal */
+  }
+}
+
+/* Corpo da página: fundo claro do antigo card */
+body {
+  font-family: 			'Montserrat', sans-serif;
+  background-color: 	var(--color-bg);
+  color: 				var(--color-text);
+  min-height: 			100vh;
+  display: 				flex;
+  flex-direction: 		column;
+  align-items: 			center;
+  padding-top: 			4em;       /* espaço para a header fixa */
+}
+
+/* Barra superior escura, fixa e mais espessa */
+header {
+  width: 100%;
+  height: 4em;
   position: fixed;
-  top: 0; left: 0; right: 0;
-  background: var(--color-primary);
+  top: 0;
+  left: 0;
+  background-color: var(--color-header);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2em;
   z-index: 1000;
 }
-.nav .container {
+
+nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav-brand {
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--color-light);
-  padding: 1rem 0;
-}
-.nav-menu {
-  display: flex;
-  gap: 2rem;
-}
-.nav-menu li {
-  list-style: none;
-}
-.nav-menu a {
-  color: var(--color-light);
-  font-weight: 600;
-  padding: 1rem 0;
+  gap: 1.5em;
 }
 
-/* Hamburger toggle */
-.nav-toggle {
-  display: none;
-}
-.nav-toggle-label {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 2rem;
-  height: 1.5rem;
-  cursor: pointer;
-}
-.nav-toggle-label span {
-  display: block;
-  height: 3px;
-  background: var(--color-light);
-  border-radius: 2px;
-  transition: transform var(--transition);
+nav a {
+  text-decoration: none;
+  color: #c9d1d9;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0; right: 0;
-    flex-direction: column;
-    background: var(--color-primary);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition);
-  }
-  .nav-toggle-label {
-    display: flex;
-    margin-right: 1rem;
-  }
-  .nav-toggle:checked + .nav-toggle-label + .nav-menu {
-    max-height: 300px;
-  }
+nav a:hover,
+nav a.active {
+  color: 				var(--color-nav-ac); /* anes #58a6ff; */
+  border-bottom: 		2px solid #58a6ff;
+  padding-bottom: 		0.2em;
 }
 
-/* ===================================================================
-   HERO / HOME
-   =================================================================== */
-#home {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  background: var(--color-secondary)
-              url('assets/img/bg-pattern.svg') no-repeat center/cover;
-}
-#home h1 {
-  font-size: 3rem;
-  color: var(--color-light);
-  font-weight: 700;
-}
-#home h2 {
-  font-size: 1.5rem;
-  color: var(--color-light);
-  margin-top: 0.5rem;
-  font-weight: 400;
-}
-#home .button {
-  margin-top: 1.5rem;
-}
-
-/* ===================================================================
-   BUTTONS
-   =================================================================== */
-.button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-primary);
-  color: var(--color-light);
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: background var(--transition);
-  cursor: pointer;
-}
-.button:hover {
-  background: var(--color-secondary);
-}
-
-/* ===================================================================
-   ABOUT SECTION
-   =================================================================== */
-#about .title {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-#about .columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  align-items: center;
-}
-#about img {
+/* Conteúdo principal */
+main {
   width: 100%;
-  border-radius: 50%;
-  border: 4px solid var(--color-primary);
-}
-
-/* ===================================================================
-   PROJECTS CAROUSEL — CSS Scroll Snap
-   =================================================================== */
-.carousel {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-  /* autoplay opcional:
-     animation: auto-scroll 20s infinite;
-  */
-}
-.cell {
-  flex: 0 0 80%;
-  scroll-snap-align: start;
-  background: var(--color-light);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-/* Exemplo keyframes para autoplay */
-/*
-@keyframes auto-scroll {
-  0%   { transform: translateX(0); }
-  20%  { transform: translateX(-100%); }
-  40%  { transform: translateX(-200%); }
-  60%  { transform: translateX(-100%); }
-  80%  { transform: translateX(0); }
-  100% { transform: translateX(0); }
-}
-*/
-
-/* ===================================================================
-   CONTACT / FOOTER
-   =================================================================== */
-#contact {
-  background: var(--color-primary);
-  color: var(--color-light);
+  max-width: 900px;
+  margin: 2em 1em;
   text-align: center;
 }
-#contact .title {
-  color: var(--color-light);
-  margin-bottom: 1rem;
-  font-weight: 700;
+
+/* Foto de perfil circular */
+.profile-photo--home {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1em;
+  display: block;
 }
-#contact .icon {
-  margin: 0 0.5rem;
-  transition: transform var(--transition);
+
+/* Títulos e parágrafos com tamanho fixo */
+main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3em;
 }
-#contact .icon:hover {
+
+main p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+/* Botões circulares com ícones */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 2.5em;         /* espaçamento maior entre botões */
+  margin-top: 1.5em;
+  margin-bottom: 3em; /* espaço abaixo dos botões */
+}
+
+.btn-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-header);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.btn-circle:hover {
   transform: scale(1.1);
 }
 
-/* ===================================================================
-   UTILITÁRIOS
-   =================================================================== */
-.text-center {
+.btn-circle img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* Faixa escura para seção de destaque */
+.highlight-bar {
+  width: 100%;
+  background-color: var(--color-highlight);
+  padding: 1em 0;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.highlight-bar h2 {
+  color: var(--color-highlight-text);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Seção de projetos da home */
+.home-projects {
+  margin-top: 2em;
   text-align: center;
 }
-.mt-1 { margin-top: 1rem; }
-.mt-2 { margin-top: 2rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
 
-/* ===================================================================
-   RESPONSIVIDADE ADICIONAL
-   =================================================================== */
-@media (max-width: 768px) {
-  #home h1 {
-    font-size: 2.5rem;
-  }
-  #home h2 {
-    font-size: 1.25rem;
-  }
-  .button {
-    width: 100%;
-    text-align: center;
-  }
+.home-projects p {
+  font-size: 1rem;
+  margin-bottom: 2em;
+  color: #444;
+}
+
+/* Grid de cards */
+.project-cards {
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+}
+
+/* Card individual */
+.project-card {
+  background-color: var(--color-card-bg);
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: left; /* alinhamento à esquerda */
+}
+
+.project-card h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+
+.project-card p {
+  margin-bottom: 1em;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.project-card a {
+  color: var(--color-card-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* Separador elegante */
+.section-divider {
+  margin: 3em auto;
+  width: 60px;
+  border: none;
+  border-top: 3px solid #ccc;
+  opacity: 0.6;
 }
