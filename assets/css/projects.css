@@ -1,0 +1,171 @@
+/* ——— Seção de Projetos ——— */
+
+.home-projects {
+  display: grid;
+  grid-template-columns: grid-template-columns: repeat(3, 300px);
+  gap: 1.5rem;
+  margin-top: 0.1rem;
+  margin-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.projects-title {
+  font-size: var(--font-size-h1-main);
+  margin-bottom: 0rem;
+  color: var(--color-text);
+  text-align: left;
+  max-width: var(--container-max-width);
+  margin-left: 1rem;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.project-card p {
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+  color: var(--color-muted);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;       /* mostra no máximo 3 linhas */
+  -webkit-box-orient: vertical;
+}
+
+/* Container dos cards: força 3 colunas lado a lado */
+.project-cards {
+  display: grid;                       		/* ativa grid */
+  grid-template-columns: repeat(3, 1fr); 	/* exatamente 3 colunas iguais */
+  gap: 1rem;                         		/* espaçamento entre cards */
+  max-width: 1000px;                   		/* largura máxima para 3 cards de 300px */
+  margin: 0 auto;                      		/* centraliza o grid */
+}
+
+/* Grid responsivo dos cards */
+.project-card {
+  background-color: var(--color-card-bg);
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  width: 300px;    /* fixo */
+  height: 350px;   /* fixo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/* Card individual */
+.project-card {
+  background-color: var(--color-card-bg);
+  padding: 0.1em;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+  margin-top: -1rem;
+  margin-bottom: -2em;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+.project-card p {
+  margin-top: 1rem;
+  margin-bottom: -0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  width: auto;
+  height: 6rem;
+  color: var(--color-muted);
+  position: relative;
+}
+
+.project-card p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;               /* na base do parágrafo */
+  left: 0;
+  width: 100%;
+  height: 1.5rem;          /* altura do degradê */
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0), /* transparente no topo */
+    var(--color-card-bg)    /* cor sólida do card na base */
+  );
+}
+
+.project-tags {
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0rem;
+}
+
+.project-tags .tag {
+  position: relative;
+  z-index: 1;
+  display: inline-block;            /* garante bloco ajustável */
+  background-color: #e0f7fa;        /* azul claro de fundo */
+  color: #007b8a;                   /* texto em azul escuro para contraste */
+  padding: 0.25rem 0.6rem;          /* espaço interno */
+  margin: 0 0.3rem 0.3rem 0;        /* espaçamento entre tags */
+  font-size: 0.7rem;               /* mantém legível */
+  border-radius: 0.3rem;           /* cantos arredondados */
+}
+
+.project-card a {
+  color: var(--color-card-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+.project-card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+
+
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+
+/* ——— Responsivo ——— */
+@media (max-width: 300px) {
+  .project-card {
+    padding: 1.25em;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+  }
+}

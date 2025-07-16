@@ -1,0 +1,42 @@
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-hero);
+  margin: 0;
+  box-sizing: border-box;
+  padding: var(--hero-padding-top)
+           var(--hero-padding-sides)
+           var(--hero-padding-bottom);
+}
+
+.hero__name {
+  margin: 0rem;
+  color: var(--color-highlight-text);
+  font-size: var(--font-size-hero-name);
+  font-weight: 600;
+}
+
+.hero__photo {
+  width: var(--hero-photo-size);
+  height: var(--hero-photo-size);
+  border-radius: 50%;
+  border: var(--hero-photo-border) solid var(--color-text-light);
+  object-fit: cover;
+  margin-top: var(--spacing-base);
+  margin-bottom: 0.5rem;
+  max-width: 100%; /* garante que nunca ultrapasse o container */
+}
+
+.hero__desc {
+  max-width: var(--hero-desc-max-width);
+  padding: 0 1rem; /* adiciona folga lateral interna */
+  margin: 0.5rem auto;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  color: var(--color-highlight-text);
+  text-align: center;
+  box-sizing: border-box;
+}
