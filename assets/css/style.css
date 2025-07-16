@@ -37,13 +37,13 @@ html {
 /* Corpo da página: fundo claro do antigo card */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f5f5f5;
-  color: #1a1a1a;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4em;       /* espaço para a header fixa */
+  background-color: 	var(--color-bg);   /* antes: #f5f5f5 */
+  color: 				var(--color-text); /* antes: #1a1a1a */
+  min-height: 			100vh;
+  display: 				flex;
+  flex-direction: 		column;
+  align-items: 			center;
+  padding-top: 			4em;       /* espaço para a header fixa */
 }
 
 /* Barra superior escura, fixa e mais espessa */
@@ -53,7 +53,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #010409;
+  background-color: var(--color-blue); /* antes #010409; */
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   display: flex;
   justify-content: flex-end;
@@ -76,7 +76,8 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  color: #58a6ff;
+  color: var(--color-accent); /* anes #58a6ff; */
+  border-bottom-color: var(--color-accent);
   border-bottom: 2px solid #58a6ff;
   padding-bottom: 0.2em;
 }
@@ -124,7 +125,7 @@ main p {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #010409;
+  background-color: var(--color-green); /* #010409; */
   display: flex;
   align-items: center;
   justify-content: center;
