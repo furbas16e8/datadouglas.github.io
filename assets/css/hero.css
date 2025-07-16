@@ -1,24 +1,16 @@
+/* ===== Estilos da seção hero ===== */
 .hero {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: var(--color-hero);
   margin: 0;
   box-sizing: border-box;
-  padding: var(--hero-padding-top)
-           var(--hero-padding-sides)
-           var(--hero-padding-bottom);
+  /* O background e padding já estão definidos em #hero-bg */
 }
 
-.hero__name {
-  margin: 0rem;
-  color: var(--color-highlight-text);
-  font-size: var(--font-size-hero-name);
-  font-weight: 600;
-}
-
+/* ===== Foto ===== */
 .hero__photo {
   width: var(--hero-photo-size);
   height: var(--hero-photo-size);
@@ -27,16 +19,28 @@
   object-fit: cover;
   margin-top: var(--spacing-base);
   margin-bottom: 0.5rem;
-  max-width: 100%; /* garante que nunca ultrapasse o container */
+  max-width: 100%;
+  z-index: 1;
 }
 
+/* ===== Nome ===== */
+.hero__name {
+  margin: 0;
+  color: var(--color-highlight-text);
+  font-size: var(--font-size-hero-name);
+  font-weight: 600;
+  z-index: 1;
+}
+
+/* ===== Descrição ===== */
 .hero__desc {
   max-width: var(--hero-desc-max-width);
-  padding: 0 1rem; /* adiciona folga lateral interna */
+  padding: 0 1rem;
   margin: 0.5rem auto;
   line-height: 1.6;
   font-size: var(--font-size-base);
   color: var(--color-highlight-text);
   text-align: center;
   box-sizing: border-box;
+  z-index: 1;
 }
