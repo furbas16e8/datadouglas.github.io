@@ -17,6 +17,9 @@
   --color-card-bg:  		#ffffff;   		/* fundo dos cards de projeto */
   --color-card-link:		#0077b5;   		/* link dentro dos cards */
   --color-muted:    		#444;      		/* texto secundário (.home-projects p) */
+  --height-header: 4em;               		/* igual à altura do header */
+  --color-hero: var(--color-header);  		/* herda a cor do header */
+  --color-text-light: var(--color-highlight-text);
 }		
 
 /* Escala base para fontes */
