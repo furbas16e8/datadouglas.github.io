@@ -1,9 +1,7 @@
 /* ——— Seção de Projetos ——— */
 
 .home-projects {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  gap: 1.5rem;
+  display: block;
   margin-top: 0.1rem;
   max-width: 1000px;
   margin-left: auto;
@@ -15,11 +13,12 @@
 
 .projects-title {
   font-size: var(--font-size-h1-main);
-  margin-bottom: 0rem;
   color: var(--color-text);
   text-align: left;
   max-width: var(--container-max-width);
-  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: -1rem;
   margin-right: auto;
   padding: 0 1rem;
 }
