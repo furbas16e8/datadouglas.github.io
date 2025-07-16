@@ -40,7 +40,7 @@ html, body {
   --font-size-small:        0.95rem;   /* textos menores (cards) */
 
   /* ————— Hero section ————— */
-  --hero-padding-top:       0.5rem;
+  --hero-padding-top:       1.5rem;
   --hero-padding-sides:     0.5rem;
   --hero-padding-bottom:    1.5rem;
   --hero-photo-size:        130px;
@@ -66,13 +66,30 @@ html {
   font-size: 100%;        /* 16px no desktop */
 }
 
-
+/* controles para versão mobile */
 @media (max-width: 600px) {
   html {
     font-size: 87.5%;     /* 14px no mobile */	
   }
   main {
     margin: 2em 1.5em;    /* aumenta a margem horizontal */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 1rem;
+  }
+
+  .hero__name {
+    font-size: 2.2rem;
+  }
+
+  .hero__photo {
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -126,9 +143,11 @@ nav a.active {
 /* Conteúdo principal */
 main {
   width: 100%;
-  max-width: 900px;
-  margin: 2em 1em;
+  max-width: var(--container-max-width);
+  margin: 2em auto;
+  padding: 0 1rem; /* folga lateral para mobile */
   text-align: center;
+  box-sizing: border-box;
 }
 
 /* Foto de perfil circular */
@@ -280,16 +299,6 @@ main p {
            var(--hero-padding-bottom);
 }
 
-.hero__photo {
-  width: var(--hero-photo-size);
-  height: var(--hero-photo-size);
-  border-radius: 50%;
-  border: var(--hero-photo-border) solid var(--color-text-light);
-  object-fit: cover;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-
 .hero__name {
   margin: 0rem;
   color: var(--color-highlight-text);
@@ -297,11 +306,24 @@ main p {
   font-weight: 600;
 }
 
+.hero__photo {
+  width: var(--hero-photo-size);
+  height: var(--hero-photo-size);
+  border-radius: 50%;
+  border: var(--hero-photo-border) solid var(--color-text-light);
+  object-fit: cover;
+  margin-top: var(--spacing-base);
+  margin-bottom: 0.5rem;
+  max-width: 100%; /* garante que nunca ultrapasse o container */
+}
+
 .hero__desc {
   max-width: var(--hero-desc-max-width);
-  width: 100%;
-  margin: 0.5rem;
+  padding: 0 1rem; /* adiciona folga lateral interna */
+  margin: 0.5rem auto;
   line-height: 1.6;
   font-size: var(--font-size-base);
   color: var(--color-highlight-text);
+  text-align: center;
+  box-sizing: border-box;
 }
