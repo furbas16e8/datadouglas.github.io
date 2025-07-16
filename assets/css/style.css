@@ -1,26 +1,65 @@
-/* Reset básico */
-* {
+/* =============================
+   RESET E PREVENÇÃO DE SCROLL
+   ============================= */
+html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;    /* bloqueia scroll horizontal */
   box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 :root {
-  /* Paleta original */
-  --color-bg:       		#f5f5f5;   		/* fundo da página */ 
-  --color-text:     		#1a1a1a;   		/* texto principal */
-  --color-header:   		#010409;   		/* fundo do header e botões */
-  --color-nav:      		#c9d1d9;   		/* links de nav inativos */
-  --color-nav-ac:   		#58a6ff;   		/* links de nav active/hover */
-  --color-highlight:		#010409;   		/* faixa de destaque (.highlight-bar) */
-  --color-highlight-text: 	#f5f5f5; 		/* texto na faixa de destaque */
-  --color-card-bg:  		#ffffff;   		/* fundo dos cards de projeto */
-  --color-card-link:		#0077b5;   		/* link dentro dos cards */
-  --color-muted:    		#444;      		/* texto secundário (.home-projects p) */
-  --height-header: 4em;               		/* igual à altura do header */
-  --color-hero: var(--color-header);  		/* herda a cor do header */
-  --color-text-light: var(--color-highlight-text);
+  /* ————— Cores ————— */
+  --color-bg:               #f5f5f5;
+  --color-text:             #1a1a1a;
+  --color-header:           #010409;
+  --color-nav:              #c9d1d9;
+  --color-nav-ac:           #58a6ff;
+  --color-highlight:        #010409;
+  --color-highlight-text:   #f5f5f5;
+  --color-card-bg:          #ffffff;
+  --color-card-link:        #0077b5;
+  --color-muted:            #444;
+  --color-hero:				#010409;
+
+  /* ————— Tamanhos gerais ————— */
+  --height-header:          4em;       /* altura do header fixo */
+  --spacing-base:           1rem;      /* espaçamento padrão */
+  --spacing-lg:             2rem;      /* espaçamento grande */
+  --spacing-xl:             3rem;      /* espaçamento extra-grande */
+  --container-max-width:    900px;     /* largura máxima do main */
+
+  /* ————— Escala tipográfica ————— */
+  --font-size-base:         1rem;      /* corresponde a 16px */
+  --font-size-h1-main:      2.5rem;    /* main h1 em main */
+  --font-size-hero-name:    3rem;      /* tamanho do nome na hero */
+  --font-size-highlight:    1.8rem;    /* titulos de destaque */
+  --font-size-small:        0.95rem;   /* textos menores (cards) */
+
+  /* ————— Hero section ————— */
+  --hero-padding-top:       0.5rem;
+  --hero-padding-sides:     0.5rem;
+  --hero-padding-bottom:    1.5rem;
+  --hero-photo-size:        130px;
+  --hero-photo-border:      4px;
+  --hero-desc-max-width:    800px;
+  --font-size-hero-name:    3rem;
+  --font-size-base:         1rem;
+
+  /* ————— Grid & gaps ————— */
+  --gap-btn-group:          2.5em;
+  --gap-grid:               1.5em;
+  --gap-nav:                1.5em;
 }		
+
+
+
+
+
+
 
 /* Escala base para fontes */
 html {
@@ -37,7 +76,7 @@ html {
   }
 }
 
-/* Corpo da página: fundo claro do antigo card */
+/* Corpo da página */
 body {
   font-family: 			'Montserrat', sans-serif;
   background-color: 	var(--color-bg);
@@ -220,43 +259,49 @@ main p {
 }
 
 
-/*==============================================================+/
-/*							HERO SECTION 					   	*/
-/*==============================================================+/
 
-/* ——— Hero section centralizada ——— */
+
+
+
+
+
+/* ——— Hero section centralizada e full‑width ——— */
 .hero {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;    /* foto e textos centram no eixo X */
-  text-align: center;     /* textos centralizados */
+  align-items: center;
+  text-align: center;
   background-color: var(--color-hero);
-  padding: calc(var(--height-header) + 2rem) 1rem 3rem;
+  margin: 0;
+  box-sizing: border-box;
+  padding: var(--hero-padding-top)
+           var(--hero-padding-sides)
+           var(--hero-padding-bottom);
 }
 
 .hero__photo {
-  width: 160px;
-  height: 160px;
+  width: var(--hero-photo-size);
+  height: var(--hero-photo-size);
   border-radius: 50%;
-  border: 4px solid var(--color-text-light);
+  border: var(--hero-photo-border) solid var(--color-text-light);
   object-fit: cover;
-  margin-bottom: 1.5rem;  /* espaçamento abaixo da foto */
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero__name {
-  margin: 0.5rem 0 0.5rem;
+  margin: 0rem;
+  color: var(--color-highlight-text);
+  font-size: var(--font-size-hero-name);
+  font-weight: 600;
 }
 
 .hero__desc {
-  max-width: 600px;
-  margin: 0;
-}
-
-.hero {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  max-width: var(--hero-desc-max-width);
+  width: 100%;
+  margin: 0.5rem;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  color: var(--color-highlight-text);
 }
