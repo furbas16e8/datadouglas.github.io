@@ -7,17 +7,17 @@
 
 :root {
   /* Paleta original */
-  --color-bg:       #f5f5f5;   /* fundo da página */ 
-  --color-text:     #1a1a1a;   /* texto principal */
-  --color-header:   #010409;   /* fundo do header e botões */
-  --color-nav:      #c9d1d9;   /* links de nav inativos */
-  --color-nav-ac:   #58a6ff;   /* links de nav active/hover */
-  --color-highlight:#010409;   /* faixa de destaque (.highlight-bar) */
-  --color-highlight-text: #f5f5f5; /* texto na faixa de destaque */
-  --color-card-bg:  #ffffff;   /* fundo dos cards de projeto */
-  --color-card-link:#0077b5;   /* link dentro dos cards */
-  --color-muted:    #444;      /* texto secundário (.home-projects p) */
-}
+  --color-bg:       		#f5f5f5;   		/* fundo da página */ 
+  --color-text:     		#1a1a1a;   		/* texto principal */
+  --color-header:   		#010409;   		/* fundo do header e botões */
+  --color-nav:      		#c9d1d9;   		/* links de nav inativos */
+  --color-nav-ac:   		#58a6ff;   		/* links de nav active/hover */
+  --color-highlight:		#010409;   		/* faixa de destaque (.highlight-bar) */
+  --color-highlight-text: 	#f5f5f5; 		/* texto na faixa de destaque */
+  --color-card-bg:  		#ffffff;   		/* fundo dos cards de projeto */
+  --color-card-link:		#0077b5;   		/* link dentro dos cards */
+  --color-muted:    		#444;      		/* texto secundário (.home-projects p) */
+}		
 
 /* Escala base para fontes */
 html {
@@ -37,8 +37,8 @@ html {
 /* Corpo da página: fundo claro do antigo card */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: 	var(--color-bg);   /* antes: #f5f5f5 */
-  color: 				var(--color-text); /* antes: #1a1a1a */
+  background-color: 	var(--color-bg);
+  color: 				var(--color-text);
   min-height: 			100vh;
   display: 				flex;
   flex-direction: 		column;
@@ -53,7 +53,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--color-blue); /* antes #010409; */
+  background-color: var(--color-header);
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   display: flex;
   justify-content: flex-end;
@@ -76,10 +76,9 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  color: var(--color-accent); /* anes #58a6ff; */
-  border-bottom-color: var(--color-accent);
-  border-bottom: 2px solid #58a6ff;
-  padding-bottom: 0.2em;
+  color: 				var(--color-nav-ac); /* anes #58a6ff; */
+  border-bottom: 		2px solid #58a6ff;
+  padding-bottom: 		0.2em;
 }
 
 /* Conteúdo principal */
@@ -125,7 +124,7 @@ main p {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: var(--color-green); /* #010409; */
+  background-color: var(--color-header);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,14 +145,14 @@ main p {
 /* Faixa escura para seção de destaque */
 .highlight-bar {
   width: 100%;
-  background-color: #010409;
+  background-color: var(--color-highlight);
   padding: 1em 0;
   text-align: center;
   margin-bottom: 2em;
 }
 
 .highlight-bar h2 {
-  color: #f5f5f5;
+  color: var(--color-highlight-text);
   font-size: 1.8rem;
   margin: 0;
 }
@@ -180,7 +179,7 @@ main p {
 
 /* Card individual */
 .project-card {
-  background-color: #ffffff;
+  background-color: var(--color-card-bg);
   padding: 1.5em;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -199,7 +198,7 @@ main p {
 }
 
 .project-card a {
-  color: #0077b5;
+  color: var(--color-card-link);
   font-weight: 600;
   text-decoration: none;
 }
