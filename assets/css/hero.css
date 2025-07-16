@@ -40,3 +40,24 @@
   text-align: center;
   box-sizing: border-box;
 }
+
+
+
+#hero-bg {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-hero); /* fundo escuro para contraste */
+  z-index: 0;
+}
+
+#hero-bg canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1; /* conteúdo acima das partículas */
+}
