@@ -18,7 +18,7 @@
   max-width: 1000px;
   margin-top: 1rem;
   margin-bottom: 2rem;
-  margin-left: 0rem;
+  margin-left: -1rem;
   margin-right: auto;
   padding: 0 1rem;
 }
@@ -154,17 +154,22 @@
 }
 
 
-/* ——— Responsivo ——— */
-@media (max-width: 300px) {
+/* ---- VERSÃO MOBILE ---- */
+/* TODO: carrossel horizontal no mobile para projetos */
+@media (max-width: 768px) {
+  .project-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .project-cards::-webkit-scrollbar {
+    display: none; /* esconde barra de rolagem */
+  }
   .project-card {
-    padding: 1.25em;
-  }
-
-  .project-card h3 {
-    font-size: 1.05rem;
-  }
-
-  .project-card p {
-    font-size: 0.9rem;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    margin-right: var(--spacing-base);
   }
 }
+
