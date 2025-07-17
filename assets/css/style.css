@@ -275,3 +275,101 @@ main p {
   border: none;
   border-top: 3px solid #ccc;
   opacity: 0.6;
+}
+
+/*------------------------------------------------------------------*/
+/*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO -----------------*/
+/*------------------------------------------------------------------*/
+
+#site-footer {
+  width: 100%;
+  background: var(--color-bg);             /* TODO: fundo igual ao corpo da página */
+  padding: var(--spacing-base) 0;
+  text-align: center;
+}
+.footer-title {
+  font-size: var(--font-size-h1-main);
+  color: var(--color-text);
+  text-align: left;
+  max-width: 1000px;
+  margin-top: 1rem !important;
+  margin-bottom: -0.5rem !important;
+  margin-left: 6.5rem;
+  margin-right: auto;
+}
+#site-footer .footer-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+#site-footer .footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text);                /* TODO: texto escuro sobre fundo claro */
+  font-size: 0.75rem;
+}
+#site-footer .footer-item img {
+  display: inline-block;
+  width: 2rem;                              /* TODO: tamanho do ícone */
+  height: 2rem;
+  padding: 0.1rem;                          /* TODO: padding para formar o círculo */
+  background: var(--color-header);          /* círculo com cor do header */
+  border-radius: 0%;
+  margin-bottom: 0.25rem;
+  filter: invert(1);
+}
+#site-footer .footer-item span {
+  display: block;
+  margin-top: 0.25rem;
+  word-break: break-all;
+}
+
+.footer-divider {
+  width: var(--container-max-width);
+  max-width: 90%;
+  margin: var(--spacing-base) auto;
+  border: none;
+  border-top: 1px solid var(--color-nav);
+}
+
+#site-footer .footer-item span {
+  color: var(--color-header);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.footer-wrapper {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-base);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: auto;
+  }
+
+  .footer-divider {
+    width: 90%;
+    margin: var(--spacing-base) auto;
+    border: none;
+    border-top: 1px solid var(--color-nav);
+  }
+}
