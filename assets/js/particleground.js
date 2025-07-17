@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     dotColor: '#ffffff22',
     lineColor: '#ffffff33',
     density: 10000,
-    proximity: 100,
+    proximity: 1000,
     minSpeedX: 0.1,
     maxSpeedX: 0.7,
     minSpeedY: 0.1,
