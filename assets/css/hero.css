@@ -1,14 +1,13 @@
 /* ===== Hero container: posiciona e recorta o canvas ===== */
 #hero-bg {
-  position: relative;       /* contexto p/ o canvas absoluto */
-  overflow: hidden;         /* esconde tudo que sair dos limites */
+  position: relative;       /* contexto para o canvas absoluto */
+  overflow: hidden;         /* recorta tudo que vaza fora */
   background: var(--color-hero);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  /* REMOVIDO: min-height: 100vh; */
   padding: var(--hero-padding-top) var(--hero-padding-sides) var(--hero-padding-bottom);
   z-index: 0;
 }
@@ -29,6 +28,11 @@
   z-index: 1;
 }
 
+
+
+
+
+
 /* ===== Estilos da seção hero (conteúdo) ===== */
 .hero {
   width: 100%;
@@ -39,9 +43,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-
-
 
 /* ===== Estilos da seção hero ===== */
 .hero {
