@@ -1,6 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
+// TODO: usar evento load para garantir que a lib e o container existam
+window.addEventListener('load', function () {
   const hero = document.getElementById('hero-bg');
   if (!hero) return;
+  particleground(hero, { /* opções */ });
 
   particleground(hero, {
     dotColor: '#ffffff22',
