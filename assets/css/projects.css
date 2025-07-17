@@ -15,10 +15,10 @@
   font-size: var(--font-size-h1-main);
   color: var(--color-text);
   text-align: left;
-  max-width: 1000px;
+  max-width: var(--container-max-width);
   margin-top: 1rem;
   margin-bottom: 2rem;
-  margin-left: 0rem;
+  margin-left: -1rem;
   margin-right: auto;
   padding: 0 1rem;
 }
@@ -31,7 +31,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 5;       /* mostra no máximo 3 linhas */
   -webkit-box-orient: vertical;
 }
 
