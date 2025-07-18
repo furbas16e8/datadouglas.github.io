@@ -1,4 +1,4 @@
-<!-- Final projects.html: only header, main listing and footer contacts -->
+<!-- Final projects.html with images in cards -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,18 +9,36 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/projects.css" />
   <style>
-    /* Cards em coluna única sem imagens */
+    /* Cards em coluna única com imagem à esquerda */
     .home-projects .project-list { list-style: none; padding: 0; margin: 0; }
     .home-projects .project-item {
+      display: flex;
+      align-items: flex-start;
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
-    .home-projects .project-item h3 { margin-top: 0; font-size: 1.25rem; }
-    .home-projects .project-item p { margin: 0.75rem 0; line-height: 1.6; }
-    .home-projects .project-item .project-link { font-weight: 600; text-decoration: none; }
+    .home-projects .project-item img {
+      width: 120px;
+      height: auto;
+      margin-right: 1.5rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .home-projects .project-item h3 {
+      margin-top: 0;
+      font-size: 1.25rem;
+    }
+    .home-projects .project-item p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+    .home-projects .project-item .project-link {
+      font-weight: 600;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body class="projects-list-page">
@@ -39,21 +57,30 @@
       <ul class="project-list">
         <!-- Projeto 1 -->
         <li class="project-item">
-          <h3>Análise de inadimplência</h3>
-          <p>Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.</p>
-          <a href="projects/analise-inadimplencia.html" class="project-link">Ver projeto</a>
+          <img src="assets/img/projects/img_p1.jpeg" alt="Análise de inadimplência" />
+          <div class="project-content">
+            <h3>Análise de inadimplência</h3>
+            <p>Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.</p>
+            <a href="projects/analise-inadimplencia.html" class="project-link">Ver projeto</a>
+          </div>
         </li>
         <!-- Projeto 2 -->
         <li class="project-item">
-          <h3>Previsão da Inflação</h3>
-          <p>Uso de técnicas de machine learning para identificar padrões em dados econômicos e gerar estimativas dinâmicas de inflação, incorporando múltiplas variáveis e adaptação a mudanças estruturais.</p>
-          <a href="projects/previsao-inflacao.html" class="project-link">Ver projeto</a>
+          <img src="assets/img/projects/img_p2.jpeg" alt="Previsão da Inflação" />
+          <div class="project-content">
+            <h3>Previsão da Inflação</h3>
+            <p>Uso de técnicas de machine learning para identificar padrões em dados econômicos e gerar estimativas dinâmicas de inflação, incorporando múltiplas variáveis e adaptação a mudanças estruturais.</p>
+            <a href="projects/previsao-inflacao.html" class="project-link">Ver projeto</a>
+          </div>
         </li>
         <!-- Projeto 3 -->
         <li class="project-item">
-          <h3>Curva de Phillips</h3>
-          <p>Modelagem da relação entre inflação e desemprego em R, usando pacotes como tidyverse e dynlm, com estimativas e visualizações interativas.</p>
-          <a href="projects/curva-phillips.html" class="project-link">Ver projeto</a>
+          <img src="assets/img/projects/img_p3.jpeg" alt="Curva de Phillips" />
+          <div class="project-content">
+            <h3>Curva de Phillips</h3>
+            <p>Modelagem da relação entre inflação e desemprego em R, usando pacotes como tidyverse e dynlm, com estimativas e visualizações interativas.</p>
+            <a href="projects/curva-phillips.html" class="project-link">Ver projeto</a>
+          </div>
         </li>
       </ul>
     </section>
