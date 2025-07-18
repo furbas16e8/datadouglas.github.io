@@ -1,55 +1,79 @@
+<!-- Final projects.html: only header, main listing and footer contacts -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projetos • Douglas Furbino</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/projects.css" />
+  <style>
+    /* Cards em coluna única sem imagens */
+    .home-projects .project-list { list-style: none; padding: 0; margin: 0; }
+    .home-projects .project-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .home-projects .project-item h3 { margin-top: 0; font-size: 1.25rem; }
+    .home-projects .project-item p { margin: 0.75rem 0; line-height: 1.6; }
+    .home-projects .project-item .project-link { font-weight: 600; text-decoration: none; }
+  </style>
 </head>
-<body>
-
-
-    <header>
-		<nav>
-			<a href="index.html" class="active">Início</a>
-			<a href="projects.html">Projetos</a>
-			<a href="reasearch.html">Research</a>
-			<a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
-		</nav>
-	</header>
-
+<body class="projects-list-page">
+  <header>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="projects.html" class="active">Projetos</a>
+      <a href="research.html">Research</a>
+      <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
+    </nav>
+  </header>
 
   <main>
-    <h1>Projetos</h1>
-
-    <section>
-        <div class="project-cards">
-			<!-- Projeto 1 -->
-			<div class="project-card">
-				<h2>Análise de inadimplência</h2>
-				<p>
-				Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito.
-				A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.
-				</p>
-				<a href="projects/kaggle/notebooks/default_of_credit_card_clients/default-credit-card-clients.html" target="_blank">
-				Ver projeto
-				</a>
-			</div>
-        <!-- outros cards… -->
-		</div>
+    <h1 class="projects-title">Projetos</h1>
+    <section class="home-projects" id="projects-list">
+      <ul class="project-list">
+        <!-- Projeto 1 -->
+        <li class="project-item">
+          <h3>Análise de inadimplência</h3>
+          <p>Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito. A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.</p>
+          <a href="projects/analise-inadimplencia.html" class="project-link">Ver projeto</a>
+        </li>
+        <!-- Projeto 2 -->
+        <li class="project-item">
+          <h3>Previsão da Inflação</h3>
+          <p>Uso de técnicas de machine learning para identificar padrões em dados econômicos e gerar estimativas dinâmicas de inflação, incorporando múltiplas variáveis e adaptação a mudanças estruturais.</p>
+          <a href="projects/previsao-inflacao.html" class="project-link">Ver projeto</a>
+        </li>
+        <!-- Projeto 3 -->
+        <li class="project-item">
+          <h3>Curva de Phillips</h3>
+          <p>Modelagem da relação entre inflação e desemprego em R, usando pacotes como tidyverse e dynlm, com estimativas e visualizações interativas.</p>
+          <a href="projects/curva-phillips.html" class="project-link">Ver projeto</a>
+        </li>
+      </ul>
     </section>
-
-    <!-- Você pode replicar o bloco abaixo para cada novo projeto -->
-    <!--
-    <section>
-      <h2>Título do projeto 2</h2>
-      <p>Breve descrição sobre o que foi feito.</p>
-      <a href="notebooks/arquivo2.html" target="_blank">👉 Ver análise</a>
-    </section>
-    -->
-
   </main>
 
+  <footer id="site-footer">
+    <div class="footer-wrapper">
+      <h2 class="footer-title">Contato</h2>
+      <hr class="footer-divider" />
+      <div class="footer-container">
+        <a href="https://github.com/furbas16e8" class="footer-item" target="_blank" rel="noopener">
+          <img src="assets/img/github.svg" alt="GitHub" />
+          <span>GITHUB</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dfurbino" class="footer-item" target="_blank" rel="noopener">
+          <img src="assets/img/linkedin.svg" alt="LinkedIn" />
+          <span>LINKEDIN</span>
+        </a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

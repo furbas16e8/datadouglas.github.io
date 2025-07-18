@@ -6,11 +6,19 @@
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: left;
   padding: 0 1rem;
   box-sizing: border-box;
 }
 
+/* Específico para projects.html */
+body.projects-list-page .projects-title {
+  margin-top: 1rem;     /* ajuste o valor como preferir */
+  margin-bottom: 1.5rem;/* ajuste o valor como preferir */
+  margin-left: 4.3rem;
+}
+
+/* Página inicial em index.html */
 .projects-title {
   font-size: var(--font-size-h1-main);
   color: var(--color-text);
@@ -50,7 +58,7 @@
   padding: 2em;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  text-align: left;
   transition: transform 0.2s, box-shadow 0.2s;
 
   width: 300px;    /* fixo */
