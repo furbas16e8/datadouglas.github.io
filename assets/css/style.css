@@ -30,14 +30,14 @@ html, body {
   --spacing-base:           1rem;      /* espaçamento padrão */
   --spacing-lg:             2rem;      /* espaçamento grande */
   --spacing-xl:             3rem;      /* espaçamento extra-grande */
-  --container-max-width:    1200px;     /* largura máxima do main */
+  --container-max-width:    1200px;    /* largura máxima do main */
 
   /* ————— Escala tipográfica ————— */
-  --font-size-base:         1rem;      /* corresponde a 16px */
-  --font-size-h1-main:      2rem;    /* main h1 em main */
-  --font-size-hero-name:    3rem;      /* tamanho do nome na hero */
-  --font-size-highlight:    1.8rem;    /* titulos de destaque */
-  --font-size-small:        0.95rem;   /* textos menores (cards) */
+  --font-size-base:         1rem;      	/* corresponde a 16px */
+  --font-size-h1-main:      2rem;    	/* main h1 em main */
+  --font-size-hero-name:    3rem;      	/* tamanho do nome na hero */
+  --font-size-highlight:    1.8rem;    	/* titulos de destaque */
+  --font-size-small:        0.95rem;   	/* textos menores (cards) */
 
   /* ————— Hero section ————— */
   --hero-padding-top:       1.5rem;
