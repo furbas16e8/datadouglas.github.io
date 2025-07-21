@@ -43,24 +43,11 @@
 }
 
 
-/* ===== Foto ===== */
-.hero__photo {
-  width: var(--hero-photo-size);
-  height: var(--hero-photo-size);
-  border-radius: 50%;
-  border: var(--hero-photo-border) solid var(--color-text-light);
-  object-fit: cover;
-  margin-top: var(--spacing-base);
-  margin-bottom: 0.5rem;
-  max-width: 100%;
-  z-index: 1;
-}
-
 /* ===== Nome ===== */
 .hero__name {
   margin: 0;
   color: var(--color-highlight-text);
-  font-size: var(--font-size-hero-name);
+  font-size: 4rem;
   font-weight: 600;
   z-index: 1;
 }
