@@ -86,6 +86,42 @@ body.projects-list-page .project-content {
 }
 
 
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*   			 EXCLUSIVO PARA PÁGINAS DE PROJETOS ÚNICOS                     */
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.single-project-title {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+  margin-left: 4.2rem;
+  margin-right: auto;
+}
+
+.single-project-title .projects-title {
+  text-align: center;
+}
+
+
+.single-project-tags {
+  margin-top: 0.5rem;
+  margin-bottom: -1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0rem;
+}
+
+.single-project-tags .tag {
+  position: relative;
+  z-index: 1;
+  display: inline-block;            /* garante bloco ajustável */
+  background-color: #e0f7fa;        /* azul claro de fundo */
+  color: #007b8a;                   /* texto em azul escuro para contraste */
+  padding: 0.25rem 0.6rem;          /* espaço interno */
+  margin: 0 0.3rem 0.3rem 0;        /* espaçamento entre tags */
+  font-size: 0.8rem;               /* mantém legível */
+  border-radius: 0.3rem;           /* cantos arredondados */
+}
+
 /* ======== AJUSTE EXCLUSIVO PARA index.html ======== */
 .projects-title {
   font-size: var(--font-size-h1-main);
