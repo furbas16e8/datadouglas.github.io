@@ -195,7 +195,7 @@ body.projects-list-page .project-content {
 
 
   object-fit: cover;
-  border-radius: 9px;
+  border-radius: 8px 8px 0 0;	
 }
 
 .project-card-link {
