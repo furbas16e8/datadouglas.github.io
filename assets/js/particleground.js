@@ -27,7 +27,29 @@ window.addEventListener('load', function () {
   });
 
   
-  particleground(hero, {});
+  particleground(hero, {
+    dotColor:         '#ffffff80',
+  lineColor:        '#ffffff50',
+  density:          25000,
+  proximity:        120,
+
+  // velocidades suaves
+  minSpeedX:        0.2,
+  maxSpeedX:        0.8,
+  minSpeedY:        0.2,
+  maxSpeedY:        0.8,
+
+  // raio base — a variação agora vem do layer
+  particleRadius:   8,
+
+  // linhas de conexão mais visíveis
+  lineWidth:        2,
+  curvedLines:      false,
+
+  // parallax sutil
+  parallax:         false,
+  parallaxMultiplier: 40  
+  });
 
 
   function sync() {

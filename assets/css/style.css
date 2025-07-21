@@ -250,11 +250,6 @@ main p {
   opacity: 0.6;
 }
 
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO ----------------------------*/
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-
 
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 /*   			 ÍCONES DE REDES SOCIAIS E CONTATO                             */
@@ -283,7 +278,7 @@ main p {
   height: 3rem;
   border-radius: 50%;
   border: 1.8px solid var(--color-card-bg);
-  background-color: var(--color-hero);
+  background-color: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -337,4 +332,20 @@ main p {
     width: 2.5rem;
     height: 2.5rem;
   }
+  
+  .hero-icon-circle img {
+    width: 1.6rem;
+    height: 1.6rem;
+    object-fit: contain;
+    filter: invert(0);
+    transition: filter 0.3s ease, color 0.3s ease;
+  }  
+  
 }
+
+
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO ----------------------------*/
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+

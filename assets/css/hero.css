@@ -2,7 +2,12 @@
 #hero-bg {
   position: relative;       /* contexto p/ o canvas absoluto */
   overflow: hidden;         /* esconde tudo que sair dos limites */
-  background: var(--color-hero);
+  /* Gradiente */
+  background: linear-gradient(
+    to bottom,
+    var(--color-hero) 0%,
+    #000040 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
