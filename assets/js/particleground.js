@@ -2,23 +2,23 @@
 window.addEventListener('load', function () {
   const hero = document.getElementById('hero-bg');
   if (!hero) return;
-  particleground(hero, { /* opções */ });
-
   particleground(hero, {
-  dotColor:    '#ffffff22',
+  dotColor:    '#ffffff50',
   lineColor:   '#ffffff33',
-  density:     2000,    // menos partículas por pixel => mais leve
-  proximity:   200,     // conecta a maior distância
-  minSpeedX:   0.5,     // mais rápido
-  maxSpeedX:   1.0,
-  minSpeedY:   0.5,
-  maxSpeedY:   1.0,
-  particleRadius: 3,    // círculos menores
-  lineWidth:   1.0,
-  curvedLines: true,    // trajetórias curvas
+  density:     20000,    // menos partículas por pixel => mais leve
+  proximity:   100,     // conecta a maior distância
+  minSpeedX:   0.3,     // mais rápido
+  maxSpeedX:   0.8,
+  minSpeedY:   0.3,
+  maxSpeedY:   0.8,
+  particleRadius: 8,    // círculos menores
+  lineWidth:   1.5,
+  curvedLines: false,    // trajetórias curvas
   parallax:    true,
-  parallaxMultiplier: 10
+  parallaxMultiplier: 50
   });
+  
+  particleground(hero, {});
 
 
   function sync() {
