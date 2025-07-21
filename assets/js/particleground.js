@@ -3,8 +3,8 @@ window.addEventListener('load', function () {
   const hero = document.getElementById('hero-bg');
   if (!hero) return;
   particleground(hero, {
-  dotColor:         '#ffffff80',
-  lineColor:        '#ffffff50',
+  dotColor:         '#ffffff60',
+  lineColor:        '#ffffff40',
   density:          25000,
   proximity:        120,
 
@@ -28,8 +28,8 @@ window.addEventListener('load', function () {
 
   
   particleground(hero, {
-    dotColor:         '#ffffff80',
-  lineColor:        '#ffffff50',
+  dotColor:       '#ffffff60',
+  lineColor:      '#ffffff40',
   density:          25000,
   proximity:        120,
 

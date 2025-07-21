@@ -81,6 +81,10 @@ body.projects-list-page .project-content {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+.project-link {
+  color: #c80000;
+}
+
 
 /* ======== AJUSTE EXCLUSIVO PARA index.html ======== */
 .projects-title {
