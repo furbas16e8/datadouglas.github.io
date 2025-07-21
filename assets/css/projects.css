@@ -16,6 +16,7 @@ body.projects-list-page .projects-title {
   margin-top: 1rem;     /* ajuste o valor como preferir */
   margin-bottom: 1.5rem;/* ajuste o valor como preferir */
   margin-left: 4.3rem;
+  text-decoration: none;
 }
 
 body.projects-list-page .project-item {
@@ -31,13 +32,32 @@ body.projects-list-page .project-item img {
   border-radius: 8px 0 0 8px;
   width: 420px;
   max-height: 300px;
+  text-decoration: none;
 }
 
 body.projects-list-page .project-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-decoration: none;
 }
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-link h3,
+.project-link p {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.project-link:hover h3,
+.project-link:hover p {
+  text-decoration: none;
+}
+
 
 .project-item-link {
   text-decoration: none;
@@ -48,6 +68,7 @@ body.projects-list-page .project-content {
 .project-item-link .project-item {
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .project-item-link .project-item:hover {
@@ -66,6 +87,7 @@ body.projects-list-page .project-content {
   margin-left: -1rem;
   margin-right: auto;
   padding: 0 1rem;
+  text-decoration: none;
 }
 
 .project-card p {
