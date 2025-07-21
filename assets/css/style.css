@@ -60,16 +60,15 @@ html, body {
 
 
 
-
-
-
-
 /* Escala base para fontes */
 html {
   font-size: 100%;        /* 16px no desktop */
 }
 
-/* controles para versão mobile */
+
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*------------------- CONTROLES PARA VERSÃO MOBILE ----------------------------*/
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 @media (max-width: 600px) {
   html {
     font-size: 87.5%;     /* 14px no mobile */	
@@ -90,10 +89,10 @@ html {
     font-size: 2.2rem;
   }
 
-  .hero__photo {
-    width: 100px;
-    height: 100px;
+  .hero-icon-circle {
+	border: 1.5px solid var(--color-card-bg);
   }
+
 }
 
 /* Corpo da página */
@@ -284,63 +283,10 @@ main p {
 /*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO ----------------------------*/
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-/* Contêiner principal */
-#site-footer {
-  width: 100%;
-  background: var(--color-bg);
-  padding: var(--spacing-base) 0;
-  text-align: center;
-}
 
-/* Título "Contato" */
-.footer-title {
-  font-size: var(--font-size-h1-main);
-  color: var(--color-text);
-  text-align: left;
-  max-width: 1000px;
-  margin: 1rem 0 -0.5rem 6.5rem !important;
-}
-
-/* Wrapper interno */
-.footer-wrapper {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-base);
-}
-
-/* Linha divisória */
-.footer-divider {
-  width: var(--container-max-width);
-  max-width: 90%;
-  margin: var(--spacing-base) auto;
-  border: none;
-  border-top: 1px solid var(--color-nav);
-  opacity: 0.6;
-}
-
-/* Container dos itens de contato */
-#site-footer .footer-container {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-xl);
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-/* Ajustes mobile para wrapper e divisor */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  .footer-divider {
-    width: 90%;
-    margin: var(--spacing-base) auto;
-  }
-}
 
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/*    LAYOUT PARA ÍCONE + RÓTULO FORA DO CÍRCULO                               */
+/*   			 ÍCONES DE REDES SOCIAIS E CONTATO                             */
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
 /* Link social (ancora) */
