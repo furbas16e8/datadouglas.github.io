@@ -8,9 +8,29 @@
  * Inspired by http://requestlab.fr/ and http://disruptivebydesign.com/
  */
 
+
 ;(function(window, document) {
   "use strict";
   var pluginName = 'particleground';
+  
+    /**
+   * Converte cor HEX (ex: "#rrggbb" ou "#rgb") em objeto {r,g,b}.
+   */
+  function hexToRgb(hex) {
+    // expande #rgb → #rrggbb
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
 
   // http://youmightnotneedjquery.com/#deep_extend
   function extend(out) {
@@ -230,7 +250,16 @@
     Particle.prototype.draw = function() {
       // Draw circle
       ctx.beginPath();
-      ctx.arc(this.position.x + this.parallaxOffsetX, this.position.y + this.parallaxOffsetY, options.particleRadius / 2, 0, Math.PI * 2, true);
+	  var baseR = options.particleRadius / 2;
+      var r     = baseR * (this.layer / 3);
+      ctx.arc(
+        this.position.x + this.parallaxOffsetX,
+        this.position.y + this.parallaxOffsetY,
+        r,
+        0,
+        Math.PI * 2,
+        true
+      );
       ctx.closePath();
       ctx.fill();
 
@@ -257,7 +286,7 @@
       }
       ctx.stroke();
       ctx.closePath();
-    }
+    };
 
     /**
      * update particle position

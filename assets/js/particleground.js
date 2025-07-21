@@ -3,20 +3,29 @@ window.addEventListener('load', function () {
   const hero = document.getElementById('hero-bg');
   if (!hero) return;
   particleground(hero, {
-  dotColor:    '#ffffff50',
-  lineColor:   '#ffffff33',
-  density:     20000,    // menos partículas por pixel => mais leve
-  proximity:   100,     // conecta a maior distância
-  minSpeedX:   0.3,     // mais rápido
-  maxSpeedX:   0.8,
-  minSpeedY:   0.3,
-  maxSpeedY:   0.8,
-  particleRadius: 8,    // círculos menores
-  lineWidth:   1.5,
-  curvedLines: false,    // trajetórias curvas
-  parallax:    true,
-  parallaxMultiplier: 50
+  dotColor:         '#ffffff80',
+  lineColor:        '#ffffff50',
+  density:          25000,
+  proximity:        120,
+
+  // velocidades suaves
+  minSpeedX:        0.2,
+  maxSpeedX:        0.8,
+  minSpeedY:        0.2,
+  maxSpeedY:        0.8,
+
+  // raio base — a variação agora vem do layer
+  particleRadius:   8,
+
+  // linhas de conexão mais visíveis
+  lineWidth:        2,
+  curvedLines:      false,
+
+  // parallax sutil
+  parallax:         false,
+  parallaxMultiplier: 40
   });
+
   
   particleground(hero, {});
 
@@ -31,3 +40,5 @@ window.addEventListener('load', function () {
   sync();
   window.addEventListener('resize', sync);
 });
+
+
