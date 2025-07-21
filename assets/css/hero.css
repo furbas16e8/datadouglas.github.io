@@ -18,6 +18,8 @@
   z-index: 0;
 }
 
+
+
 /* ===== Canvas de partículas: cobre 100% do #hero-bg ===== */
 #hero-bg canvas {
   position: absolute !important;
