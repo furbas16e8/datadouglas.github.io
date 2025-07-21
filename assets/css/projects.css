@@ -21,6 +21,12 @@ body.projects-list-page .projects-title {
 
 body.projects-list-page .project-item {
   align-items: stretch;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+body.projects-list-page .project-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
 }
 
 body.projects-list-page .project-item img {
@@ -119,6 +125,7 @@ body.projects-list-page .project-content {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   text-align: left;
   transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
 
   width: 300px;    /* fixo */
   height: 350px;   /* fixo */
