@@ -5,7 +5,8 @@
   /* Gradiente */
   background: linear-gradient(
     to bottom,
-    var(--color-hero) 0%,
+    #010409 0%,
+	#000015 50%,
     #000040 100%
   );
   display: flex;
