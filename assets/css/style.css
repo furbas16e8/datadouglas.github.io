@@ -24,6 +24,9 @@ html, body {
   --color-card-link:        #0077b5;
   --color-muted:            #444;
   --color-hero:				#010409;
+  --color-header:   		#010409; 
+  --color-muted:    		#444;    
+  --color-linked:   		#0077b5; 
   --color-social-border: 	#1a1a1a;
 
   /* ————— Tamanhos gerais ————— */
@@ -278,26 +281,45 @@ main p {
   opacity: 0.6;
 }
 
-/*------------------------------------------------------------------*/
-/*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO -----------------*/
-/*------------------------------------------------------------------*/
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*----------------- RODAPÉ: INFORMAÇÕES DE CONTATO ----------------------------*/
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
+/* Contêiner principal */
 #site-footer {
   width: 100%;
-  background: var(--color-bg);             /* TODO: fundo igual ao corpo da página */
+  background: var(--color-bg);
   padding: var(--spacing-base) 0;
   text-align: center;
 }
+
+/* Título "Contato" */
 .footer-title {
   font-size: var(--font-size-h1-main);
   color: var(--color-text);
   text-align: left;
   max-width: 1000px;
-  margin-top: 1rem !important;
-  margin-bottom: -0.5rem !important;
-  margin-left: 6.5rem;
-  margin-right: auto;
+  margin: 1rem 0 -0.5rem 6.5rem !important;
 }
+
+/* Wrapper interno */
+.footer-wrapper {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-base);
+}
+
+/* Linha divisória */
+.footer-divider {
+  width: var(--container-max-width);
+  max-width: 90%;
+  margin: var(--spacing-base) auto;
+  border: none;
+  border-top: 1px solid var(--color-nav);
+  opacity: 0.6;
+}
+
+/* Container dos itens de contato */
 #site-footer .footer-container {
   display: flex;
   justify-content: center;
@@ -305,106 +327,76 @@ main p {
   flex-wrap: wrap;
   align-items: flex-start;
 }
-#site-footer .footer-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: var(--color-text);                /* TODO: texto escuro sobre fundo claro */
-  font-size: 0.75rem;
-}
-#site-footer .footer-item img {
-  display: inline-block;
-  width: 2rem;                              /* TODO: tamanho do ícone */
-  height: 2rem;
-  padding: 0.1rem;                          /* TODO: padding para formar o círculo */
-  background: var(--color-header);          /* círculo com cor do header */
-  border-radius: 0%;
-  margin-bottom: 0.25rem;
-  filter: invert(1);
-}
-#site-footer .footer-item span {
-  display: block;
-  margin-top: 0.25rem;
-  word-break: break-all;
-}
 
-.footer-divider {
-  width: var(--container-max-width);
-  max-width: 90%;
-  margin: var(--spacing-base) auto;
-  border: none;
-  border-top: 1px solid var(--color-nav);
-}
-
-#site-footer .footer-item span {
-  color: var(--color-header);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 0.875rem;
-  text-decoration: none;
-}
-
-.footer-wrapper {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-base);
-}
-
+/* Ajustes mobile para wrapper e divisor */
 @media (max-width: 768px) {
   .footer-container {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap;
   }
-
-  .footer-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: auto;
-  }
-
   .footer-divider {
     width: 90%;
     margin: var(--spacing-base) auto;
-    border: none;
-    border-top: 1px solid var(--color-nav);
   }
 }
 
-/* ================================ */
-/* ÍCONES SOCIAIS CUSTOMIZADOS      */
-/* ================================ */
-.footer-item img {
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/*    LAYOUT PARA ÍCONE + RÓTULO FORA DO CÍRCULO                               */
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+/* Link social (ancora) */
+.social-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin: 0 0.75rem;
+}
+
+/* Círculo que envolve o SVG */
+.icon-circle {
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   background-color: transparent;
-  border: 2px solid var(--color-header); /* cor personalizável */
-  transition: all 0.3s ease;
-  filter: invert(0); /* ícone escuro inicialmente */
+  border: 2px solid var(--color-social-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Texto do ícone */
-.footer-item span {
-  margin-top: 0.25rem;
+/* SVG do ícone (inline ou <img>) */
+.icon-circle img,
+.icon-circle svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  object-fit: contain;
+  filter: invert(1);
+  transition: filter 0.3s ease, color 0.3s ease;
+}
+
+/* Rótulo abaixo do ícone */
+.icon-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text);
   font-weight: 500;
-  color: var(--color-header);
+  text-decoration: none;
 }
 
-/* Efeito hover: troca borda e inverte cor do ícone */
-.footer-item:hover img {
-  border-color: var(--color-bg);       /* borda vira cor de fundo */
-  filter: invert(1);                   /* inverte o ícone */
-  box-shadow: 0 0 8px var(--color-header);
+/* Hover: círculo preenche e ícone inverte */
+.social-link:hover .icon-circle {
+  background-color: var(--color-social-border);
+  border-color: var(--color-social-border);
 }
 
-/* Texto no hover pode mudar também (opcional) */
-.footer-item:hover span {
-  color: var(--color-card-link);       /* ex: azul LinkedIn */
+.social-link:hover .icon-circle img,
+.social-link:hover .icon-circle svg {
+  filter: invert(0);
 }
+
+
+
 
