@@ -24,6 +24,7 @@ html, body {
   --color-card-link:        #0077b5;
   --color-muted:            #444;
   --color-hero:				#010409;
+  --color-social-border: 	#1a1a1a;
 
   /* ————— Tamanhos gerais ————— */
   --height-header:          4em;       /* altura do header fixo */
@@ -373,3 +374,37 @@ main p {
     border-top: 1px solid var(--color-nav);
   }
 }
+
+/* ================================ */
+/* ÍCONES SOCIAIS CUSTOMIZADOS      */
+/* ================================ */
+.footer-item img {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--color-header); /* cor personalizável */
+  transition: all 0.3s ease;
+  filter: invert(0); /* ícone escuro inicialmente */
+}
+
+/* Texto do ícone */
+.footer-item span {
+  margin-top: 0.25rem;
+  font-weight: 500;
+  color: var(--color-header);
+}
+
+/* Efeito hover: troca borda e inverte cor do ícone */
+.footer-item:hover img {
+  border-color: var(--color-bg);       /* borda vira cor de fundo */
+  filter: invert(1);                   /* inverte o ícone */
+  box-shadow: 0 0 8px var(--color-header);
+}
+
+/* Texto no hover pode mudar também (opcional) */
+.footer-item:hover span {
+  color: var(--color-card-link);       /* ex: azul LinkedIn */
+}
+
