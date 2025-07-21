@@ -24,8 +24,7 @@ html, body {
   --color-card-link:        #0077b5;
   --color-muted:            #444;
   --color-hero:				#010409;
-  --color-header:   		#010409; 
-  --color-muted:    		#444;    
+  --color-header:   		#010409;     
   --color-linked:   		#0077b5; 
   --color-social-border: 	#1a1a1a;
 
@@ -353,50 +352,46 @@ main p {
   margin: 0 0.75rem;
 }
 
-/* Círculo que envolve o SVG */
-.icon-circle {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid var(--color-social-border);
+
+/* Bloco de ícones exclusivo para a seção hero */
+.hero-social {
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 0.1rem;
+  margin: 0.5rem 0;
+}
+
+.hero-icon-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-card-bg);
+  background-color: var(--color-hero);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
   overflow: hidden;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* SVG do ícone (inline ou <img>) */
-.icon-circle img,
-.icon-circle svg {
+.hero-icon-circle img {
   width: 1.6rem;
   height: 1.6rem;
   object-fit: contain;
-  filter: invert(1);
+  filter: invert(0);
   transition: filter 0.3s ease, color 0.3s ease;
 }
 
-/* Rótulo abaixo do ícone */
-.icon-label {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--color-text);
-  font-weight: 500;
-  text-decoration: none;
+/* Efeito de hover: inverte cores de background e borda, e inverte o ícone */
+.hero-icon-circle:hover {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-hero);
 }
 
-/* Hover: círculo preenche e ícone inverte */
-.social-link:hover .icon-circle {
-  background-color: var(--color-social-border);
-  border-color: var(--color-social-border);
+.hero-icon-circle:hover img {
+  filter: invert(1);
 }
-
-.social-link:hover .icon-circle img,
-.social-link:hover .icon-circle svg {
-  filter: invert(0);
-}
-
 
 
 
