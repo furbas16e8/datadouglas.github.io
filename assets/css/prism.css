@@ -5,6 +5,8 @@ pre[class*="language-"] {
   padding: 1rem;
   overflow-x: auto;
   font-size: 0.95rem;
+  border: 2px solid #4e95e6;
+  border-radius: 1px;
   line-height: 1.5;
   font-family: 'Fira Code', Consolas, monospace;
 }
@@ -21,17 +23,17 @@ pre[class*="language-"] {
 /* Palavras-chave (if, for, function...) */
 .token.keyword {
   color: #8b5cf6; /* roxo claro */
-  font-weight: bold;
 }
 
 /* Strings */
 .token.string {
-  color: #00ffff; /* verde */
+  color: #4e95e6; /* ciano claro */
 }
 
 /* Números */
 .token.number {
   color: #f8f8f2; /* branco */
+}
 
 /* Funções */
 .token.function {
@@ -50,7 +52,7 @@ pre[class*="language-"] {
 
 /* Classes */
 .token.class-name {
-  color: #ffff00; /* branco */
+  color: #ffbb00; /* laranja */
 }
 /* Propriedades e atributos */
 .token.property {
