@@ -27,6 +27,20 @@ body {
   padding: 0;
 }
 
+.main-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;  /* centraliza o conteúdo da página */
+  padding: 0 1rem;
+}
+
+.page-text-content {
+  display: block;            /* garante que margin auto funcione */
+  width: 80%;                /* ou uma largura fixa menor que a do wrapper */
+  max-width: 1200px;         /* para não extrapolar em telas maiores */
+  margin: 0 auto; 
+}
+
 /* Links padrão (sem decoração extra) */
 .page-text-content a {
   color: #4e95e6;
@@ -35,8 +49,6 @@ body {
 .page-text-content a:hover {
   text-decoration: underline;
 }
-
-/* Tipografia escopada ao wrapper .page-text-content */
 
 /* Cabeçalhos */
 .page-text-content h1 {

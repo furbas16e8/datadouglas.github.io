@@ -115,6 +115,7 @@ nav a.active {
 
 /* Conteúdo principal */
 main {
+  display: block;
   width: 100%;
   max-width: var(--container-max-width);
   margin: 2em auto;
@@ -249,36 +250,6 @@ main p {
   border-top: 3px solid #ccc;
   opacity: 0.6;
 }
-
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/*   				   	 CARD ÚNICO PARA PROJETOS                              */
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-
-/* Wrapper para centralizar o card e dar padding */
-.single-card-project {
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  padding: 2rem 0;         /* espaçamento acima/abaixo */
-  box-sizing: border-box;
-  margin-top: -1rem;
-}
-
-/* Estilo do card único */
-.single-card {
-  background-color: var(--color-card-bg); /* branco ou cor de fundo dos outros cards */
-  width: 100%;           /* ocupa 100% do wrapper, até o max-width abaixo */
-  max-width: 1000px;     /* mesma largura máxima do container .home-projects */
-  height: auto;          /* altura definida pelo conteúdo (hoje vazio) */
-  min-height: 400px;     /* ajuste à sua preferência de altura inicial */
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  margin-top: -1rem;
-
-}
-
-
-
-
 
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 /*   			 ÍCONES DE REDES SOCIAIS E CONTATO                             */
