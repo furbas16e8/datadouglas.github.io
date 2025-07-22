@@ -1,5 +1,5 @@
 /* Fundo e aparência geral do bloco */
-pre[class*="language-r"] {
+pre[class*="language-"] {
   background: #010409; /* cor de fundo */
   color: #f8f8f2;       /* cor padrão do texto */
   border-radius: 8px;
