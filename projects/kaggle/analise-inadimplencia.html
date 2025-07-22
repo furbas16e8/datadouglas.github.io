@@ -29,49 +29,53 @@
 
   <!-- Conteúdo principal -->
 <main class="main-content">
-   <div class="single-project-header">
-     <h1 class="projects-title">Análise de Inadimplência</h1>
-     <div class="divider-line"></div>
-     <div class="single-project-tags">
-       <span class="tag">#eda</span>
-       <span class="tag">#r</span>
-       <span class="tag">#rshiny</span>
-       <span class="tag">#kaggle</span>
-     </div>
-   </div>
-   
-   <div class="page-text-content">
+  <div class="single-project-header">
+    <h1 class="projects-title">Análise de Inadimplência</h1>
+    <div class="divider-line"></div>
+    <div class="single-project-tags">
+      <span class="tag">#eda</span>
+      <span class="tag">#r</span>
+      <span class="tag">#rshiny</span>
+      <span class="tag">#kaggle</span>
+    </div>
+  </div>
+  
+  <div class="page-text-content">
      
-     <p>
-       Neste artigo vamos fazer uma <strong>Análise Exploratória de Dados (EDA)</strong> do famoso dataset <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">Default Credit Card Clients</a> da <a href="https://archive.ics.uci.edu/">UC Irvine Machine Learning Repository</a> e descobrir quais perfis de clientes possuem maior tendência a atrasarem o pagamento das faturas dos cartões de crédito.
-	   O dataset reúne informações clientes de bancos em Taiwan em 2005, constituído de 30.000 observações e 25 variáveis, representa um problema clássico na área de <strong>risco de crédito.</strong>
-	   <br><br>
-       A inadimplência em operações de crédito representa um dos principais riscos enfrentados pelas instituições financeiras, com impactos diretos na rentabilidade, necessidade de capital regulatório e estabilidade do sistema financeiro como um todo. No contexto dos cartões de crédito, modalidade caracterizada pela ausência de garantias reais e pela concessão baseada principalmente na análise do perfil do cliente, a compreensão dos fatores que influenciam o comportamento de pagamento torna-se ainda mais crítica.
-     </P>
+    <p>
+      Neste artigo vamos fazer uma <strong>Análise Exploratória de Dados (EDA)</strong> do conhecido dataset <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">Default Credit Card Clients</a> da <a href="https://archive.ics.uci.edu/">UC Irvine Machine Learning Repository</a> e descobrir quais perfis de clientes possuem maior tendência a atrasarem o pagamento das faturas dos cartões de crédito.
+	    O dataset reúne informações clientes de bancos em Taiwan em 2005, constituído de 30.000 observações e 25 variáveis, representa um problema clássico na área de <strong>risco de crédito.</strong>
+	  <br><br>
+      A inadimplência em operações de crédito representa um dos principais riscos enfrentados pelas instituições financeiras, com impactos diretos na rentabilidade, necessidade de capital regulatório e estabilidade do sistema financeiro como um todo. No contexto dos cartões de crédito, modalidade caracterizada pela ausência de garantias reais e pela concessão baseada principalmente na análise do perfil do cliente, a compreensão dos fatores que influenciam o comportamento de pagamento torna-se ainda mais crítica.
+    </P>
    
-     <h3>Objetivos da análise</h3>
-	 <div class="divider-line"></div>
-     <p>
-	   Nosso objetivo é fazer uma <strong>análise exploratória de dados inicial</strong> baseada unicamente em modelos estatísticos para alcançar um primeiro entendimento dos dados do dataset.
-	   Dessa forma, <strong>ainda</strong> não entraremos na área de <em>Machine Learning</em> em si. Especificamente, busco responder às seguintes questões de pesquisa:
-	   <br><br>
-	   <strong>Questão principal:</strong> quais características demográficas, financeiras e comportamentais estão mais fortemente associadas à probabilidade de inadimplência em cartões de crédito?
-	   <br><br>
-	   <strong>Questões específicas:</strong><br>
-	   <ol type="1">
-         <li>Como as variáveis demográficas (idade, sexo, educação, estado civil) se relacionam com o comportamento de pagamento?</li>
-         <li>Existe relação entre o limite de crédito concedido e a taxa de inadimplência dos clientes?</li>
-         <li>O histórico de pagamentos nos meses anteriores fornece sinais preditivos relevantes sobre inadimplência futura?</li>
-         <li>Quais padrões podem ser identificados na utilização do cartão de crédito entre clientes adimplentes e inadimplentes?</li>
-	   </ol>
-	 </p>
+    <h3>Objetivos da análise</h3>
+	  <div class="divider-line"></div>
+      <p>
+	      Nosso objetivo é fazer uma <strong>análise exploratória de dados inicial</strong> baseada unicamente em modelos estatísticos para alcançar um primeiro entendimento dos dados do dataset.
+	      Dessa forma, <strong>ainda</strong> não entraremos na área de <em>Machine Learning</em> em si. Especificamente, busco responder às seguintes questões de pesquisa:
+	      <br><br>
+	      <strong>Questão principal:</strong> quais características demográficas, financeiras e comportamentais estão mais fortemente associadas à probabilidade de inadimplência em cartões de crédito?
+	      <br><br>
+	      <strong>Questões específicas:</strong><br>
+	      <ol type="1">
+          <li>Como as variáveis demográficas (idade, sexo, educação, estado civil) se relacionam com o comportamento de pagamento?</li>
+          <li>Existe relação entre o limite de crédito concedido e a taxa de inadimplência dos clientes?</li>
+          <li>O histórico de pagamentos nos meses anteriores fornece sinais preditivos relevantes sobre inadimplência futura?</li>
+          <li>Quais padrões podem ser identificados na utilização do cartão de crédito entre clientes adimplentes e inadimplentes?</li>
+	      </ol>
+	    </p>
 	  
-	 <h3>Metodologia</h3>
-	 <div class="divider-line"></div>
-	   <p>
-	   Para fazer a extração, limpeza e preparação dos dados optei por usar <strong>Linguagem R</strong> a partir do Positron (nova IDE de R da Posit baseado no VIsual Studio Code).
-	   A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
-	   </p>
+	  <h3>Metodologia</h3>
+	  <div class="divider-line"></div>
+	  <p>
+	    Para fazer a extração, limpeza e preparação dos dados optei por usar <strong>Linguagem R</strong> a partir do Positron (nova IDE de R da Posit baseado no VIsual Studio Code).
+	    A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
+	    <br>
+      <strong>Obs.:</strong> para acessar as definições de cada uma das 25 variáveis do dataset, acesse o link fornecido acima.
+      <br>
+    
+    </p>
 	 
    </div>		
 
