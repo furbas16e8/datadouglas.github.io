@@ -1,0 +1,119 @@
+/* typography.css
+   Arquivo de estilos tipográficos globais para o site
+   Define fontes, hierarquia de títulos, parágrafos, listas e ênfases
+*/
+
+/* ——— Variáveis de tipografia ——— */
+:root {
+  /* Fonte principal do site */
+  --font-family-base: 'Montserrat', sans-serif;
+  /* Tamanho base para parágrafos */
+  --font-size-base: 1rem;
+  /* Altura de linha para facilitar leitura */
+  --line-height-base: 1.6;
+  /* Espaçamento padrão entre elementos */
+  --spacing-base: 1rem;
+  /* Cor de texto padrão */
+  --color-text: #333333;
+}
+
+/* ——— Estilos globais ——— */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Links padrão (sem decoração extra) */
+.page-text-content a {
+  color: #4e95e6;
+  text-decoration: none;
+}
+.page-text-content a:hover {
+  text-decoration: underline;
+}
+
+/* Tipografia escopada ao wrapper .page-text-content */
+
+/* Cabeçalhos */
+.page-text-content h1 {
+  font-size: 2rem;
+  margin: calc(var(--spacing-base) * 2) 0 var(--spacing-base);
+}
+
+.page-text-content h2 {
+  font-size: 1.75rem;
+  margin: calc(var(--spacing-base) * 1.5) 0 calc(var(--spacing-base) * 0.75);
+  text-align: left;
+}
+
+.page-text-content h3 {
+  font-size: 1.5rem;
+  margin: var(--spacing-base) 0 calc(var(--spacing-base) / 2);
+  text-align: left;
+}
+
+.page-text-content h4,
+.page-text-content h5,
+.page-text-content h6 {
+  font-size: 1.25rem;
+  margin: var(--spacing-base) 0 calc(var(--spacing-base) / 2);
+  text-align: left;
+}
+
+/* Parágrafos */
+.page-text-content p {
+  margin-bottom: var(--spacing-base);
+  text-align: left;
+}
+
+/* Listas */
+.page-text-content ul,
+.page-text-content ol {
+  margin: var(--spacing-base) 0;
+  padding-left: calc(var(--spacing-base) * 1.5);
+}
+
+.page-text-content li {
+  margin-bottom: calc(var(--spacing-base) / 2);
+}
+
+/* Ênfase e forte */
+.page-text-content strong {
+  font-weight: 600;
+}
+
+.page-text-content em {
+  font-style: italic;
+}
+
+/* Citações */
+.page-text-content blockquote {
+  margin: var(--spacing-base) 0;
+  padding-left: var(--spacing-base);
+  border-left: 4px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Imagens dentro de texto */
+.page-text-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tabelas */
+.page-text-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-base) 0;
+}
+
+.page-text-content th,
+.page-text-content td {
+  padding: calc(var(--spacing-base) / 2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
