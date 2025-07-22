@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="../../assets/css/projects.css" />
   <link rel="stylesheet" href="../../assets/css/research.css" />
 
+  <!-- Prismjs -->
+  <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-coy.css" rel="stylesheet" />
+  <!-- Prism core + componente de linguagem -->
+  <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
+  <!-- Carrega as linguagens que quiser destacar -->
+  <script src="https://unpkg.com/prismjs@1.29.0/components/prism-r.min.js"></script>
+
 </head>
 
 <body>
@@ -71,10 +78,37 @@
 	  <p>
 	    Para fazer a extração, limpeza e preparação dos dados optei por usar <strong>Linguagem R</strong> a partir do Positron (nova IDE de R da Posit baseado no VIsual Studio Code).
 	    A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
-	    <br>
+	    <br><br>
       <strong>Obs.:</strong> para acessar as definições de cada uma das 25 variáveis do dataset, acesse o link fornecido acima.
-      <br>
-    
+    </p>
+
+    <h3>Execução</h3>
+    <div class="divider-line"></div>
+    <p>
+      <pre><code class="language-javascript">
+# Recodificando os níveis dos fatores para torná-los descritivos
+credit_card_df <- credit_card_df %>%
+  mutate(
+    SEX = recode_factor(SEX, `1` = "Male", `2` = "Female"),
+    EDUCATION = recode_factor(EDUCATION,
+                              `0` = "Unknown",
+                              `1` = "Graduate School",
+                              `2` = "University",
+                              `3` = "High School",
+                              `4` = "Others",
+                              `5` = "Unknown",
+                              `6` = "Unknown"),
+    MARRIAGE = recode_factor(MARRIAGE, `0` = "Other", `1` = "Married", `2` = "Single", `3` = "Other"),
+    # Renomeia a variável alvo para maior clareza
+    default.payment.next.month = recode_factor(default.payment.next.month, `0` = "No", `1` = "Yes")
+  ) %>%
+  # Renomeia a variável alvo
+  rename(DEFAULT = default.payment.next.month)
+
+# Verificando as colunas modificadas para ver os novos rótulos e suas contagens
+summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
+      </code></pre>
+
     </p>
 	 
    </div>		
