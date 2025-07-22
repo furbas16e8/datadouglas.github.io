@@ -1,0 +1,52 @@
+/* Fundo e aparência geral do bloco */
+pre[class*="language-r"] {
+  background: #010409; /* cor de fundo */
+  color: #f8f8f2;       /* cor padrão do texto */
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-family: 'Fira Code', Consolas, monospace;
+}
+
+/* Comentários */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b7280; /* cinza */
+  font-style: italic;
+}
+
+/* Palavras-chave (if, for, function...) */
+.token.keyword {
+  color: #8b5cf6; /* roxo claro */
+  font-weight: bold;
+}
+
+/* Strings */
+.token.string {
+  color: #10b981; /* verde */
+}
+
+/* Números */
+.token.number {
+  color: #f8f8f2; /* branco */
+
+/* Funções */
+.token.function {
+  color: #8b5cf6; /* roxo */
+}
+
+/* Operadores e símbolos */
+.token.operator {
+  color: #ffbb00; /* laranja */
+}
+
+/* Destaque de linha opcional */
+.line-highlight {
+  background: rgba(255, 255, 255, 0.05);
+  display: block;
+  width: 100%;
+}
