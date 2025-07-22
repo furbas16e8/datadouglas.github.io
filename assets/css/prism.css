@@ -2,7 +2,6 @@
 pre[class*="language-"] {
   background: #010409; /* cor de fundo */
   color: #f8f8f2;       /* cor padrão do texto */
-  border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
   font-size: 0.95rem;
@@ -27,7 +26,7 @@ pre[class*="language-"] {
 
 /* Strings */
 .token.string {
-  color: #10b981; /* verde */
+  color: #00ffff; /* verde */
 }
 
 /* Números */
@@ -37,6 +36,25 @@ pre[class*="language-"] {
 /* Funções */
 .token.function {
   color: #8b5cf6; /* roxo */
+}
+
+/* Pontuação */
+.token.punctuation {
+  color: #ffbb00; /* laranja */
+}
+
+/* Variáveis */
+.token.variable {  
+  color: #f8f8f2; /* branco */
+}
+
+/* Classes */
+.token.class-name {
+  color: #ffff00; /* branco */
+}
+/* Propriedades e atributos */
+.token.property {
+  color: #ff00a2; /* branco */
 }
 
 /* Operadores e símbolos */

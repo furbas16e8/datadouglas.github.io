@@ -16,8 +16,9 @@
 
 
   <!-- Prismjs -->
-  <link rel="stylesheet" href="../../assets/css/prism.css"> <!-- customização -->
   <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+  <!-- customização -->
+  <link rel="stylesheet" href="../../assets/css/prism.css">
   <!-- Prism core + componente de linguagem -->
   <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
   <!-- Carrega as linguagens que quiser destacar -->
@@ -88,7 +89,9 @@
     <h3>Execução</h3>
     <div class="divider-line"></div>
     <p>
-      <pre><code class="language-r">
+      Abaixo estão os códigos utilizados para a análise exploratória de dados (EDA) do dataset. O código está organizado em blocos, cada um com uma função específica, desde a importação dos dados até a visualização dos resultados.
+    </p>
+    <pre><code class="language-r">
 # Recodificando os níveis dos fatores para torná-los descritivos
 credit_card_df <- credit_card_df %>%
   mutate(
@@ -110,9 +113,8 @@ credit_card_df <- credit_card_df %>%
 
 # Verificando as colunas modificadas para ver os novos rótulos e suas contagens
 summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
-      </code></pre>
+    </code></pre>
 
-    </p>
 	 
    </div>		
 
