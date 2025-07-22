@@ -260,6 +260,7 @@ main p {
   justify-content: center; /* centraliza horizontalmente */
   padding: 2rem 0;         /* espaçamento acima/abaixo */
   box-sizing: border-box;
+  margin-top: -1rem;
 }
 
 /* Estilo do card único */
@@ -271,6 +272,7 @@ main p {
   min-height: 400px;     /* ajuste à sua preferência de altura inicial */
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-top: -1rem;
 
 }
 

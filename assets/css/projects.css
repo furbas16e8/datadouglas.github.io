@@ -90,23 +90,24 @@ body.projects-list-page .project-content {
 /*   			 EXCLUSIVO PARA PÁGINAS DE PROJETOS ÚNICOS                     */
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-.single-project-title {
-  margin-top: 1rem;
-  margin-bottom: -1rem;
-  margin-left: 4.2rem;
-  margin-right: auto;
+/* 1) Wrapper que alinha título+tags à esquerda do container */
+.single-project-header {
+  max-width: 1000px;     /* mesma largura máxima do seu container principal */
+  margin: 1.5rem auto;   /* 1.5rem em cima/baixo, centralizado horizontalmente */
+  padding: 0 1rem;       /* garante 1rem de padding nas laterais */
+  box-sizing: border-box;
 }
 
-.single-project-title .projects-title {
+/* 2) Certifique‑se de que não há typos nos seletores: */
+.single-project-header .projects-title {
   text-align: center;
+  margin: 0;             /* zera margens extras do h1 */
 }
 
 
 .single-project-tags {
-  margin-top: 0.5rem;
+  margin-top: 2rem;
   margin-bottom: -1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
   padding: 0rem;
 }
 
