@@ -4,6 +4,8 @@ code[class*="language-"] {
   background: #010409; /* cor de fundo */
   color: #f8f8f2;       /* cor padrão do texto */
   padding: 0.4rem 1rem !important; /* espaçamento interno */
+  margin: 0.1rem 0;    /* espaçamento externo */
+  display: block;      /* exibição em bloco */
   overflow-x: auto;
   font-size: 0.95rem;
   border-radius: 1px;
