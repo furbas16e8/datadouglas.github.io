@@ -77,3 +77,39 @@ code[class*="language-"] {
   display: block;
   width: 100%;
 }
+
+/*-- Peronização de código --*/
+/* 1. Defina uma classe para seu summary (ou estilize diretamente o elemento) */
+summary.custom-toggle {
+  display: block;        /* só o que for necessário */
+  width: fit-content;           /* largura mínima para caber o texto */
+  margin: 0;                    /* remove qualquer margem automática */
+  cursor: pointer; 
+  font-size: 0.9rem;             /* mãozinha no hover */
+  font-weight: bold;            /* negrito */
+  text-align: center;             /* alinhado à esquerda */
+  padding: 0.3rem 0.35rem;       /* espaçamento interno */
+  background-color: #1e40af;  /* fundo azul (ajuste à sua paleta) */
+  color: #ffffff;             /* texto branco */
+  border-radius: 0.25rem;       /* cantos levemente arredondados */
+  transition: background 0.3s, border-color 0.3s;
+
+}
+
+/* 2. Mudar cor de fundo e borda ao passar o mouse */
+summary.custom-toggle:hover {
+  background-color: #010409;
+}
+
+/* 3. Opcional: ícone antes do texto */
+summary.custom-toggle::before {
+  content: "▶"; /* ícone de seta */
+  display: inline-block;
+  margin-left: 0.2rem;
+  transition: transform 0.2s;
+}
+
+/* 4. Rotaciona o ícone quando o <details> estiver aberto */
+details[open] > summary.custom-toggle::before {
+  transform: rotate(90deg);
+}
