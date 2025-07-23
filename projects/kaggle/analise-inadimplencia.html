@@ -85,7 +85,7 @@
       são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
 	    <br><br>
       Para fazer a manipulação dos dados optei por usar <strong>Linguagem R</strong> devido à sua ampla gama de pacotes para análise estatística. Além disso, o R oferece sintaxe clara e recursos que facilitam o entendimento dos resultados.
-      Para visualização gráfica utilizei a bblioteca <strong><a href="https://shiny.posit.co/">RShiny</a></strong> pois permite explorar os dados de forma dinâmica e intuitiva.
+      Para visualização gráfica utilizei a biblioteca <strong><a href="https://shiny.posit.co/">RShiny</a></strong> pois permite explorar os dados de forma dinâmica e intuitiva.
     </p>
 
     <h3>Execução</h3>
@@ -113,10 +113,12 @@
     <p>
       Para realizar uma inspeção inicial dos dados:
     </p>
+    
     <pre><code class="language-r">
-# Exibie a estrutura do dataframe para entender os tipos de dados de cada coluna
+# Exbie a estrutura do dataframe para entender os tipos de dados de cada coluna
 glimpse(credit_card_df)
     </code></pre>
+
     <p>
       Aqui é possível observar que as variáveis estão em formatos adequados, com exceçãão de <code>sex</code>, <code>education</code> e <code>marriage</code>, que estão como numéricas, mas representam variáveis categóricas.
       Para corrigir isso, podemos usar a função <code>mutate()</code> do pacote <code>dplyr</code> para converter essas colunas em <code>factor</code>:
@@ -129,31 +131,36 @@ credit_card_df <- credit_card_df %>%
   mutate(across(all_of(factor_vars), as.factor))
     </code></pre>
 	
-  <p>
-    Além disso, é essencial verificar a presença de valores ausentes. 
-    O tratamento desses dados é um problema central em <strong>ciência de dados</strong>. 
-    A decisão de como lidar com eles (e.g., remoção de casos, imputação) pode introduzir viés e afetar significativamente o desempenho e a validade do modelo final.
-  </p>
+    <p>
+      Além disso, é essencial verificar a presença de valores ausentes. 
+      O tratamento desses dados é um problema central em <strong>ciência de dados</strong>. 
+      A decisão de como lidar com eles (e.g., remoção de casos, imputação) pode introduzir viés e afetar significativamente o desempenho e a validade do modelo final.
+    </p>
 
-  <pre><code class="language-r">
+    <pre><code class="language-r">
 # Conta a quantidade de valores ausentes (NA) em cada coluna
 missing_values <- colSums(is.na(credit_card_df))
 
 # Exibe apenas as colunas que contêm valores ausentes
 print(missing_values[missing_values > 0])
-  </code></pre>
+    </code></pre>
 
-  <p>
-    A partir do resultado, podemos observar que não há valores ausentes no dataset, o que é um bom sinal para a análise.
-    No entanto, é sempre importante estar atento a possíveis inconsistências nos dados, como categorias não documentadas ou erros de digitação.
-    Para tanto, é recomendável realizar uma verificação das categorias presentes nas variáveis.
-    <br><br> 
-    Por exemplo, para as variáveis categóricas, podemos utilizar a função <code>summary()</code> para obter uma visão geral da distribuição das categorias:
+    <pre style="text-align: left;"><code>
+named numeric(0)
+    </code></pre>
+
+    <p>
+      A partir do resultado, podemos observar que não há valores ausentes no dataset, o que é um bom sinal para a análise.
+      No entanto, é sempre importante estar atento a possíveis inconsistências nos dados, como categorias não documentadas ou erros de digitação.
+      Para tanto, é recomendável realizar uma verificação das categorias presentes nas variáveis.
+      <br><br> 
+      Por exemplo, para as variáveis categóricas, optei utilizar a função <code>summary()</code> para obter uma visão geral da distribuição das categorias:
+    </p>
+
     <pre><code class="language-r">
   # Resumo das variáveis categóricas
 summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE")])
     </code></pre>
-  </p>
 
     <pre style="text-align: left;"><code>
       SEX          EDUCATION        MARRIAGE    
@@ -165,23 +172,23 @@ summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE")])
  Max.   :2.000   Max.   :6.000   Max.   :3.000
     </code></pre>
   
-  <p>
-    Aqui, pude perceber que as colunas <strong>EDUCATION</strong> e <strong>MARRIAGE</strong> apresentam um valor <code>(0)</code> que não está informado nas definições das variáveis do dataset.
-    <br><br>
-    Segundo as definições:
-    <ul type="1">
-      <li><strong>MARRIAGE</strong>: Estado civil (1=Married, 2=Single, 3=Others)</li>
-      <li><strong>EDUCATION</strong>: Escolaridade (1=Graduate School, 2=University, 3=High School, 4=Others, 5=Unknow, 6=Unknow)</li>
-    </ul>
-  </p>
+    <p>
+      Aqui, pude perceber que as colunas <strong>EDUCATION</strong> e <strong>MARRIAGE</strong> apresentam um valor <code>(0)</code> que não está informado nas definições das variáveis do dataset.
+      <br><br>
+      Segundo as definições:
+      <ul type="1">
+        <li><strong>MARRIAGE</strong>: Estado civil (1=Married, 2=Single, 3=Others)</li>
+        <li><strong>EDUCATION</strong>: Escolaridade (1=Graduate School, 2=University, 3=High School, 4=Others, 5=Unknow, 6=Unknow)</li>
+      </ul>
+    </p>
 
-  <p>
-    Ou seja, não temos uma definição para o valor <code>(0)</code> que apresenta 14 observações em <strong>EDUCATION</strong> e 54 em <strong>MARRIAGE</strong>. Decidi agrupar esse valor na categoria <code>Unknown</code> na primeira e em <code>Others</code> na segunda para facilitar a análise.
-    <br><br>
-    Além disso, seguindo o exposto por (James et al., 2021), para melhorar a interpretabilidade das variáveis categóricas, decidi recodificá-las (incluindo a variável <code>default.payment.next.month</code>) para evitar a consulta contínua à descrição de cada uma.
-  </p>
+    <p>
+      Ou seja, não temos uma definição para o valor <code>(0)</code> que apresenta 14 observações em <strong>EDUCATION</strong> e 54 em <strong>MARRIAGE</strong>. Decidi agrupar esse valor na categoria <code>Unknown</code> na primeira e em <code>Others</code> na segunda para facilitar a análise.
+      <br><br>
+      Além disso, seguindo o exposto por (James et al., 2021), para melhorar a interpretabilidade das variáveis categóricas, decidi recodificá-las (incluindo a variável <code>default.payment.next.month</code>) para evitar a consulta contínua à descrição de cada uma.
+    </p>
 
-  <pre><code class="language-r">
+    <pre><code class="language-r">
 # Recodificando os níveis dos fatores para torná-los descritivos
 credit_card_df <- credit_card_df %>%
   mutate(
@@ -203,49 +210,50 @@ credit_card_df <- credit_card_df %>%
 
 # Verificando as colunas modificadas para ver os novos rótulos e suas contagens
 summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
-  </code></pre>
+    </code></pre>
 
-  <pre style="text-align: left;"><code>
+    <pre style="text-align: left;"><code>
     SEX                  EDUCATION        MARRIAGE     DEFAULT    
  Male  :11888   Unknown        :  345   Other  :  377   No :23364  
  Female:18112   Graduate School:10585   Married:13659   Yes: 6636  
                 University     :14030   Single :15964              
                 High School    : 4917                              
                 Others         :  123
-  </code></pre>
+    </code></pre>
 
-  <p>
-    Agora, as variáveis categóricas estão mais claras e fáceis de interpretar, mas é necessário explicar como podemos interpretar os valores <code>Unknown</code> e <code>Others</code>.
-    <ul type="1">
-      <li><code>Unknown</code>: informa que, quando um cliente respondeu ao questionário para iniciar um contrato com o banco de Taiwan, seu nível de escolaridade não estava listado nas opções possíveis.</li>
-      <li><code>Others</code>: por sua vez nos diz que a escolaridade do cliente é, lietralmente, desconhecida.</li>
-    </ul>
-  </p>
+    <p>
+      Agora, as variáveis categóricas estão mais claras e fáceis de interpretar, mas é necessário explicar como podemos interpretar os valores <code>Unknown</code> e <code>Others</code>.
+      <ul type="1">
+        <li><code>Unknown</code>: informa que, quando um cliente respondeu ao questionário para iniciar um contrato com o banco de Taiwan, seu nível de escolaridade não estava listado nas opções possíveis.</li>
+        <li><code>Others</code>: por sua vez nos diz que a escolaridade do cliente é, lietralmente, desconhecida.</li>
+      </ul>
+    </p>
 
-  <p>
-    Um exemplo mais comum acontece quando em um formulário, na categoria <strong>Sexualidade</strong> as opções selecionáveis podem ser: "heteressexual", "homossexual", "bissexual", "outro (especificar)" e "Prefiro não responder".
-    <br><br>
-    Dessa forma <strong>o dado existe</strong>, e a importância dele está no seu padrão. Se os clientes escolhem "Outros" ou "Prefiro não responder" o fazem por algum motivo que pode se correlacionar com a inadimplência. 
-    Então, dado todo o conjunto do dataset esses valores em si são uma informações valisosas. 
-    Apagá-las sem algum critério apenas para simplificar os dados causaria viés e possivelmente colocaria toda a análise em xeque.
-    <br><br>
-    A variável alvo <strong>DEFAULT</strong> foi renomeada para refletir melhor seu significado, e as categorias foram ajustadas para evitar confusões.
-  </p>
-  <p>
-    Por fim, é importante verificar se há duplicatas no dataset. 
-    A presença de duplicatas pode distorcer os resultados da análise e levar a conclusões erradas.
-    Para verificar isso, podemos usar a função <code>duplicated()</code> do R:
-  </p>
+    <p>
+      Um exemplo mais comum acontece quando em um formulário, na categoria <strong>Sexualidade</strong> as opções selecionáveis podem ser: "heteressexual", "homossexual", "bissexual", "outro (especificar)" e "Prefiro não responder".
+      <br><br>
+      Dessa forma <strong>o dado existe</strong>, e a importância dele está no seu padrão. Se os clientes escolhem "Outros" ou "Prefiro não responder" o fazem por algum motivo que pode se correlacionar com a inadimplência. 
+      Então, dado todo o conjunto do dataset esses valores em si são uma informações valisosas. 
+      Apagá-las sem algum critério apenas para simplificar os dados causaria viés e possivelmente colocaria toda a análise em xeque.
+      <br><br>
+      A variável alvo <strong>DEFAULT</strong> foi renomeada para refletir melhor seu significado, e as categorias foram ajustadas para evitar confusões.
+    </p>
 
-  <pre><code class="language-r">
+    <p>
+      Por fim, é importante verificar se há duplicatas no dataset. 
+      A presença de duplicatas pode distorcer os resultados da análise e levar a conclusões erradas.
+      Para verificar isso, podemos usar a função <code>duplicated()</code> do R:
+    </p>
+
+    <pre><code class="language-r">
 # Verifica se há linhas duplicadas no dataframe
 duplicated_rows <- credit_card_df[duplicated(credit_card_df), ]
 print(duplicated_rows)
-  </code></pre>
+    </code></pre>
   
-  <p>
-    Como esperado, não há duplicatas no dataset, o que é um bom sinal para a análise. Agora podemos prosseguir para a próxima etapa, que é a análise descritiva e visualização dos dados.
-  </p>
+    <p>
+      Como esperado, não há duplicatas no dataset, o que é um bom sinal para a análise. Agora podemos prosseguir para a próxima etapa, que é a análise descritiva e visualização dos dados.
+    </p>
 
 
   </div>
