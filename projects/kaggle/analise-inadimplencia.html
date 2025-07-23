@@ -98,7 +98,7 @@
       O trabalho será constituído em <strong>4 etapas:</strong>
         <ol type="1">
           <li><strong>Limpeza e pré-processamento dos dados:</strong> fundamental para garantir que as informações estejam corretas e prontas para análise;</li>
-          <li><strong>Análise descritiva e visualização dos dados:</strong>strong> para entender padrões e tendências iniciais;</li>
+          <li><strong>Análise descritiva e visualização dos dados:</strong> para entender padrões e tendências iniciais;</li>
           <li><strong>Modelagem estatística:</strong> univariada e multivariada, para identificar fatores associados à inadimplência;</li>
           <li><strong>Visualização e discussão dos resultados:</strong> gráficos interativos e implicações práticas.</li>
         </ol>
@@ -231,23 +231,23 @@ summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
     <br><br>
     A variável alvo <strong>DEFAULT</strong> foi renomeada para refletir melhor seu significado, e as categorias foram ajustadas para evitar confusões.
   </p>
-
-  <pre ><code class="language-r">
-# Verifica as categorias únicas de cada variável categórica
-print(unique(credit_card_df$SEX))
-print(unique(credit_card_df$EDUCATION))
-print(unique(credit_card_df$MARRIAGE))
-  </code></pre>
   <p>
-    <code>
-[1] Female Male  <br>
-Levels: Male Female <br>
-[1] University  Graduate School High School Unknown Others    <br>     
-Levels: Unknown Graduate School University High School Others <br>
-[1] Married Single  Other  <br>
-Levels: Other Married Single <br>
-    </code>
+    Por fim, é importante verificar se há duplicatas no dataset. 
+    A presença de duplicatas pode distorcer os resultados da análise e levar a conclusões erradas.
+    Para verificar isso, podemos usar a função <code>duplicated()</code> do R:
   </p>
+
+  <pre><code class="language-r">
+# Verifica se há linhas duplicadas no dataframe
+duplicated_rows <- credit_card_df[duplicated(credit_card_df), ]
+print(duplicated_rows)
+  </code></pre>
+  
+  <p>
+    Como esperado, não há duplicatas no dataset, o que é um bom sinal para a análise. Agora podemos prosseguir para a próxima etapa, que é a análise descritiva e visualização dos dados.
+  </p>
+
+
   </div>
 </body>
 </html>
