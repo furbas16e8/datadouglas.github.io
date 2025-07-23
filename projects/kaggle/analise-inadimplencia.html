@@ -248,7 +248,17 @@ summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
     <pre><code class="language-r">
 # Verifica se há linhas duplicadas no dataframe
 duplicated_rows <- credit_card_df[duplicated(credit_card_df), ]
-print(duplicated_rows)
+# Exibe as linhas duplicadas, se houver
+if (nrow(duplicated_rows) > 0) {
+  print("Linhas duplicadas encontradas:")
+  print(duplicated_rows)
+} else {
+  print("Nenhuma linha duplicada encontrada.")
+}
+    </code></pre>
+
+    <pre style="text-align: left;"><code>
+[1] "Nenhuma linha duplicada encontrada."
     </code></pre>
   
     <p>
