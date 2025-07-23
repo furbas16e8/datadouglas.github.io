@@ -1,11 +1,11 @@
 /* Fundo e aparência geral do bloco */
-pre[class*="language-"] {
+pre[class*="language-"],
+code[class*="language-"] {
   background: #010409; /* cor de fundo */
   color: #f8f8f2;       /* cor padrão do texto */
-  padding: 1rem;
+  padding: 0.4rem 1rem !important; /* espaçamento interno */
   overflow-x: auto;
   font-size: 0.95rem;
-  border: 2px solid #4e95e6;
   border-radius: 1px;
   line-height: 1.5;
   font-family: 'Fira Code', Consolas, monospace;
@@ -57,6 +57,11 @@ pre[class*="language-"] {
 /* Propriedades e atributos */
 .token.property {
   color: #ff00a2; /* branco */
+}
+
+/* Tags HTML */
+.token.tag {
+  color: #ffbb00; /* laranja */
 }
 
 /* Operadores e símbolos */

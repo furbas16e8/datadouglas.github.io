@@ -54,8 +54,8 @@
   <div class="page-text-content">
      
     <p>
-      Neste artigo vamos fazer uma <strong>Análise Exploratória de Dados (EDA)</strong> do conhecido dataset <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">Default Credit Card Clients</a> da <a href="https://archive.ics.uci.edu/">UC Irvine Machine Learning Repository</a> e descobrir quais perfis de clientes possuem maior tendência a atrasarem o pagamento das faturas dos cartões de crédito.
-	    O dataset reúne informações clientes de bancos em Taiwan em 2005, constituído de 30.000 observações e 25 variáveis, representa um problema clássico na área de <strong>risco de crédito.</strong>
+      Neste artigo vou fazer uma Análise Exploratória de Dados (EDA) do conhecido dataset <strong>Default Credit Card Clients</strong> da <strong><a href="https://archive.ics.uci.edu/">UC Irvine Machine Learning Repository</a></strong> e estimar quais perfis de clientes possuem maior tendência a atrasarem o pagamento das faturas dos cartões de crédito.
+	    O dataset reúne informações de clientes de bancos em Taiwan no ano de 2005, constituído de 30.000 observações e 25 variáveis, representa um problema clássico na área de <strong>risco de crédito.</strong>
 	  <br><br>
       A inadimplência em operações de crédito representa um dos principais riscos enfrentados pelas instituições financeiras, com impactos diretos na rentabilidade, necessidade de capital regulatório e estabilidade do sistema financeiro como um todo. No contexto dos cartões de crédito, modalidade caracterizada pela ausência de garantias reais e pela concessão baseada principalmente na análise do perfil do cliente, a compreensão dos fatores que influenciam o comportamento de pagamento torna-se ainda mais crítica.
     </P>
@@ -63,8 +63,8 @@
     <h3>Objetivos da análise</h3>
 	  <div class="divider-line"></div>
       <p>
-	      Nosso objetivo é fazer uma <strong>análise exploratória de dados inicial</strong> baseada unicamente em modelos estatísticos para alcançar um primeiro entendimento dos dados do dataset.
-	      Dessa forma, <strong>ainda</strong> não entraremos na área de <em>Machine Learning</em> em si. Especificamente, busco responder às seguintes questões de pesquisa:
+	      Meu objetivo aqui é fazer uma <strong>análise exploratória de dados inicial</strong> baseada unicamente em modelos estatísticos para alcançar um primeiro entendimento dos dados do dataset.
+	      Dessa forma, <strong>ainda</strong> não entrarei na área de <em>Machine Learning</em> para previsão mais otimizada em si. Especificamente, busco responder às seguintes questões de pesquisa:
 	      <br><br>
 	      <strong>Questão principal:</strong> quais características demográficas, financeiras e comportamentais estão mais fortemente associadas à probabilidade de inadimplência em cartões de crédito?
 	      <br><br>
@@ -80,39 +80,24 @@
 	  <h3>Metodologia</h3>
 	  <div class="divider-line"></div>
 	  <p>
-	    Para fazer a extração, limpeza e preparação dos dados optei por usar <strong>Linguagem R</strong> a partir do Positron (nova IDE de R da Posit baseado no VIsual Studio Code).
-	    A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
+	    A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, 
+      são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
 	    <br><br>
-      <strong>Obs.:</strong> para acessar as definições de cada uma das 25 variáveis do dataset, acesse o link fornecido acima.
+      Para fazer a manipulação dos dados optei por usar <strong>Linguagem R</strong> devido à sua ampla gama de pacotes para análise estatística. Além disso, o R oferece sintaxe clara e recursos que facilitam o entendimento dos resultados.
+      Para visualização gráfica utilizei a bblioteca <strong><a href="https://shiny.posit.co/">RShiny</a></strong> pois permite explorar os dados de forma dinâmica e intuitiva.
     </p>
 
     <h3>Execução</h3>
     <div class="divider-line"></div>
     <p>
-      Abaixo estão os códigos utilizados para a análise exploratória de dados (EDA) do dataset. O código está organizado em blocos, cada um com uma função específica, desde a importação dos dados até a visualização dos resultados.
+      Optei por não incluir todo o código aqui, para não deixar a análise desnecessariamente extensa. 
+      A definição de cada variável bem como outras informações que podem ser importantes para verificar a consistência da análise podem ser encontradas neste <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">link</a>.
+      As bibliotecas utilizadas e o código completo estão disponíveis no repositório do projeto no GitHub, que pode ser acessado neste <strong>link.</strong>
+      <br><br>
+      Abaixo estão os códigos utilizados para a análise exploratória de dados (EDA) do dataset. O código está organizado em blocos, cada um com uma função específica.
     </p>
     <pre><code class="language-r">
-# Recodificando os níveis dos fatores para torná-los descritivos
-credit_card_df <- credit_card_df %>%
-  mutate(
-    SEX = recode_factor(SEX, `1` = "Male", `2` = "Female"),
-    EDUCATION = recode_factor(EDUCATION,
-                              `0` = "Unknown",
-                              `1` = "Graduate School",
-                              `2` = "University",
-                              `3` = "High School",
-                              `4` = "Others",
-                              `5` = "Unknown",
-                              `6` = "Unknown"),
-    MARRIAGE = recode_factor(MARRIAGE, `0` = "Other", `1` = "Married", `2` = "Single", `3` = "Other"),
-    # Renomeia a variável alvo para maior clareza
-    default.payment.next.month = recode_factor(default.payment.next.month, `0` = "No", `1` = "Yes")
-  ) %>%
-  # Renomeia a variável alvo
-  rename(DEFAULT = default.payment.next.month)
 
-# Verificando as colunas modificadas para ver os novos rótulos e suas contagens
-summary(credit_card_df[c("SEX", "EDUCATION", "MARRIAGE", "DEFAULT")])
     </code></pre>
 
 	 
