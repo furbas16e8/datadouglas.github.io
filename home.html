@@ -7,14 +7,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/hero.css" />
-	<link rel="stylesheet" href="assets/css/projects.css" />
-	<link rel="stylesheet" href="assets/css/research.css" />
+	<link rel="stylesheet" href="assets/css/home.css" />
+	<link rel="stylesheet" href="assets/css/mobile.css" />
 </head>
 
 <body>
 	<header>
 		<nav>
-			<a href="index.html" class="active">Início</a>
+			<a href="home.html" class="active">Início</a>
 			<a href="projects.html">Projetos</a>
 			<a href="reasearch.html">Research</a>
 			<a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
@@ -55,12 +55,12 @@
   <!------------------------------------------------------------------>
   
 	<main class="main-content" id="projects">
-		<section class="home-projects">
-		<h2 class="projects-title">Projetos</h2>
-			<div class="project-cards">
+		<section class="home-project">
+		<h2 class="home-project-title">Projetos</h2>
+			<div class="home-project-card-grid">
 			
 				<!-- Projeto 1 -->
-				<div class="project-card">
+				<div class="home-project-card">
 					<a href="projects/kaggle/analise-inadimplencia.html" class="project-card-link">
 						<img src="assets/img/projects/img_p1.jpeg" alt="Análise de Inadimplência" />
 						<h3>Análise de Inadimplência</h3>
@@ -68,16 +68,17 @@
 						Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito.
 						A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.
 						</p>
-						<div class="project-tags">
-							<span class="tag">#R</span>
-							<span class="tag">#Python</span>
-							<span class="tag">#Machine Learning</span>
+						<div class="home-project-tags">
+							<span class="tag">#eda</span>
+							<span class="tag">#stats</span>
+							<span class="tag">#r</span>
+							<span class="tag">#rshiny</span>
 						</div>
 					</a>
 				</div>
 			
 				 <!-- Projeto 2 -->
-				<div class="project-card">
+				<div class="home-project-card">
 					<a href="projects.html#previsao-inflacao" class="project-card-link">
 						<img src="assets/img/projects/img_p2.jpeg" alt="Previsão da Inflação" />
 						<h3>Previsão da Inflação</h3>
@@ -85,7 +86,7 @@
 						A previsão da inflação com técnicas de *machine learning* utiliza algoritmos avançados para identificar padrões complexos em dados econômicos, permitindo estimativas mais precisas e dinâmicas das variações de preços.
 						Essa abordagem supera métodos tradicionais ao incorporar múltiplas variáveis e adaptar-se a mudanças estruturais na economia.
 						</p>
-						<div class="project-tags">
+						<div class="home-project-tags">
 							<span class="tag">#R</span>
 							<span class="tag">#Python</span>
 							<span class="tag">#Machine Learning</span>
@@ -94,7 +95,7 @@
 				</div>
 
 				<!-- Projeto 3 -->
-				<div class="project-card">
+				<div class="home-project-card">
 					<a href="projects.html#curva-phillips" class="project-card-link">
 						<img src="assets/img/projects/img_p3.jpeg" alt="Curva de Phillips" />
 						<h3>Curva de Phillips</h3>
@@ -102,7 +103,7 @@
 						A modelagem da Curva de Phillips em R permite analisar a relação entre inflação e desemprego por meio de regressões e modelos dinâmicos.
 						Utilizando pacotes como `tidyverse` e `dynlm`, é possível estimar e visualizar essa relação com flexibilidade e precisão.
 						</p>
-						<div class="project-tags">
+						<div class="home-project-tags">
 							<span class="tag">#R</span>
 							<span class="tag">#Python</span>
 							<span class="tag">#Machine Learning</span>

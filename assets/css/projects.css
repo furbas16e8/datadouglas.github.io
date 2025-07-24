@@ -1,9 +1,11 @@
-/* ——— Seção de Projetos ——— */
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* ==== Página com lista em cards de todos os projetos ===== */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––-––-–––*/
 
-.home-projects {
+.projects {
   display: block;
   margin-top: 0.1rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -11,7 +13,6 @@
   box-sizing: border-box;
 }
 
-/* ======== AJUSTE EXCLUSIVO PARA projects.html ======== */
 body.projects-list-page .projects-title {
   margin-top: 1rem;     /* ajuste o valor como preferir */
   margin-bottom: 1.5rem;/* ajuste o valor como preferir */
@@ -81,6 +82,15 @@ body.projects-list-page .project-content {
   text-decoration: none;
 }
 
+.project-tags .tag {
+  display: inline-block;
+  background-color: #e0f7fa;
+  color: #007b8a;
+  padding: 0.25rem 0.6rem;
+  margin: 0 0.3rem 0.3rem 0;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+}
 
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 /*   			 EXCLUSIVO PARA PÁGINAS DE PROJETOS ÚNICOS                     */
@@ -97,32 +107,12 @@ body.projects-list-page .project-content {
   box-sizing: border-box;
 }
 
-/* 2) Certifique‑se de que não há typos nos seletores: */
 .single-project-header .projects-title {
   text-align: center;
   margin: 0;             /* zera margens extras do h1 */
 }
 
-
-.single-project-tags {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0rem;
-  text-align: center;
-}
-
-.single-project-tags .tag {
-  position: relative;
-  z-index: 1;
-  display: inline-block;            /* garante bloco ajustável */
-  background-color: #e0f7fa;        /* azul claro de fundo */
-  color: #007b8a;                   /* texto em azul escuro para contraste */
-  padding: 0.25rem 0.6rem;          /* espaço interno */
-  margin: 0 0.3rem 0.3rem 0;        /* espaçamento entre tags */
-  font-size: 0.8rem;               /* mantém legível */
-  border-radius: 0.3rem;           /* cantos arredondados */
-}
-
+/*-- Linha divisória abaixo do título, centralizada no wrapper --*/
 .single-project-header .divider-line {
   display: block;            /* garante que margin auto funcione */
   width: 100%;                /* ou uma largura fixa menor que a do wrapper */
@@ -142,122 +132,15 @@ body.projects-list-page .project-content {
   margin-bottom: -1rem;
 }
 
-
-
-/* ======== AJUSTE EXCLUSIVO PARA index.html ======== */
-.projects-title {
-  font-size: var(--font-size-h1-main);
-  color: var(--color-text);
-  text-align: left;
-  max-width: 1000px;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: -1rem;
-  margin-right: auto;
-  padding: 0 1rem;
-  text-decoration: none;
-}
-
-.project-card p {
-  font-size: 0.95rem;             /* igual ao padrão do site */
-  line-height: 1.6;               /* mais legível */
-  color: #444;                    /* cor usada em projects.html */
-  margin: 0.5rem 0;               /* adiciona espaço agradável */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-}
-
-/* Container dos cards: força 3 colunas lado a lado */
-.project-cards {
-  display: grid;                       		/* ativa grid */
-  grid-template-columns: repeat(3, 1fr); 	/* exatamente 3 colunas iguais */
-  gap: 1rem;                         		/* espaçamento entre cards */
-  max-width: 1000px;                   		/* largura máxima para 3 cards de 300px */
-  margin: 0 auto;                      		/* centraliza o grid */
-}
-
-/* Grid responsivo dos cards */
-.project-card {
-  background-color: var(--color-card-bg);
-  padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  text-align: left;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
-
-  width: 300px;    /* fixo */
-  height: 350px;   /* fixo */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-/* Card individual */
-.project-card {
-  background-color: var(--color-card-bg);
-  padding: 0.1em;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  text-align: left;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.project-card h3 {
-  margin-top: 0.5rem;
-  margin-bottom: -2em;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
-  color: var(--color-text);
-}
-
-.project-card p {
-  margin-top: 2.6rem;
-  margin-bottom: -0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  width: auto;
-  height: 6rem;
-  position: relative;
-  color: var(--color-text);
-}
-
-.project-card p::after {
-  content: "";
-  position: absolute;
-  bottom: 0;               /* na base do parágrafo */
-  left: 0;
-  width: 100%;
-  height: 1.5rem;          /* altura do degradê */
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0), /* transparente no topo */
-    var(--color-card-bg)    /* cor sólida do card na base */
-  );
-}
-
-.project-tags {
-  margin-top: 1rem;
+/*-- Edita o conjunto de tags --*/
+.single-project-tags {
+  margin-top:0.5rem;
   margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
   padding: 0rem;
+  text-align: center;
 }
-
-.project-tags .tag {
+/*-- Edita Tags individuais --*/
+.single-project-tags .tag {
   position: relative;
   z-index: 1;
   display: inline-block;            /* garante bloco ajustável */
@@ -265,81 +148,9 @@ body.projects-list-page .project-content {
   color: #007b8a;                   /* texto em azul escuro para contraste */
   padding: 0.25rem 0.6rem;          /* espaço interno */
   margin: 0 0.3rem 0.3rem 0;        /* espaçamento entre tags */
-  font-size: 0.7rem;               /* mantém legível */
+  font-size: 0.8rem;               /* mantém legível */
   border-radius: 0.3rem;           /* cantos arredondados */
 }
 
-.project-card a {
-  color: var(--color-card-link);
-  font-weight: 600;
-  text-decoration: none;
-}
 
-.project-card a:hover {
-  text-decoration: none;
-}
-
-.project-card img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;	
-}
-
-.project-card-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Garante que texto interno fique com aparência de parágrafo normal */
-.project-card-link p {
-  color: #444;             /* mesmo tom da lista em projects.html */
-  font-weight: 400;        /* remove negrito herdado de links */
-  text-decoration: none;
-}
-
-/* Impede sublinhado azul ao passar o mouse */
-.project-card-link h3:hover,
-.project-card-link p:hover {
-  text-decoration: none;
-}
-
-.project-card-link .project-card {
-  height: 100%;
-  cursor: pointer;
-}
-
-.project-card-full-link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-
-
-
-
-
-/* ---- VERSÃO MOBILE ---- */
-/* TODO: carrossel horizontal no mobile para projetos */
-@media (max-width: 768px) {
-  .project-cards {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .project-cards::-webkit-scrollbar {
-    display: none; /* esconde barra de rolagem */
-  }
-  .project-card {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    margin-right: var(--spacing-base);
-  }
-}
 

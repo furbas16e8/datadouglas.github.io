@@ -1,17 +1,20 @@
 <!-- Final projects.html with images in cards -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projetos • Douglas Furbino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/projects.css" />
-  <style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+    <style>
+
     /* Cards em coluna única com imagem à esquerda */
-    .home-projects .project-list { list-style: none; padding: 0; margin: 0; }
-    .home-projects .project-item {
+    .projects .project-list { list-style: none; padding: 0; margin: 0; }
+    .projects .project-item {
       display: flex;
       align-items: flex-start;
       background: #fff;
@@ -20,31 +23,35 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
-    .home-projects .project-item img {
+    .projects .project-item img {
       width: 120px;
       height: auto;
       margin-right: 1.5rem;
       border-radius: 4px;
       flex-shrink: 0;
     }
-    .home-projects .project-item h3 {
+    .projects .project-item h3 {
       margin-top: 0;
       font-size: 1.25rem;
     }
-    .home-projects .project-item p {
+    .projects .project-item p {
       margin: 0.5rem 0;
       line-height: 1.6;
     }
-    .home-projects .project-item .project-link {
+    .projects .project-item .project-link {
       font-weight: 600;
       text-decoration: none;
     }
+
   </style>
+
 </head>
+
+
 <body class="projects-list-page">
   <header>
     <nav>
-      <a href="index.html">Início</a>
+      <a href="home.html">Início</a>
       <a href="projects.html" class="active">Projetos</a>
       <a href="research.html">Research</a>
       <a href="assets/cv/curriculo-06-2025.pdf" target="_blank" rel="noopener">Currículo</a>
@@ -53,20 +60,27 @@
 
   <main>
     <h1 class="projects-title">Projetos</h1>
-    <section class="home-projects" id="projects-list">
+    <section class="projects" id="projects-list">
       <ul class="project-list">
         <!-- Projeto 1 -->
-		<a href="projects/kaggle/analise-inadimplencia.html" class="project-link">
+		    <a href="projects/kaggle/analise-inadimplencia.html" class="project-link">
           <li class="project-item">
             <img src="assets/img/projects/img_p1.jpeg" alt="Análise de inadimplência" />
             <div class="project-content">
-              <h3>Análise de inadimplência</h3>
-              <p>
-			     Análise Exploratória de Dados (EDA) baseado no dataset do Kaggle sobre inadimplência em cartões de crédito.
-			     A análise contempla limpeza dos dados, visualizações e um modelo preditivo de classificação.
-			  </p>
+              <h3>Análise Exploratória: Inadimplência em Cartões de Crédito</h3>
+              <p class="project-excerpt">
+			          Análise Exploratória de Dados (EDA) baseado no dataset <strong>Default Credit Card Clients</strong>. 
+			          Dividida em quatro partes: limpeza e processamento de dados; análise descritiva; modelagem estatística e visualização dos resultados.
+			        </p>
+    					<div class="project-tags">
+							  <span class="tag">#eda</span>
+                <span class="tag">#stats</span>
+							  <span class="tag">#r</span>
+							  <span class="tag">#rshiny</span>
+                <span class="tag">#kaggle</span>
+						  </div>
             </div>
-		  </li>
+		      </li>
         </a>
         <!-- Projeto 2 -->
         <li class="project-item">
@@ -92,4 +106,5 @@
 
 
 </body>
+
 </html>

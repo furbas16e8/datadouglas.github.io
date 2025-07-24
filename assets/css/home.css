@@ -1,0 +1,165 @@
+/* Seção de projetos da home */
+.home-project {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.home-project-title {
+  font-size: 2.5rem;
+  color: var(--color-text);
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+  text-decoration: none;
+}
+
+.home-project-card-grid {
+  max-width: 1200px;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card individual */
+.home-project-card {
+  background-color: var(--color-card-bg);
+  padding: 0;
+  width: 100%;
+  max-width: 300px;
+  max-height: 420px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: left; /* alinhamento à esquerda */
+  margin: 0;
+}
+
+.home-project-card h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+
+.home-project-card a {
+  color: var(--color-card-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-project-card a:hover {
+  text-decoration: underline;
+}
+
+.home-project-card p {
+  margin-top: 2.6rem;
+  margin-bottom: -0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  width: auto;
+  height: 6rem;
+  position: relative;
+  color: #444;                    /* cor usada em projects.html */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.home-project-card p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;               /* na base do parágrafo */
+  left: 0;
+  width: 100%;
+  height: 1.5rem;          /* altura do degradê */
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0), /* transparente no topo */
+    var(--color-card-bg)    /* cor sólida do card na base */
+  );
+}
+
+.home-project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.home-project-tags .tag {
+  display: inline-block;
+  background-color: #e0f7fa;
+  color: #007b8a;
+  padding: 0.25rem 0.6rem;
+  margin: 0 0.3rem 0.3rem 0;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+}
+
+.home-project-card h3 {
+  margin-top: 0.5rem;
+  margin-bottom: -2em;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+.home-project-card a {
+  color: var(--color-card-link);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-project-card a:hover {
+  text-decoration: none;
+}
+
+.home-project-card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;	
+  margin: 0rem;
+}
+
+.home-project-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Garante que texto interno fique com aparência de parágrafo normal */
+.home-project-card-link p {
+  color: #444;             /* mesmo tom da lista em projects.html */
+  font-weight: 400;        /* remove negrito herdado de links */
+  text-decoration: none;
+}
+
+/* Impede sublinhado azul ao passar o mouse */
+.home-project-card-link h3:hover,
+.home-project-card-link p:hover {
+  text-decoration: none;
+}
+
+.home-project-card-link .project-card {
+  height: 100%;
+  cursor: pointer;
+}
+
+.home-project-card-full-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}

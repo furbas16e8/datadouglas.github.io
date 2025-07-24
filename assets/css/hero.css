@@ -1,4 +1,6 @@
-/* ===== Hero container: posiciona e recorta o canvas ===== */
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* ===== Hero container: posiciona e recorta o canvas ====== */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––-––-–––*/
 #hero-bg {
   position: relative;       /* contexto p/ o canvas absoluto */
   overflow: hidden;         /* esconde tudo que sair dos limites */
@@ -18,8 +20,6 @@
   z-index: 0;
 }
 
-
-
 /* ===== Canvas de partículas: cobre 100% do #hero-bg ===== */
 #hero-bg canvas {
   position: absolute !important;
@@ -30,13 +30,11 @@
   z-index: 0;
 }
 
-
 /* ===== Conteúdo da hero acima do canvas ===== */
 #hero-bg > * {
   position: relative;
   z-index: 2;
 }
-
 
 /* ===== Estilos da seção hero (conteúdo) ===== */
 .hero {
@@ -48,7 +46,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 
 /* ===== Nome ===== */
 .hero__name {
@@ -71,3 +68,45 @@
   box-sizing: border-box;
   z-index: 1;
 }
+
+/* Bloco de ícones exclusivo para a seção hero */
+.hero-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+  margin: 0.5rem 0;
+}
+
+.hero-icon-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.8px solid var(--color-card-bg);
+  background-color: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.hero-icon-circle img {
+  width: 1.6rem;
+  height: 1.6rem;
+  object-fit: contain;
+  filter: invert(0);
+  transition: filter 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito de hover: inverte cores de background e borda, e inverte o ícone */
+.hero-icon-circle:hover {
+  background-color: var(--color-card-bg);
+
+}
+
+.hero-icon-circle:hover img {
+  filter: invert(1);
+}
+
+
