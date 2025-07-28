@@ -19,8 +19,8 @@
 .home-project-card-grid {
   max-width: 1200px;
   display: grid;
-  gap: 0.5rem;
-  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -31,12 +31,14 @@
   background-color: var(--color-card-bg);
   padding: 0;
   width: 100%;
-  max-width: 300px;
+  height: 100%;
+  /* Removido max-width para respeitar o grid */
   max-height: 420px;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   text-align: left; /* alinhamento à esquerda */
   margin: 0;
+  overflow: hidden;
 }
 
 .home-project-card h3 {
@@ -68,6 +70,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  /* Compatibilidade com navegadores modernos */
+  display: box;
+  box-orient: vertical;
+  line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
@@ -124,11 +130,10 @@
 
 .home-project-card img {
   width: 100%;
-  max-width: 300px;
-  height: auto;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;	
-  margin: 0rem;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
 }
 
 .home-project-card-link {
