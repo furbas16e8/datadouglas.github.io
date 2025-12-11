@@ -1,58 +1,116 @@
 /*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/* ====== Página dedicada a design para versão mobile ====== */
+/* ====== Estilos Mobile First / Responsividade ====== */
 /*––––––––––––––––––––––––––––––––––––––––––––––––––––-––-–––*/
 
-/* TODO: carrossel horizontal no mobile para projetos */
 @media (max-width: 768px) {
-  .project-cards {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .project-cards::-webkit-scrollbar {
-    display: none; /* esconde barra de rolagem */
-  }
-  .project-card {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    margin-right: var(--spacing-base);
-  }
-}
 
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/*=============== CONTROLES PARA VERSÃO MOBILE ==============*/
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-@media (max-width: 600px) {
+  /* --- Global --- */
   html {
-    font-size: 87.5%;     /* 14px no mobile */	
-  }
-  main {
-    margin: 2em 1.5em;    /* aumenta a margem horizontal */
+    font-size: 90%;
+    /* Leve redução geral */
   }
 
-  .hero__desc {
-    font-size: 0.95rem;
-    line-height: 1.5;
+  main {
     padding: 0 1rem;
+    margin: 1rem auto;
+  }
+
+  /* --- Header & Nav --- */
+  header {
+    padding: 0 1rem;
+    height: auto;
+    min-height: 4em;
+    justify-content: center;
+    /* Centraliza no mobile */
+  }
+
+  nav {
+    flex-wrap: wrap;
+    /* Permite quebrar linha se tiver muitos items */
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  /* --- Hero Section --- */
+  #hero-bg {
+    padding: 3rem 1rem;
   }
 
   .hero__name {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+    /* Menor para caber na tela */
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
   }
 
-  .hero-icon-circle {
-    border: 1.4px solid var(--color-card-bg);
-    width: 2.5rem;
-    height: 2.5rem;
+  .hero__desc {
+    font-size: 1rem;
+    padding: 0;
+    max-width: 100%;
   }
-  
-  .hero-icon-circle img {
-    width: 1.6rem;
-    height: 1.6rem;
-    object-fit: contain;
-    filter: invert(0);
-    transition: filter 0.3s ease, color 0.3s ease;
-  }  
-  
+
+  /* Ícones: Restaurar visibilidade e tamanho */
+  .hero-icon-circle {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #1a1a1a !important;
+    /* FORÇA preto */
+  }
+
+  /* --- Home Projects Grid --- */
+  .home-project-card-grid {
+    grid-template-columns: 1fr;
+    /* Coluna única */
+    gap: 1.5rem;
+  }
+
+  .home-project-card img {
+    height: 180px;
+    /* Um pouco menor */
+  }
+
+  .home-project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* --- Projects Page List --- */
+  /* Já tratado no projects.css, mas garantindo */
+  .projects .project-item {
+    flex-direction: column;
+  }
+
+  .project-item img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Footer --- */
+  footer {
+    padding: 2rem 1rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  /* Telas muito pequenas */
+  .hero__name {
+    font-size: 2rem;
+  }
+
+  .hero-social {
+    gap: 1rem;
+  }
+
+  nav {
+    gap: 0.8rem;
+  }
 }
