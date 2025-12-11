@@ -1,170 +1,142 @@
 /* Seção de projetos da home */
 .home-project {
-  margin-top: 2em;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
 .home-project-title {
-  font-size: 2.5rem;
-  color: var(--color-text);
+  font-size: 2rem;
+  color: #1a1a1a;
   text-align: left;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 2rem auto;
+  max-width: 1200px;
   padding: 0 1rem;
-  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Linha decorativa abaixo do título */
+.home-project-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-linked);
+  margin-top: 0.5rem;
+  border-radius: 2px;
 }
 
 .home-project-card-grid {
   max-width: 1200px;
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  /* Espaço maior entre cards */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-/* Card individual */
+/* Card individual - Design Profissional */
 .home-project-card {
-  background-color: var(--color-card-bg);
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  /* Removido max-width para respeitar o grid */
-  max-height: 420px;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  text-align: left; /* alinhamento à esquerda */
-  margin: 0;
-  overflow: hidden;
-}
-
-.home-project-card h3 {
-  margin-bottom: 0.5em;
-  font-size: 1.2rem;
-}
-
-.home-project-card a {
-  color: var(--color-card-link);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.home-project-card a:hover {
-  text-decoration: underline;
-}
-
-.home-project-card p {
-  margin-top: 2.6rem;
-  margin-bottom: -0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  width: auto;
-  height: 6rem;
-  position: relative;
-  color: #444;                    /* cor usada em projects.html */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  /* Compatibilidade com navegadores modernos */
-  display: box;
-  box-orient: vertical;
-  line-clamp: 3;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* Borda muito sutil */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  /* Sombra inicial quase invisível */
   text-align: left;
-}
-
-.home-project-card p::after {
-  content: "";
-  position: absolute;
-  bottom: 0;               /* na base do parágrafo */
-  left: 0;
-  width: 100%;
-  height: 1.5rem;          /* altura do degradê */
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0), /* transparente no topo */
-    var(--color-card-bg)    /* cor sólida do card na base */
-  );
-}
-
-.home-project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.home-project-tags .tag {
-  display: inline-block;
-  background-color: #e0f7fa;
-  color: #007b8a;
-  padding: 0.25rem 0.6rem;
-  margin: 0 0.3rem 0.3rem 0;
-  font-size: 0.8rem;
-  border-radius: 0.3rem;
-}
-
-.home-project-card h3 {
-  margin-top: 0.5rem;
-  margin-bottom: -2em;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
-  color: var(--color-text);
-}
-
-.home-project-card a {
-  color: var(--color-card-link);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.home-project-card a:hover {
-  text-decoration: none;
-}
-
-.home-project-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-  margin: 0;
-}
-
-.home-project-card-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Garante que texto interno fique com aparência de parágrafo normal */
-.home-project-card-link p {
-  color: #444;             /* mesmo tom da lista em projects.html */
-  font-weight: 400;        /* remove negrito herdado de links */
-  text-decoration: none;
-}
-
-/* Impede sublinhado azul ao passar o mouse */
-.home-project-card-link h3:hover,
-.home-project-card-link p:hover {
-  text-decoration: none;
-}
-
-.home-project-card-link .project-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
-  cursor: pointer;
+  /* Garante altura uniforme */
 }
 
-.home-project-card-full-link {
+/* Efeito Hover: Levantar suavemente */
+.home-project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  /* Sombra difusa elegante */
+}
+
+/* Link que envolve todo o card ou título */
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+/* Imagem do Card */
+.home-project-card img {
   width: 100%;
-  text-decoration: none;
-  color: inherit;
+  height: 200px;
+  /* Altura fixa para imagem */
+  object-fit: cover;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: filter 0.3s;
+}
+
+.home-project-card:hover img {
+  filter: brightness(1.02);
+}
+
+/* Corpo do Card */
+.home-project-card h3 {
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.home-project-card p {
+  margin: 0.5rem 1.5rem 1.5rem 1.5rem;
+  /* Margens generosas */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  flex-grow: 1;
+  /* Empurra tags para baixo */
+
+  /* Limite de linhas limpo sem gradiente brega */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tags Container */
+.home-project-tags {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  margin-top: auto;
+  /* Cola no fundo */
+}
+
+/* Estilo das Tags - Pill Design */
+.home-project-tags .tag {
+  display: inline-block;
+  background-color: transparent;
+  color: #0077b5;
+  /* Linked color blue */
+  border: 1px solid rgba(0, 119, 181, 0.3);
+  padding: 0.2rem 0.8rem;
+  margin: 0 0.4rem 0.4rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 99px;
+  /* Pill shape */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.home-project-card:hover .tag {
+  background-color: #f0f7ff;
+  border-color: #0077b5;
 }

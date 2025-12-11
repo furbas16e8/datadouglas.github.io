@@ -4,8 +4,9 @@
 
 .projects {
   display: block;
-  margin-top: 0.1rem;
-  max-width: 1200px;
+  margin-top: 2rem;
+  max-width: 1000px;
+  /* Largura um pouco menor para leitura */
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -13,145 +14,152 @@
   box-sizing: border-box;
 }
 
-
-body.projects-list-page .projects-title {
-  margin-top: 1rem;     /* ajuste o valor como preferir */
-  margin-bottom: 1.5rem;/* ajuste o valor como preferir */
-  margin-left: 4.3rem;
-  text-decoration: none;
+.projects-title {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 4px solid var(--color-linked);
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }
 
-body.projects-list-page .project-item {
-  align-items: stretch;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-body.projects-list-page .project-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
-}
-
-body.projects-list-page .project-item img {
-  margin-top: -1.5rem;
-  margin-bottom: -1.5rem;
-  margin-left: -1.5rem;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px 0 0 8px;
-  width: auto;
-  max-height: 300px;
-  text-decoration: none;
-}
-
-body.projects-list-page .project-content {
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card Individual - Mesma Estética da Home (Clean/White/Shadow) */
+.project-item {
+  display: flex;
+  flex-direction: row;
+  /* Mantém horizontal para lista */
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 240px;
+}
+
+/* Hover Effect */
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  /* Sombra difusa igual home */
+}
+
+/* Imagem à Esquerda */
+.project-item img {
+  width: 320px;
+  /* Largura fixa para consistência */
+  height: auto;
+  object-fit: cover;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  /* Separação sutil */
+  transition: filter 0.3s;
+}
+
+.project-item:hover img {
+  filter: brightness(1.02);
+}
+
+/* Conteúdo à Direita */
+.project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
   justify-content: space-between;
-  text-decoration: none;
 }
 
-.project-link h3,
-.project-link p {
-  text-decoration: none;
-  color: var(--color-text);
+/* Títulos */
+.project-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
-.project-link:hover h3,
-.project-link:hover p {
-  text-decoration: none;
+/* Texto */
+.project-item p {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
 }
 
-
-.project-item-link {
+/* Link Wrapper */
+.project-link {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-.project-item-link .project-item {
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.project-item-link .project-item:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-.project-link {
-  color: #4e95e6;
-  text-decoration: none;
+/* Tags - Estilo Pill Igual Home */
+.project-tags {
+  margin-top: auto;
 }
 
 .project-tags .tag {
   display: inline-block;
-  background-color: #e0f7fa;
-  color: #007b8a;
-  padding: 0.25rem 0.6rem;
-  margin: 0 0.3rem 0.3rem 0;
-  font-size: 0.8rem;
-  border-radius: 0.3rem;
+  background-color: transparent;
+  color: #0077b5;
+  border: 1px solid rgba(0, 119, 181, 0.3);
+  padding: 0.2rem 0.8rem;
+  margin: 0 0.4rem 0.4rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 99px;
+  /* Pill */
+  text-transform: uppercase;
+  transition: all 0.2s;
 }
 
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
-/*   			 EXCLUSIVO PARA PÁGINAS DE PROJETOS ÚNICOS                     */
-/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.project-item:hover .tag {
+  background-color: #f0f7ff;
+  border-color: #0077b5;
+}
 
-/* 1) Wrapper que alinha título+tags à esquerda do container */
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .project-item {
+    flex-direction: column;
+  }
+
+  .project-item img {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+/*–––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
+/* Estilos Específicos para Páginas de Projetos Únicos (Header) */
+/*––––––––––––––––––––––––––––––––––––––––––––––––––––-––-–––*/
 .single-project-header {
-  max-width: 1000px;     /* mesma largura máxima do seu container principal */
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1rem;       /* garante 1rem de padding nas laterais */
-  box-sizing: border-box;
-}
-
-.single-project-header .projects-title {
-  text-align: center;
-  margin: 0;             /* zera margens extras do h1 */
-}
-
-/*-- Linha divisória abaixo do título, centralizada no wrapper --*/
-.single-project-header .divider-line {
-  display: block;            /* garante que margin auto funcione */
-  width: 100%;                /* ou uma largura fixa menor que a do wrapper */
-  max-width: 1200px;         /* para não extrapolar em telas maiores */
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.2);
-  margin: 0 auto;         /* auto nas laterais */
-}
-
-/* DATA exibida abaixo da divider-line e acima das tags */
-.single-project-header .project-date {
-  font-size: 0.9rem;               /* leve e discreto */
-  color: rgba(0, 0, 0, 0.6);       /* tom um pouco mais claro que o texto principal */
-  text-align: center;                /* alinha à esquerda dentro do wrapper */
-  font-style: italic;              /* opcional, dá um toque elegante */
-  margin-top: 0.5rem;
-  margin-bottom: -1rem;
-}
-
-/*-- Edita o conjunto de tags --*/
-.single-project-tags {
-  margin-top:0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0rem;
+  max-width: 800px;
+  margin: 2rem auto;
   text-align: center;
 }
-/*-- Edita Tags individuais --*/
+
 .single-project-tags .tag {
-  position: relative;
-  z-index: 1;
-  display: inline-block;            /* garante bloco ajustável */
-  background-color: #e0f7fa;        /* azul claro de fundo */
-  color: #007b8a;                   /* texto em azul escuro para contraste */
-  padding: 0.25rem 0.6rem;          /* espaço interno */
-  margin: 0 0.3rem 0.3rem 0;        /* espaçamento entre tags */
-  font-size: 0.8rem;               /* mantém legível */
-  border-radius: 0.3rem;           /* cantos arredondados */
+  /* Mesmo estilo pill */
+  display: inline-block;
+  background-color: transparent;
+  color: #0077b5;
+  border: 1px solid rgba(0, 119, 181, 0.3);
+  padding: 0.2rem 0.8rem;
+  margin: 0.2rem;
+  font-size: 0.75rem;
+  border-radius: 99px;
+  text-transform: uppercase;
 }
-
-
-
