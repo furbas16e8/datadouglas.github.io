@@ -1,58 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Limpeza e pré-processamento de dados - Inadimplência em Cartões de Crédito • Douglas Furbino</title>
+  <title>Análise de Inadimplência | Douglas Furbino</title>
 
-  <!-- Fonte e estilos principais -->
-  <link rel="stylesheet" href="../../assets/css/typography.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/hero.css" />
-  <link rel="stylesheet" href="../../assets/css/projects.css" />
-  <link rel="stylesheet" href="../../assets/css/research.css" />
-  <link rel="stylesheet" href="../../assets/css/index.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Devicon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+  <!-- New unified styles -->
+  <link rel="stylesheet" href="../../assets/css/new-style.css" />
 
-  <!-- Prismjs -->
+  <!-- Prismjs (syntax highlighting) -->
   <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
-  <!-- customização -->
-  <link rel="stylesheet" href="../../assets/css/prism.css">
-  <!-- Prism core + componente de linguagem -->
   <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
-  <!-- Carrega as linguagens que quiser destacar -->
   <script src="https://unpkg.com/prismjs@1.29.0/components/prism-r.min.js"></script>
 
 </head>
 
 <body>
-  <!-- Cabeçalho / Navegação -->
-  <header>
-    <nav>
-      <a href="../../index.html">Início</a>
-      <a href="../../projects.html" class="active">Projetos</a>
-      <a href="../../research.html">Research</a>
-      <a href="../../docs/cv/currículo_geral_2025-08.pdf" target="_blank" rel="noopener">Currículo</a>
-    </nav>
-  </header>
 
+  <div class="page-wrapper">
+    <!-- Sidebar for Table of Contents -->
+    <aside class="toc-sidebar">
+      <nav class="toc">
+        <div class="toc-title">Índice</div>
+        <ul class="toc-list">
+          <li><a href="#objetivos">Objetivos da análise</a></li>
+          <li><a href="#metodologia">Metodologia</a></li>
+          <li><a href="#execucao">Execução</a></li>
+          <li class="toc-h4"><a href="#limpeza">1. Limpeza e pré-processamento</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-  <!-- Conteúdo principal -->
-<main class="main-content">
-  <div class="single-project-header">
-    <h1 class="projects-title">Limpeza e pré-processamento de dados:<br> Inadimplência em Cartões de Crédito</h1>
-    <div class="divider-line"></div>
-    <div class="single-project-tags">
-      <span class="tag">#eda</span>
-      <span class="tag">#r</span>
-      <span class="tag">#rshiny</span>
-      <span class="tag">#kaggle</span>
-    </div>
-  </div>
-  
-  <div class="page-text-content">
+    <!-- Conteúdo principal -->
+    <main class="page-content">
+      <a href="../../new-index.html" class="back-link">← Voltar à página inicial</a>
+      
+      <header class="page-header">
+        <h1 class="page-title">Limpeza e pré-processamento de dados:<br>Inadimplência em Cartões de Crédito</h1>
+
+        <div class="page-tags">
+          <span class="tag">#eda</span>
+          <span class="tag">#r</span>
+          <span class="tag">#rshiny</span>
+          <span class="tag">#kaggle</span>
+        </div>
+      </header>
+   
+      <div class="page-text-content">
      
     <p>
       A inadimplência em operações de crédito representa um dos principais riscos enfrentados pelas instituições financeiras, com impactos diretos na rentabilidade, necessidade de capital regulatório e estabilidade do sistema financeiro como um todo.
@@ -62,8 +64,7 @@
 	    O dataset reúne informações de clientes de bancos em Taiwan no ano de 2005, constituído de 30.000 observações e 25 variáveis, representa um problema clássico na área de <strong>risco de crédito.</strong>
     </P>
    
-    <h3>Objetivos da análise</h3>
-	  <div class="divider-line"></div>
+    <h3 id="objetivos">Objetivos da análise</h3>
       <p>
 	      Meu objetivo aqui é fazer uma <strong>análise exploratória de dados inicial</strong> baseada unicamente em modelos estatísticos para alcançar um primeiro entendimento dos dados do dataset.
 	      Dessa forma, <strong>ainda</strong> não entrarei na área de <em>Machine Learning</em> para previsão mais otimizada em si. Especificamente, busco responder às seguintes questões de pesquisa:
@@ -79,8 +80,7 @@
 	      </ol>
 	    </p>
 	  
-	  <h3>Metodologia</h3>
-	  <div class="divider-line"></div>
+	  <h3 id="metodologia">Metodologia</h3>
 	  <p>
 	    A limpeza e o pré-processamento de dados, incluindo a harmonização de categorias não documentadas ou inconsistentes, 
       são etapas que podem consumir uma porção significativa do tempo de um projeto, mas são essenciais para a validade e robustez dos modelos subsequentes (James et al., 2021).
@@ -89,8 +89,7 @@
       Para visualização gráfica utilizei a biblioteca <strong><a href="https://shiny.posit.co/">RShiny</a></strong> pois permite explorar os dados de forma dinâmica e intuitiva.
     </p>
 
-    <h3>Execução</h3>
-    <div class="divider-line"></div>
+    <h3 id="execucao">Execução</h3>
     <p>
       Optei por não incluir todo o código aqui, para não deixar a análise desnecessariamente extensa. 
       A definição de cada variável bem como outras informações que podem ser importantes para verificar a consistência da análise podem ser encontradas neste <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">link</a>.
@@ -109,8 +108,7 @@
       Abaixo estão os detalhes de cada etapa, com o código necessário para reproduzir a análise.
     </p>
 
-    <h4>1. Limpeza e pré-processamento</h4>
-    <div class="divider-line"></div>
+    <h4 id="limpeza">1. Limpeza e pré-processamento</h4>
     <p>
       Para realizar uma inspeção inicial dos dados:
     </p>
@@ -324,5 +322,9 @@ if (nrow(duplicated_rows) > 0) {
 
 
   </div>
+  </main>
+  </div> <!-- close page-wrapper -->
+
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>

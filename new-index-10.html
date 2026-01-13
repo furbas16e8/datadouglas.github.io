@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Douglas Furbino - Behavioral Portfolio v10">
+    <title>Douglas Furbino | v10 Dashboard</title>
+    
+    <!-- Google Fonts: Urbanist -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Devicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/new-index-10.css">
+</head>
+<body>
+
+    <!-- Static Wide Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="avatar-container">
+                <img src="assets/img/perfil.jpg" alt="Douglas Furbino" onerror="this.src='https://ui-avatars.com/api/?name=DF&background=1e293b&color=cbd5e1&size=96&rounded=true'">
+            </div>
+            <h2 class="sidebar-name">Douglas Furbino</h2>
+            <span class="sidebar-role">Data Scientist</span>
+        </div>
+
+        <nav class="nav-menu">
+            <button class="nav-btn active" data-view="dashboard">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-btn" data-view="projects">
+                <ion-icon name="folder-open-outline"></ion-icon>
+                <span>Projetos</span>
+            </button>
+            <button class="nav-btn" data-view="research">
+                <ion-icon name="flask-outline"></ion-icon>
+                <span>Pesquisas</span>
+            </button>
+            <button class="nav-btn" data-view="about">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Sobre</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="https://github.com/furbas16e8" target="_blank" class="social-link" title="GitHub">
+                <i class="devicon-github-original"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dfurbino" target="_blank" class="social-link" title="LinkedIn">
+                <i class="devicon-linkedin-plain"></i>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-viewport">
+        
+        <header class="top-bar">
+            <div class="header-left">
+                <h1>Dashboard</h1>
+                <p>Visão sistêmica da minha performance e hábitos.</p>
+            </div>
+            <div class="system-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">System Live</span>
+            </div>
+        </header>
+
+        <!-- VIEW 1: DASHBOARD v10 (Asymmetrical Grid) -->
+        <section id="view-dashboard" class="spa-view active">
+            <div class="bento-grid">
+                
+                <!-- COL 1: Main Stats (Left Wide) -->
+                <div class="grid-col-main">
+                    
+                    <!-- Row 1: Hero Glass -->
+                    <div class="card hero-glass">
+                        <div class="hero-content">
+                            <h2>Olá, Douglas!</h2>
+                            <p>Bem-vindo de volta ao seu laboratório pessoal.</p>
+                        </div>
+                        <div class="hero-kpi-group">
+                            <div class="kpi-micro">
+                                <span class="kpi-val">$24.5k</span>
+                                <span class="kpi-lbl">Estudos (ROI)</span>
+                            </div>
+                            <div class="kpi-micro">
+                                <span class="kpi-val">85%</span>
+                                <span class="kpi-lbl">Foco Semanal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Stories Carousel (Big Chart) -->
+                    <div class="card stories-card">
+                        <div class="card-header-floating">
+                            <h3 id="story-title">Análise em Tempo Real</h3>
+                            <div class="stories-nav">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-container">
+                            <div class="slide active" id="slide-0">
+                                <div class="slide-chart-bg">
+                                    <canvas id="chartStory1"></canvas>
+                                </div>
+                                <div class="slide-overlay">
+                                    <h4>Sono vs. Produtividade</h4>
+                                    <span class="badge">Correlação Alta</span>
+                                </div>
+                            </div>
+                            
+                            <div class="slide" id="slide-1">
+                                <div class="slide-chart-bg">
+                                    <canvas id="chartStory2"></canvas>
+                                </div>
+                                <div class="slide-overlay">
+                                    <h4>Humor vs. Commits</h4>
+                                    <span class="badge">Impacto Positivo</span>
+                                </div>
+                            </div>
+
+                            <div class="slide" id="slide-2">
+                                <div class="slide-chart-bg">
+                                    <canvas id="chartStory3"></canvas>
+                                </div>
+                                <div class="slide-overlay">
+                                    <h4>Forecast de Foco</h4>
+                                    <span class="badge">Probabilidade 88%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COL 2: Side Stats (Right Narrow) -->
+                <div class="grid-col-side">
+                    
+                    <!-- Monthly Heatmap (Compact) -->
+                    <div class="card heatmap-card">
+                        <div class="card-header">
+                            <h3>Consistência (30d)</h3>
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </div>
+                        <div class="heatmap-monthly" id="heatmap-grid">
+                            <!-- JS injected 30 days grid -->
+                        </div>
+                        <div class="heatmap-stat">
+                            <span class="big-num">89%</span>
+                            <span class="sub-txt">Dias Ativos</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Radar Skills -->
+                    <div class="card radar-card">
+                        <div class="card-header">
+                            <h3>Domínios</h3>
+                        </div>
+                        <div class="chart-container-radar">
+                            <canvas id="domainsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Nudges / Habits List -->
+                    <div class="card habits-card">
+                        <div class="card-header">
+                            <h3>Nudges Ativos</h3>
+                            <div class="add-btn"><ion-icon name="add"></ion-icon></div>
+                        </div>
+                        <div class="habits-list" id="dashboard-habits">
+                            <!-- JS Injected -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- (Other Views preserved...) -->
+        <section id="view-projects" class="spa-view">
+            <div class="projects-grid" id="projects-container"></div>
+        </section>
+
+        <section id="view-research" class="spa-view">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div id="timeline-content"></div>
+            </div>
+        </section>
+
+        <section id="view-about" class="spa-view">
+            <div class="story-container">
+                <article class="story-content">
+                    <h1 class="story-title">A Ciência da Decisão</h1>
+                    <p class="lead">Douglas Furbino - Data Scientist.</p>
+                    <!-- Content preserved in JS/HTML logic -->
+                    <div class="skills-block">
+                        <h3>Stack</h3>
+                        <div class="tags-cloud"><span>Python</span> <span>SQL</span> <span>ML</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+    <script src="assets/js/main-10.js"></script>
+</body>
+</html>

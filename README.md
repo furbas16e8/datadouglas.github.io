@@ -1,1 +1,0 @@
-<p align="center"><span style="font-size: 2em;">🔧 Ajustando os hiperparâmetros do portfólio...</span></p>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Douglas Furbino - Behavioral Portfolio v11">
+    <title>Douglas Furbino | v11 Dashboard</title>
+    
+    <!-- Google Fonts: Urbanist -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Devicon & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/new-index-11.css">
+</head>
+<body>
+
+    <!-- Sidebar Wide -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="avatar-container">
+                <img src="assets/img/perfil.jpg" alt="DF" onerror="this.src='https://ui-avatars.com/api/?name=DF&background=1e293b&color=cbd5e1&size=96&rounded=true'">
+            </div>
+            <h2 class="sidebar-name">Douglas Furbino</h2>
+            <span class="sidebar-role">Data Scientist</span>
+        </div>
+
+        <nav class="nav-menu">
+            <button class="nav-btn active" data-view="dashboard">
+                <ion-icon name="grid-outline"></ion-icon> <span>Dashboard</span>
+            </button>
+            <button class="nav-btn" data-view="projects">
+                <ion-icon name="folder-open-outline"></ion-icon> <span>Projetos</span>
+            </button>
+            <button class="nav-btn" data-view="research">
+                <ion-icon name="flask-outline"></ion-icon> <span>Pesquisas</span>
+            </button>
+            <button class="nav-btn" data-view="about">
+                <ion-icon name="person-outline"></ion-icon> <span>Sobre</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#" class="social-link"><i class="devicon-github-original"></i></a>
+            <a href="#" class="social-link"><i class="devicon-linkedin-plain"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-viewport">
+        
+        <!-- ROW 1: EQUAL HEIGHT HERO + CHART -->
+        <div class="row-top">
+            
+            <!-- Card 1: Hero (Text + Bio) -->
+            <div class="card hero-card">
+                <div class="hero-inner">
+                    <h1 class="hero-title">Douglas Furbino</h1>
+                    <span class="hero-subtitle">Behavioral Data Scientist</span>
+                    <p class="hero-desc">
+                        Transformando dados brutos em inteligência comportamental. Especialista em unir Machine Learning com Economia Comportamental.
+                    </p>
+                    <button class="hero-btn">
+                        <ion-icon name="document-text-outline"></ion-icon> Ver Currículo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2: Analysis Carousel (Same Height) -->
+            <div class="card analysis-card">
+                <div class="card-header-float">
+                    <h3 id="analysis-title">Forecast de Produtividade</h3>
+                    <div class="tag-live"> <div class="pulse-dot"></div> Live Model v2.1</div>
+                </div>
+                
+                <div class="analysis-carousel" id="analysis-carousel-container">
+                    <!-- Slides injected by JS -->
+                </div>
+                
+                <div class="analysis-nav">
+                    <!-- Dots injected by JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ROW 2: STORIES + COMPACT GRID -->
+        <div class="row-bottom">
+            
+            <!-- COL 1: Project Stories (Vertical 9:16) -->
+            <div class="card project-story-card">
+                <div class="story-carousel" id="project-carousel">
+                    <!-- Project Slides -->
+                </div>
+                <div class="story-overlay">
+                    <div class="story-progress-bar">
+                        <div class="progress-fill" id="story-progress"></div>
+                    </div>
+                    <h3 id="story-project-title">Project Name</h3>
+                    <p id="story-project-desc">Short description of the project goes here.</p>
+                </div>
+            </div>
+
+            <!-- COL 2: Stats Grid -->
+            <div class="stats-grid">
+                
+                <!-- Heatmap (Top Wide) -->
+                <div class="card heatmap-card">
+                    <div class="card-header-sm">
+                        <span>Consistência (30d)</span>
+                        <ion-icon name="calendar"></ion-icon>
+                    </div>
+                    <div class="heatmap-grid" id="heatmap-grid-sm"></div>
+                    <div class="heatmap-meta">
+                        <strong>89%</strong> <span class="text-mute">Active Days</span>
+                    </div>
+                </div>
+
+                <!-- Radar (Bottom Left) -->
+                <div class="card radar-card">
+                    <div class="chart-box">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Habits (Bottom Right) -->
+                <div class="card habits-card">
+                    <div class="card-header-sm">Nudges</div>
+                    <div class="habits-list-sm" id="habits-list"></div>
+                </div>
+                
+            </div>
+        </div>
+
+    </main>
+
+    <script src="assets/js/main-11.js"></script>
+</body>
+</html>
