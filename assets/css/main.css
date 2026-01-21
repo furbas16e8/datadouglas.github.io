@@ -1,0 +1,181 @@
+/* 
+ * main.css - Personal Site Douglas Furbino
+ * Sistema de temas com CSS Variables
+ */
+
+/* ============================================
+   TOKENS DE CORES - TEMA LIGHT (padrão)
+   ============================================ */
+:root {
+  /* Primary */
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --primary-light: #d1fae5;
+  
+  /* Background */
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --code-bg: #1e293b;
+  
+  /* Borders */
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  
+  /* Text */
+  --text-main: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.03);
+  
+  /* Header Glassmorphism */
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-blur: blur(12px);
+  
+  /* Specific */
+  --linkedin-blue: #0a66c2;
+  --github-dark: #24292e;
+}
+
+/* ============================================
+   TOKENS DE CORES - TEMA DARK
+   ============================================ */
+:root.dark {
+  /* Primary - verde neon */
+  --primary: #00ff80;
+  --primary-hover: #00cc66;
+  --primary-light: rgba(0, 255, 128, 0.1);
+  
+  /* Background */
+  --bg: #121212;
+  --surface: #1a1a1e;
+  --code-bg: #0d0d0d;
+  
+  /* Borders */
+  --border: #2e2e32;
+  --border-hover: #404044;
+  
+  /* Text */
+  --text-main: #f1f5f9;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Shadows - mais sutis no dark */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
+  /* Header Glassmorphism */
+  --header-bg: rgba(18, 18, 18, 0.7);
+  --header-blur: blur(12px);
+}
+
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+body {
+  min-height: max(884px, 100dvh);
+  background-color: var(--bg);
+  color: var(--text-main);
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+
+/* No Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mask Fade */
+.mask-fade-right {
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary-light);
+  color: var(--primary-hover);
+}
+
+/* ============================================
+   COMPONENTES
+   ============================================ */
+
+/* Header Glassmorphism */
+.header-glass {
+  background: var(--header-bg);
+  backdrop-filter: var(--header-blur);
+  -webkit-backdrop-filter: var(--header-blur);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cards */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Neon Shadows (Dark Mode Only) */
+:root.dark .shadow-neon-primary {
+  box-shadow: 0 0 5px var(--primary), 0 0 20px rgba(0, 255, 128, 0.2);
+}
+
+:root.dark .shadow-neon-blue {
+  box-shadow: 0 0 5px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+:root.dark .shadow-neon-purple {
+  box-shadow: 0 0 5px #8b5cf6, 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+:root.dark .shadow-neon-green {
+  box-shadow: 0 0 5px #22c55e, 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+/* Activity Grid - opacidades pré-definidas estáveis */
+.activity-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 2px;
+  background-color: var(--primary);
+}
+
+.activity-dot-10 { opacity: 0.1; }
+.activity-dot-20 { opacity: 0.2; }
+.activity-dot-30 { opacity: 0.3; }
+.activity-dot-40 { opacity: 0.4; }
+.activity-dot-50 { opacity: 0.5; }
+.activity-dot-60 { opacity: 0.6; }
+.activity-dot-70 { opacity: 0.7; }
+.activity-dot-80 { opacity: 0.8; }
+.activity-dot-90 { opacity: 0.9; }
+
+/* Code Block Styling */
+.code-block {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* ============================================
+   TRANSIÇÕES DE TEMA
+   ============================================ */
+body,
+.card,
+.header-glass {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

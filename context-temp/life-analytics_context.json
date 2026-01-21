@@ -1,0 +1,388 @@
+{
+  "project_name": "life-analytics",
+  "exported_at": "2026-01-21T09:08:16.462609",
+  "sessions": [
+    {
+      "id": 79,
+      "session_title": "Documentacao de Resultados do Clustering e Planejamento da Analise Temporal",
+      "date": "2026-01-20T14:19:22.26222+00:00",
+      "detailed_context": "Interpretamos os 5 clusters: Cluster 0 (Dia Normal - equilibrado), Cluster 1 (Doomscrolling - shorts alto), Cluster 2 (Modo Musica), Cluster 3 (Modo Pesquisador - search_google alto), Cluster 4 (Maratona YouTube - shorts + normal). Realizamos brainstorm estruturado para definir roadmap de analise temporal em 4 fases.",
+      "decisions": [
+        {
+          "decision": "Foco em Analise Temporal Interpretavel (Tier 1)",
+          "reasoning": "Melhor entender profundamente os padroes antes de aplicar modelos preditivos mais complexos"
+        },
+        {
+          "decision": "Manter Granularidade Diaria",
+          "reasoning": "Preservar a riqueza dos dados sem perder nuances de curto prazo"
+        },
+        {
+          "decision": "Priorizar Interpretabilidade sobre Performance",
+          "reasoning": "Objetivo e autoconhecimento e meta-analise, nao previsao black-box"
+        },
+        {
+          "decision": "Adiar Enriquecimento de Dados",
+          "reasoning": "Manter o proximo notebook simples, adicionar complexidade depois"
+        }
+      ],
+      "problems": [],
+      "context_summary": "Recuperamos o contexto da sessao anterior via context-temp. Analisamos os resultados do clustering K-Means (K=5) com features refinadas, identificando 5 perfis comportamentais distintos. Criamos documentacao completa dos resultados e planejamos a proxima fase de analise temporal.",
+      "tags": [
+        "clustering",
+        "analise-temporal",
+        "kmeans",
+        "documentacao",
+        "planejamento",
+        "google-colab"
+      ]
+    },
+    {
+      "id": 78,
+      "session_title": "Implementação de Clustering (K-Means) e Refinamento de Features",
+      "date": "2026-01-20T03:16:33.561095+00:00",
+      "detailed_context": "Detalhamento: 1. EDA mostrou 0.4% de gaps, confirmando alta consistência. 2. Notebook 02 implementou K-Means básico com K=4 (escolhido via Elbow Method). 3. Feedback do usuário indicou necessidade de distinguir tipos de vídeo (Shorts/Música/Normal). 4. Notebook 03 criado com lógica de pivotamento (unstack) por content_type e nova normalização. O próximo passo é rodar esse notebook para obter clusters mais granulares.",
+      "decisions": [
+        {
+          "decision": "Estratégia de Gaps - Opção B",
+          "reasoning": "Manter dias com zero atividade (reindexando o calendário completo) para capturar padrões de Detox Digital ou ausência, em vez de filtrar apenas dias ativos."
+        },
+        {
+          "decision": "Split de Features YouTube",
+          "reasoning": "O clustering inicial misturou comportamentos distintos. Decidimos separar vol_yt em shorts, music e normal para diferenciar Doomscrolling de Ouvir Música."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Clusters Genéricos",
+          "solution": "Identificamos que agrupar todo consumo do YouTube numa única variável mascarava nuances. A solução foi o Feature Engineering avançado no Notebook 03."
+        }
+      ],
+      "context_summary": "Iniciamos a análise exploratória (EDA) identificando gaps nos dados. Decidimos manter os dias vazios como informação relevante (reindexação). Criamos o notebook 02 para o primeiro K-Means (K=4), mas o resultado foi genérico. Avançamos para o Notebook 03, separando o consumo do YouTube em Shorts, Música e Vídeos Normais para um clustering mais preciso na próxima sessão.",
+      "tags": [
+        "clustering",
+        "kmeans",
+        "feature-engineering",
+        "data-analysis",
+        "google-colab",
+        "pagination"
+      ]
+    },
+    {
+      "id": 75,
+      "session_title": "Preparação de Dados e Início do Clustering Temporal no Colab",
+      "date": "2026-01-19T14:34:46.766905+00:00",
+      "detailed_context": null,
+      "decisions": [
+        {
+          "decision": "Unificação de Dados de Busca",
+          "reasoning": "Decidimos carregar e unificar search_google_merged.csv e search_yt_merged.csv em um único dataframe distinguido pela coluna source."
+        },
+        {
+          "decision": "Setup no Google Colab",
+          "reasoning": "Utilizar o ambiente interativo do Colab para análise exploratória e modelagem."
+        },
+        {
+          "decision": "Snapshots de Progresso",
+          "reasoning": "Salvamos versões do guia (v1_setup, v2_eda) na pasta notebooks para documentar o histórico."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Omissão de Arquivo de Busca",
+          "solution": "O guia inicial não contemplava o search_yt_merged.csv. Atualizamos o código para incluir e diferenciar as duas fontes de busca."
+        }
+      ],
+      "context_summary": "Iniciamos a implementação do plano de Clustering Temporal. Criamos um guia interativo para execução no Google Colab, cobrindo setup, EDA inicial e Feature Engineering.",
+      "tags": [
+        "clustering",
+        "data-analysis",
+        "google-colab",
+        "feature-engineering",
+        "eda"
+      ]
+    },
+    {
+      "id": 74,
+      "session_title": "Ajuste de Fuso Horário (UTC -> Brasília) nos Extratores",
+      "date": "2026-01-19T13:56:55.253261+00:00",
+      "detailed_context": "Os arquivos search.json e youtube.json do Google Takeout utilizam UTC. Foi implementada conversão fixa para UTC-3 (Brasília) antes da geração dos CSVs intermediários.",
+      "decisions": [
+        {
+          "decision": "Conversão Hardcoded para UTC-3",
+          "reasoning": "Garantir horário de Brasília padrão de forma simples e direta."
+        },
+        {
+          "decision": "Re-execução Completa da Pipeline",
+          "reasoning": "Propagar a correção de horário para todos os arquivos processados e refinados."
+        }
+      ],
+      "problems": [],
+      "context_summary": "Ajuste de timestamps nos scripts de extração inicial (01_*) de UTC para UTC-3. Re-execução completa da pipeline de dados (01-06) para propagar a consistência temporal.",
+      "tags": [
+        "etl",
+        "timezone",
+        "python",
+        "data-processing",
+        "youtube-data"
+      ]
+    },
+    {
+      "id": 73,
+      "session_title": "Fusão e Padronização de Dados de Pesquisa (Google e YouTube)",
+      "date": "2026-01-19T13:29:06.43195+00:00",
+      "detailed_context": "Ajustamos o fluxo de dados para extrair em intermediate e processar em processed. Implementamos lógica de deduplicação baseada em data, hora e query. Padronizamos as colunas de saída para incluir day_of_week e seguir a ordem específica solicitada.",
+      "decisions": [
+        {
+          "decision": "Fluxo Intermediate -> Processed",
+          "reasoning": "Alteramos o 01_search_extractor.py para salvar em data/intermediate para que o 02_search_merge.py pudesse processar esses arquivos brutos e gerar os arquivos finais limpos em data/processed."
+        },
+        {
+          "decision": "Lógica de Deduplicação",
+          "reasoning": "Utilizamos [date, time, query] como chave única para identificar e remover duplicatas exatas durante a fusão."
+        },
+        {
+          "decision": "Padronização de Colunas",
+          "reasoning": "Definimos a estrutura date, year, month, day, time, day_of_week, query em ambos os scripts para manter consistência com os outros datasets do projeto (YouTube Watch History)."
+        },
+        {
+          "decision": "Remoção de Coluna Profile",
+          "reasoning": "A pedido do usuário, removemos a identificação de perfil no merge final para criar um dataset unificado agnóstico de fonte."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Comando head no Windows",
+          "solution": "Utilizamos a ferramenta view_file para inspecionar o cabeçalho e as primeiras linhas dos arquivos CSV gerados."
+        }
+      ],
+      "context_summary": "Nesta sessão, focamos na extração e fusão de dados de histórico de pesquisa do Google e YouTube. Ajustamos o extrator original para salvar em um diretório intermediário e criamos um novo script de merge que consolida os dados de diferentes perfis, remove duplicatas e padroniza as colunas conforme o modelo dos extratores de visualização.",
+      "tags": [
+        "etl",
+        "pandas",
+        "data-cleaning",
+        "search-history",
+        "python"
+      ]
+    },
+    {
+      "id": 72,
+      "session_title": "Brainstorm de Modelos de Machine Learning para Clustering Temporal",
+      "date": "2026-01-19T12:40:32.313876+00:00",
+      "detailed_context": "Sessao de brainstorming para definir abordagem de Machine Learning. Usuario quer identificar padroes de consumo de midia digital usando clustering. Dados disponiveis: YouTube watch history (143k registros) e Google searches (28k registros). Definimos granularidades (dia, semana, hora), features separadas por fonte, e fluxo de trabalho com EDA antes de Feature Engineering.",
+      "decisions": [
+        {
+          "decision": "Foco em Clustering Temporal (K-Means + DBSCAN)",
+          "reasoning": "Usuario quer visualizar padroes naturais de consumo sem hipoteses pre-definidas"
+        },
+        {
+          "decision": "Features separadas para YouTube e Search",
+          "reasoning": "Manter riqueza de informacao, distinguir tipos de atividade"
+        },
+        {
+          "decision": "Horas medias separadas por fonte",
+          "reasoning": "Comportamento de pesquisa pode diferir de consumo de video"
+        },
+        {
+          "decision": "Dias sem atividade preenchidos com zeros",
+          "reasoning": "Preservar continuidade temporal, dias inativos sao informacao valida"
+        },
+        {
+          "decision": "Manter features correlacionadas, deixar PCA lidar",
+          "reasoning": "Simplicidade no pre-processamento"
+        },
+        {
+          "decision": "EDA antes de Feature Engineering",
+          "reasoning": "Validar qualidade dos dados brutos antes de agregar"
+        },
+        {
+          "decision": "Normalizacao decidida apos EDA",
+          "reasoning": "Identificar outliers e distribuicoes antes de escolher metodo"
+        }
+      ],
+      "problems": [],
+      "context_summary": "Realizamos um brainstorm estruturado sobre modelos de ML para analise dos dados de YouTube e Google Search. Decidimos focar em clustering temporal com K-Means e DBSCAN. Definimos schema de 19 features diarias e pipeline completo EDA -> Feature Engineering -> Clustering. Plano documentado em notebooks/clustering_temporal_plan.md.",
+      "tags": [
+        "machine-learning",
+        "clustering",
+        "temporal-analysis",
+        "eda",
+        "k-means",
+        "brainstorm",
+        "data-science"
+      ]
+    },
+    {
+      "id": 71,
+      "session_title": "Refinamento da detecção de música no YouTube e correção de Regex VEVO",
+      "date": "2026-01-19T03:53:47.799035+00:00",
+      "detailed_context": null,
+      "decisions": [
+        {
+          "decision": "Ajuste de Regex VEVO",
+          "reasoning": "O padrão \\bvevo\\b exigia um espaço antes de vevo. Alterado para vevo\\b."
+        },
+        {
+          "decision": "Expansão de Escopo para Títulos",
+          "reasoning": "A busca agora verifica channel e, se falhar, verifica title."
+        },
+        {
+          "decision": "Novos Padrões de Detecção",
+          "reasoning": "Adicionados termos como (Lyrics), (Audio) e [Music Video]."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Baixa detecção de canais VEVO",
+          "solution": "Correção de Regex (removed start boundary)"
+        },
+        {
+          "problem": "Vídeos oficiais não marcados como música",
+          "solution": "Inclusão da verificação no campo title"
+        }
+      ],
+      "context_summary": "Realizamos um debug profundo no script 04_yt_music_refinement.py para entender por que vídeos de música (especialmente VEVO) não estavam sendo detectados. Identificamos falhas no Regex e no escopo de busca. Implementamos correções que aumentaram significativamente a detecção de músicas.",
+      "tags": [
+        "python",
+        "regex",
+        "youtube",
+        "data-cleaning",
+        "debugging",
+        "etl"
+      ]
+    },
+    {
+      "id": 70,
+      "session_title": "Padronização de diretórios e refatoração de relatórios nos extratores do YouTube",
+      "date": "2026-01-19T02:03:57.648407+00:00",
+      "detailed_context": null,
+      "decisions": [
+        {
+          "decision": "Padronização de Caminhos (Pathlib)",
+          "reasoning": "Garantir que os scripts funcionem em qualquer ambiente, ancorando caminhos relativos ao arquivo do script (__file__) e definindo constantes claras (PROJECT_ROOT, INPUT_DIR, OUTPUT_DIR, REPORT_DIR)."
+        },
+        {
+          "decision": "Formato Simplificado de Relatórios",
+          "reasoning": "O usuário solicitou relatórios mais limpos, sem emojis e com tabelas diretas comparando os totais de categorias (Normal, Música, Shorts) antes e depois do processamento."
+        },
+        {
+          "decision": "Cálculo de Estatísticas via Pandas",
+          "reasoning": "Substituímos contadores manuais dentro de loops por operações vetoriais do Pandas (sum(), filtros) para calcular estatísticas de Antes e Depois, simplificando o código e evitando erros de escopo."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "NameError: name stats is not defined",
+          "solution": "Havia código residual tentando incrementar um dicionário stats dentro de um loop no script 02, mas esse dicionário havia sido removido na refatoração. O código obsoleto foi removido."
+        },
+        {
+          "problem": "SyntaxError: unterminated string literal",
+          "solution": "Corrigido erro de digitação raw'' no script 01."
+        }
+      ],
+      "context_summary": "Trabalhamos na padronização da estrutura de diretórios e saída de arquivos para os scripts de extração e processamento de dados do YouTube (01 a 06). Implementamos um padrão robusto usando pathlib para garantir portabilidade e simplificamos os relatórios Markdown gerados, adotando um formato tabular limpo para comparação de estatísticas antes/depois.",
+      "tags": [
+        "python",
+        "pandas",
+        "refactoring",
+        "data-engineering",
+        "etl",
+        "youtube"
+      ]
+    },
+    {
+      "id": 69,
+      "session_title": "Implementacao das correcoes do Debug Report dos Extratores Refinados",
+      "date": "2026-01-18T23:55:54.1987+00:00",
+      "detailed_context": "Pipeline de 6 scripts para extracao e classificacao de videos do YouTube. Correcoes aplicadas: virgulas faltantes em TIER_3_PATTERNS, is_short=False quando is_music=True, compatibilidade bool/string, range corrigido no burst detection, log de timestamps invalidos, ordenacao explicita em todos scripts, regex lookahead/lookbehind para acentos.",
+      "decisions": [
+        {
+          "decision": "Manter data de lancamento do Shorts em 07/06/2021",
+          "reasoning": "Usuario confirmou que esta eh a data correta de lancamento no Brasil"
+        },
+        {
+          "decision": "Usar booleanos nativos Python em vez de strings True/False",
+          "reasoning": "Mais eficiente, menos propenso a erros de comparacao"
+        },
+        {
+          "decision": "Adicionar ordenacao explicita ao final de cada script 01-05",
+          "reasoning": "Garantir que CSVs intermediarios estejam sempre ordenados"
+        },
+        {
+          "decision": "Aceitar limitacao de colisao de titulos apos limpeza",
+          "reasoning": "Baixo impacto pratico pois deduplicacao usa date+time+url"
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Erro de sintaxe em TIER_3_PATTERNS (virgulas faltantes)",
+          "solution": "Adicionadas virgulas entre os 3 ultimos padroes regex"
+        },
+        {
+          "problem": "Classificacao nao-exclusiva de flags (is_music e is_short simultaneamente)",
+          "solution": "Adicionado is_short=False explicito quando is_music=True em Scripts 04 e 05"
+        },
+        {
+          "problem": "Contagem duplicada do video atual no burst detection",
+          "solution": "Alterado range de range(i,-1,-1) para range(i-1,-1,-1) e adicionado count+=1 explicito"
+        }
+      ],
+      "context_summary": "Implementamos as correcoes identificadas no relatorio de debug para o pipeline de extratores refinados do YouTube. Foram corrigidos 2 problemas criticos (sintaxe e data do Shorts), 4 problemas de alta prioridade (exclusividade de flags, booleanos nativos, contagem duplicada de burst) e 3 melhorias de media prioridade (logging, ordenacao, regex para acentos). Os scripts 04, 05 e 06 foram executados com sucesso apos as correcoes.",
+      "tags": [
+        "youtube-analytics",
+        "data-cleaning",
+        "bug-fix",
+        "shorts-detection",
+        "music-detection",
+        "etl-pipeline"
+      ]
+    },
+    {
+      "id": 68,
+      "session_title": "Refinamento de filtros de detecção de música e Shorts com padrões de canal, keywords e burst detection",
+      "date": "2026-01-18T20:46:59.407264+00:00",
+      "detailed_context": "",
+      "decisions": [
+        {
+          "decision": "Criar script 04 separado ao invés de modificar script 01",
+          "reasoning": "Manter script 01 intocado por segurança, permitindo rollback fácil e comparação de resultados"
+        },
+        {
+          "decision": "Sistema hierárquico de 3 tiers para detecção de música",
+          "reasoning": "Tier 1 (99% confiança - VEVO/Topic), Tier 2 (95% - MC/DJ/Records), Tier 3 (80-90% - gêneros) permite balancear precisão vs recall"
+        },
+        {
+          "decision": "Usar word boundary para MC, DJ e keywords",
+          "reasoning": "Evitar falsos positivos como McDonalds detectado como MC ou education como edit"
+        },
+        {
+          "decision": "Threshold dinâmico no burst detection (5 normal, 3 se Short anterior)",
+          "reasoning": "Shorts tendem a aparecer em sequências; contexto de Short anterior indica maior probabilidade"
+        },
+        {
+          "decision": "Música quebra sequência de burst mas não é contada",
+          "reasoning": "Evitar falsos positivos em playlists musicais onde usuário ouve múltiplas músicas curtas seguidas"
+        },
+        {
+          "decision": "Buscar keywords em título OU canal (lógica OR)",
+          "reasoning": "Canais especializados em Shorts (ex: Cortes do Podcast) são indicadores fortes mesmo sem keywords no título"
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Script 05 estava marcando Shorts por burst sem verificar data de lançamento (2021-07-21)",
+          "solution": "Adicionada verificação INALTERÁVEL if video_date >= SHORTS_LAUNCH_DATE antes de aplicar threshold. Validação confirmou 0 Shorts antes da data correta."
+        }
+      ],
+      "context_summary": "Refinamos os scripts de análise do YouTube implementando três melhorias principais: (1) Script 04 para detectar música usando padrões de canal em hierarquia de 3 tiers (VEVO, Topic, MC, DJ, gêneros musicais), resultando em +4.604 músicas identificadas; (2) Script 02 refinado com keywords/phrases em 2 tiers para detectar Shorts baseado em palavras comuns (POV, viral, meme, react, etc.), adicionando +1.825 Shorts; (3) Script 05 para detecção de Shorts por burst (padrão temporal de visualizações concentradas) com threshold dinâmico, identificando +9.231 Shorts adicionais. Corrigimos bug crítico no filtro de data do script 05 que estava ignorando a verificação de lançamento do Shorts (2021-07-21). Total final: 143.556 vídeos (46,37% Shorts, 32,32% Música, 21,70% Normal).",
+      "tags": [
+        "python",
+        "youtube-analytics",
+        "data-cleaning",
+        "pattern-matching",
+        "burst-detection",
+        "etl",
+        "text-processing"
+      ]
+    }
+  ]
+}
