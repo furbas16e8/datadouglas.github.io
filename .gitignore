@@ -1,5 +1,7 @@
 # Dependências - ficam apenas na máquina de desenvolvimento
 node_modules/
+debug/
+.agent/
 
 # Arquivos temporários de build
 src/bundle-source.jsx
