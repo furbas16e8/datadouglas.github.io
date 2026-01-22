@@ -5,16 +5,33 @@
 
 const MobileProfile = ({ isDarkMode }) => (
   <section 
-    className="lg:hidden p-4 border-b sm:rounded-lg sm:border sm:mb-0"
+    className={[
+      // Visibilidade
+      "lg:hidden",
+      // Espaçamento
+      "p-4",
+      // Borda
+      "border-b sm:rounded-lg sm:border sm:mb-0"
+    ].join(" ")}
     style={{ 
       backgroundColor: isDarkMode ? 'rgba(26,26,30,0.5)' : 'var(--surface)',
       borderColor: 'var(--border)'
     }}
   >
     <div className="flex items-start gap-4">
+      {/* Avatar */}
       <div className="relative group cursor-pointer">
         <div 
-          className="size-16 rounded-full bg-cover bg-center border-2"
+          className={[
+            // Dimensões
+            "size-16",
+            // Forma
+            "rounded-full",
+            // Background
+            "bg-cover bg-center",
+            // Borda
+            "border-2"
+          ].join(" ")}
           role="img"
           aria-label="Foto de perfil de Douglas Furbino"
           style={{ 
@@ -23,9 +40,19 @@ const MobileProfile = ({ isDarkMode }) => (
           }}
         ></div>
       </div>
+      
+      {/* Info */}
       <div className="flex-1 min-w-0">
-        <h2 className="text-xl font-bold leading-tight truncate" style={{ color: 'var(--text-main)' }}>Douglas Furbino</h2>
-        <p className="text-xs font-body mt-1" style={{ color: 'var(--text-secondary)' }}>
+        <h2 
+          className="text-xl font-bold leading-tight truncate" 
+          style={{ color: 'var(--text-main)' }}
+        >
+          Douglas Furbino
+        </h2>
+        <p 
+          className="text-xs font-body mt-1" 
+          style={{ color: 'var(--text-secondary)' }}
+        >
           Machine Learning Engineer passionate about turning complex data into actionable insights.
         </p>
       </div>

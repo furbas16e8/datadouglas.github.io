@@ -5,27 +5,63 @@
 
 const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, attachment }) => (
   <article 
-    className="p-5 border-b sm:border sm:rounded-lg hover:border-[var(--border-hover)] transition-colors"
+    className={[
+      // Espaçamento
+      "p-5",
+      // Borda
+      "border-b sm:border sm:rounded-lg",
+      // Interação
+      "hover:border-[var(--border-hover)] transition-colors"
+    ].join(" ")}
     style={{ 
       backgroundColor: 'var(--surface)',
       borderColor: 'var(--border)'
     }}
   >
+    {/* Header do Post */}
     <div className="flex justify-between items-start mb-2">
       <h4 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>{title}</h4>
-      <button style={{ color: 'var(--text-muted)' }} className="hover:text-[var(--text-main)]" aria-label="Mais opções">
+      <button 
+        style={{ color: 'var(--text-muted)' }} 
+        className="hover:text-[var(--text-main)]" 
+        aria-label="Mais opções"
+      >
         <span className="material-symbols-outlined">more_horiz</span>
       </button>
     </div>
+    
+    {/* Metadata */}
     <div className="flex items-center gap-2 mb-4 text-xs">
       <span style={{ color: 'var(--text-muted)' }}>{time}</span>
       <span style={{ color: 'var(--border)' }}>•</span>
-      <span className="cursor-pointer hover:underline font-medium" style={{ color: 'var(--primary)' }}>{category}</span>
+      <span 
+        className="cursor-pointer hover:underline font-medium" 
+        style={{ color: 'var(--primary)' }}
+      >
+        {category}
+      </span>
     </div>
+    
+    {/* Conteúdo */}
     <div className="mb-4">
-      <p className="text-sm font-body leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+      <p 
+        className="text-sm font-body leading-relaxed" 
+        style={{ color: 'var(--text-secondary)' }}
+      >
         {content}
-        <button className="inline-flex items-center gap-0.5 font-medium text-xs ml-1 transition-colors hover:underline" style={{ color: 'var(--primary)' }}>
+        <button 
+          className={[
+            // Layout
+            "inline-flex items-center gap-0.5",
+            // Tipografia
+            "font-medium text-xs",
+            // Espaçamento
+            "ml-1",
+            // Interação
+            "transition-colors hover:underline"
+          ].join(" ")} 
+          style={{ color: 'var(--primary)' }}
+        >
           Ver mais
         </button>
       </p>
@@ -34,16 +70,45 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
     {/* Chart visualization */}
     {chart && (
       <div 
-        className="relative w-full h-48 rounded mb-4 overflow-hidden group"
+        className={[
+          // Posicionamento
+          "relative",
+          // Dimensões
+          "w-full h-48",
+          // Forma
+          "rounded",
+          // Espaçamento
+          "mb-4",
+          // Visual
+          "overflow-hidden",
+          // Interação
+          "group"
+        ].join(" ")}
         style={{ 
           backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
           border: '1px solid var(--border)'
         }}
       >
         <div className="absolute top-3 left-3 z-10">
-          <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: 'var(--text-muted)' }}>Model Performance</span>
+          <span 
+            className="text-[10px] uppercase tracking-widest font-bold" 
+            style={{ color: 'var(--text-muted)' }}
+          >
+            Model Performance
+          </span>
         </div>
-        <div className="flex items-end justify-between px-4 pb-0 h-full w-full gap-1 pt-8">
+        <div 
+          className={[
+            // Layout
+            "flex items-end justify-between",
+            // Espaçamento
+            "px-4 pb-0 pt-8",
+            // Dimensões
+            "h-full w-full",
+            // Gap
+            "gap-1"
+          ].join(" ")}
+        >
           {[40, 55, 35, 60, 75, 65, 87, 80].map((h, i) => (
             <div 
               key={i}
@@ -57,7 +122,20 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
             >
               {h === 87 && (
                 <div 
-                  className="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity"
+                  className={[
+                    // Posicionamento
+                    "absolute -top-8 left-1/2 -translate-x-1/2",
+                    // Tipografia
+                    "text-[10px] font-bold",
+                    // Espaçamento
+                    "px-1.5 py-0.5",
+                    // Forma
+                    "rounded",
+                    // Visibilidade
+                    "opacity-0 group-hover/bar:opacity-100",
+                    // Transição
+                    "transition-opacity"
+                  ].join(" ")}
                   style={{ 
                     backgroundColor: isDarkMode ? 'white' : 'var(--text-main)',
                     color: isDarkMode ? 'black' : 'white'
@@ -76,10 +154,19 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
       </div>
     )}
     
-    {/* Code block - usando texto pré-formatado em vez de dangerouslySetInnerHTML */}
+    {/* Code block */}
     {code && (
       <div className="code-block mb-3">
-        <div className="flex items-center justify-between px-3 py-2 bg-white/5 border-b border-white/5">
+        <div 
+          className={[
+            // Layout
+            "flex items-center justify-between",
+            // Espaçamento
+            "px-3 py-2",
+            // Visual
+            "bg-white/5 border-b border-white/5"
+          ].join(" ")}
+        >
           <span className="text-gray-400">pipeline.py</span>
           <div className="flex gap-1.5">
             <div className="size-2.5 rounded-full bg-red-500/20 border border-red-500/50"></div>
@@ -87,11 +174,28 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
             <div className="size-2.5 rounded-full bg-green-500/20 border border-green-500/50"></div>
           </div>
         </div>
-        <div className="p-3 overflow-x-auto text-gray-300 leading-relaxed font-mono text-xs">
+        <div 
+          className={[
+            // Espaçamento
+            "p-3",
+            // Scroll
+            "overflow-x-auto",
+            // Tipografia
+            "text-gray-300 leading-relaxed font-mono text-xs"
+          ].join(" ")}
+        >
           <pre><code dangerouslySetInnerHTML={{ __html: code }}></code></pre>
         </div>
         <div className="px-3 py-2 bg-white/5 border-t border-white/5 text-center">
-          <button className="text-[10px] font-bold uppercase tracking-wider hover:text-white transition-colors" style={{ color: 'var(--primary)' }}>
+          <button 
+            className={[
+              // Tipografia
+              "text-[10px] font-bold uppercase tracking-wider",
+              // Interação
+              "hover:text-white transition-colors"
+            ].join(" ")} 
+            style={{ color: 'var(--primary)' }}
+          >
             View Full Gist
           </button>
         </div>
@@ -101,7 +205,16 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
     {/* Attachment */}
     {attachment && (
       <a 
-        className="flex items-center gap-3 mt-3 p-3 rounded group transition-colors"
+        className={[
+          // Layout
+          "flex items-center gap-3",
+          // Espaçamento
+          "mt-3 p-3",
+          // Forma
+          "rounded",
+          // Interação
+          "group transition-colors"
+        ].join(" ")}
         style={{ 
           backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
           border: '1px solid var(--border)'
@@ -109,7 +222,16 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
         href="#"
       >
         <div 
-          className="flex items-center justify-center size-10 rounded shrink-0 group-hover:bg-red-100 transition-colors"
+          className={[
+            // Layout
+            "flex items-center justify-center",
+            // Dimensões
+            "size-10",
+            // Forma
+            "rounded shrink-0",
+            // Interação
+            "group-hover:bg-red-100 transition-colors"
+          ].join(" ")}
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(239,68,68,0.1)' : '#fef2f2',
             border: isDarkMode ? '1px solid rgba(239,68,68,0.2)' : '1px solid #fecaca',
@@ -119,7 +241,15 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
           <span className="material-symbols-outlined">picture_as_pdf</span>
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-bold truncate group-hover:text-red-600 transition-colors" style={{ color: 'var(--text-main)' }}>
+          <p 
+            className={[
+              // Tipografia
+              "text-sm font-bold truncate",
+              // Interação
+              "group-hover:text-red-600 transition-colors"
+            ].join(" ")} 
+            style={{ color: 'var(--text-main)' }}
+          >
             {attachment.name}
           </p>
           <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{attachment.size}</p>
@@ -127,8 +257,28 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
       </a>
     )}
     
-    <div className="flex items-center justify-end pt-3 border-t" style={{ borderColor: isDarkMode ? 'rgba(46,46,50,0.5)' : 'var(--border)' }}>
-      <button className="flex items-center gap-1.5 transition-colors hover:text-[var(--text-main)]" style={{ color: 'var(--text-muted)' }} aria-label="Compartilhar post">
+    {/* Footer */}
+    <div 
+      className={[
+        // Layout
+        "flex items-center justify-end",
+        // Espaçamento
+        "pt-3",
+        // Borda
+        "border-t"
+      ].join(" ")} 
+      style={{ borderColor: isDarkMode ? 'rgba(46,46,50,0.5)' : 'var(--border)' }}
+    >
+      <button 
+        className={[
+          // Layout
+          "flex items-center gap-1.5",
+          // Interação
+          "transition-colors hover:text-[var(--text-main)]"
+        ].join(" ")} 
+        style={{ color: 'var(--text-muted)' }} 
+        aria-label="Compartilhar post"
+      >
         <span className="material-symbols-outlined text-[18px]">share</span>
       </button>
     </div>

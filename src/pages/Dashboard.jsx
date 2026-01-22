@@ -4,14 +4,34 @@
  */
 
 const Dashboard = ({ isDarkMode }) => (
-  <div className="max-w-2xl mx-auto px-4 py-6 flex flex-col gap-4">
+  <div 
+    className={[
+      // Container
+      "max-w-2xl mx-auto",
+      // Espaçamento
+      "px-4 py-6",
+      // Layout
+      "flex flex-col gap-4"
+    ].join(" ")}
+  >
     <MobileProfile isDarkMode={isDarkMode} />
     
     {POSTS_DATA.map((post, i) => (
       <PostArticle key={i} isDarkMode={isDarkMode} {...post} />
     ))}
     
-    <div className="h-20 flex items-center justify-center text-xs" style={{ color: 'var(--text-muted)' }}>
+    {/* End of Feed */}
+    <div 
+      className={[
+        // Dimensões
+        "h-20",
+        // Layout
+        "flex items-center justify-center",
+        // Tipografia
+        "text-xs"
+      ].join(" ")} 
+      style={{ color: 'var(--text-muted)' }}
+    >
       <p>End of Feed</p>
     </div>
   </div>

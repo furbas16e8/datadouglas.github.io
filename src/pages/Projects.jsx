@@ -32,40 +32,89 @@ const Projects = ({ isDarkMode }) => {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6">
+    <div 
+      className={[
+        // Container
+        "max-w-2xl mx-auto",
+        // Espaçamento
+        "px-4 py-6"
+      ].join(" ")}
+    >
+      {/* Header da Página */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-main)' }}>Projects</h2>
-        <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+        <h2 
+          className="text-2xl font-bold mb-2" 
+          style={{ color: 'var(--text-main)' }}
+        >
+          Projects
+        </h2>
+        <p 
+          className="text-sm" 
+          style={{ color: 'var(--text-secondary)' }}
+        >
           Uma seleção dos meus projetos de Data Science e Machine Learning.
         </p>
       </div>
       
+      {/* Lista de Projetos */}
       <div className="flex flex-col gap-4">
         {projects.map((project, i) => (
           <article 
             key={i}
-            className="card p-5 hover:border-[var(--primary)]/50 transition-colors cursor-pointer"
+            className={[
+              // Base
+              "card p-5",
+              // Interação
+              "hover:border-[var(--primary)]/50 transition-colors cursor-pointer"
+            ].join(" ")}
           >
+            {/* Header do Card */}
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>{project.title}</h3>
+              <h3 
+                className="text-lg font-bold" 
+                style={{ color: 'var(--text-main)' }}
+              >
+                {project.title}
+              </h3>
               <span 
-                className={`text-[10px] font-medium px-2 py-1 rounded-full ${
+                className={[
+                  // Tipografia
+                  "text-[10px] font-medium",
+                  // Espaçamento
+                  "px-2 py-1",
+                  // Forma
+                  "rounded-full",
+                  // Cores condicionais
                   project.status === 'Concluído' 
                     ? 'bg-green-500/10 text-green-500 border border-green-500/20' 
                     : 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20'
-                }`}
+                ].join(" ")}
               >
                 {project.status}
               </span>
             </div>
-            <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>
+            
+            {/* Descrição */}
+            <p 
+              className="text-sm mb-4" 
+              style={{ color: 'var(--text-secondary)' }}
+            >
               {project.description}
             </p>
+            
+            {/* Tags */}
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, j) => (
                 <span 
                   key={j}
-                  className="text-[10px] font-medium px-2 py-1 rounded"
+                  className={[
+                    // Tipografia
+                    "text-[10px] font-medium",
+                    // Espaçamento
+                    "px-2 py-1",
+                    // Forma
+                    "rounded"
+                  ].join(" ")}
                   style={{ 
                     backgroundColor: 'var(--primary-light)',
                     color: 'var(--primary)'

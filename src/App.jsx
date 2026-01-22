@@ -100,7 +100,12 @@ const App = () => {
 
   return (
     <div 
-      className="min-h-screen font-display"
+      className={[
+        // Layout base
+        "min-h-screen",
+        // Tipografia
+        "font-display"
+      ].join(" ")}
       style={{ backgroundColor: 'var(--bg)', color: 'var(--text-main)' }}
     >
       <Header isDarkMode={isDarkMode} onToggleTheme={handleToggleTheme} />
@@ -110,7 +115,16 @@ const App = () => {
       <SidebarAnalytics isDarkMode={isDarkMode} />
       
       {/* Main com scroll - centralizado entre as sidebars */}
-      <main className="pt-16 lg:ml-[280px] xl:mr-[320px] min-h-screen">
+      <main 
+        className={[
+          // Espaçamento do header
+          "pt-16",
+          // Margens responsivas para sidebars
+          "lg:ml-[280px] xl:mr-[320px]",
+          // Altura mínima
+          "min-h-screen"
+        ].join(" ")}
+      >
         {renderPage()}
       </main>
     </div>

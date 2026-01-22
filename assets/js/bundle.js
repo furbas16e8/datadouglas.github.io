@@ -117,7 +117,11 @@ var App = function App() {
     }
   };
   return /*#__PURE__*/React.createElement("div", {
-    className: "min-h-screen font-display",
+    className: [
+    // Layout base
+    "min-h-screen",
+    // Tipografia
+    "font-display"].join(" "),
     style: {
       backgroundColor: 'var(--bg)',
       color: 'var(--text-main)'
@@ -130,7 +134,13 @@ var App = function App() {
   }), /*#__PURE__*/React.createElement(SidebarAnalytics, {
     isDarkMode: isDarkMode
   }), /*#__PURE__*/React.createElement("main", {
-    className: "pt-16 lg:ml-[280px] xl:mr-[320px] min-h-screen"
+    className: [
+    // Espaçamento do header
+    "pt-16",
+    // Margens responsivas para sidebars
+    "lg:ml-[280px] xl:mr-[320px]",
+    // Altura mínima
+    "min-h-screen"].join(" ")
   }, renderPage()));
 };
 
@@ -150,53 +160,110 @@ var Header = function Header(_ref) {
   var isDarkMode = _ref.isDarkMode,
     onToggleTheme = _ref.onToggleTheme;
   return /*#__PURE__*/React.createElement("header", {
-    className: "header-glass fixed top-0 left-0 right-0 z-50"
+    className: [
+    // Estilo base
+    "header-glass",
+    // Posicionamento
+    "fixed top-0 left-0 right-0",
+    // Z-index
+    "z-50"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center px-4 h-16 max-w-7xl mx-auto w-full"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-3 shrink-0 mr-8"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-center size-8 rounded bg-[var(--primary-light)] border border-[var(--primary)]/20"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "material-symbols-outlined text-[var(--primary)] text-[20px]"
-  }, "terminal")), /*#__PURE__*/React.createElement("a", {
-    href: "#/",
-    className: "text-lg font-bold tracking-tight",
-    style: {
-      color: 'var(--text-main)'
-    }
-  }, "Doug.DS")), /*#__PURE__*/React.createElement("nav", {
-    className: "hidden md:flex items-center gap-6"
+    className: [
+    // Layout
+    "flex items-center",
+    // Espaçamento
+    "px-4 h-16",
+    // Container
+    "max-w-7xl mx-auto w-full"].join(" ")
+  }, /*#__PURE__*/React.createElement("nav", {
+    className: [
+    // Visibilidade
+    "hidden md:flex",
+    // Layout
+    "items-center gap-6"].join(" ")
   }, /*#__PURE__*/React.createElement("a", {
-    className: "text-sm font-medium hover:text-[var(--primary)] transition-colors",
+    className: [
+    // Tipografia
+    "text-sm font-medium",
+    // Interação
+    "hover:text-[var(--primary)] transition-colors"].join(" "),
     style: {
       color: 'var(--text-main)'
     },
     href: "#/"
-  }, "Dashboard"), /*#__PURE__*/React.createElement("a", {
-    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
+  }, "Home"), /*#__PURE__*/React.createElement("a", {
+    className: [
+    // Tipografia
+    "text-sm font-medium",
+    // Interação
+    "hover:text-[var(--text-main)] transition-colors"].join(" "),
     style: {
       color: 'var(--text-secondary)'
     },
     href: "#/projects"
   }, "Projects"), /*#__PURE__*/React.createElement("a", {
-    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
+    className: [
+    // Tipografia
+    "text-sm font-medium",
+    // Interação
+    "hover:text-[var(--text-main)] transition-colors"].join(" "),
     style: {
       color: 'var(--text-secondary)'
     },
     href: "#/research"
   }, "Research")), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2 ml-auto"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
-    "aria-label": "Buscar no site"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "material-symbols-outlined text-[20px]",
+    className: [
+    // Layout
+    "flex items-center gap-2",
+    // Posicionamento
+    "ml-auto"].join(" ")
+  }, /*#__PURE__*/React.createElement("div", {
+    className: [
+    // Layout
+    "hidden sm:flex items-center gap-2",
+    // Dimensões
+    "w-48 lg:w-64",
+    // Espaçamento
+    "px-3 py-1",
+    // Forma
+    "rounded-lg",
+    // Borda
+    "border",
+    // Interação
+    "focus-within:border-[var(--primary)] transition-colors"].join(" "),
     style: {
-      color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
+      backgroundColor: 'var(--surface)',
+      borderColor: 'var(--border)'
     }
-  }, "search")), /*#__PURE__*/React.createElement("button", {
-    className: "p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[18px]",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "search"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "Search...",
+    className: [
+    // Reset
+    "bg-transparent border-none outline-none",
+    // Dimensões
+    "w-full",
+    // Tipografia
+    "text-sm",
+    // Placeholder
+    "placeholder:text-[var(--text-muted)]"].join(" "),
+    style: {
+      color: 'var(--text-main)'
+    },
+    "aria-label": "Buscar no site"
+  })), /*#__PURE__*/React.createElement("button", {
+    className: [
+    // Espaçamento
+    "p-2",
+    // Forma
+    "rounded-lg",
+    // Interação
+    "hover:bg-[var(--surface)] transition-colors"].join(" "),
     onClick: onToggleTheme,
     "aria-label": isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'
   }, /*#__PURE__*/React.createElement("span", {
@@ -205,7 +272,15 @@ var Header = function Header(_ref) {
       color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
     }
   }, isDarkMode ? 'light_mode' : 'dark_mode')), /*#__PURE__*/React.createElement("button", {
-    className: "md:hidden p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
+    className: [
+    // Visibilidade
+    "md:hidden",
+    // Espaçamento
+    "p-2",
+    // Forma
+    "rounded-lg",
+    // Interação
+    "hover:bg-[var(--surface)] transition-colors"].join(" "),
     "aria-label": "Abrir menu de navega\xE7\xE3o"
   }, /*#__PURE__*/React.createElement("span", {
     className: "material-symbols-outlined",
@@ -224,7 +299,13 @@ var Header = function Header(_ref) {
 var MobileProfile = function MobileProfile(_ref) {
   var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("section", {
-    className: "lg:hidden p-4 border-b sm:rounded-lg sm:border sm:mb-0",
+    className: [
+    // Visibilidade
+    "lg:hidden",
+    // Espaçamento
+    "p-4",
+    // Borda
+    "border-b sm:rounded-lg sm:border sm:mb-0"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(26,26,30,0.5)' : 'var(--surface)',
       borderColor: 'var(--border)'
@@ -234,7 +315,15 @@ var MobileProfile = function MobileProfile(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative group cursor-pointer"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "size-16 rounded-full bg-cover bg-center border-2",
+    className: [
+    // Dimensões
+    "size-16",
+    // Forma
+    "rounded-full",
+    // Background
+    "bg-cover bg-center",
+    // Borda
+    "border-2"].join(" "),
     role: "img",
     "aria-label": "Foto de perfil de Douglas Furbino",
     style: {
@@ -272,7 +361,13 @@ var PostArticle = function PostArticle(_ref) {
     code = _ref.code,
     attachment = _ref.attachment;
   return /*#__PURE__*/React.createElement("article", {
-    className: "p-5 border-b sm:border sm:rounded-lg hover:border-[var(--border-hover)] transition-colors",
+    className: [
+    // Espaçamento
+    "p-5",
+    // Borda
+    "border-b sm:border sm:rounded-lg",
+    // Interação
+    "hover:border-[var(--border-hover)] transition-colors"].join(" "),
     style: {
       backgroundColor: 'var(--surface)',
       borderColor: 'var(--border)'
@@ -315,12 +410,32 @@ var PostArticle = function PostArticle(_ref) {
       color: 'var(--text-secondary)'
     }
   }, content, /*#__PURE__*/React.createElement("button", {
-    className: "inline-flex items-center gap-0.5 font-medium text-xs ml-1 transition-colors hover:underline",
+    className: [
+    // Layout
+    "inline-flex items-center gap-0.5",
+    // Tipografia
+    "font-medium text-xs",
+    // Espaçamento
+    "ml-1",
+    // Interação
+    "transition-colors hover:underline"].join(" "),
     style: {
       color: 'var(--primary)'
     }
   }, "Ver mais"))), chart && /*#__PURE__*/React.createElement("div", {
-    className: "relative w-full h-48 rounded mb-4 overflow-hidden group",
+    className: [
+    // Posicionamento
+    "relative",
+    // Dimensões
+    "w-full h-48",
+    // Forma
+    "rounded",
+    // Espaçamento
+    "mb-4",
+    // Visual
+    "overflow-hidden",
+    // Interação
+    "group"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
       border: '1px solid var(--border)'
@@ -333,7 +448,15 @@ var PostArticle = function PostArticle(_ref) {
       color: 'var(--text-muted)'
     }
   }, "Model Performance")), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-end justify-between px-4 pb-0 h-full w-full gap-1 pt-8"
+    className: [
+    // Layout
+    "flex items-end justify-between",
+    // Espaçamento
+    "px-4 pb-0 pt-8",
+    // Dimensões
+    "h-full w-full",
+    // Gap
+    "gap-1"].join(" ")
   }, [40, 55, 35, 60, 75, 65, 87, 80].map(function (h, i) {
     return /*#__PURE__*/React.createElement("div", {
       key: i,
@@ -343,7 +466,19 @@ var PostArticle = function PostArticle(_ref) {
         backgroundColor: h === 87 ? isDarkMode ? 'rgba(0,255,128,0.8)' : 'var(--primary)' : isDarkMode ? 'rgba(0,255,128,0.2)' : 'rgba(16,185,129,0.2)'
       }
     }, h === 87 && /*#__PURE__*/React.createElement("div", {
-      className: "absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity",
+      className: [
+      // Posicionamento
+      "absolute -top-8 left-1/2 -translate-x-1/2",
+      // Tipografia
+      "text-[10px] font-bold",
+      // Espaçamento
+      "px-1.5 py-0.5",
+      // Forma
+      "rounded",
+      // Visibilidade
+      "opacity-0 group-hover/bar:opacity-100",
+      // Transição
+      "transition-opacity"].join(" "),
       style: {
         backgroundColor: isDarkMode ? 'white' : 'var(--text-main)',
         color: isDarkMode ? 'black' : 'white'
@@ -364,7 +499,13 @@ var PostArticle = function PostArticle(_ref) {
   })), code && /*#__PURE__*/React.createElement("div", {
     className: "code-block mb-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between px-3 py-2 bg-white/5 border-b border-white/5"
+    className: [
+    // Layout
+    "flex items-center justify-between",
+    // Espaçamento
+    "px-3 py-2",
+    // Visual
+    "bg-white/5 border-b border-white/5"].join(" ")
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-gray-400"
   }, "pipeline.py"), /*#__PURE__*/React.createElement("div", {
@@ -376,7 +517,13 @@ var PostArticle = function PostArticle(_ref) {
   }), /*#__PURE__*/React.createElement("div", {
     className: "size-2.5 rounded-full bg-green-500/20 border border-green-500/50"
   }))), /*#__PURE__*/React.createElement("div", {
-    className: "p-3 overflow-x-auto text-gray-300 leading-relaxed font-mono text-xs"
+    className: [
+    // Espaçamento
+    "p-3",
+    // Scroll
+    "overflow-x-auto",
+    // Tipografia
+    "text-gray-300 leading-relaxed font-mono text-xs"].join(" ")
   }, /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
     dangerouslySetInnerHTML: {
       __html: code
@@ -384,19 +531,39 @@ var PostArticle = function PostArticle(_ref) {
   }))), /*#__PURE__*/React.createElement("div", {
     className: "px-3 py-2 bg-white/5 border-t border-white/5 text-center"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "text-[10px] font-bold uppercase tracking-wider hover:text-white transition-colors",
+    className: [
+    // Tipografia
+    "text-[10px] font-bold uppercase tracking-wider",
+    // Interação
+    "hover:text-white transition-colors"].join(" "),
     style: {
       color: 'var(--primary)'
     }
   }, "View Full Gist"))), attachment && /*#__PURE__*/React.createElement("a", {
-    className: "flex items-center gap-3 mt-3 p-3 rounded group transition-colors",
+    className: [
+    // Layout
+    "flex items-center gap-3",
+    // Espaçamento
+    "mt-3 p-3",
+    // Forma
+    "rounded",
+    // Interação
+    "group transition-colors"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
       border: '1px solid var(--border)'
     },
     href: "#"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-center size-10 rounded shrink-0 group-hover:bg-red-100 transition-colors",
+    className: [
+    // Layout
+    "flex items-center justify-center",
+    // Dimensões
+    "size-10",
+    // Forma
+    "rounded shrink-0",
+    // Interação
+    "group-hover:bg-red-100 transition-colors"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(239,68,68,0.1)' : '#fef2f2',
       border: isDarkMode ? '1px solid rgba(239,68,68,0.2)' : '1px solid #fecaca',
@@ -407,7 +574,11 @@ var PostArticle = function PostArticle(_ref) {
   }, "picture_as_pdf")), /*#__PURE__*/React.createElement("div", {
     className: "min-w-0"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "text-sm font-bold truncate group-hover:text-red-600 transition-colors",
+    className: [
+    // Tipografia
+    "text-sm font-bold truncate",
+    // Interação
+    "group-hover:text-red-600 transition-colors"].join(" "),
     style: {
       color: 'var(--text-main)'
     }
@@ -417,12 +588,22 @@ var PostArticle = function PostArticle(_ref) {
       color: 'var(--text-secondary)'
     }
   }, attachment.size))), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-end pt-3 border-t",
+    className: [
+    // Layout
+    "flex items-center justify-end",
+    // Espaçamento
+    "pt-3",
+    // Borda
+    "border-t"].join(" "),
     style: {
       borderColor: isDarkMode ? 'rgba(46,46,50,0.5)' : 'var(--border)'
     }
   }, /*#__PURE__*/React.createElement("button", {
-    className: "flex items-center gap-1.5 transition-colors hover:text-[var(--text-main)]",
+    className: [
+    // Layout
+    "flex items-center gap-1.5",
+    // Interação
+    "transition-colors hover:text-[var(--text-main)]"].join(" "),
     style: {
       color: 'var(--text-muted)'
     },
@@ -959,7 +1140,13 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 var Dashboard = function Dashboard(_ref) {
   var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("div", {
-    className: "max-w-2xl mx-auto px-4 py-6 flex flex-col gap-4"
+    className: [
+    // Container
+    "max-w-2xl mx-auto",
+    // Espaçamento
+    "px-4 py-6",
+    // Layout
+    "flex flex-col gap-4"].join(" ")
   }, /*#__PURE__*/React.createElement(MobileProfile, {
     isDarkMode: isDarkMode
   }), POSTS_DATA.map(function (post, i) {
@@ -968,7 +1155,13 @@ var Dashboard = function Dashboard(_ref) {
       isDarkMode: isDarkMode
     }, post));
   }), /*#__PURE__*/React.createElement("div", {
-    className: "h-20 flex items-center justify-center text-xs",
+    className: [
+    // Dimensões
+    "h-20",
+    // Layout
+    "flex items-center justify-center",
+    // Tipografia
+    "text-xs"].join(" "),
     style: {
       color: 'var(--text-muted)'
     }
@@ -1005,7 +1198,11 @@ var Projects = function Projects(_ref) {
     status: 'Em desenvolvimento'
   }];
   return /*#__PURE__*/React.createElement("div", {
-    className: "max-w-2xl mx-auto px-4 py-6"
+    className: [
+    // Container
+    "max-w-2xl mx-auto",
+    // Espaçamento
+    "px-4 py-6"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-6"
   }, /*#__PURE__*/React.createElement("h2", {
@@ -1023,7 +1220,11 @@ var Projects = function Projects(_ref) {
   }, projects.map(function (project, i) {
     return /*#__PURE__*/React.createElement("article", {
       key: i,
-      className: "card p-5 hover:border-[var(--primary)]/50 transition-colors cursor-pointer"
+      className: [
+      // Base
+      "card p-5",
+      // Interação
+      "hover:border-[var(--primary)]/50 transition-colors cursor-pointer"].join(" ")
     }, /*#__PURE__*/React.createElement("div", {
       className: "flex justify-between items-start mb-2"
     }, /*#__PURE__*/React.createElement("h3", {
@@ -1032,7 +1233,15 @@ var Projects = function Projects(_ref) {
         color: 'var(--text-main)'
       }
     }, project.title), /*#__PURE__*/React.createElement("span", {
-      className: "text-[10px] font-medium px-2 py-1 rounded-full ".concat(project.status === 'Concluído' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20')
+      className: [
+      // Tipografia
+      "text-[10px] font-medium",
+      // Espaçamento
+      "px-2 py-1",
+      // Forma
+      "rounded-full",
+      // Cores condicionais
+      project.status === 'Concluído' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20'].join(" ")
     }, project.status)), /*#__PURE__*/React.createElement("p", {
       className: "text-sm mb-4",
       style: {
@@ -1043,7 +1252,13 @@ var Projects = function Projects(_ref) {
     }, project.tags.map(function (tag, j) {
       return /*#__PURE__*/React.createElement("span", {
         key: j,
-        className: "text-[10px] font-medium px-2 py-1 rounded",
+        className: [
+        // Tipografia
+        "text-[10px] font-medium",
+        // Espaçamento
+        "px-2 py-1",
+        // Forma
+        "rounded"].join(" "),
         style: {
           backgroundColor: 'var(--primary-light)',
           color: 'var(--primary)'
@@ -1081,7 +1296,11 @@ var Research = function Research(_ref) {
     link: '#'
   }];
   return /*#__PURE__*/React.createElement("div", {
-    className: "max-w-2xl mx-auto px-4 py-6"
+    className: [
+    // Container
+    "max-w-2xl mx-auto",
+    // Espaçamento
+    "px-4 py-6"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-6"
   }, /*#__PURE__*/React.createElement("h2", {
@@ -1099,11 +1318,21 @@ var Research = function Research(_ref) {
   }, papers.map(function (paper, i) {
     return /*#__PURE__*/React.createElement("article", {
       key: i,
-      className: "card p-5 hover:border-[var(--primary)]/50 transition-colors"
+      className: [
+      // Base
+      "card p-5",
+      // Interação
+      "hover:border-[var(--primary)]/50 transition-colors"].join(" ")
     }, /*#__PURE__*/React.createElement("div", {
       className: "flex items-start gap-3 mb-3"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "flex items-center justify-center size-10 rounded shrink-0",
+      className: [
+      // Layout
+      "flex items-center justify-center",
+      // Dimensões
+      "size-10",
+      // Forma
+      "rounded shrink-0"].join(" "),
       style: {
         backgroundColor: isDarkMode ? 'rgba(239,68,68,0.1)' : '#fef2f2',
         border: isDarkMode ? '1px solid rgba(239,68,68,0.2)' : '1px solid #fecaca',
@@ -1128,7 +1357,13 @@ var Research = function Research(_ref) {
       }
     }, paper["abstract"]), /*#__PURE__*/React.createElement("a", {
       href: paper.link,
-      className: "inline-flex items-center gap-1 text-xs font-medium hover:underline",
+      className: [
+      // Layout
+      "inline-flex items-center gap-1",
+      // Tipografia
+      "text-xs font-medium",
+      // Interação
+      "hover:underline"].join(" "),
       style: {
         color: 'var(--primary)'
       }
