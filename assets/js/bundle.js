@@ -1,0 +1,1000 @@
+"use strict";
+
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/*
+ * data/posts.js - Dados dos posts do feed
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+// Dados de exemplo para o feed de atividades
+var POSTS_DATA = [{
+  title: 'Predictive Market Volatility Model',
+  time: '2h ago',
+  category: 'Market Analysis',
+  content: 'Deployed a new LSTM model to predict crypto volatility indices. Achieving 87% accuracy on test sets compared to the baseline ARIMA model.',
+  chart: true
+}, {
+  title: 'Optimizing Data Pipelines',
+  time: '5h ago',
+  category: 'Data Engineering',
+  content: 'Refactored the ETL pipeline to use Polars instead of Pandas. Saw a 12x speed improvement on the daily ingestion jobs.',
+  code: "<span class=\"text-pink-400\">import</span> polars <span class=\"text-pink-400\">as</span> pl\n<span class=\"text-gray-500\"># Lazy evaluation for memory efficiency</span>\ndf = pl.scan_csv(<span class=\"text-green-400\">\"large_dataset.csv\"</span>)\n    .filter(pl.col(<span class=\"text-green-400\">\"status\"</span>) == <span class=\"text-green-400\">\"active\"</span>)\n    .groupby(<span class=\"text-green-400\">\"region\"</span>)\n    .agg([\n        pl.col(<span class=\"text-green-400\">\"sales\"</span>).sum().alias(<span class=\"text-green-400\">\"total\"</span>)\n    ])\n    .collect()"
+}, {
+  title: 'Multi-Agent RL Research',
+  time: '1d ago',
+  category: 'Research',
+  content: "Just published a new paper on arXiv regarding reinforcement learning in multi-agent environments. Check it out if you're into game theory! #AI #Research",
+  attachment: {
+    name: 'Multi-Agent RL Optimization.pdf',
+    size: '2.4 MB • PDF Document'
+  }
+}];
+
+// Dados pré-definidos para Activity Grid (opacidades estáveis)
+var ACTIVITY_DATA = [10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30, 10, 10, 60, 20, 80, 40, 10, 50, 30, 70, 10, 20, 90, 50, 10, 20, 40, 80, 10, 60, 30, 70, 10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30];
+
+/*
+ * components/Header.jsx - Componente de Navegação Superior
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var Header = function Header(_ref) {
+  var isDarkMode = _ref.isDarkMode,
+    onToggleTheme = _ref.onToggleTheme;
+  return /*#__PURE__*/React.createElement("header", {
+    className: "header-glass fixed top-0 left-0 right-0 z-50"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center px-4 h-16 max-w-7xl mx-auto w-full"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-3 shrink-0 mr-8"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-center size-8 rounded bg-[var(--primary-light)] border border-[var(--primary)]/20"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[var(--primary)] text-[20px]"
+  }, "terminal")), /*#__PURE__*/React.createElement("a", {
+    href: "#/",
+    className: "text-lg font-bold tracking-tight",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Doug.DS")), /*#__PURE__*/React.createElement("nav", {
+    className: "hidden md:flex items-center gap-6"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "text-sm font-medium hover:text-[var(--primary)] transition-colors",
+    style: {
+      color: 'var(--text-main)'
+    },
+    href: "#/"
+  }, "Dashboard"), /*#__PURE__*/React.createElement("a", {
+    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
+    style: {
+      color: 'var(--text-secondary)'
+    },
+    href: "#/projects"
+  }, "Projects"), /*#__PURE__*/React.createElement("a", {
+    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
+    style: {
+      color: 'var(--text-secondary)'
+    },
+    href: "#/research"
+  }, "Research")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 ml-auto"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
+    "aria-label": "Buscar no site"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[20px]",
+    style: {
+      color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
+    }
+  }, "search")), /*#__PURE__*/React.createElement("button", {
+    className: "p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
+    onClick: onToggleTheme,
+    "aria-label": isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[20px]",
+    style: {
+      color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
+    }
+  }, isDarkMode ? 'light_mode' : 'dark_mode')), /*#__PURE__*/React.createElement("button", {
+    className: "md:hidden p-2 rounded-lg hover:bg-[var(--surface)] transition-colors",
+    "aria-label": "Abrir menu de navega\xE7\xE3o"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, "menu")))));
+};
+
+/*
+ * components/MobileProfile.jsx - Versão mobile do perfil
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var MobileProfile = function MobileProfile(_ref2) {
+  var isDarkMode = _ref2.isDarkMode;
+  return /*#__PURE__*/React.createElement("section", {
+    className: "lg:hidden p-4 border-b sm:rounded-lg sm:border sm:mb-0",
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(26,26,30,0.5)' : 'var(--surface)',
+      borderColor: 'var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-start gap-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative group cursor-pointer"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "size-16 rounded-full bg-cover bg-center border-2",
+    role: "img",
+    "aria-label": "Foto de perfil de Douglas Furbino",
+    style: {
+      backgroundImage: "url('./assets/img/perfil.jpeg')",
+      borderColor: isDarkMode ? 'rgba(0,255,128,0.2)' : 'rgba(16,185,129,0.2)'
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1 min-w-0"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "text-xl font-bold leading-tight truncate",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Douglas Furbino"), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs font-body mt-1",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, "Machine Learning Engineer passionate about turning complex data into actionable insights."))));
+};
+
+/*
+ * components/PostArticle.jsx - Card de post/artigo do feed
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var PostArticle = function PostArticle(_ref3) {
+  var isDarkMode = _ref3.isDarkMode,
+    title = _ref3.title,
+    time = _ref3.time,
+    category = _ref3.category,
+    content = _ref3.content,
+    chart = _ref3.chart,
+    code = _ref3.code,
+    attachment = _ref3.attachment;
+  return /*#__PURE__*/React.createElement("article", {
+    className: "p-5 border-b sm:border sm:rounded-lg hover:border-[var(--border-hover)] transition-colors",
+    style: {
+      backgroundColor: 'var(--surface)',
+      borderColor: 'var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex justify-between items-start mb-2"
+  }, /*#__PURE__*/React.createElement("h4", {
+    className: "text-lg font-bold",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, title), /*#__PURE__*/React.createElement("button", {
+    style: {
+      color: 'var(--text-muted)'
+    },
+    className: "hover:text-[var(--text-main)]",
+    "aria-label": "Mais op\xE7\xF5es"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined"
+  }, "more_horiz"))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 mb-4 text-xs"
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, time), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--border)'
+    }
+  }, "\u2022"), /*#__PURE__*/React.createElement("span", {
+    className: "cursor-pointer hover:underline font-medium",
+    style: {
+      color: 'var(--primary)'
+    }
+  }, category)), /*#__PURE__*/React.createElement("div", {
+    className: "mb-4"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "text-sm font-body leading-relaxed",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, content, /*#__PURE__*/React.createElement("button", {
+    className: "inline-flex items-center gap-0.5 font-medium text-xs ml-1 transition-colors hover:underline",
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "Ver mais"))), chart && /*#__PURE__*/React.createElement("div", {
+    className: "relative w-full h-48 rounded mb-4 overflow-hidden group",
+    style: {
+      backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
+      border: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-3 left-3 z-10"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] uppercase tracking-widest font-bold",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "Model Performance")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-end justify-between px-4 pb-0 h-full w-full gap-1 pt-8"
+  }, [40, 55, 35, 60, 75, 65, 87, 80].map(function (h, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "w-full rounded-t-sm transition-all ".concat(h === 87 ? 'relative group/bar' : ''),
+      style: {
+        height: "".concat(h, "%"),
+        backgroundColor: h === 87 ? isDarkMode ? 'rgba(0,255,128,0.8)' : 'var(--primary)' : isDarkMode ? 'rgba(0,255,128,0.2)' : 'rgba(16,185,129,0.2)'
+      }
+    }, h === 87 && /*#__PURE__*/React.createElement("div", {
+      className: "absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-bold px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity",
+      style: {
+        backgroundColor: isDarkMode ? 'white' : 'var(--text-main)',
+        color: isDarkMode ? 'black' : 'white'
+      }
+    }, "87%"));
+  })), /*#__PURE__*/React.createElement("svg", {
+    className: "absolute inset-0 w-full h-full pointer-events-none",
+    preserveAspectRatio: "none"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M0,120 Q40,110 80,90 T160,80 T240,60 T320,40",
+    fill: "none",
+    opacity: "0.5",
+    stroke: "#8b5cf6",
+    strokeDasharray: "4 4",
+    strokeWidth: "2"
+  })), isDarkMode && /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 bg-gradient-to-t from-[var(--surface)]/80 to-transparent pointer-events-none"
+  })), code && /*#__PURE__*/React.createElement("div", {
+    className: "code-block mb-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between px-3 py-2 bg-white/5 border-b border-white/5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-gray-400"
+  }, "pipeline.py"), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-1.5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-red-500/20 border border-red-500/50"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-green-500/20 border border-green-500/50"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "p-3 overflow-x-auto text-gray-300 leading-relaxed font-mono text-xs"
+  }, /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    dangerouslySetInnerHTML: {
+      __html: code
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "px-3 py-2 bg-white/5 border-t border-white/5 text-center"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "text-[10px] font-bold uppercase tracking-wider hover:text-white transition-colors",
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "View Full Gist"))), attachment && /*#__PURE__*/React.createElement("a", {
+    className: "flex items-center gap-3 mt-3 p-3 rounded group transition-colors",
+    style: {
+      backgroundColor: isDarkMode ? 'var(--surface)' : '#f9fafb',
+      border: '1px solid var(--border)'
+    },
+    href: "#"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-center size-10 rounded shrink-0 group-hover:bg-red-100 transition-colors",
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(239,68,68,0.1)' : '#fef2f2',
+      border: isDarkMode ? '1px solid rgba(239,68,68,0.2)' : '1px solid #fecaca',
+      color: '#ef4444'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined"
+  }, "picture_as_pdf")), /*#__PURE__*/React.createElement("div", {
+    className: "min-w-0"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "text-sm font-bold truncate group-hover:text-red-600 transition-colors",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, attachment.name), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, attachment.size))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-end pt-3 border-t",
+    style: {
+      borderColor: isDarkMode ? 'rgba(46,46,50,0.5)' : 'var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "flex items-center gap-1.5 transition-colors hover:text-[var(--text-main)]",
+    style: {
+      color: 'var(--text-muted)'
+    },
+    "aria-label": "Compartilhar post"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[18px]"
+  }, "share"))));
+};
+
+/*
+ * components/SidebarAnalytics.jsx - Sidebar com cards de analytics
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var SidebarAnalytics = function SidebarAnalytics(_ref4) {
+  var isDarkMode = _ref4.isDarkMode;
+  return /*#__PURE__*/React.createElement("aside", {
+    className: "hidden xl:block fixed right-[max(0px,calc(50%-650px))] top-16 w-80 h-[calc(100vh-64px)] overflow-y-auto no-scrollbar py-6 px-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "card p-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-2"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "text-xs font-bold uppercase tracking-widest",
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "Life Analytics"), /*#__PURE__*/React.createElement("button", {
+    style: {
+      color: 'var(--text-muted)'
+    },
+    "aria-label": "Informa\xE7\xF5es sobre Life Analytics"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[16px]"
+  }, "info"))), /*#__PURE__*/React.createElement("div", {
+    className: "mb-0"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex justify-between items-end mb-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-medium tracking-wide",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "YOUTUBE ACTIVITY"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-baseline gap-1"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-lg font-bold",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "2.5M+"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] text-green-500 font-medium"
+  }, "\u25B2 12%"))), /*#__PURE__*/React.createElement("div", {
+    className: "h-28 w-full relative rounded overflow-hidden shadow-inner",
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(18,18,18,0.8)' : '#f9fafb',
+      border: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "absolute inset-0 w-full h-full overflow-visible z-0",
+    preserveAspectRatio: "none",
+    viewBox: "0 0 100 100"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M0,100 L0,70 Q25,60 50,65 T100,60 L100,100 Z",
+    fill: "#ef4444",
+    opacity: isDarkMode ? "0.1" : "0.05"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0,70 Q25,60 50,65 T100,60",
+    fill: "none",
+    stroke: "#ef4444",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0,70 Q25,60 50,65 T100,60 L100,45 Q75,40 50,45 T0,55 Z",
+    fill: isDarkMode ? "#22c55e" : "#10b981",
+    opacity: isDarkMode ? "0.1" : "0.05"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0,55 Q25,45 50,45 T100,45",
+    fill: "none",
+    stroke: isDarkMode ? "#22c55e" : "#10b981",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0,55 Q25,45 50,45 T100,45 L100,20 Q75,15 50,25 T0,35 Z",
+    fill: "#3b82f6",
+    opacity: isDarkMode ? "0.1" : "0.05"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0,35 Q25,25 50,25 T100,20",
+    fill: "none",
+    stroke: "#3b82f6",
+    strokeWidth: "1.5"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-2 right-2 flex flex-col gap-1 items-end z-20 p-1.5 rounded backdrop-blur-sm shadow-sm",
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(26,26,30,0.8)' : 'rgba(255,255,255,0.9)',
+      border: '1px solid var(--border)'
+    }
+  }, [{
+    color: '#3b82f6',
+    label: 'Normal'
+  }, {
+    color: '#22c55e',
+    label: 'Shorts'
+  }, {
+    color: '#ef4444',
+    label: 'Music'
+  }].map(function (_ref5) {
+    var color = _ref5.color,
+      label = _ref5.label;
+    return /*#__PURE__*/React.createElement("div", {
+      key: label,
+      className: "flex items-center gap-1.5"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "size-1.5 rounded-full",
+      style: {
+        backgroundColor: color,
+        boxShadow: isDarkMode ? "0 0 8px ".concat(color) : 'none'
+      }
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "text-[9px] font-medium",
+      style: {
+        color: 'var(--text-secondary)'
+      }
+    }, label));
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "card p-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex justify-between items-end mb-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-medium tracking-wide uppercase",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "SCREEN TIME INTENSITY")), /*#__PURE__*/React.createElement("div", {
+    className: "h-32 w-full rounded relative overflow-hidden flex items-center justify-center",
+    style: {
+      backgroundColor: isDarkMode ? 'var(--bg)' : '#f9fafb',
+      border: '1px solid var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute bottom-[20%] left-[20%] size-14 rounded-full border flex flex-col items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-blue' : 'shadow-sm'),
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(59,130,246,0.1)' : '#dbeafe',
+      borderColor: isDarkMode ? 'rgba(59,130,246,0.5)' : '#bfdbfe',
+      color: isDarkMode ? '#60a5fa' : '#1d4ed8'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[9px] font-bold"
+  }, "Code"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[7px]",
+    style: {
+      opacity: 0.8
+    }
+  }, "6h 12m")), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-[15%] right-[20%] size-16 rounded-full border flex flex-col items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-purple' : 'shadow-sm'),
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(139,92,246,0.1)' : '#ede9fe',
+      borderColor: isDarkMode ? 'rgba(139,92,246,0.5)' : '#c4b5fd',
+      color: isDarkMode ? '#a78bfa' : '#6d28d9'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-bold"
+  }, "Social"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[7px]",
+    style: {
+      opacity: 0.8
+    }
+  }, "3h 45m")), /*#__PURE__*/React.createElement("div", {
+    className: "absolute bottom-[10%] right-[35%] size-10 rounded-full border flex items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-green' : 'shadow-sm'),
+    style: {
+      backgroundColor: isDarkMode ? 'rgba(34,197,94,0.1)' : '#dcfce7',
+      borderColor: isDarkMode ? 'rgba(34,197,94,0.5)' : '#86efac',
+      color: isDarkMode ? '#4ade80' : '#15803d'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[8px] font-bold"
+  }, "Media")))), /*#__PURE__*/React.createElement("div", {
+    className: "card p-4 flex items-center justify-between group cursor-pointer hover:border-[var(--primary)]/50 transition-colors"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] uppercase tracking-widest font-bold",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "Trending"), /*#__PURE__*/React.createElement("div", {
+    className: "text-sm font-bold mt-0.5 group-hover:text-[var(--primary)] transition-colors",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Global AI Index")), /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined group-hover:text-[var(--primary)] transition-colors",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "show_chart"))));
+};
+
+/*
+ * components/SidebarProfile.jsx - Sidebar com perfil do usuário
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var SidebarProfile = function SidebarProfile(_ref6) {
+  var isDarkMode = _ref6.isDarkMode;
+  return /*#__PURE__*/React.createElement("aside", {
+    className: "hidden lg:block fixed left-[max(0px,calc(50%-650px))] top-16 w-[280px] h-[calc(100vh-64px)] overflow-y-auto no-scrollbar py-6 px-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "card overflow-hidden relative group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "h-24 bg-gradient-to-r from-slate-800 to-slate-700 relative overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"
+  }), isDarkMode && /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 bg-gradient-to-t from-[var(--surface)]/90 to-transparent"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "px-4 pb-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative -mt-12 mb-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "size-24 rounded-full border-[4px] bg-cover bg-center shadow-lg",
+    role: "img",
+    "aria-label": "Foto de perfil de Douglas Furbino",
+    style: {
+      borderColor: 'var(--surface)',
+      backgroundImage: "url('./assets/img/perfil.jpeg')"
+    }
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
+    className: "text-xl font-bold leading-tight flex items-center gap-1.5",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Douglas Furbino"), /*#__PURE__*/React.createElement("p", {
+    className: "text-[13px] font-medium mt-0.5",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, "Economista e Cientista de Dados"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1 mt-2 text-xs mb-3",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[14px]"
+  }, "location_on"), "Governador Valadares, MG"), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs font-body leading-relaxed border-t pt-3",
+    style: {
+      color: 'var(--text-secondary)',
+      borderColor: 'var(--border)'
+    }
+  }, "Machine Learning Engineer passionate about turning complex data into actionable insights.")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mt-5 pt-0 px-2 pb-2"
+  }, [{
+    value: '12',
+    label: 'Projects'
+  }, {
+    value: '450+',
+    label: 'Commits'
+  }, {
+    value: '8',
+    label: 'Papers'
+  }].map(function (stat, i) {
+    return /*#__PURE__*/React.createElement(React.Fragment, {
+      key: stat.label
+    }, i > 0 && /*#__PURE__*/React.createElement("div", {
+      className: "w-px h-8",
+      style: {
+        backgroundColor: 'var(--border)'
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "text-center group cursor-default"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-sm font-bold font-mono group-hover:text-[var(--primary)] transition-colors",
+      style: {
+        color: 'var(--text-main)'
+      }
+    }, stat.value), /*#__PURE__*/React.createElement("div", {
+      className: "text-[10px] font-medium",
+      style: {
+        color: 'var(--text-muted)'
+      }
+    }, stat.label)));
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "mt-4 pt-4 border-t grid grid-cols-2 gap-3",
+    style: {
+      borderColor: 'var(--border)'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/furbas16e8",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "flex items-center justify-center gap-2 py-1.5 px-4 bg-[#24292e] border border-[#444c56] rounded-md hover:bg-[#2f363d] transition-all h-[34px]"
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "size-5 text-white",
+    fill: "currentColor",
+    viewBox: "0 0 24 24"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "text-[13px] font-semibold text-white"
+  }, "GitHub")), /*#__PURE__*/React.createElement("a", {
+    href: "https://www.linkedin.com/in/dfurbino/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "flex items-center justify-center gap-2 py-1.5 px-4 border rounded-md transition-all h-[34px]",
+    style: {
+      backgroundColor: 'rgba(10,102,194,0.05)',
+      borderColor: 'rgba(10,102,194,0.2)'
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "size-5 text-[#0a66c2]",
+    fill: "currentColor",
+    viewBox: "0 0 24 24"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "text-[13px] font-semibold text-[#0a66c2]"
+  }, "LinkedIn"))))), /*#__PURE__*/React.createElement("div", {
+    className: "card p-4 h-[180px]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[11px] font-bold uppercase tracking-wider",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "Site Activity")), /*#__PURE__*/React.createElement("div", {
+    className: "h-full w-full relative"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-rows-7 grid-flow-col gap-[3px] h-[110px]",
+    style: {
+      opacity: isDarkMode ? 0.7 : 1
+    }
+  }, ACTIVITY_DATA.map(function (opacity, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "activity-dot activity-dot-".concat(opacity)
+    });
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "mt-1 flex justify-between text-[9px]",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, /*#__PURE__*/React.createElement("span", null, "Less"), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-[2px]"
+  }, [10, 30, 60, 90].map(function (o) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: o,
+      className: "size-2 rounded-[1px] activity-dot-".concat(o),
+      style: {
+        backgroundColor: 'var(--primary)'
+      }
+    });
+  })), /*#__PURE__*/React.createElement("span", null, "More")), /*#__PURE__*/React.createElement("div", {
+    className: "mt-2 text-[10px] text-center",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, "\xA9 2026 Doug.DS Portfolio."))));
+};
+
+/*
+ * pages/Dashboard.jsx - Página inicial (feed de posts)
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var Dashboard = function Dashboard(_ref7) {
+  var isDarkMode = _ref7.isDarkMode;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "max-w-2xl mx-auto px-4 py-6 flex flex-col gap-4"
+  }, /*#__PURE__*/React.createElement(MobileProfile, {
+    isDarkMode: isDarkMode
+  }), POSTS_DATA.map(function (post, i) {
+    return /*#__PURE__*/React.createElement(PostArticle, _extends({
+      key: i,
+      isDarkMode: isDarkMode
+    }, post));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "h-20 flex items-center justify-center text-xs",
+    style: {
+      color: 'var(--text-muted)'
+    }
+  }, /*#__PURE__*/React.createElement("p", null, "End of Feed")));
+};
+
+/*
+ * pages/Projects.jsx - Página de projetos
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var Projects = function Projects(_ref8) {
+  var isDarkMode = _ref8.isDarkMode;
+  var projects = [{
+    title: 'Life Analytics',
+    description: 'Análise de padrões de consumo de mídia com dados do YouTube e Google Search.',
+    tags: ['Python', 'Polars', 'ML'],
+    status: 'Em desenvolvimento'
+  }, {
+    title: 'Predictive Market Model',
+    description: 'Modelo LSTM para previsão de volatilidade de criptomoedas.',
+    tags: ['Python', 'TensorFlow', 'Time Series'],
+    status: 'Concluído'
+  }, {
+    title: 'ETL Pipeline Optimizer',
+    description: 'Pipeline de dados otimizado usando Polars para processamento 12x mais rápido.',
+    tags: ['Python', 'Polars', 'Data Engineering'],
+    status: 'Concluído'
+  }, {
+    title: 'Multi-Agent RL Research',
+    description: 'Pesquisa em aprendizado por reforço em ambientes multi-agente.',
+    tags: ['Python', 'PyTorch', 'RL', 'Research'],
+    status: 'Em desenvolvimento'
+  }];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "max-w-2xl mx-auto px-4 py-6"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mb-6"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "text-2xl font-bold mb-2",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Projects"), /*#__PURE__*/React.createElement("p", {
+    className: "text-sm",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, "Uma sele\xE7\xE3o dos meus projetos de Data Science e Machine Learning.")), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-4"
+  }, projects.map(function (project, i) {
+    return /*#__PURE__*/React.createElement("article", {
+      key: i,
+      className: "card p-5 hover:border-[var(--primary)]/50 transition-colors cursor-pointer"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex justify-between items-start mb-2"
+    }, /*#__PURE__*/React.createElement("h3", {
+      className: "text-lg font-bold",
+      style: {
+        color: 'var(--text-main)'
+      }
+    }, project.title), /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] font-medium px-2 py-1 rounded-full ".concat(project.status === 'Concluído' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20')
+    }, project.status)), /*#__PURE__*/React.createElement("p", {
+      className: "text-sm mb-4",
+      style: {
+        color: 'var(--text-secondary)'
+      }
+    }, project.description), /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-wrap gap-2"
+    }, project.tags.map(function (tag, j) {
+      return /*#__PURE__*/React.createElement("span", {
+        key: j,
+        className: "text-[10px] font-medium px-2 py-1 rounded",
+        style: {
+          backgroundColor: 'var(--primary-light)',
+          color: 'var(--primary)'
+        }
+      }, tag);
+    })));
+  })));
+};
+
+/*
+ * pages/Research.jsx - Página de pesquisas e papers
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var Research = function Research(_ref9) {
+  var isDarkMode = _ref9.isDarkMode;
+  var papers = [{
+    title: 'Multi-Agent Reinforcement Learning in Competitive Environments',
+    venue: 'arXiv Preprint',
+    year: '2026',
+    "abstract": 'Exploramos estratégias de aprendizado por reforço em ambientes competitivos multi-agente, com aplicações em teoria dos jogos.',
+    link: '#'
+  }, {
+    title: 'Predicting Cryptocurrency Volatility Using Deep Learning',
+    venue: 'Journal of Financial Data Science',
+    year: '2025',
+    "abstract": 'Modelo LSTM para previsão de volatilidade de criptomoedas com 87% de acurácia.',
+    link: '#'
+  }, {
+    title: 'Efficient Data Pipelines with Lazy Evaluation',
+    venue: 'Data Engineering Conference',
+    year: '2025',
+    "abstract": 'Comparação de performance entre Pandas e Polars para pipelines de ETL em larga escala.',
+    link: '#'
+  }];
+  return /*#__PURE__*/React.createElement("div", {
+    className: "max-w-2xl mx-auto px-4 py-6"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mb-6"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "text-2xl font-bold mb-2",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Research"), /*#__PURE__*/React.createElement("p", {
+    className: "text-sm",
+    style: {
+      color: 'var(--text-secondary)'
+    }
+  }, "Publica\xE7\xF5es acad\xEAmicas e pesquisas em andamento.")), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col gap-4"
+  }, papers.map(function (paper, i) {
+    return /*#__PURE__*/React.createElement("article", {
+      key: i,
+      className: "card p-5 hover:border-[var(--primary)]/50 transition-colors"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-start gap-3 mb-3"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center justify-center size-10 rounded shrink-0",
+      style: {
+        backgroundColor: isDarkMode ? 'rgba(239,68,68,0.1)' : '#fef2f2',
+        border: isDarkMode ? '1px solid rgba(239,68,68,0.2)' : '1px solid #fecaca',
+        color: '#ef4444'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "material-symbols-outlined"
+    }, "description")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+      className: "text-base font-bold leading-tight mb-1",
+      style: {
+        color: 'var(--text-main)'
+      }
+    }, paper.title), /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2 text-xs",
+      style: {
+        color: 'var(--text-muted)'
+      }
+    }, /*#__PURE__*/React.createElement("span", null, paper.venue), /*#__PURE__*/React.createElement("span", null, "\u2022"), /*#__PURE__*/React.createElement("span", null, paper.year)))), /*#__PURE__*/React.createElement("p", {
+      className: "text-sm mb-3",
+      style: {
+        color: 'var(--text-secondary)'
+      }
+    }, paper["abstract"]), /*#__PURE__*/React.createElement("a", {
+      href: paper.link,
+      className: "inline-flex items-center gap-1 text-xs font-medium hover:underline",
+      style: {
+        color: 'var(--primary)'
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "material-symbols-outlined text-[14px]"
+    }, "open_in_new"), "Ver paper completo"));
+  })));
+};
+
+/*
+ * App.jsx - Componente principal com roteamento
+ * Douglas Furbino - Economista e Cientista de Dados
+ * 
+ * Este arquivo é o ponto de entrada do React.
+ * Usa HashRouter para compatibilidade com GitHub Pages.
+ */
+
+// ============================================
+// LÓGICA DE TEMA
+// ============================================
+var getInitialTheme = function getInitialTheme() {
+  var storedTheme = localStorage.getItem('theme');
+  if (storedTheme) return storedTheme === 'dark';
+  if (window.matchMedia) return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return true;
+};
+var applyTheme = function applyTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+};
+
+// Aplica tema antes do React montar (evita flash)
+applyTheme(getInitialTheme());
+
+// ============================================
+// COMPONENTE PRINCIPAL DO APP
+// ============================================
+var App = function App() {
+  var _React = React,
+    useState = _React.useState,
+    useEffect = _React.useEffect;
+  var _useState = useState(function () {
+      var initial = getInitialTheme();
+      applyTheme(initial);
+      return initial;
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    isDarkMode = _useState2[0],
+    setIsDarkMode = _useState2[1];
+
+  // Estado para controlar a rota atual (HashRouter manual)
+  var _useState3 = useState(window.location.hash.slice(1) || '/'),
+    _useState4 = _slicedToArray(_useState3, 2),
+    currentRoute = _useState4[0],
+    setCurrentRoute = _useState4[1];
+  useEffect(function () {
+    applyTheme(isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+
+  // Listener para mudanças na preferência do sistema
+  useEffect(function () {
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    var handleChange = function handleChange(e) {
+      if (!localStorage.getItem('theme')) {
+        setIsDarkMode(e.matches);
+      }
+    };
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+    }
+    return function () {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleChange);
+      } else {
+        mediaQuery.removeListener(handleChange);
+      }
+    };
+  }, []);
+
+  // Listener para mudanças de hash (navegação)
+  useEffect(function () {
+    var handleHashChange = function handleHashChange() {
+      setCurrentRoute(window.location.hash.slice(1) || '/');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return function () {
+      return window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+  var handleToggleTheme = function handleToggleTheme() {
+    setIsDarkMode(function (prev) {
+      return !prev;
+    });
+  };
+
+  // Renderiza a página baseado na rota atual
+  var renderPage = function renderPage() {
+    switch (currentRoute) {
+      case '/projects':
+        return /*#__PURE__*/React.createElement(Projects, {
+          isDarkMode: isDarkMode
+        });
+      case '/research':
+        return /*#__PURE__*/React.createElement(Research, {
+          isDarkMode: isDarkMode
+        });
+      case '/':
+      default:
+        return /*#__PURE__*/React.createElement(Dashboard, {
+          isDarkMode: isDarkMode
+        });
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "min-h-screen font-display",
+    style: {
+      backgroundColor: 'var(--bg)',
+      color: 'var(--text-main)'
+    }
+  }, /*#__PURE__*/React.createElement(Header, {
+    isDarkMode: isDarkMode,
+    onToggleTheme: handleToggleTheme
+  }), /*#__PURE__*/React.createElement(SidebarProfile, {
+    isDarkMode: isDarkMode
+  }), /*#__PURE__*/React.createElement(SidebarAnalytics, {
+    isDarkMode: isDarkMode
+  }), /*#__PURE__*/React.createElement("main", {
+    className: "pt-16 lg:ml-[280px] xl:mr-[320px] min-h-screen"
+  }, renderPage()));
+};
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+var root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(/*#__PURE__*/React.createElement(App, null));

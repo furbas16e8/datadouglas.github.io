@@ -1,0 +1,34 @@
+# Dependências - ficam apenas na máquina de desenvolvimento
+node_modules/
+
+# Arquivos temporários de build
+src/bundle-source.jsx
+src/index.js
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Variáveis de ambiente (se houver)
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Arquivos de contexto do agente (não relevantes para produção)
+context-temp/
+debug/

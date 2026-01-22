@@ -1,0 +1,22 @@
+{
+  "name": "datadouglas-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio pessoal de Douglas Furbino - Economista e Cientista de Dados",
+  "scripts": {
+    "build": "babel src --out-file assets/js/bundle.js --presets=@babel/preset-react,@babel/preset-env",
+    "watch": "babel src --out-file assets/js/bundle.js --presets=@babel/preset-react,@babel/preset-env --watch"
+  },
+  "author": "Douglas Furbino",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.23.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
+  }
+}
