@@ -1,7 +1,6 @@
 # Dependências - ficam apenas na máquina de desenvolvimento
 node_modules/
-debug/
-.agent/
+
 
 # Arquivos temporários de build
 src/bundle-source.jsx
@@ -34,3 +33,4 @@ Thumbs.db
 # Arquivos de contexto do agente (não relevantes para produção)
 context-temp/
 debug/
+.agent/
