@@ -6,38 +6,140 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /*
- * data/posts.js - Dados dos posts do feed
+ * App.jsx - Componente principal com roteamento
  * Douglas Furbino - Economista e Cientista de Dados
+ * 
+ * Este arquivo é o ponto de entrada do React.
+ * Usa HashRouter para compatibilidade com GitHub Pages.
  */
 
-// Dados de exemplo para o feed de atividades
-var POSTS_DATA = [{
-  title: 'Predictive Market Volatility Model',
-  time: '2h ago',
-  category: 'Market Analysis',
-  content: 'Deployed a new LSTM model to predict crypto volatility indices. Achieving 87% accuracy on test sets compared to the baseline ARIMA model.',
-  chart: true
-}, {
-  title: 'Optimizing Data Pipelines',
-  time: '5h ago',
-  category: 'Data Engineering',
-  content: 'Refactored the ETL pipeline to use Polars instead of Pandas. Saw a 12x speed improvement on the daily ingestion jobs.',
-  code: "<span class=\"text-pink-400\">import</span> polars <span class=\"text-pink-400\">as</span> pl\n<span class=\"text-gray-500\"># Lazy evaluation for memory efficiency</span>\ndf = pl.scan_csv(<span class=\"text-green-400\">\"large_dataset.csv\"</span>)\n    .filter(pl.col(<span class=\"text-green-400\">\"status\"</span>) == <span class=\"text-green-400\">\"active\"</span>)\n    .groupby(<span class=\"text-green-400\">\"region\"</span>)\n    .agg([\n        pl.col(<span class=\"text-green-400\">\"sales\"</span>).sum().alias(<span class=\"text-green-400\">\"total\"</span>)\n    ])\n    .collect()"
-}, {
-  title: 'Multi-Agent RL Research',
-  time: '1d ago',
-  category: 'Research',
-  content: "Just published a new paper on arXiv regarding reinforcement learning in multi-agent environments. Check it out if you're into game theory! #AI #Research",
-  attachment: {
-    name: 'Multi-Agent RL Optimization.pdf',
-    size: '2.4 MB • PDF Document'
+// ============================================
+// LÓGICA DE TEMA
+// ============================================
+var getInitialTheme = function getInitialTheme() {
+  var storedTheme = localStorage.getItem('theme');
+  if (storedTheme) return storedTheme === 'dark';
+  if (window.matchMedia) return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return true;
+};
+var applyTheme = function applyTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
   }
-}];
+};
 
-// Dados pré-definidos para Activity Grid (opacidades estáveis)
-var ACTIVITY_DATA = [10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30, 10, 10, 60, 20, 80, 40, 10, 50, 30, 70, 10, 20, 90, 50, 10, 20, 40, 80, 10, 60, 30, 70, 10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30];
+// Aplica tema antes do React montar (evita flash)
+applyTheme(getInitialTheme());
+
+// ============================================
+// COMPONENTE PRINCIPAL DO APP
+// ============================================
+var App = function App() {
+  var _React = React,
+    useState = _React.useState,
+    useEffect = _React.useEffect;
+  var _useState = useState(function () {
+      var initial = getInitialTheme();
+      applyTheme(initial);
+      return initial;
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    isDarkMode = _useState2[0],
+    setIsDarkMode = _useState2[1];
+
+  // Estado para controlar a rota atual (HashRouter manual)
+  var _useState3 = useState(window.location.hash.slice(1) || '/'),
+    _useState4 = _slicedToArray(_useState3, 2),
+    currentRoute = _useState4[0],
+    setCurrentRoute = _useState4[1];
+  useEffect(function () {
+    applyTheme(isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+
+  // Listener para mudanças na preferência do sistema
+  useEffect(function () {
+    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    var handleChange = function handleChange(e) {
+      if (!localStorage.getItem('theme')) {
+        setIsDarkMode(e.matches);
+      }
+    };
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+    }
+    return function () {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleChange);
+      } else {
+        mediaQuery.removeListener(handleChange);
+      }
+    };
+  }, []);
+
+  // Listener para mudanças de hash (navegação)
+  useEffect(function () {
+    var handleHashChange = function handleHashChange() {
+      setCurrentRoute(window.location.hash.slice(1) || '/');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return function () {
+      return window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+  var handleToggleTheme = function handleToggleTheme() {
+    setIsDarkMode(function (prev) {
+      return !prev;
+    });
+  };
+
+  // Renderiza a página baseado na rota atual
+  var renderPage = function renderPage() {
+    switch (currentRoute) {
+      case '/projects':
+        return /*#__PURE__*/React.createElement(Projects, {
+          isDarkMode: isDarkMode
+        });
+      case '/research':
+        return /*#__PURE__*/React.createElement(Research, {
+          isDarkMode: isDarkMode
+        });
+      case '/':
+      default:
+        return /*#__PURE__*/React.createElement(Dashboard, {
+          isDarkMode: isDarkMode
+        });
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "min-h-screen font-display",
+    style: {
+      backgroundColor: 'var(--bg)',
+      color: 'var(--text-main)'
+    }
+  }, /*#__PURE__*/React.createElement(Header, {
+    isDarkMode: isDarkMode,
+    onToggleTheme: handleToggleTheme
+  }), /*#__PURE__*/React.createElement(SidebarProfile, {
+    isDarkMode: isDarkMode
+  }), /*#__PURE__*/React.createElement(SidebarAnalytics, {
+    isDarkMode: isDarkMode
+  }), /*#__PURE__*/React.createElement("main", {
+    className: "pt-16 lg:ml-[280px] xl:mr-[320px] min-h-screen"
+  }, renderPage()));
+};
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+var root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(/*#__PURE__*/React.createElement(App, null));
+"use strict";
 
 /*
  * components/Header.jsx - Componente de Navegação Superior
@@ -112,14 +214,15 @@ var Header = function Header(_ref) {
     }
   }, "menu")))));
 };
+"use strict";
 
 /*
  * components/MobileProfile.jsx - Versão mobile do perfil
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var MobileProfile = function MobileProfile(_ref2) {
-  var isDarkMode = _ref2.isDarkMode;
+var MobileProfile = function MobileProfile(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("section", {
     className: "lg:hidden p-4 border-b sm:rounded-lg sm:border sm:mb-0",
     style: {
@@ -152,21 +255,22 @@ var MobileProfile = function MobileProfile(_ref2) {
     }
   }, "Machine Learning Engineer passionate about turning complex data into actionable insights."))));
 };
+"use strict";
 
 /*
  * components/PostArticle.jsx - Card de post/artigo do feed
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var PostArticle = function PostArticle(_ref3) {
-  var isDarkMode = _ref3.isDarkMode,
-    title = _ref3.title,
-    time = _ref3.time,
-    category = _ref3.category,
-    content = _ref3.content,
-    chart = _ref3.chart,
-    code = _ref3.code,
-    attachment = _ref3.attachment;
+var PostArticle = function PostArticle(_ref) {
+  var isDarkMode = _ref.isDarkMode,
+    title = _ref.title,
+    time = _ref.time,
+    category = _ref.category,
+    content = _ref.content,
+    chart = _ref.chart,
+    code = _ref.code,
+    attachment = _ref.attachment;
   return /*#__PURE__*/React.createElement("article", {
     className: "p-5 border-b sm:border sm:rounded-lg hover:border-[var(--border-hover)] transition-colors",
     style: {
@@ -327,16 +431,27 @@ var PostArticle = function PostArticle(_ref3) {
     className: "material-symbols-outlined text-[18px]"
   }, "share"))));
 };
+"use strict";
 
 /*
  * components/SidebarAnalytics.jsx - Sidebar com cards de analytics
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var SidebarAnalytics = function SidebarAnalytics(_ref4) {
-  var isDarkMode = _ref4.isDarkMode;
+var SidebarAnalytics = function SidebarAnalytics(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("aside", {
-    className: "hidden xl:block fixed right-[max(0px,calc(50%-650px))] top-16 w-80 h-[calc(100vh-64px)] overflow-y-auto no-scrollbar py-6 px-4"
+    className: [
+    // Visibilidade / Responsividade
+    "hidden xl:block",
+    // Posicionamento
+    "fixed right-[max(0px,calc(50%-680px))] top-16",
+    // Dimensões
+    "w-[370px] h-[calc(100vh-64px)]",
+    // Scroll
+    "overflow-y-auto no-scrollbar",
+    // Espaçamento interno
+    "py-6 px-3"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -374,7 +489,15 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
   }, "2.5M+"), /*#__PURE__*/React.createElement("span", {
     className: "text-[10px] text-green-500 font-medium"
   }, "\u25B2 12%"))), /*#__PURE__*/React.createElement("div", {
-    className: "h-28 w-full relative rounded overflow-hidden shadow-inner",
+    className: [
+    // Dimensões
+    "h-28 w-full",
+    // Posicionamento
+    "relative",
+    // Forma
+    "rounded overflow-hidden",
+    // Visual
+    "shadow-inner"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(18,18,18,0.8)' : '#f9fafb',
       border: '1px solid var(--border)'
@@ -411,7 +534,15 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
     stroke: "#3b82f6",
     strokeWidth: "1.5"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-2 right-2 flex flex-col gap-1 items-end z-20 p-1.5 rounded backdrop-blur-sm shadow-sm",
+    className: [
+    // Posicionamento
+    "absolute top-2 right-2 z-20",
+    // Layout
+    "flex flex-col gap-1 items-end",
+    // Espaçamento e forma
+    "p-1.5 rounded",
+    // Visual
+    "backdrop-blur-sm shadow-sm"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(26,26,30,0.8)' : 'rgba(255,255,255,0.9)',
       border: '1px solid var(--border)'
@@ -425,9 +556,9 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
   }, {
     color: '#ef4444',
     label: 'Music'
-  }].map(function (_ref5) {
-    var color = _ref5.color,
-      label = _ref5.label;
+  }].map(function (_ref2) {
+    var color = _ref2.color,
+      label = _ref2.label;
     return /*#__PURE__*/React.createElement("div", {
       key: label,
       className: "flex items-center gap-1.5"
@@ -453,13 +584,31 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
       color: 'var(--text-muted)'
     }
   }, "SCREEN TIME INTENSITY")), /*#__PURE__*/React.createElement("div", {
-    className: "h-32 w-full rounded relative overflow-hidden flex items-center justify-center",
+    className: [
+    // Dimensões
+    "h-32 w-full",
+    // Forma
+    "rounded",
+    // Posicionamento
+    "relative overflow-hidden",
+    // Layout
+    "flex items-center justify-center"].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'var(--bg)' : '#f9fafb',
       border: '1px solid var(--border)'
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "absolute bottom-[20%] left-[20%] size-14 rounded-full border flex flex-col items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-blue' : 'shadow-sm'),
+    className: [
+    // Posicionamento
+    "absolute bottom-[20%] left-[20%]",
+    // Dimensões e forma
+    "size-14 rounded-full border",
+    // Layout
+    "flex flex-col items-center justify-center",
+    // Interação
+    "cursor-pointer",
+    // Sombra condicional
+    isDarkMode ? 'shadow-neon-blue' : 'shadow-sm'].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(59,130,246,0.1)' : '#dbeafe',
       borderColor: isDarkMode ? 'rgba(59,130,246,0.5)' : '#bfdbfe',
@@ -473,7 +622,17 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
       opacity: 0.8
     }
   }, "6h 12m")), /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-[15%] right-[20%] size-16 rounded-full border flex flex-col items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-purple' : 'shadow-sm'),
+    className: [
+    // Posicionamento
+    "absolute top-[15%] right-[20%]",
+    // Dimensões e forma
+    "size-16 rounded-full border",
+    // Layout
+    "flex flex-col items-center justify-center",
+    // Interação
+    "cursor-pointer",
+    // Sombra condicional
+    isDarkMode ? 'shadow-neon-purple' : 'shadow-sm'].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(139,92,246,0.1)' : '#ede9fe',
       borderColor: isDarkMode ? 'rgba(139,92,246,0.5)' : '#c4b5fd',
@@ -487,7 +646,17 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
       opacity: 0.8
     }
   }, "3h 45m")), /*#__PURE__*/React.createElement("div", {
-    className: "absolute bottom-[10%] right-[35%] size-10 rounded-full border flex items-center justify-center cursor-pointer ".concat(isDarkMode ? 'shadow-neon-green' : 'shadow-sm'),
+    className: [
+    // Posicionamento
+    "absolute bottom-[10%] right-[35%]",
+    // Dimensões e forma
+    "size-10 rounded-full border",
+    // Layout
+    "flex items-center justify-center",
+    // Interação
+    "cursor-pointer",
+    // Sombra condicional
+    isDarkMode ? 'shadow-neon-green' : 'shadow-sm'].join(" "),
     style: {
       backgroundColor: isDarkMode ? 'rgba(34,197,94,0.1)' : '#dcfce7',
       borderColor: isDarkMode ? 'rgba(34,197,94,0.5)' : '#86efac',
@@ -496,14 +665,26 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-[8px] font-bold"
   }, "Media")))), /*#__PURE__*/React.createElement("div", {
-    className: "card p-4 flex items-center justify-between group cursor-pointer hover:border-[var(--primary)]/50 transition-colors"
+    className: [
+    // Base
+    "card p-4",
+    // Layout
+    "flex items-center justify-between",
+    // Interação
+    "group cursor-pointer",
+    // Hover
+    "hover:border-[var(--primary)]/50 transition-colors"].join(" ")
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "text-[10px] uppercase tracking-widest font-bold",
     style: {
       color: 'var(--text-muted)'
     }
   }, "Trending"), /*#__PURE__*/React.createElement("div", {
-    className: "text-sm font-bold mt-0.5 group-hover:text-[var(--primary)] transition-colors",
+    className: [
+    // Tipografia
+    "text-sm font-bold mt-0.5",
+    // Interação
+    "group-hover:text-[var(--primary)] transition-colors"].join(" "),
     style: {
       color: 'var(--text-main)'
     }
@@ -514,16 +695,27 @@ var SidebarAnalytics = function SidebarAnalytics(_ref4) {
     }
   }, "show_chart"))));
 };
+"use strict";
 
 /*
  * components/SidebarProfile.jsx - Sidebar com perfil do usuário
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var SidebarProfile = function SidebarProfile(_ref6) {
-  var isDarkMode = _ref6.isDarkMode;
+var SidebarProfile = function SidebarProfile(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("aside", {
-    className: "hidden lg:block fixed left-[max(0px,calc(50%-650px))] top-16 w-[280px] h-[calc(100vh-64px)] overflow-y-auto no-scrollbar py-6 px-4"
+    className: [
+    // Visibilidade / Responsividade
+    "hidden lg:block",
+    // Posicionamento
+    "fixed left-[max(0px,calc(50%-655px))] top-16",
+    // Dimensões
+    "w-[305px] h-[calc(100vh-64px)]",
+    // Scroll
+    "overflow-y-auto no-scrollbar",
+    // Espaçamento interno
+    "py-6 px-3"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -539,7 +731,15 @@ var SidebarProfile = function SidebarProfile(_ref6) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative -mt-12 mb-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "size-24 rounded-full border-[4px] bg-cover bg-center shadow-lg",
+    className: [
+    // Dimensões
+    "size-24",
+    // Forma e borda
+    "rounded-full border-[4px]",
+    // Background
+    "bg-cover bg-center",
+    // Sombra
+    "shadow-lg"].join(" "),
     role: "img",
     "aria-label": "Foto de perfil de Douglas Furbino",
     style: {
@@ -547,7 +747,11 @@ var SidebarProfile = function SidebarProfile(_ref6) {
       backgroundImage: "url('./assets/img/perfil.jpeg')"
     }
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
-    className: "text-xl font-bold leading-tight flex items-center gap-1.5",
+    className: [
+    // Tipografia
+    "text-xl font-bold leading-tight",
+    // Layout
+    "flex items-center gap-1.5"].join(" "),
     style: {
       color: 'var(--text-main)'
     }
@@ -557,12 +761,18 @@ var SidebarProfile = function SidebarProfile(_ref6) {
       color: 'var(--text-secondary)'
     }
   }, "Economista e Cientista de Dados"), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1 mt-2 text-xs mb-3",
+    className: [
+    // Layout
+    "flex items-center gap-1",
+    // Espaçamento
+    "mt-2 mb-3",
+    // Tipografia
+    "text-xs"].join(" "),
     style: {
       color: 'var(--text-muted)'
     }
   }, /*#__PURE__*/React.createElement("span", {
-    className: "material-symbols-outlined text-[14px]"
+    className: "material-symbols-outlined text-[12px]"
   }, "location_on"), "Governador Valadares, MG"), /*#__PURE__*/React.createElement("p", {
     className: "text-xs font-body leading-relaxed border-t pt-3",
     style: {
@@ -591,7 +801,11 @@ var SidebarProfile = function SidebarProfile(_ref6) {
     }), /*#__PURE__*/React.createElement("div", {
       className: "text-center group cursor-default"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "text-sm font-bold font-mono group-hover:text-[var(--primary)] transition-colors",
+      className: [
+      // Tipografia
+      "text-sm font-bold font-mono",
+      // Interação
+      "group-hover:text-[var(--primary)] transition-colors"].join(" "),
       style: {
         color: 'var(--text-main)'
       }
@@ -602,7 +816,13 @@ var SidebarProfile = function SidebarProfile(_ref6) {
       }
     }, stat.label)));
   })), /*#__PURE__*/React.createElement("div", {
-    className: "mt-4 pt-4 border-t grid grid-cols-2 gap-3",
+    className: [
+    // Espaçamento
+    "mt-4 pt-4",
+    // Borda
+    "border-t",
+    // Layout Grid
+    "grid grid-cols-2 gap-3"].join(" "),
     style: {
       borderColor: 'var(--border)'
     }
@@ -610,31 +830,47 @@ var SidebarProfile = function SidebarProfile(_ref6) {
     href: "https://github.com/furbas16e8",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "flex items-center justify-center gap-2 py-1.5 px-4 bg-[#24292e] border border-[#444c56] rounded-md hover:bg-[#2f363d] transition-all h-[34px]"
-  }, /*#__PURE__*/React.createElement("svg", {
-    className: "size-5 text-white",
-    fill: "currentColor",
-    viewBox: "0 0 24 24"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-  })), /*#__PURE__*/React.createElement("span", {
+    className: [
+    // Layout
+    "flex items-center justify-center gap-2",
+    // Espaçamento
+    "py-1.5 px-4",
+    // Borda e forma
+    "border rounded-md",
+    // Dimensões
+    "h-[34px]",
+    // Interação
+    "hover:opacity-90 transition-all"].join(" "),
+    style: {
+      backgroundColor: '#24292e',
+      borderColor: '#444c56'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "devicon-github-original text-white text-lg"
+  }), /*#__PURE__*/React.createElement("span", {
     className: "text-[13px] font-semibold text-white"
   }, "GitHub")), /*#__PURE__*/React.createElement("a", {
     href: "https://www.linkedin.com/in/dfurbino/",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "flex items-center justify-center gap-2 py-1.5 px-4 border rounded-md transition-all h-[34px]",
+    className: [
+    // Layout
+    "flex items-center justify-center gap-2",
+    // Espaçamento
+    "py-1.5 px-4",
+    // Borda e forma
+    "border rounded-md",
+    // Dimensões
+    "h-[34px]",
+    // Interação
+    "transition-all"].join(" "),
     style: {
       backgroundColor: 'rgba(10,102,194,0.05)',
       borderColor: 'rgba(10,102,194,0.2)'
     }
-  }, /*#__PURE__*/React.createElement("svg", {
-    className: "size-5 text-[#0a66c2]",
-    fill: "currentColor",
-    viewBox: "0 0 24 24"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-  })), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "devicon-linkedin-plain text-[#0a66c2] text-lg"
+  }), /*#__PURE__*/React.createElement("span", {
     className: "text-[13px] font-semibold text-[#0a66c2]"
   }, "LinkedIn"))))), /*#__PURE__*/React.createElement("div", {
     className: "card p-4 h-[180px]"
@@ -679,14 +915,49 @@ var SidebarProfile = function SidebarProfile(_ref6) {
     }
   }, "\xA9 2026 Doug.DS Portfolio."))));
 };
+"use strict";
 
+/*
+ * data/posts.js - Dados dos posts do feed
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+// Dados de exemplo para o feed de atividades
+var POSTS_DATA = [{
+  title: 'Predictive Market Volatility Model',
+  time: '2h ago',
+  category: 'Market Analysis',
+  content: 'Deployed a new LSTM model to predict crypto volatility indices. Achieving 87% accuracy on test sets compared to the baseline ARIMA model.',
+  chart: true
+}, {
+  title: 'Optimizing Data Pipelines',
+  time: '5h ago',
+  category: 'Data Engineering',
+  content: 'Refactored the ETL pipeline to use Polars instead of Pandas. Saw a 12x speed improvement on the daily ingestion jobs.',
+  code: "<span class=\"text-pink-400\">import</span> polars <span class=\"text-pink-400\">as</span> pl\n<span class=\"text-gray-500\"># Lazy evaluation for memory efficiency</span>\ndf = pl.scan_csv(<span class=\"text-green-400\">\"large_dataset.csv\"</span>)\n    .filter(pl.col(<span class=\"text-green-400\">\"status\"</span>) == <span class=\"text-green-400\">\"active\"</span>)\n    .groupby(<span class=\"text-green-400\">\"region\"</span>)\n    .agg([\n        pl.col(<span class=\"text-green-400\">\"sales\"</span>).sum().alias(<span class=\"text-green-400\">\"total\"</span>)\n    ])\n    .collect()"
+}, {
+  title: 'Multi-Agent RL Research',
+  time: '1d ago',
+  category: 'Research',
+  content: "Just published a new paper on arXiv regarding reinforcement learning in multi-agent environments. Check it out if you're into game theory! #AI #Research",
+  attachment: {
+    name: 'Multi-Agent RL Optimization.pdf',
+    size: '2.4 MB • PDF Document'
+  }
+}];
+
+// Dados pré-definidos para Activity Grid (opacidades estáveis)
+var ACTIVITY_DATA = [10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30, 10, 10, 60, 20, 80, 40, 10, 50, 30, 70, 10, 20, 90, 50, 10, 20, 40, 80, 10, 60, 30, 70, 10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30];
+"use strict";
+
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /*
  * pages/Dashboard.jsx - Página inicial (feed de posts)
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var Dashboard = function Dashboard(_ref7) {
-  var isDarkMode = _ref7.isDarkMode;
+var Dashboard = function Dashboard(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   return /*#__PURE__*/React.createElement("div", {
     className: "max-w-2xl mx-auto px-4 py-6 flex flex-col gap-4"
   }, /*#__PURE__*/React.createElement(MobileProfile, {
@@ -703,14 +974,15 @@ var Dashboard = function Dashboard(_ref7) {
     }
   }, /*#__PURE__*/React.createElement("p", null, "End of Feed")));
 };
+"use strict";
 
 /*
  * pages/Projects.jsx - Página de projetos
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var Projects = function Projects(_ref8) {
-  var isDarkMode = _ref8.isDarkMode;
+var Projects = function Projects(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   var projects = [{
     title: 'Life Analytics',
     description: 'Análise de padrões de consumo de mídia com dados do YouTube e Google Search.',
@@ -780,14 +1052,15 @@ var Projects = function Projects(_ref8) {
     })));
   })));
 };
+"use strict";
 
 /*
  * pages/Research.jsx - Página de pesquisas e papers
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-var Research = function Research(_ref9) {
-  var isDarkMode = _ref9.isDarkMode;
+var Research = function Research(_ref) {
+  var isDarkMode = _ref.isDarkMode;
   var papers = [{
     title: 'Multi-Agent Reinforcement Learning in Competitive Environments',
     venue: 'arXiv Preprint',
@@ -864,137 +1137,3 @@ var Research = function Research(_ref9) {
     }, "open_in_new"), "Ver paper completo"));
   })));
 };
-
-/*
- * App.jsx - Componente principal com roteamento
- * Douglas Furbino - Economista e Cientista de Dados
- * 
- * Este arquivo é o ponto de entrada do React.
- * Usa HashRouter para compatibilidade com GitHub Pages.
- */
-
-// ============================================
-// LÓGICA DE TEMA
-// ============================================
-var getInitialTheme = function getInitialTheme() {
-  var storedTheme = localStorage.getItem('theme');
-  if (storedTheme) return storedTheme === 'dark';
-  if (window.matchMedia) return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return true;
-};
-var applyTheme = function applyTheme(isDark) {
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-};
-
-// Aplica tema antes do React montar (evita flash)
-applyTheme(getInitialTheme());
-
-// ============================================
-// COMPONENTE PRINCIPAL DO APP
-// ============================================
-var App = function App() {
-  var _React = React,
-    useState = _React.useState,
-    useEffect = _React.useEffect;
-  var _useState = useState(function () {
-      var initial = getInitialTheme();
-      applyTheme(initial);
-      return initial;
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    isDarkMode = _useState2[0],
-    setIsDarkMode = _useState2[1];
-
-  // Estado para controlar a rota atual (HashRouter manual)
-  var _useState3 = useState(window.location.hash.slice(1) || '/'),
-    _useState4 = _slicedToArray(_useState3, 2),
-    currentRoute = _useState4[0],
-    setCurrentRoute = _useState4[1];
-  useEffect(function () {
-    applyTheme(isDarkMode);
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  // Listener para mudanças na preferência do sistema
-  useEffect(function () {
-    var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    var handleChange = function handleChange(e) {
-      if (!localStorage.getItem('theme')) {
-        setIsDarkMode(e.matches);
-      }
-    };
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange);
-    } else {
-      mediaQuery.addListener(handleChange);
-    }
-    return function () {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener('change', handleChange);
-      } else {
-        mediaQuery.removeListener(handleChange);
-      }
-    };
-  }, []);
-
-  // Listener para mudanças de hash (navegação)
-  useEffect(function () {
-    var handleHashChange = function handleHashChange() {
-      setCurrentRoute(window.location.hash.slice(1) || '/');
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    return function () {
-      return window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
-  var handleToggleTheme = function handleToggleTheme() {
-    setIsDarkMode(function (prev) {
-      return !prev;
-    });
-  };
-
-  // Renderiza a página baseado na rota atual
-  var renderPage = function renderPage() {
-    switch (currentRoute) {
-      case '/projects':
-        return /*#__PURE__*/React.createElement(Projects, {
-          isDarkMode: isDarkMode
-        });
-      case '/research':
-        return /*#__PURE__*/React.createElement(Research, {
-          isDarkMode: isDarkMode
-        });
-      case '/':
-      default:
-        return /*#__PURE__*/React.createElement(Dashboard, {
-          isDarkMode: isDarkMode
-        });
-    }
-  };
-  return /*#__PURE__*/React.createElement("div", {
-    className: "min-h-screen font-display",
-    style: {
-      backgroundColor: 'var(--bg)',
-      color: 'var(--text-main)'
-    }
-  }, /*#__PURE__*/React.createElement(Header, {
-    isDarkMode: isDarkMode,
-    onToggleTheme: handleToggleTheme
-  }), /*#__PURE__*/React.createElement(SidebarProfile, {
-    isDarkMode: isDarkMode
-  }), /*#__PURE__*/React.createElement(SidebarAnalytics, {
-    isDarkMode: isDarkMode
-  }), /*#__PURE__*/React.createElement("main", {
-    className: "pt-16 lg:ml-[280px] xl:mr-[320px] min-h-screen"
-  }, renderPage()));
-};
-
-// ============================================
-// INICIALIZAÇÃO
-// ============================================
-var root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(/*#__PURE__*/React.createElement(App, null));

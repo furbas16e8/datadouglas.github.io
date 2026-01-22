@@ -4,7 +4,20 @@
  */
 
 const SidebarAnalytics = ({ isDarkMode }) => (
-  <aside className="hidden xl:block fixed right-[max(0px,calc(50%-650px))] top-16 w-80 h-[calc(100vh-64px)] overflow-y-auto no-scrollbar py-6 px-4">
+  <aside 
+    className={[
+      // Visibilidade / Responsividade
+      "hidden xl:block",
+      // Posicionamento
+      "fixed right-[max(0px,calc(50%-680px))] top-16",
+      // Dimensões
+      "w-[370px] h-[calc(100vh-64px)]",
+      // Scroll
+      "overflow-y-auto no-scrollbar",
+      // Espaçamento interno
+      "py-6 px-3"
+    ].join(" ")}
+  >
     <div className="flex flex-col gap-4">
     {/* Life Analytics */}
     <div className="card p-5">
@@ -23,7 +36,16 @@ const SidebarAnalytics = ({ isDarkMode }) => (
           </div>
         </div>
         <div 
-          className="h-28 w-full relative rounded overflow-hidden shadow-inner"
+          className={[
+            // Dimensões
+            "h-28 w-full",
+            // Posicionamento
+            "relative",
+            // Forma
+            "rounded overflow-hidden",
+            // Visual
+            "shadow-inner"
+          ].join(" ")}
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(18,18,18,0.8)' : '#f9fafb',
             border: '1px solid var(--border)'
@@ -38,7 +60,16 @@ const SidebarAnalytics = ({ isDarkMode }) => (
             <path d="M0,35 Q25,25 50,25 T100,20" fill="none" stroke="#3b82f6" strokeWidth="1.5"></path>
           </svg>
           <div 
-            className="absolute top-2 right-2 flex flex-col gap-1 items-end z-20 p-1.5 rounded backdrop-blur-sm shadow-sm"
+            className={[
+              // Posicionamento
+              "absolute top-2 right-2 z-20",
+              // Layout
+              "flex flex-col gap-1 items-end",
+              // Espaçamento e forma
+              "p-1.5 rounded",
+              // Visual
+              "backdrop-blur-sm shadow-sm"
+            ].join(" ")}
             style={{ 
               backgroundColor: isDarkMode ? 'rgba(26,26,30,0.8)' : 'rgba(255,255,255,0.9)',
               border: '1px solid var(--border)'
@@ -71,14 +102,34 @@ const SidebarAnalytics = ({ isDarkMode }) => (
         <span className="text-[10px] font-medium tracking-wide uppercase" style={{ color: 'var(--text-muted)' }}>SCREEN TIME INTENSITY</span>
       </div>
       <div 
-        className="h-32 w-full rounded relative overflow-hidden flex items-center justify-center"
+        className={[
+          // Dimensões
+          "h-32 w-full",
+          // Forma
+          "rounded",
+          // Posicionamento
+          "relative overflow-hidden",
+          // Layout
+          "flex items-center justify-center"
+        ].join(" ")}
         style={{ 
           backgroundColor: isDarkMode ? 'var(--bg)' : '#f9fafb',
           border: '1px solid var(--border)'
         }}
       >
         <div 
-          className={`absolute bottom-[20%] left-[20%] size-14 rounded-full border flex flex-col items-center justify-center cursor-pointer ${isDarkMode ? 'shadow-neon-blue' : 'shadow-sm'}`}
+          className={[
+            // Posicionamento
+            "absolute bottom-[20%] left-[20%]",
+            // Dimensões e forma
+            "size-14 rounded-full border",
+            // Layout
+            "flex flex-col items-center justify-center",
+            // Interação
+            "cursor-pointer",
+            // Sombra condicional
+            isDarkMode ? 'shadow-neon-blue' : 'shadow-sm'
+          ].join(" ")}
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(59,130,246,0.1)' : '#dbeafe',
             borderColor: isDarkMode ? 'rgba(59,130,246,0.5)' : '#bfdbfe',
@@ -90,7 +141,18 @@ const SidebarAnalytics = ({ isDarkMode }) => (
         </div>
         
         <div 
-          className={`absolute top-[15%] right-[20%] size-16 rounded-full border flex flex-col items-center justify-center cursor-pointer ${isDarkMode ? 'shadow-neon-purple' : 'shadow-sm'}`}
+          className={[
+            // Posicionamento
+            "absolute top-[15%] right-[20%]",
+            // Dimensões e forma
+            "size-16 rounded-full border",
+            // Layout
+            "flex flex-col items-center justify-center",
+            // Interação
+            "cursor-pointer",
+            // Sombra condicional
+            isDarkMode ? 'shadow-neon-purple' : 'shadow-sm'
+          ].join(" ")}
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(139,92,246,0.1)' : '#ede9fe',
             borderColor: isDarkMode ? 'rgba(139,92,246,0.5)' : '#c4b5fd',
@@ -102,7 +164,18 @@ const SidebarAnalytics = ({ isDarkMode }) => (
         </div>
 
         <div 
-          className={`absolute bottom-[10%] right-[35%] size-10 rounded-full border flex items-center justify-center cursor-pointer ${isDarkMode ? 'shadow-neon-green' : 'shadow-sm'}`}
+          className={[
+            // Posicionamento
+            "absolute bottom-[10%] right-[35%]",
+            // Dimensões e forma
+            "size-10 rounded-full border",
+            // Layout
+            "flex items-center justify-center",
+            // Interação
+            "cursor-pointer",
+            // Sombra condicional
+            isDarkMode ? 'shadow-neon-green' : 'shadow-sm'
+          ].join(" ")}
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(34,197,94,0.1)' : '#dcfce7',
             borderColor: isDarkMode ? 'rgba(34,197,94,0.5)' : '#86efac',
@@ -115,10 +188,31 @@ const SidebarAnalytics = ({ isDarkMode }) => (
     </div>
 
     {/* Trending */}
-    <div className="card p-4 flex items-center justify-between group cursor-pointer hover:border-[var(--primary)]/50 transition-colors">
+    <div 
+      className={[
+        // Base
+        "card p-4",
+        // Layout
+        "flex items-center justify-between",
+        // Interação
+        "group cursor-pointer",
+        // Hover
+        "hover:border-[var(--primary)]/50 transition-colors"
+      ].join(" ")}
+    >
       <div>
         <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: 'var(--text-muted)' }}>Trending</div>
-        <div className="text-sm font-bold mt-0.5 group-hover:text-[var(--primary)] transition-colors" style={{ color: 'var(--text-main)' }}>Global AI Index</div>
+        <div 
+          className={[
+            // Tipografia
+            "text-sm font-bold mt-0.5",
+            // Interação
+            "group-hover:text-[var(--primary)] transition-colors"
+          ].join(" ")} 
+          style={{ color: 'var(--text-main)' }}
+        >
+          Global AI Index
+        </div>
       </div>
       <span className="material-symbols-outlined group-hover:text-[var(--primary)] transition-colors" style={{ color: 'var(--text-muted)' }}>show_chart</span>
     </div>
