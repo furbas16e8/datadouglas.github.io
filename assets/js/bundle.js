@@ -151,6 +151,104 @@ var root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(/*#__PURE__*/React.createElement(App, null));
 "use strict";
 
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/*
+ * components/CodeBlockWithTabs.jsx - Bloco de código com abas
+ * Douglas Furbino - Economista e Cientista de Dados
+ */
+
+var CodeBlockWithTabs = function CodeBlockWithTabs(_ref) {
+  var code = _ref.code,
+    codeAlt = _ref.codeAlt,
+    codeFileName = _ref.codeFileName,
+    codeAltFileName = _ref.codeAltFileName,
+    codeLink = _ref.codeLink;
+  var _React$useState = React.useState(0),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    activeTab = _React$useState2[0],
+    setActiveTab = _React$useState2[1];
+  var tabs = [{
+    name: codeFileName || 'code.py',
+    content: code
+  }];
+  if (codeAlt) {
+    tabs.push({
+      name: codeAltFileName || 'data.json',
+      content: codeAlt
+    });
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    className: "code-block mb-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: [
+    // Layout
+    "flex items-center justify-between",
+    // Espaçamento
+    "px-3 py-2",
+    // Visual
+    "bg-white/5 border-b border-white/5"].join(" ")
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-2"
+  }, tabs.map(function (tab, index) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: index,
+      onClick: function onClick() {
+        return setActiveTab(index);
+      },
+      className: ["text-xs px-2 py-1 rounded transition-colors", activeTab === index ? "bg-white/10 text-white" : "text-gray-400 hover:text-gray-300"].join(" ")
+    }, tab.name);
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-1.5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-red-500/20 border border-red-500/50"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "size-2.5 rounded-full bg-green-500/20 border border-green-500/50"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: [
+    // Espaçamento
+    "p-3",
+    // Scroll
+    "overflow-x-auto",
+    // Tipografia
+    "text-gray-300 leading-relaxed font-mono text-xs"].join(" ")
+  }, /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    dangerouslySetInnerHTML: {
+      __html: tabs[activeTab].content
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "px-3 py-2 bg-white/5 border-t border-white/5 text-center"
+  }, codeLink ? /*#__PURE__*/React.createElement("a", {
+    href: codeLink.url,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: [
+    // Tipografia
+    "text-[10px] font-bold uppercase tracking-wider",
+    // Interação
+    "hover:text-white transition-colors"].join(" "),
+    style: {
+      color: 'var(--primary)'
+    }
+  }, codeLink.text) : /*#__PURE__*/React.createElement("button", {
+    className: [
+    // Tipografia
+    "text-[10px] font-bold uppercase tracking-wider",
+    // Interação
+    "hover:text-white transition-colors"].join(" "),
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "View Full Gist")));
+};
+"use strict";
+
 /*
  * components/Header.jsx - Componente de Navegação Superior
  * Douglas Furbino - Economista e Cientista de Dados
@@ -346,6 +444,12 @@ var MobileProfile = function MobileProfile(_ref) {
 };
 "use strict";
 
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /*
  * components/PostArticle.jsx - Card de post/artigo do feed
  * Douglas Furbino - Economista e Cientista de Dados
@@ -357,9 +461,18 @@ var PostArticle = function PostArticle(_ref) {
     time = _ref.time,
     category = _ref.category,
     content = _ref.content,
+    contentExpanded = _ref.contentExpanded,
     chart = _ref.chart,
     code = _ref.code,
+    codeAlt = _ref.codeAlt,
+    codeFileName = _ref.codeFileName,
+    codeAltFileName = _ref.codeAltFileName,
+    codeLink = _ref.codeLink,
     attachment = _ref.attachment;
+  var _React$useState = React.useState(false),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    isExpanded = _React$useState2[0],
+    setIsExpanded = _React$useState2[1];
   return /*#__PURE__*/React.createElement("article", {
     className: [
     // Espaçamento
@@ -409,7 +522,39 @@ var PostArticle = function PostArticle(_ref) {
     style: {
       color: 'var(--text-secondary)'
     }
-  }, content, /*#__PURE__*/React.createElement("button", {
+  }, content, contentExpanded && !isExpanded && /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setIsExpanded(true);
+    },
+    className: [
+    // Layout
+    "inline-flex items-center gap-0.5",
+    // Tipografia
+    "font-medium text-xs",
+    // Espaçamento
+    "ml-1",
+    // Interação
+    "transition-colors hover:underline"].join(" "),
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "Ver mais"), contentExpanded && isExpanded && /*#__PURE__*/React.createElement(React.Fragment, null, ' ', contentExpanded, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setIsExpanded(false);
+    },
+    className: [
+    // Layout
+    "inline-flex items-center gap-0.5",
+    // Tipografia
+    "font-medium text-xs",
+    // Espaçamento
+    "ml-1",
+    // Interação
+    "transition-colors hover:underline"].join(" "),
+    style: {
+      color: 'var(--primary)'
+    }
+  }, "Ver menos")), !contentExpanded && /*#__PURE__*/React.createElement("button", {
     className: [
     // Layout
     "inline-flex items-center gap-0.5",
@@ -496,50 +641,13 @@ var PostArticle = function PostArticle(_ref) {
     strokeWidth: "2"
   })), isDarkMode && /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 bg-gradient-to-t from-[var(--surface)]/80 to-transparent pointer-events-none"
-  })), code && /*#__PURE__*/React.createElement("div", {
-    className: "code-block mb-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Layout
-    "flex items-center justify-between",
-    // Espaçamento
-    "px-3 py-2",
-    // Visual
-    "bg-white/5 border-b border-white/5"].join(" ")
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-gray-400"
-  }, "pipeline.py"), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-1.5"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "size-2.5 rounded-full bg-red-500/20 border border-red-500/50"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "size-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "size-2.5 rounded-full bg-green-500/20 border border-green-500/50"
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Espaçamento
-    "p-3",
-    // Scroll
-    "overflow-x-auto",
-    // Tipografia
-    "text-gray-300 leading-relaxed font-mono text-xs"].join(" ")
-  }, /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
-    dangerouslySetInnerHTML: {
-      __html: code
-    }
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "px-3 py-2 bg-white/5 border-t border-white/5 text-center"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: [
-    // Tipografia
-    "text-[10px] font-bold uppercase tracking-wider",
-    // Interação
-    "hover:text-white transition-colors"].join(" "),
-    style: {
-      color: 'var(--primary)'
-    }
-  }, "View Full Gist"))), attachment && /*#__PURE__*/React.createElement("a", {
+  })), code && /*#__PURE__*/React.createElement(CodeBlockWithTabs, {
+    code: code,
+    codeAlt: codeAlt,
+    codeFileName: codeFileName,
+    codeAltFileName: codeAltFileName,
+    codeLink: codeLink
+  }), attachment && /*#__PURE__*/React.createElement("a", {
     className: [
     // Layout
     "flex items-center gap-3",
@@ -1093,7 +1201,7 @@ var SidebarAnalytics = function SidebarAnalytics(_ref2) {
     style: {
       backgroundColor: isDarkMode ? 'rgba(34,197,94,0.1)' : '#dcfce7',
       borderColor: isDarkMode ? 'rgba(34,197,94,0.5)' : '#86efac',
-      color: isDarkMode ? '#4ade80' : '#15803d'
+      color: isDarkMode ? '#1cb654ff' : '#15803d'
     }
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-[8px] font-bold"
@@ -1357,6 +1465,20 @@ var SidebarProfile = function SidebarProfile(_ref) {
 
 // Dados de exemplo para o feed de atividades
 var POSTS_DATA = [{
+  title: 'Open Source: Life Analytics Pipeline',
+  time: 'Agora',
+  category: 'Data Engineering',
+  content: 'Publiquei os scripts de extração do meu projeto pessoal de análise de dados do YouTube. Com destaque para algoritmo de "burst detection" que identifica sessões de consumo de Shorts usando uma janela deslizante de 60 segundos. ',
+  contentExpanded: 'A lógica usa threshold dinâmico (5 vídeos normalmente, 3 se o anterior era Short) para capturar o padrão comportamental de scroll infinito típico do formato curto. Os dados vêm do Google Takeout e são processados em pipeline Python puro, sem dependências externas.',
+  codeFileName: 'burst_detection.py',
+  codeAltFileName: 'watch-history.json',
+  codeLink: {
+    text: 'Ver no GitHub',
+    url: 'https://github.com/datadouglas/life-analytics-public'
+  },
+  code: "<span class=\"text-gray-500\"># Detec\xE7\xE3o de Shorts via padr\xE3o de Burst</span>\n<span class=\"text-pink-400\">def</span> detect_burst_shorts(data):\n    <span class=\"text-pink-400\">for</span> i, row <span class=\"text-pink-400\">in</span> enumerate(data):\n        <span class=\"text-gray-500\"># Janela deslizante de 60 segundos</span>\n        count = count_videos_in_window(\n            data, i, BURST_WINDOW_SECONDS\n        )\n        <span class=\"text-gray-500\"># Threshold din\xE2mico: 5 ou 3</span>\n        threshold = <span class=\"text-amber-400\">3</span> <span class=\"text-pink-400\">if</span> prev_is_short <span class=\"text-pink-400\">else</span> <span class=\"text-amber-400\">5</span>\n        <span class=\"text-pink-400\">if</span> count >= threshold:\n            row[<span class=\"text-green-400\">'is_short'</span>] = <span class=\"text-amber-400\">True</span>",
+  codeAlt: "<span class=\"text-gray-500\">// Estrutura do Google Takeout</span>\n[{\n  <span class=\"text-cyan-400\">\"header\"</span>: <span class=\"text-green-400\">\"YouTube\"</span>,\n  <span class=\"text-cyan-400\">\"title\"</span>: <span class=\"text-green-400\">\"Watched POV voc\xEA acordou cedo\"</span>,\n  <span class=\"text-cyan-400\">\"titleUrl\"</span>: <span class=\"text-green-400\">\"https://youtube.com/...\"</span>,\n  <span class=\"text-cyan-400\">\"time\"</span>: <span class=\"text-green-400\">\"2024-10-16T10:00:05.000Z\"</span>,\n  <span class=\"text-cyan-400\">\"subtitles\"</span>: [{\n    <span class=\"text-cyan-400\">\"name\"</span>: <span class=\"text-green-400\">\"Memes BR\"</span>\n  }]\n}]"
+}, {
   title: 'Predictive Market Volatility Model',
   time: '2h ago',
   category: 'Market Analysis',

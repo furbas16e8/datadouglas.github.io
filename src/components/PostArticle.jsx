@@ -3,7 +3,10 @@
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
-const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, attachment }) => (
+const PostArticle = ({ isDarkMode, title, time, category, content, contentExpanded, chart, code, codeAlt, codeFileName, codeAltFileName, codeLink, attachment }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  return (
   <article 
     className={[
       // Espaçamento
@@ -49,21 +52,62 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
         style={{ color: 'var(--text-secondary)' }}
       >
         {content}
-        <button 
-          className={[
-            // Layout
-            "inline-flex items-center gap-0.5",
-            // Tipografia
-            "font-medium text-xs",
-            // Espaçamento
-            "ml-1",
-            // Interação
-            "transition-colors hover:underline"
-          ].join(" ")} 
-          style={{ color: 'var(--primary)' }}
-        >
-          Ver mais
-        </button>
+        {contentExpanded && !isExpanded && (
+          <button 
+            onClick={() => setIsExpanded(true)}
+            className={[
+              // Layout
+              "inline-flex items-center gap-0.5",
+              // Tipografia
+              "font-medium text-xs",
+              // Espaçamento
+              "ml-1",
+              // Interação
+              "transition-colors hover:underline"
+            ].join(" ")} 
+            style={{ color: 'var(--primary)' }}
+          >
+            Ver mais
+          </button>
+        )}
+        {contentExpanded && isExpanded && (
+          <>
+            {' '}{contentExpanded}
+            <button 
+              onClick={() => setIsExpanded(false)}
+              className={[
+                // Layout
+                "inline-flex items-center gap-0.5",
+                // Tipografia
+                "font-medium text-xs",
+                // Espaçamento
+                "ml-1",
+                // Interação
+                "transition-colors hover:underline"
+              ].join(" ")} 
+              style={{ color: 'var(--primary)' }}
+            >
+              Ver menos
+            </button>
+          </>
+        )}
+        {!contentExpanded && (
+          <button 
+            className={[
+              // Layout
+              "inline-flex items-center gap-0.5",
+              // Tipografia
+              "font-medium text-xs",
+              // Espaçamento
+              "ml-1",
+              // Interação
+              "transition-colors hover:underline"
+            ].join(" ")} 
+            style={{ color: 'var(--primary)' }}
+          >
+            Ver mais
+          </button>
+        )}
       </p>
     </div>
     
@@ -154,53 +198,17 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
       </div>
     )}
     
-    {/* Code block */}
+    {/* Code block with tabs */}
     {code && (
-      <div className="code-block mb-3">
-        <div 
-          className={[
-            // Layout
-            "flex items-center justify-between",
-            // Espaçamento
-            "px-3 py-2",
-            // Visual
-            "bg-white/5 border-b border-white/5"
-          ].join(" ")}
-        >
-          <span className="text-gray-400">pipeline.py</span>
-          <div className="flex gap-1.5">
-            <div className="size-2.5 rounded-full bg-red-500/20 border border-red-500/50"></div>
-            <div className="size-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-            <div className="size-2.5 rounded-full bg-green-500/20 border border-green-500/50"></div>
-          </div>
-        </div>
-        <div 
-          className={[
-            // Espaçamento
-            "p-3",
-            // Scroll
-            "overflow-x-auto",
-            // Tipografia
-            "text-gray-300 leading-relaxed font-mono text-xs"
-          ].join(" ")}
-        >
-          <pre><code dangerouslySetInnerHTML={{ __html: code }}></code></pre>
-        </div>
-        <div className="px-3 py-2 bg-white/5 border-t border-white/5 text-center">
-          <button 
-            className={[
-              // Tipografia
-              "text-[10px] font-bold uppercase tracking-wider",
-              // Interação
-              "hover:text-white transition-colors"
-            ].join(" ")} 
-            style={{ color: 'var(--primary)' }}
-          >
-            View Full Gist
-          </button>
-        </div>
-      </div>
+      <CodeBlockWithTabs 
+        code={code}
+        codeAlt={codeAlt}
+        codeFileName={codeFileName}
+        codeAltFileName={codeAltFileName}
+        codeLink={codeLink}
+      />
     )}
+    
     
     {/* Attachment */}
     {attachment && (
@@ -284,3 +292,5 @@ const PostArticle = ({ isDarkMode, title, time, category, content, chart, code, 
     </div>
   </article>
 );
+};
+

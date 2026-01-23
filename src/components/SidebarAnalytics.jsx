@@ -429,7 +429,7 @@ const SidebarAnalytics = ({ isDarkMode }) => (
           style={{ 
             backgroundColor: isDarkMode ? 'rgba(34,197,94,0.1)' : '#dcfce7',
             borderColor: isDarkMode ? 'rgba(34,197,94,0.5)' : '#86efac',
-            color: isDarkMode ? '#4ade80' : '#15803d'
+            color: isDarkMode ? '#1cb654ff' : '#15803d'
           }}
         >
           <span className="text-[8px] font-bold">Media</span>
