@@ -1,10 +1,6 @@
 # Dependências - ficam apenas na máquina de desenvolvimento
 node_modules/
-
-
-# Arquivos temporários de build
-src/bundle-source.jsx
-src/index.js
+implementation_plans/
 
 # Logs
 npm-debug.log*
@@ -17,6 +13,7 @@ Thumbs.db
 
 # IDE/Editor
 .vscode/
+.agent/
 .idea/
 *.swp
 *.swo
@@ -33,4 +30,3 @@ Thumbs.db
 # Arquivos de contexto do agente (não relevantes para produção)
 context-temp/
 debug/
-.agent/
