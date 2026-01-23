@@ -2,14 +2,18 @@
  * components/SidebarAnalytics.jsx - Sidebar com cards de analytics
  * Douglas Furbino - Economista e Cientista de Dados
  * 
- * Atualizado: 2026-01-22 - Gráfico Chart.js interativo com dados reais
+ * Atualizado: 2026-01-23 - Refatoração visual: botões toggle, eixos, correlação em lista
  */
 
 // Componente do Gráfico de Vida
 const LifeAnalyticsChart = ({ isDarkMode }) => {
   const [period, setPeriod] = React.useState('monthly');
-  const [category, setCategory] = React.useState('all');
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [activeCategories, setActiveCategories] = React.useState({
+    normal: true,
+    shorts: true,
+    music: true
+  });
+  const [showTooltip, setShowTooltip] = React.useState(false);
   const chartRef = React.useRef(null);
   const chartInstanceRef = React.useRef(null);
 
@@ -24,12 +28,12 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
     journal: isDarkMode ? '#ffffff' : '#374151'  // Branco/Cinza
   };
 
-  // Labels do dropdown
-  const categoryLabels = {
-    normal: 'Normal',
-    shorts: 'Shorts',
-    music: 'Music',
-    all: 'Todas'
+  // Toggle categoria
+  const toggleCategory = (cat) => {
+    setActiveCategories(prev => ({
+      ...prev,
+      [cat]: !prev[cat]
+    }));
   };
 
   // Obter dados baseado no período
@@ -37,14 +41,37 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
     return period === 'weekly' ? lifeData.weekly : lifeData.monthly;
   };
 
-  // Obter correlação baseada na categoria e período
-  const getCorrelation = () => {
+  // Formatar label para "Out.24"
+  const formatLabel = (label) => {
+    // Label mensal: "Out/2024" -> "Out.24"
+    // Label semanal: "S42/2024" -> manter ou converter
+    if (label.includes('/')) {
+      const parts = label.split('/');
+      if (parts[0].startsWith('S')) {
+        // Semanal: "S42/2024" -> "S42"
+        return parts[0];
+      } else {
+        // Mensal: "Out/2024" -> "Out.24"
+        const month = parts[0];
+        const year = parts[1].slice(-2);
+        return `${month}.${year}`;
+      }
+    }
+    return label;
+  };
+
+  // Obter correlações das categorias ativas
+  const getCorrelations = () => {
     const correlations = period === 'weekly' 
       ? lifeData.stats.correlation_weekly 
       : lifeData.stats.correlation_monthly;
     
-    const key = category === 'all' ? 'journal_vs_total' : `journal_vs_${category}`;
-    return correlations[key];
+    const active = [];
+    if (activeCategories.normal) active.push(`Normal: ${correlations.journal_vs_normal.toFixed(2)}`);
+    if (activeCategories.shorts) active.push(`Shorts: ${correlations.journal_vs_shorts.toFixed(2)}`);
+    if (activeCategories.music) active.push(`Music: ${correlations.journal_vs_music.toFixed(2)}`);
+    
+    return active.length > 0 ? active.join(' | ') : '—';
   };
 
   // Construir datasets para o gráfico
@@ -52,8 +79,8 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
     const data = getData();
     const datasets = [];
 
-    if (category === 'all') {
-      // Mostrar todas as 4 linhas
+    // Adicionar categorias ativas
+    if (activeCategories.normal) {
       datasets.push({
         label: 'Normal',
         data: data.map(d => d.normal.normalized),
@@ -62,6 +89,8 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
         tension: 0.4,
         pointRadius: 0
       });
+    }
+    if (activeCategories.shorts) {
       datasets.push({
         label: 'Shorts',
         data: data.map(d => d.shorts.normalized),
@@ -70,20 +99,12 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
         tension: 0.4,
         pointRadius: 0
       });
+    }
+    if (activeCategories.music) {
       datasets.push({
         label: 'Music',
         data: data.map(d => d.music.normalized),
         borderColor: colors.music,
-        backgroundColor: 'transparent',
-        tension: 0.4,
-        pointRadius: 0
-      });
-    } else {
-      // Mostrar apenas a categoria selecionada
-      datasets.push({
-        label: categoryLabels[category],
-        data: data.map(d => d[category].normalized),
-        borderColor: colors[category],
         backgroundColor: 'transparent',
         tension: 0.4,
         pointRadius: 0
@@ -98,7 +119,7 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
       backgroundColor: 'transparent',
       tension: 0.4,
       pointRadius: 0,
-      borderDash: [5, 5]  // Linha tracejada para diferenciar
+      borderDash: [5, 5]
     });
 
     return datasets;
@@ -120,7 +141,7 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
     chartInstanceRef.current = new window.Chart(ctx, {
       type: 'line',
       data: {
-        labels: data.map(d => d.label),
+        labels: data.map(d => formatLabel(d.label)),
         datasets: buildDatasets()
       },
       options: {
@@ -141,7 +162,6 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
                 const datasetLabel = context.dataset.label.toLowerCase();
                 const rawData = getData()[dataIndex];
                 
-                // Obter valor raw
                 let rawValue;
                 if (datasetLabel === 'journal') {
                   rawValue = rawData.journal.raw;
@@ -159,11 +179,30 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
           }
         },
         scales: {
-          x: { display: false },
+          x: { 
+            display: true,
+            ticks: {
+              font: { size: 8 },
+              color: isDarkMode ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+              maxRotation: 0,
+              autoSkip: true,
+              maxTicksLimit: 6
+            },
+            grid: { display: false }
+          },
           y: { 
-            display: false,
+            display: true,
             min: 0,
-            max: 100
+            max: 100,
+            ticks: {
+              stepSize: 50,
+              font: { size: 8 },
+              color: isDarkMode ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+              callback: (value) => value + '%'
+            },
+            grid: { 
+              color: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
+            }
           }
         },
         elements: {
@@ -177,88 +216,66 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
         chartInstanceRef.current.destroy();
       }
     };
-  }, [period, category, isDarkMode, lifeData]);
-
-  // Fechar dropdown ao clicar fora
-  React.useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownOpen && !e.target.closest('.category-dropdown')) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [dropdownOpen]);
+  }, [period, activeCategories, isDarkMode, lifeData]);
 
   return (
     <div className="card p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--primary)' }}>Life Analytics</h3>
-        <button style={{ color: 'var(--text-muted)' }} aria-label="Informações sobre Life Analytics">
-          <span className="material-symbols-outlined text-[16px]">info</span>
-        </button>
+        <div className="relative">
+          <button 
+            style={{ color: 'var(--text-muted)' }} 
+            aria-label="Informações sobre Life Analytics"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
+            <span className="material-symbols-outlined text-[16px]">info</span>
+          </button>
+          {showTooltip && (
+            <div 
+              className="absolute right-0 top-full mt-1 p-2 rounded shadow-lg z-50 w-48 text-[9px]"
+              style={{
+                backgroundColor: isDarkMode ? '#1a1a1e' : '#fff',
+                border: '1px solid var(--border)',
+                color: 'var(--text-secondary)'
+              }}
+            >
+              Correlação de Pearson entre variáveis: journaling (registros) e consumo de mídia (visualizações normalizadas via Min-Max).
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Controles */}
       <div className="flex items-center justify-between mb-3">
-        {/* Dropdown de Categoria */}
-        <div className="category-dropdown relative">
-          <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-colors"
-            style={{
-              backgroundColor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-              color: 'var(--text-secondary)',
-              border: '1px solid var(--border)'
-            }}
-          >
-            <span>{categoryLabels[category]}</span>
-            <span className="material-symbols-outlined text-[14px]">expand_more</span>
-          </button>
-          
-          {dropdownOpen && (
-            <div 
-              className="absolute top-full left-0 mt-1 py-1 rounded shadow-lg z-50 min-w-[100px]"
+        {/* Botões de Categoria */}
+        <div className="flex rounded overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+          {['normal', 'shorts', 'music'].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => toggleCategory(cat)}
+              className="px-2 py-1 text-[10px] font-medium transition-colors capitalize"
               style={{
-                backgroundColor: isDarkMode ? '#1a1a1e' : '#fff',
-                border: '1px solid var(--border)'
+                backgroundColor: activeCategories[cat] ? colors[cat] : 'transparent',
+                color: activeCategories[cat] ? '#fff' : 'var(--text-muted)'
               }}
             >
-              {['normal', 'shorts', 'music', 'all'].map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => { setCategory(cat); setDropdownOpen(false); }}
-                  className="w-full text-left px-3 py-1.5 text-[11px] transition-colors hover:bg-[var(--primary)]/10"
-                  style={{
-                    color: category === cat ? 'var(--primary)' : 'var(--text-secondary)'
-                  }}
-                >
-                  {category === cat && <span className="mr-1">✓</span>}
-                  {categoryLabels[cat]}
-                </button>
-              ))}
-            </div>
-          )}
+              {cat === 'normal' ? 'Normal' : cat === 'shorts' ? 'Shorts' : 'Music'}
+            </button>
+          ))}
         </div>
 
         {/* Toggle de Período */}
-        <div 
-          className="flex rounded overflow-hidden"
-          style={{ border: '1px solid var(--border)' }}
-        >
+        <div className="flex rounded overflow-hidden" style={{ border: '1px solid var(--border)' }}>
           {['weekly', 'monthly'].map((p) => (
             <button
               key={p}
               onClick={() => setPeriod(p)}
               className="px-2 py-1 text-[10px] font-medium transition-colors"
               style={{
-                backgroundColor: period === p 
-                  ? (isDarkMode ? 'var(--primary)' : 'var(--primary)') 
-                  : 'transparent',
-                color: period === p 
-                  ? '#fff' 
-                  : 'var(--text-muted)'
+                backgroundColor: period === p ? 'var(--primary)' : 'transparent',
+                color: period === p ? '#fff' : 'var(--text-muted)'
               }}
             >
               {p === 'weekly' ? 'Semanal' : 'Mensal'}
@@ -269,66 +286,28 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
 
       {/* Gráfico */}
       <div 
-        className="h-28 w-full relative rounded overflow-hidden"
+        className="h-32 w-full relative rounded overflow-hidden"
         style={{ 
           backgroundColor: isDarkMode ? 'rgba(18,18,18,0.8)' : '#f9fafb',
           border: '1px solid var(--border)'
         }}
       >
         <canvas ref={chartRef}></canvas>
-        
-        {/* Legenda (quando "Todas" selecionado) */}
-        {category === 'all' && (
-          <div 
-            className="absolute top-2 right-2 z-20 flex flex-col gap-1 items-end p-1.5 rounded backdrop-blur-sm shadow-sm"
-            style={{ 
-              backgroundColor: isDarkMode ? 'rgba(26,26,30,0.8)' : 'rgba(255,255,255,0.9)',
-              border: '1px solid var(--border)'
-            }}
-          >
-            {[
-              { color: colors.normal, label: 'Normal' },
-              { color: colors.shorts, label: 'Shorts' },
-              { color: colors.music, label: 'Music' },
-              { color: colors.journal, label: 'Journal', dashed: true }
-            ].map(({ color, label, dashed }) => (
-              <div key={label} className="flex items-center gap-1.5">
-                <div 
-                  className="w-3 h-0.5 rounded-full"
-                  style={{ 
-                    backgroundColor: color,
-                    border: dashed ? `1px dashed ${color}` : 'none',
-                    boxShadow: isDarkMode ? `0 0 8px ${color}` : 'none'
-                  }}
-                ></div>
-                <span className="text-[9px] font-medium" style={{ color: 'var(--text-secondary)' }}>{label}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Correlação */}
-      <div className="mt-2 flex items-center gap-1">
+      <div className="mt-2">
         <span className="text-[10px] font-medium" style={{ color: 'var(--text-muted)' }}>
           Correlação (Pearson):
         </span>
-        <span 
-          className="text-[11px] font-bold"
-          style={{ 
-            color: getCorrelation() > 0.3 
-              ? '#22c55e' 
-              : getCorrelation() < -0.3 
-                ? '#ef4444' 
-                : 'var(--text-secondary)'
-          }}
-        >
-          {getCorrelation().toFixed(3)}
-        </span>
+        <div className="text-[10px] font-bold mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          {getCorrelations()}
+        </div>
       </div>
     </div>
   );
 };
+
 
 const SidebarAnalytics = ({ isDarkMode }) => (
   <aside 

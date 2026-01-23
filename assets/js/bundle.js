@@ -614,6 +614,12 @@ var PostArticle = function PostArticle(_ref) {
 };
 "use strict";
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -624,7 +630,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
  * components/SidebarAnalytics.jsx - Sidebar com cards de analytics
  * Douglas Furbino - Economista e Cientista de Dados
  * 
- * Atualizado: 2026-01-22 - Gráfico Chart.js interativo com dados reais
+ * Atualizado: 2026-01-23 - Refatoração visual: botões toggle, eixos, correlação em lista
  */
 
 // Componente do Gráfico de Vida
@@ -634,14 +640,18 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
     _React$useState2 = _slicedToArray(_React$useState, 2),
     period = _React$useState2[0],
     setPeriod = _React$useState2[1];
-  var _React$useState3 = React.useState('all'),
+  var _React$useState3 = React.useState({
+      normal: true,
+      shorts: true,
+      music: true
+    }),
     _React$useState4 = _slicedToArray(_React$useState3, 2),
-    category = _React$useState4[0],
-    setCategory = _React$useState4[1];
+    activeCategories = _React$useState4[0],
+    setActiveCategories = _React$useState4[1];
   var _React$useState5 = React.useState(false),
     _React$useState6 = _slicedToArray(_React$useState5, 2),
-    dropdownOpen = _React$useState6[0],
-    setDropdownOpen = _React$useState6[1];
+    showTooltip = _React$useState6[0],
+    setShowTooltip = _React$useState6[1];
   var chartRef = React.useRef(null);
   var chartInstanceRef = React.useRef(null);
 
@@ -659,12 +669,11 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
     journal: isDarkMode ? '#ffffff' : '#374151' // Branco/Cinza
   };
 
-  // Labels do dropdown
-  var categoryLabels = {
-    normal: 'Normal',
-    shorts: 'Shorts',
-    music: 'Music',
-    all: 'Todas'
+  // Toggle categoria
+  var toggleCategory = function toggleCategory(cat) {
+    setActiveCategories(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, cat, !prev[cat]));
+    });
   };
 
   // Obter dados baseado no período
@@ -672,19 +681,42 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
     return period === 'weekly' ? lifeData.weekly : lifeData.monthly;
   };
 
-  // Obter correlação baseada na categoria e período
-  var getCorrelation = function getCorrelation() {
+  // Formatar label para "Out.24"
+  var formatLabel = function formatLabel(label) {
+    // Label mensal: "Out/2024" -> "Out.24"
+    // Label semanal: "S42/2024" -> manter ou converter
+    if (label.includes('/')) {
+      var parts = label.split('/');
+      if (parts[0].startsWith('S')) {
+        // Semanal: "S42/2024" -> "S42"
+        return parts[0];
+      } else {
+        // Mensal: "Out/2024" -> "Out.24"
+        var month = parts[0];
+        var year = parts[1].slice(-2);
+        return "".concat(month, ".").concat(year);
+      }
+    }
+    return label;
+  };
+
+  // Obter correlações das categorias ativas
+  var getCorrelations = function getCorrelations() {
     var correlations = period === 'weekly' ? lifeData.stats.correlation_weekly : lifeData.stats.correlation_monthly;
-    var key = category === 'all' ? 'journal_vs_total' : "journal_vs_".concat(category);
-    return correlations[key];
+    var active = [];
+    if (activeCategories.normal) active.push("Normal: ".concat(correlations.journal_vs_normal.toFixed(2)));
+    if (activeCategories.shorts) active.push("Shorts: ".concat(correlations.journal_vs_shorts.toFixed(2)));
+    if (activeCategories.music) active.push("Music: ".concat(correlations.journal_vs_music.toFixed(2)));
+    return active.length > 0 ? active.join(' | ') : '—';
   };
 
   // Construir datasets para o gráfico
   var buildDatasets = function buildDatasets() {
     var data = getData();
     var datasets = [];
-    if (category === 'all') {
-      // Mostrar todas as 4 linhas
+
+    // Adicionar categorias ativas
+    if (activeCategories.normal) {
       datasets.push({
         label: 'Normal',
         data: data.map(function (d) {
@@ -695,6 +727,8 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
         tension: 0.4,
         pointRadius: 0
       });
+    }
+    if (activeCategories.shorts) {
       datasets.push({
         label: 'Shorts',
         data: data.map(function (d) {
@@ -705,24 +739,14 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
         tension: 0.4,
         pointRadius: 0
       });
+    }
+    if (activeCategories.music) {
       datasets.push({
         label: 'Music',
         data: data.map(function (d) {
           return d.music.normalized;
         }),
         borderColor: colors.music,
-        backgroundColor: 'transparent',
-        tension: 0.4,
-        pointRadius: 0
-      });
-    } else {
-      // Mostrar apenas a categoria selecionada
-      datasets.push({
-        label: categoryLabels[category],
-        data: data.map(function (d) {
-          return d[category].normalized;
-        }),
-        borderColor: colors[category],
         backgroundColor: 'transparent',
         tension: 0.4,
         pointRadius: 0
@@ -739,7 +763,7 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
       backgroundColor: 'transparent',
       tension: 0.4,
       pointRadius: 0,
-      borderDash: [5, 5] // Linha tracejada para diferenciar
+      borderDash: [5, 5]
     });
     return datasets;
   };
@@ -760,7 +784,7 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
       type: 'line',
       data: {
         labels: data.map(function (d) {
-          return d.label;
+          return formatLabel(d.label);
         }),
         datasets: buildDatasets()
       },
@@ -783,8 +807,6 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
                 var dataIndex = context.dataIndex;
                 var datasetLabel = context.dataset.label.toLowerCase();
                 var rawData = getData()[dataIndex];
-
-                // Obter valor raw
                 var rawValue;
                 if (datasetLabel === 'journal') {
                   rawValue = rawData.journal.raw;
@@ -802,12 +824,37 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
         },
         scales: {
           x: {
-            display: false
+            display: true,
+            ticks: {
+              font: {
+                size: 8
+              },
+              color: isDarkMode ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+              maxRotation: 0,
+              autoSkip: true,
+              maxTicksLimit: 6
+            },
+            grid: {
+              display: false
+            }
           },
           y: {
-            display: false,
+            display: true,
             min: 0,
-            max: 100
+            max: 100,
+            ticks: {
+              stepSize: 50,
+              font: {
+                size: 8
+              },
+              color: isDarkMode ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+              callback: function callback(value) {
+                return value + '%';
+              }
+            },
+            grid: {
+              color: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
+            }
           }
         },
         elements: {
@@ -822,20 +869,7 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
         chartInstanceRef.current.destroy();
       }
     };
-  }, [period, category, isDarkMode, lifeData]);
-
-  // Fechar dropdown ao clicar fora
-  React.useEffect(function () {
-    var handleClickOutside = function handleClickOutside(e) {
-      if (dropdownOpen && !e.target.closest('.category-dropdown')) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return function () {
-      return document.removeEventListener('click', handleClickOutside);
-    };
-  }, [dropdownOpen]);
+  }, [period, activeCategories, isDarkMode, lifeData]);
   return /*#__PURE__*/React.createElement("div", {
     className: "card p-5"
   }, /*#__PURE__*/React.createElement("div", {
@@ -845,50 +879,48 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
     style: {
       color: 'var(--primary)'
     }
-  }, "Life Analytics"), /*#__PURE__*/React.createElement("button", {
+  }, "Life Analytics"), /*#__PURE__*/React.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React.createElement("button", {
     style: {
       color: 'var(--text-muted)'
     },
-    "aria-label": "Informa\xE7\xF5es sobre Life Analytics"
+    "aria-label": "Informa\xE7\xF5es sobre Life Analytics",
+    onMouseEnter: function onMouseEnter() {
+      return setShowTooltip(true);
+    },
+    onMouseLeave: function onMouseLeave() {
+      return setShowTooltip(false);
+    }
   }, /*#__PURE__*/React.createElement("span", {
     className: "material-symbols-outlined text-[16px]"
-  }, "info"))), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between mb-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "category-dropdown relative"
-  }, /*#__PURE__*/React.createElement("button", {
-    onClick: function onClick() {
-      return setDropdownOpen(!dropdownOpen);
-    },
-    className: "flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-colors",
-    style: {
-      backgroundColor: isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-      color: 'var(--text-secondary)',
-      border: '1px solid var(--border)'
-    }
-  }, /*#__PURE__*/React.createElement("span", null, categoryLabels[category]), /*#__PURE__*/React.createElement("span", {
-    className: "material-symbols-outlined text-[14px]"
-  }, "expand_more")), dropdownOpen && /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-full left-0 mt-1 py-1 rounded shadow-lg z-50 min-w-[100px]",
+  }, "info")), showTooltip && /*#__PURE__*/React.createElement("div", {
+    className: "absolute right-0 top-full mt-1 p-2 rounded shadow-lg z-50 w-48 text-[9px]",
     style: {
       backgroundColor: isDarkMode ? '#1a1a1e' : '#fff',
+      border: '1px solid var(--border)',
+      color: 'var(--text-secondary)'
+    }
+  }, "Correla\xE7\xE3o de Pearson entre vari\xE1veis: journaling (registros) e consumo de m\xEDdia (visualiza\xE7\xF5es normalizadas via Min-Max)."))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex rounded overflow-hidden",
+    style: {
       border: '1px solid var(--border)'
     }
-  }, ['normal', 'shorts', 'music', 'all'].map(function (cat) {
+  }, ['normal', 'shorts', 'music'].map(function (cat) {
     return /*#__PURE__*/React.createElement("button", {
       key: cat,
       onClick: function onClick() {
-        setCategory(cat);
-        setDropdownOpen(false);
+        return toggleCategory(cat);
       },
-      className: "w-full text-left px-3 py-1.5 text-[11px] transition-colors hover:bg-[var(--primary)]/10",
+      className: "px-2 py-1 text-[10px] font-medium transition-colors capitalize",
       style: {
-        color: category === cat ? 'var(--primary)' : 'var(--text-secondary)'
+        backgroundColor: activeCategories[cat] ? colors[cat] : 'transparent',
+        color: activeCategories[cat] ? '#fff' : 'var(--text-muted)'
       }
-    }, category === cat && /*#__PURE__*/React.createElement("span", {
-      className: "mr-1"
-    }, "\u2713"), categoryLabels[cat]);
-  }))), /*#__PURE__*/React.createElement("div", {
+    }, cat === 'normal' ? 'Normal' : cat === 'shorts' ? 'Shorts' : 'Music');
+  })), /*#__PURE__*/React.createElement("div", {
     className: "flex rounded overflow-hidden",
     style: {
       border: '1px solid var(--border)'
@@ -901,73 +933,34 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
       },
       className: "px-2 py-1 text-[10px] font-medium transition-colors",
       style: {
-        backgroundColor: period === p ? isDarkMode ? 'var(--primary)' : 'var(--primary)' : 'transparent',
+        backgroundColor: period === p ? 'var(--primary)' : 'transparent',
         color: period === p ? '#fff' : 'var(--text-muted)'
       }
     }, p === 'weekly' ? 'Semanal' : 'Mensal');
   }))), /*#__PURE__*/React.createElement("div", {
-    className: "h-28 w-full relative rounded overflow-hidden",
+    className: "h-32 w-full relative rounded overflow-hidden",
     style: {
       backgroundColor: isDarkMode ? 'rgba(18,18,18,0.8)' : '#f9fafb',
       border: '1px solid var(--border)'
     }
   }, /*#__PURE__*/React.createElement("canvas", {
     ref: chartRef
-  }), category === 'all' && /*#__PURE__*/React.createElement("div", {
-    className: "absolute top-2 right-2 z-20 flex flex-col gap-1 items-end p-1.5 rounded backdrop-blur-sm shadow-sm",
-    style: {
-      backgroundColor: isDarkMode ? 'rgba(26,26,30,0.8)' : 'rgba(255,255,255,0.9)',
-      border: '1px solid var(--border)'
-    }
-  }, [{
-    color: colors.normal,
-    label: 'Normal'
-  }, {
-    color: colors.shorts,
-    label: 'Shorts'
-  }, {
-    color: colors.music,
-    label: 'Music'
-  }, {
-    color: colors.journal,
-    label: 'Journal',
-    dashed: true
-  }].map(function (_ref2) {
-    var color = _ref2.color,
-      label = _ref2.label,
-      dashed = _ref2.dashed;
-    return /*#__PURE__*/React.createElement("div", {
-      key: label,
-      className: "flex items-center gap-1.5"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "w-3 h-0.5 rounded-full",
-      style: {
-        backgroundColor: color,
-        border: dashed ? "1px dashed ".concat(color) : 'none',
-        boxShadow: isDarkMode ? "0 0 8px ".concat(color) : 'none'
-      }
-    }), /*#__PURE__*/React.createElement("span", {
-      className: "text-[9px] font-medium",
-      style: {
-        color: 'var(--text-secondary)'
-      }
-    }, label));
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "mt-2 flex items-center gap-1"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "mt-2"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-[10px] font-medium",
     style: {
       color: 'var(--text-muted)'
     }
-  }, "Correla\xE7\xE3o (Pearson):"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[11px] font-bold",
+  }, "Correla\xE7\xE3o (Pearson):"), /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold mt-0.5",
     style: {
-      color: getCorrelation() > 0.3 ? '#22c55e' : getCorrelation() < -0.3 ? '#ef4444' : 'var(--text-secondary)'
+      color: 'var(--text-secondary)'
     }
-  }, getCorrelation().toFixed(3))));
+  }, getCorrelations())));
 };
-var SidebarAnalytics = function SidebarAnalytics(_ref3) {
-  var isDarkMode = _ref3.isDarkMode;
+var SidebarAnalytics = function SidebarAnalytics(_ref2) {
+  var isDarkMode = _ref2.isDarkMode;
   return /*#__PURE__*/React.createElement("aside", {
     className: [
     // Visibilidade / Responsividade
