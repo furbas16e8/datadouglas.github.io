@@ -20,12 +20,20 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
   // Dados carregados via variável global (evita CORS com file://)
   const lifeData = window.LIFE_ANALYTICS_DATA;
 
-  // Cores das categorias
+  // Cores neon dark-tech
   const colors = {
-    normal: '#3b82f6',   // Azul
-    shorts: '#f97316',   // Laranja
-    music: '#ef4444',    // Vermelho
-    journal: isDarkMode ? '#ffffff' : '#374151'  // Branco/Cinza
+    normal: '#60a5fa',   // Azul neon
+    shorts: '#fb923c',   // Laranja neon
+    music: '#f87171',    // Vermelho neon
+    journal: '#a855f7'   // Roxo neon
+  };
+
+  // Converter hex para rgb
+  const hexToRgb = (hex) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result 
+      ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+      : '0, 0, 0';
   };
 
   // Toggle categoria
@@ -60,18 +68,18 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
     return label;
   };
 
-  // Obter correlações das categorias ativas
+  // Obter correlações das categorias ativas (retorna array de objetos)
   const getCorrelations = () => {
     const correlations = period === 'weekly' 
       ? lifeData.stats.correlation_weekly 
       : lifeData.stats.correlation_monthly;
     
     const active = [];
-    if (activeCategories.normal) active.push(`Normal: ${correlations.journal_vs_normal.toFixed(2)}`);
-    if (activeCategories.shorts) active.push(`Shorts: ${correlations.journal_vs_shorts.toFixed(2)}`);
-    if (activeCategories.music) active.push(`Music: ${correlations.journal_vs_music.toFixed(2)}`);
+    if (activeCategories.normal) active.push({ value: correlations.journal_vs_normal, color: colors.normal });
+    if (activeCategories.shorts) active.push({ value: correlations.journal_vs_shorts, color: colors.shorts });
+    if (activeCategories.music) active.push({ value: correlations.journal_vs_music, color: colors.music });
     
-    return active.length > 0 ? active.join(' | ') : '—';
+    return active;
   };
 
   // Construir datasets para o gráfico
@@ -249,16 +257,17 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
 
       {/* Controles */}
       <div className="flex items-center justify-between mb-3">
-        {/* Botões de Categoria */}
+        {/* Botões de Categoria - Estilo Dark-Tech */}
         <div className="flex rounded overflow-hidden" style={{ border: '1px solid var(--border)' }}>
           {['normal', 'shorts', 'music'].map((cat) => (
             <button
               key={cat}
               onClick={() => toggleCategory(cat)}
-              className="px-2 py-1 text-[10px] font-medium transition-colors capitalize"
+              className="px-2 py-1 text-[10px] font-medium transition-all capitalize"
               style={{
-                backgroundColor: activeCategories[cat] ? colors[cat] : 'transparent',
-                color: activeCategories[cat] ? '#fff' : 'var(--text-muted)'
+                backgroundColor: activeCategories[cat] ? `rgba(${hexToRgb(colors[cat])}, 0.15)` : 'transparent',
+                borderRight: '1px solid var(--border)',
+                color: activeCategories[cat] ? colors[cat] : 'var(--text-muted)'
               }}
             >
               {cat === 'normal' ? 'Normal' : cat === 'shorts' ? 'Shorts' : 'Music'}
@@ -295,14 +304,23 @@ const LifeAnalyticsChart = ({ isDarkMode }) => {
         <canvas ref={chartRef}></canvas>
       </div>
 
-      {/* Correlação */}
-      <div className="mt-2">
+      {/* Correlação - Inline com cores */}
+      <div className="mt-2 flex items-center gap-1 flex-wrap">
         <span className="text-[10px] font-medium" style={{ color: 'var(--text-muted)' }}>
           Correlação (Pearson):
         </span>
-        <div className="text-[10px] font-bold mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-          {getCorrelations()}
-        </div>
+        {getCorrelations().length > 0 ? (
+          getCorrelations().map((item, index) => (
+            <React.Fragment key={index}>
+              {index > 0 && <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>|</span>}
+              <span className="text-[10px] font-bold" style={{ color: item.color }}>
+                {item.value.toFixed(2)}
+              </span>
+            </React.Fragment>
+          ))
+        ) : (
+          <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>—</span>
+        )}
       </div>
     </div>
   );

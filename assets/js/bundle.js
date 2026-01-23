@@ -658,15 +658,21 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
   // Dados carregados via variável global (evita CORS com file://)
   var lifeData = window.LIFE_ANALYTICS_DATA;
 
-  // Cores das categorias
+  // Cores neon dark-tech
   var colors = {
-    normal: '#3b82f6',
-    // Azul
-    shorts: '#f97316',
-    // Laranja
-    music: '#ef4444',
-    // Vermelho
-    journal: isDarkMode ? '#ffffff' : '#374151' // Branco/Cinza
+    normal: '#60a5fa',
+    // Azul neon
+    shorts: '#fb923c',
+    // Laranja neon
+    music: '#f87171',
+    // Vermelho neon
+    journal: '#a855f7' // Roxo neon
+  };
+
+  // Converter hex para rgb
+  var hexToRgb = function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? "".concat(parseInt(result[1], 16), ", ").concat(parseInt(result[2], 16), ", ").concat(parseInt(result[3], 16)) : '0, 0, 0';
   };
 
   // Toggle categoria
@@ -700,14 +706,23 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
     return label;
   };
 
-  // Obter correlações das categorias ativas
+  // Obter correlações das categorias ativas (retorna array de objetos)
   var getCorrelations = function getCorrelations() {
     var correlations = period === 'weekly' ? lifeData.stats.correlation_weekly : lifeData.stats.correlation_monthly;
     var active = [];
-    if (activeCategories.normal) active.push("Normal: ".concat(correlations.journal_vs_normal.toFixed(2)));
-    if (activeCategories.shorts) active.push("Shorts: ".concat(correlations.journal_vs_shorts.toFixed(2)));
-    if (activeCategories.music) active.push("Music: ".concat(correlations.journal_vs_music.toFixed(2)));
-    return active.length > 0 ? active.join(' | ') : '—';
+    if (activeCategories.normal) active.push({
+      value: correlations.journal_vs_normal,
+      color: colors.normal
+    });
+    if (activeCategories.shorts) active.push({
+      value: correlations.journal_vs_shorts,
+      color: colors.shorts
+    });
+    if (activeCategories.music) active.push({
+      value: correlations.journal_vs_music,
+      color: colors.music
+    });
+    return active;
   };
 
   // Construir datasets para o gráfico
@@ -914,10 +929,11 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
       onClick: function onClick() {
         return toggleCategory(cat);
       },
-      className: "px-2 py-1 text-[10px] font-medium transition-colors capitalize",
+      className: "px-2 py-1 text-[10px] font-medium transition-all capitalize",
       style: {
-        backgroundColor: activeCategories[cat] ? colors[cat] : 'transparent',
-        color: activeCategories[cat] ? '#fff' : 'var(--text-muted)'
+        backgroundColor: activeCategories[cat] ? "rgba(".concat(hexToRgb(colors[cat]), ", 0.15)") : 'transparent',
+        borderRight: '1px solid var(--border)',
+        color: activeCategories[cat] ? colors[cat] : 'var(--text-muted)'
       }
     }, cat === 'normal' ? 'Normal' : cat === 'shorts' ? 'Shorts' : 'Music');
   })), /*#__PURE__*/React.createElement("div", {
@@ -946,18 +962,32 @@ var LifeAnalyticsChart = function LifeAnalyticsChart(_ref) {
   }, /*#__PURE__*/React.createElement("canvas", {
     ref: chartRef
   })), /*#__PURE__*/React.createElement("div", {
-    className: "mt-2"
+    className: "mt-2 flex items-center gap-1 flex-wrap"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-[10px] font-medium",
     style: {
       color: 'var(--text-muted)'
     }
-  }, "Correla\xE7\xE3o (Pearson):"), /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-bold mt-0.5",
+  }, "Correla\xE7\xE3o (Pearson):"), getCorrelations().length > 0 ? getCorrelations().map(function (item, index) {
+    return /*#__PURE__*/React.createElement(React.Fragment, {
+      key: index
+    }, index > 0 && /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px]",
+      style: {
+        color: 'var(--text-muted)'
+      }
+    }, "|"), /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] font-bold",
+      style: {
+        color: item.color
+      }
+    }, item.value.toFixed(2)));
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]",
     style: {
-      color: 'var(--text-secondary)'
+      color: 'var(--text-muted)'
     }
-  }, getCorrelations())));
+  }, "\u2014")));
 };
 var SidebarAnalytics = function SidebarAnalytics(_ref2) {
   var isDarkMode = _ref2.isDarkMode;
