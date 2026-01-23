@@ -1,0 +1,1159 @@
+{
+  "metadata": {
+    "last_updated": "2026-01-22T22:57:24.418710",
+    "period_start": "2024-10",
+    "period_end": "2026-01",
+    "normalization": "min-max",
+    "version": "1.0"
+  },
+  "weekly": [
+    {
+      "year": 2024,
+      "week": 40,
+      "label": "S40/2024",
+      "youtube": {
+        "raw": 1293,
+        "normalized": 60.03
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    },
+    {
+      "year": 2024,
+      "week": 41,
+      "label": "S41/2024",
+      "youtube": {
+        "raw": 1724,
+        "normalized": 91.24
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    },
+    {
+      "year": 2024,
+      "week": 42,
+      "label": "S42/2024",
+      "youtube": {
+        "raw": 969,
+        "normalized": 36.57
+      },
+      "journal": {
+        "raw": 9,
+        "normalized": 39.13
+      }
+    },
+    {
+      "year": 2024,
+      "week": 43,
+      "label": "S43/2024",
+      "youtube": {
+        "raw": 712,
+        "normalized": 17.96
+      },
+      "journal": {
+        "raw": 13,
+        "normalized": 56.52
+      }
+    },
+    {
+      "year": 2024,
+      "week": 44,
+      "label": "S44/2024",
+      "youtube": {
+        "raw": 623,
+        "normalized": 11.51
+      },
+      "journal": {
+        "raw": 12,
+        "normalized": 52.17
+      }
+    },
+    {
+      "year": 2024,
+      "week": 45,
+      "label": "S45/2024",
+      "youtube": {
+        "raw": 1200,
+        "normalized": 53.29
+      },
+      "journal": {
+        "raw": 2,
+        "normalized": 8.7
+      }
+    },
+    {
+      "year": 2024,
+      "week": 46,
+      "label": "S46/2024",
+      "youtube": {
+        "raw": 958,
+        "normalized": 35.77
+      },
+      "journal": {
+        "raw": 2,
+        "normalized": 8.7
+      }
+    },
+    {
+      "year": 2024,
+      "week": 47,
+      "label": "S47/2024",
+      "youtube": {
+        "raw": 464,
+        "normalized": 0.0
+      },
+      "journal": {
+        "raw": 7,
+        "normalized": 30.43
+      }
+    },
+    {
+      "year": 2024,
+      "week": 48,
+      "label": "S48/2024",
+      "youtube": {
+        "raw": 963,
+        "normalized": 36.13
+      },
+      "journal": {
+        "raw": 3,
+        "normalized": 13.04
+      }
+    },
+    {
+      "year": 2024,
+      "week": 49,
+      "label": "S49/2024",
+      "youtube": {
+        "raw": 1499,
+        "normalized": 74.95
+      },
+      "journal": {
+        "raw": 4,
+        "normalized": 17.39
+      }
+    },
+    {
+      "year": 2024,
+      "week": 50,
+      "label": "S50/2024",
+      "youtube": {
+        "raw": 1180,
+        "normalized": 51.85
+      },
+      "journal": {
+        "raw": 5,
+        "normalized": 21.74
+      }
+    },
+    {
+      "year": 2024,
+      "week": 51,
+      "label": "S51/2024",
+      "youtube": {
+        "raw": 1042,
+        "normalized": 41.85
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2024,
+      "week": 52,
+      "label": "S52/2024",
+      "youtube": {
+        "raw": 918,
+        "normalized": 32.87
+      },
+      "journal": {
+        "raw": 7,
+        "normalized": 30.43
+      }
+    },
+    {
+      "year": 2025,
+      "week": 1,
+      "label": "S01/2025",
+      "youtube": {
+        "raw": 972,
+        "normalized": 36.78
+      },
+      "journal": {
+        "raw": 23,
+        "normalized": 100.0
+      }
+    },
+    {
+      "year": 2025,
+      "week": 2,
+      "label": "S02/2025",
+      "youtube": {
+        "raw": 984,
+        "normalized": 37.65
+      },
+      "journal": {
+        "raw": 21,
+        "normalized": 91.3
+      }
+    },
+    {
+      "year": 2025,
+      "week": 3,
+      "label": "S03/2025",
+      "youtube": {
+        "raw": 897,
+        "normalized": 31.35
+      },
+      "journal": {
+        "raw": 4,
+        "normalized": 17.39
+      }
+    },
+    {
+      "year": 2025,
+      "week": 4,
+      "label": "S04/2025",
+      "youtube": {
+        "raw": 1249,
+        "normalized": 56.84
+      },
+      "journal": {
+        "raw": 3,
+        "normalized": 13.04
+      }
+    },
+    {
+      "year": 2025,
+      "week": 5,
+      "label": "S05/2025",
+      "youtube": {
+        "raw": 1045,
+        "normalized": 42.07
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    },
+    {
+      "year": 2025,
+      "week": 6,
+      "label": "S06/2025",
+      "youtube": {
+        "raw": 824,
+        "normalized": 26.07
+      },
+      "journal": {
+        "raw": 3,
+        "normalized": 13.04
+      }
+    },
+    {
+      "year": 2025,
+      "week": 7,
+      "label": "S07/2025",
+      "youtube": {
+        "raw": 793,
+        "normalized": 23.82
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2025,
+      "week": 8,
+      "label": "S08/2025",
+      "youtube": {
+        "raw": 1461,
+        "normalized": 72.19
+      },
+      "journal": {
+        "raw": 12,
+        "normalized": 52.17
+      }
+    },
+    {
+      "year": 2025,
+      "week": 9,
+      "label": "S09/2025",
+      "youtube": {
+        "raw": 596,
+        "normalized": 9.56
+      },
+      "journal": {
+        "raw": 13,
+        "normalized": 56.52
+      }
+    },
+    {
+      "year": 2025,
+      "week": 10,
+      "label": "S10/2025",
+      "youtube": {
+        "raw": 904,
+        "normalized": 31.86
+      },
+      "journal": {
+        "raw": 18,
+        "normalized": 78.26
+      }
+    },
+    {
+      "year": 2025,
+      "week": 11,
+      "label": "S11/2025",
+      "youtube": {
+        "raw": 1290,
+        "normalized": 59.81
+      },
+      "journal": {
+        "raw": 9,
+        "normalized": 39.13
+      }
+    },
+    {
+      "year": 2025,
+      "week": 12,
+      "label": "S12/2025",
+      "youtube": {
+        "raw": 1238,
+        "normalized": 56.05
+      },
+      "journal": {
+        "raw": 13,
+        "normalized": 56.52
+      }
+    },
+    {
+      "year": 2025,
+      "week": 13,
+      "label": "S13/2025",
+      "youtube": {
+        "raw": 1267,
+        "normalized": 58.15
+      },
+      "journal": {
+        "raw": 11,
+        "normalized": 47.83
+      }
+    },
+    {
+      "year": 2025,
+      "week": 14,
+      "label": "S14/2025",
+      "youtube": {
+        "raw": 1456,
+        "normalized": 71.83
+      },
+      "journal": {
+        "raw": 7,
+        "normalized": 30.43
+      }
+    },
+    {
+      "year": 2025,
+      "week": 15,
+      "label": "S15/2025",
+      "youtube": {
+        "raw": 1845,
+        "normalized": 100.0
+      },
+      "journal": {
+        "raw": 11,
+        "normalized": 47.83
+      }
+    },
+    {
+      "year": 2025,
+      "week": 16,
+      "label": "S16/2025",
+      "youtube": {
+        "raw": 1261,
+        "normalized": 57.71
+      },
+      "journal": {
+        "raw": 8,
+        "normalized": 34.78
+      }
+    },
+    {
+      "year": 2025,
+      "week": 17,
+      "label": "S17/2025",
+      "youtube": {
+        "raw": 772,
+        "normalized": 22.3
+      },
+      "journal": {
+        "raw": 12,
+        "normalized": 52.17
+      }
+    },
+    {
+      "year": 2025,
+      "week": 18,
+      "label": "S18/2025",
+      "youtube": {
+        "raw": 1157,
+        "normalized": 50.18
+      },
+      "journal": {
+        "raw": 5,
+        "normalized": 21.74
+      }
+    },
+    {
+      "year": 2025,
+      "week": 19,
+      "label": "S19/2025",
+      "youtube": {
+        "raw": 688,
+        "normalized": 16.22
+      },
+      "journal": {
+        "raw": 3,
+        "normalized": 13.04
+      }
+    },
+    {
+      "year": 2025,
+      "week": 20,
+      "label": "S20/2025",
+      "youtube": {
+        "raw": 983,
+        "normalized": 37.58
+      },
+      "journal": {
+        "raw": 14,
+        "normalized": 60.87
+      }
+    },
+    {
+      "year": 2025,
+      "week": 21,
+      "label": "S21/2025",
+      "youtube": {
+        "raw": 1172,
+        "normalized": 51.27
+      },
+      "journal": {
+        "raw": 17,
+        "normalized": 73.91
+      }
+    },
+    {
+      "year": 2025,
+      "week": 22,
+      "label": "S22/2025",
+      "youtube": {
+        "raw": 773,
+        "normalized": 22.38
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2025,
+      "week": 23,
+      "label": "S23/2025",
+      "youtube": {
+        "raw": 622,
+        "normalized": 11.44
+      },
+      "journal": {
+        "raw": 8,
+        "normalized": 34.78
+      }
+    },
+    {
+      "year": 2025,
+      "week": 24,
+      "label": "S24/2025",
+      "youtube": {
+        "raw": 579,
+        "normalized": 8.33
+      },
+      "journal": {
+        "raw": 11,
+        "normalized": 47.83
+      }
+    },
+    {
+      "year": 2025,
+      "week": 25,
+      "label": "S25/2025",
+      "youtube": {
+        "raw": 1159,
+        "normalized": 50.33
+      },
+      "journal": {
+        "raw": 15,
+        "normalized": 65.22
+      }
+    },
+    {
+      "year": 2025,
+      "week": 26,
+      "label": "S26/2025",
+      "youtube": {
+        "raw": 1113,
+        "normalized": 46.99
+      },
+      "journal": {
+        "raw": 16,
+        "normalized": 69.57
+      }
+    },
+    {
+      "year": 2025,
+      "week": 27,
+      "label": "S27/2025",
+      "youtube": {
+        "raw": 1108,
+        "normalized": 46.63
+      },
+      "journal": {
+        "raw": 9,
+        "normalized": 39.13
+      }
+    },
+    {
+      "year": 2025,
+      "week": 28,
+      "label": "S28/2025",
+      "youtube": {
+        "raw": 1001,
+        "normalized": 38.88
+      },
+      "journal": {
+        "raw": 15,
+        "normalized": 65.22
+      }
+    },
+    {
+      "year": 2025,
+      "week": 29,
+      "label": "S29/2025",
+      "youtube": {
+        "raw": 1148,
+        "normalized": 49.53
+      },
+      "journal": {
+        "raw": 4,
+        "normalized": 17.39
+      }
+    },
+    {
+      "year": 2025,
+      "week": 30,
+      "label": "S30/2025",
+      "youtube": {
+        "raw": 789,
+        "normalized": 23.53
+      },
+      "journal": {
+        "raw": 8,
+        "normalized": 34.78
+      }
+    },
+    {
+      "year": 2025,
+      "week": 31,
+      "label": "S31/2025",
+      "youtube": {
+        "raw": 974,
+        "normalized": 36.93
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2025,
+      "week": 32,
+      "label": "S32/2025",
+      "youtube": {
+        "raw": 949,
+        "normalized": 35.12
+      },
+      "journal": {
+        "raw": 9,
+        "normalized": 39.13
+      }
+    },
+    {
+      "year": 2025,
+      "week": 33,
+      "label": "S33/2025",
+      "youtube": {
+        "raw": 613,
+        "normalized": 10.79
+      },
+      "journal": {
+        "raw": 7,
+        "normalized": 30.43
+      }
+    },
+    {
+      "year": 2025,
+      "week": 34,
+      "label": "S34/2025",
+      "youtube": {
+        "raw": 861,
+        "normalized": 28.75
+      },
+      "journal": {
+        "raw": 11,
+        "normalized": 47.83
+      }
+    },
+    {
+      "year": 2025,
+      "week": 35,
+      "label": "S35/2025",
+      "youtube": {
+        "raw": 976,
+        "normalized": 37.07
+      },
+      "journal": {
+        "raw": 8,
+        "normalized": 34.78
+      }
+    },
+    {
+      "year": 2025,
+      "week": 36,
+      "label": "S36/2025",
+      "youtube": {
+        "raw": 1151,
+        "normalized": 49.75
+      },
+      "journal": {
+        "raw": 11,
+        "normalized": 47.83
+      }
+    },
+    {
+      "year": 2025,
+      "week": 37,
+      "label": "S37/2025",
+      "youtube": {
+        "raw": 1094,
+        "normalized": 45.62
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2025,
+      "week": 38,
+      "label": "S38/2025",
+      "youtube": {
+        "raw": 734,
+        "normalized": 19.55
+      },
+      "journal": {
+        "raw": 12,
+        "normalized": 52.17
+      }
+    },
+    {
+      "year": 2025,
+      "week": 39,
+      "label": "S39/2025",
+      "youtube": {
+        "raw": 727,
+        "normalized": 19.04
+      },
+      "journal": {
+        "raw": 13,
+        "normalized": 56.52
+      }
+    },
+    {
+      "year": 2025,
+      "week": 40,
+      "label": "S40/2025",
+      "youtube": {
+        "raw": 737,
+        "normalized": 19.77
+      },
+      "journal": {
+        "raw": 15,
+        "normalized": 65.22
+      }
+    },
+    {
+      "year": 2025,
+      "week": 41,
+      "label": "S41/2025",
+      "youtube": {
+        "raw": 1664,
+        "normalized": 86.89
+      },
+      "journal": {
+        "raw": 15,
+        "normalized": 65.22
+      }
+    },
+    {
+      "year": 2025,
+      "week": 42,
+      "label": "S42/2025",
+      "youtube": {
+        "raw": 961,
+        "normalized": 35.99
+      },
+      "journal": {
+        "raw": 5,
+        "normalized": 21.74
+      }
+    },
+    {
+      "year": 2025,
+      "week": 43,
+      "label": "S43/2025",
+      "youtube": {
+        "raw": 1148,
+        "normalized": 49.53
+      },
+      "journal": {
+        "raw": 6,
+        "normalized": 26.09
+      }
+    },
+    {
+      "year": 2025,
+      "week": 44,
+      "label": "S44/2025",
+      "youtube": {
+        "raw": 1452,
+        "normalized": 71.54
+      },
+      "journal": {
+        "raw": 8,
+        "normalized": 34.78
+      }
+    },
+    {
+      "year": 2025,
+      "week": 45,
+      "label": "S45/2025",
+      "youtube": {
+        "raw": 594,
+        "normalized": 9.41
+      },
+      "journal": {
+        "raw": 5,
+        "normalized": 21.74
+      }
+    },
+    {
+      "year": 2025,
+      "week": 46,
+      "label": "S46/2025",
+      "youtube": {
+        "raw": 548,
+        "normalized": 6.08
+      },
+      "journal": {
+        "raw": 4,
+        "normalized": 17.39
+      }
+    },
+    {
+      "year": 2025,
+      "week": 47,
+      "label": "S47/2025",
+      "youtube": {
+        "raw": 851,
+        "normalized": 28.02
+      },
+      "journal": {
+        "raw": 6,
+        "normalized": 26.09
+      }
+    },
+    {
+      "year": 2025,
+      "week": 48,
+      "label": "S48/2025",
+      "youtube": {
+        "raw": 758,
+        "normalized": 21.29
+      },
+      "journal": {
+        "raw": 14,
+        "normalized": 60.87
+      }
+    },
+    {
+      "year": 2025,
+      "week": 49,
+      "label": "S49/2025",
+      "youtube": {
+        "raw": 876,
+        "normalized": 29.83
+      },
+      "journal": {
+        "raw": 6,
+        "normalized": 26.09
+      }
+    },
+    {
+      "year": 2025,
+      "week": 50,
+      "label": "S50/2025",
+      "youtube": {
+        "raw": 963,
+        "normalized": 36.13
+      },
+      "journal": {
+        "raw": 10,
+        "normalized": 43.48
+      }
+    },
+    {
+      "year": 2025,
+      "week": 51,
+      "label": "S51/2025",
+      "youtube": {
+        "raw": 508,
+        "normalized": 3.19
+      },
+      "journal": {
+        "raw": 2,
+        "normalized": 8.7
+      }
+    },
+    {
+      "year": 2025,
+      "week": 52,
+      "label": "S52/2025",
+      "youtube": {
+        "raw": 756,
+        "normalized": 21.14
+      },
+      "journal": {
+        "raw": 1,
+        "normalized": 4.35
+      }
+    },
+    {
+      "year": 2026,
+      "week": 1,
+      "label": "S01/2026",
+      "youtube": {
+        "raw": 541,
+        "normalized": 5.58
+      },
+      "journal": {
+        "raw": 2,
+        "normalized": 8.7
+      }
+    },
+    {
+      "year": 2026,
+      "week": 2,
+      "label": "S02/2026",
+      "youtube": {
+        "raw": 754,
+        "normalized": 21.0
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    },
+    {
+      "year": 2026,
+      "week": 3,
+      "label": "S03/2026",
+      "youtube": {
+        "raw": 923,
+        "normalized": 33.24
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    }
+  ],
+  "monthly": [
+    {
+      "year": 2024,
+      "month": 10,
+      "label": "Out/2024",
+      "youtube": {
+        "total": 5016,
+        "normal": 798,
+        "shorts": 3039,
+        "music": 1179,
+        "normalized": 86.63
+      },
+      "journal": {
+        "raw": 28,
+        "normalized": 49.12
+      }
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "label": "Nov/2024",
+      "youtube": {
+        "total": 3453,
+        "normal": 504,
+        "shorts": 2424,
+        "music": 525,
+        "normalized": 43.37
+      },
+      "journal": {
+        "raw": 20,
+        "normalized": 35.09
+      }
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "label": "Dez/2024",
+      "youtube": {
+        "total": 5321,
+        "normal": 955,
+        "shorts": 2934,
+        "music": 1432,
+        "normalized": 95.07
+      },
+      "journal": {
+        "raw": 36,
+        "normalized": 63.16
+      }
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "label": "Jan/2025",
+      "youtube": {
+        "total": 4771,
+        "normal": 756,
+        "shorts": 2315,
+        "music": 1700,
+        "normalized": 79.85
+      },
+      "journal": {
+        "raw": 41,
+        "normalized": 71.93
+      }
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "label": "Fev/2025",
+      "youtube": {
+        "total": 3600,
+        "normal": 640,
+        "shorts": 2598,
+        "music": 362,
+        "normalized": 47.44
+      },
+      "journal": {
+        "raw": 33,
+        "normalized": 57.89
+      }
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "label": "Mar/2025",
+      "youtube": {
+        "total": 5153,
+        "normal": 969,
+        "shorts": 3442,
+        "music": 742,
+        "normalized": 90.42
+      },
+      "journal": {
+        "raw": 57,
+        "normalized": 100.0
+      }
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "label": "Abr/2025",
+      "youtube": {
+        "total": 5499,
+        "normal": 823,
+        "shorts": 3449,
+        "music": 1227,
+        "normalized": 100.0
+      },
+      "journal": {
+        "raw": 39,
+        "normalized": 68.42
+      }
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "label": "Mai/2025",
+      "youtube": {
+        "total": 4202,
+        "normal": 637,
+        "shorts": 2660,
+        "music": 905,
+        "normalized": 64.1
+      },
+      "journal": {
+        "raw": 47,
+        "normalized": 82.46
+      }
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "label": "Jun/2025",
+      "youtube": {
+        "total": 3761,
+        "normal": 551,
+        "shorts": 2456,
+        "music": 754,
+        "normalized": 51.9
+      },
+      "journal": {
+        "raw": 52,
+        "normalized": 91.23
+      }
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "label": "Jul/2025",
+      "youtube": {
+        "total": 4585,
+        "normal": 507,
+        "shorts": 3471,
+        "music": 607,
+        "normalized": 74.7
+      },
+      "journal": {
+        "raw": 41,
+        "normalized": 71.93
+      }
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "label": "Ago/2025",
+      "youtube": {
+        "total": 3703,
+        "normal": 554,
+        "shorts": 2879,
+        "music": 270,
+        "normalized": 50.29
+      },
+      "journal": {
+        "raw": 38,
+        "normalized": 66.67
+      }
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "label": "Set/2025",
+      "youtube": {
+        "total": 3860,
+        "normal": 686,
+        "shorts": 2571,
+        "music": 603,
+        "normalized": 54.64
+      },
+      "journal": {
+        "raw": 52,
+        "normalized": 91.23
+      }
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "label": "Out/2025",
+      "youtube": {
+        "total": 5048,
+        "normal": 679,
+        "shorts": 3676,
+        "music": 693,
+        "normalized": 87.52
+      },
+      "journal": {
+        "raw": 43,
+        "normalized": 75.44
+      }
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "label": "Nov/2025",
+      "youtube": {
+        "total": 3511,
+        "normal": 364,
+        "shorts": 2448,
+        "music": 699,
+        "normalized": 44.98
+      },
+      "journal": {
+        "raw": 29,
+        "normalized": 50.88
+      }
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "label": "Dez/2025",
+      "youtube": {
+        "total": 3435,
+        "normal": 363,
+        "shorts": 2266,
+        "music": 806,
+        "normalized": 42.87
+      },
+      "journal": {
+        "raw": 21,
+        "normalized": 36.84
+      }
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "label": "Jan/2026",
+      "youtube": {
+        "total": 1886,
+        "normal": 239,
+        "shorts": 1278,
+        "music": 369,
+        "normalized": 0.0
+      },
+      "journal": {
+        "raw": 0,
+        "normalized": 0.0
+      }
+    }
+  ],
+  "stats": {
+    "correlation_weekly": 0.028,
+    "correlation_monthly": 0.625,
+    "youtube_total": 66804,
+    "journal_total": 577
+  }
+}
