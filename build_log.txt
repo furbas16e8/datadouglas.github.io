@@ -1,0 +1,4 @@
+
+> datadouglas-portfolio@1.0.0 build
+> babel src --out-file assets/js/bundle.js --presets=@babel/preset-react,@babel/preset-env
+
