@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../life-analytics"
+		},
+		{
+			"path": "../life-analytics-public"
+		}
+	],
+	"settings": {}
+}

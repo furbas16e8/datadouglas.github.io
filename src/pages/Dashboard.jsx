@@ -7,7 +7,7 @@ const Dashboard = ({ isDarkMode }) => (
   <div 
     className={[
       // Container
-      "max-w-2xl mx-auto",
+      "max-w-[720px] mx-auto", 
       // Espaçamento
       "px-4 py-6",
       // Layout

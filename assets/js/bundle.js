@@ -129,19 +129,15 @@ var App = function App() {
   }, /*#__PURE__*/React.createElement(Header, {
     isDarkMode: isDarkMode,
     onToggleTheme: handleToggleTheme
-  }), /*#__PURE__*/React.createElement(SidebarProfile, {
-    isDarkMode: isDarkMode
-  }), /*#__PURE__*/React.createElement(SidebarAnalytics, {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "flex justify-center gap-1 pt-16 px-4"
+  }, /*#__PURE__*/React.createElement(SidebarProfile, {
     isDarkMode: isDarkMode
   }), /*#__PURE__*/React.createElement("main", {
-    className: [
-    // Espaçamento do header
-    "pt-16",
-    // Margens responsivas para sidebars
-    "lg:ml-[280px] xl:mr-[320px]",
-    // Altura mínima
-    "min-h-screen"].join(" ")
-  }, renderPage()));
+    className: "w-full max-w-[720px] min-h-screen pb-10"
+  }, renderPage()), /*#__PURE__*/React.createElement(SidebarAnalytics, {
+    isDarkMode: isDarkMode
+  })));
 };
 
 // ============================================
@@ -266,69 +262,35 @@ var Header = function Header(_ref) {
     // Z-index
     "z-50"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Layout
-    "flex items-center",
-    // Espaçamento
-    "px-4 h-16",
-    // Container
-    "max-w-7xl mx-auto w-full"].join(" ")
+    className: "flex justify-center gap-1 h-12 px-4 w-full"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-[305px] hidden lg:flex items-center pl-4"
   }, /*#__PURE__*/React.createElement("nav", {
-    className: [
-    // Visibilidade
-    "hidden md:flex",
-    // Layout
-    "items-center gap-6"].join(" ")
+    className: "flex items-center gap-6"
   }, /*#__PURE__*/React.createElement("a", {
-    className: [
-    // Tipografia
-    "text-sm font-medium",
-    // Interação
-    "hover:text-[var(--primary)] transition-colors"].join(" "),
+    className: "text-sm font-medium hover:text-[var(--primary)] transition-colors",
     style: {
       color: 'var(--text-main)'
     },
     href: "#/"
   }, "Home"), /*#__PURE__*/React.createElement("a", {
-    className: [
-    // Tipografia
-    "text-sm font-medium",
-    // Interação
-    "hover:text-[var(--text-main)] transition-colors"].join(" "),
+    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
     style: {
       color: 'var(--text-secondary)'
     },
     href: "#/projects"
   }, "Projects"), /*#__PURE__*/React.createElement("a", {
-    className: [
-    // Tipografia
-    "text-sm font-medium",
-    // Interação
-    "hover:text-[var(--text-main)] transition-colors"].join(" "),
+    className: "text-sm font-medium hover:text-[var(--text-main)] transition-colors",
     style: {
       color: 'var(--text-secondary)'
     },
     href: "#/research"
-  }, "Research")), /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Layout
-    "flex items-center gap-2",
-    // Posicionamento
-    "ml-auto"].join(" ")
+  }, "Research"))), /*#__PURE__*/React.createElement("div", {
+    className: "w-full max-w-[720px] flex items-center justify-center"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "w-[370px] hidden xl:flex items-center justify-end gap-3 pr-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Layout
-    "hidden sm:flex items-center gap-2",
-    // Dimensões
-    "w-48 lg:w-64",
-    // Espaçamento
-    "px-3 py-1",
-    // Forma
-    "rounded-lg",
-    // Borda
-    "border",
-    // Interação
-    "focus-within:border-[var(--primary)] transition-colors"].join(" "),
+    className: "flex items-center gap-1 w-full max-w-[240px] px-3 h-8 rounded-lg border focus-within:border-[var(--primary)] transition-colors",
     style: {
       backgroundColor: 'var(--surface)',
       borderColor: 'var(--border)'
@@ -341,51 +303,44 @@ var Header = function Header(_ref) {
   }, "search"), /*#__PURE__*/React.createElement("input", {
     type: "text",
     placeholder: "Search...",
-    className: [
-    // Reset
-    "bg-transparent border-none outline-none",
-    // Dimensões
-    "w-full",
-    // Tipografia
-    "text-sm",
-    // Placeholder
-    "placeholder:text-[var(--text-muted)]"].join(" "),
+    className: "bg-transparent border-none outline-none w-full text-sm placeholder:text-[var(--text-muted)]",
     style: {
       color: 'var(--text-main)'
-    },
-    "aria-label": "Buscar no site"
+    }
   })), /*#__PURE__*/React.createElement("button", {
-    className: [
-    // Espaçamento
-    "p-2",
-    // Forma
-    "rounded-lg",
-    // Interação
-    "hover:bg-[var(--surface)] transition-colors"].join(" "),
-    onClick: onToggleTheme,
-    "aria-label": isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'
+    className: "p-2 rounded-lg hover:bg-[var(--surface)] transition-colors shrink-0",
+    onClick: onToggleTheme
   }, /*#__PURE__*/React.createElement("span", {
     className: "material-symbols-outlined text-[20px]",
     style: {
       color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
     }
+  }, isDarkMode ? 'light_mode' : 'dark_mode'))), /*#__PURE__*/React.createElement("div", {
+    className: "flex lg:hidden w-full items-center justify-between"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#/",
+    className: "text-lg font-bold",
+    style: {
+      color: 'var(--text-main)'
+    }
+  }, "Doug.DS"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "p-2 rounded-lg hover:bg-[var(--surface)]",
+    onClick: onToggleTheme
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "material-symbols-outlined text-[20px]",
+    style: {
+      color: 'var(--text-muted)'
+    }
   }, isDarkMode ? 'light_mode' : 'dark_mode')), /*#__PURE__*/React.createElement("button", {
-    className: [
-    // Visibilidade
-    "md:hidden",
-    // Espaçamento
-    "p-2",
-    // Forma
-    "rounded-lg",
-    // Interação
-    "hover:bg-[var(--surface)] transition-colors"].join(" "),
-    "aria-label": "Abrir menu de navega\xE7\xE3o"
+    className: "p-2 rounded-lg hover:bg-[var(--surface)]"
   }, /*#__PURE__*/React.createElement("span", {
     className: "material-symbols-outlined",
     style: {
       color: 'var(--text-secondary)'
     }
-  }, "menu")))));
+  }, "menu"))))));
 };
 "use strict";
 
@@ -1104,7 +1059,7 @@ var SidebarAnalytics = function SidebarAnalytics(_ref2) {
     // Visibilidade / Responsividade
     "hidden xl:block",
     // Posicionamento
-    "fixed right-[max(0px,calc(50%-680px))] top-16",
+    "sticky top-16 self-start",
     // Dimensões
     "w-[370px] h-[calc(100vh-64px)]",
     // Scroll
@@ -1250,7 +1205,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
     // Visibilidade / Responsividade
     "hidden lg:block",
     // Posicionamento
-    "fixed left-[max(0px,calc(50%-655px))] top-16",
+    "sticky top-16 self-start",
     // Dimensões
     "w-[305px] h-[calc(100vh-64px)]",
     // Scroll
@@ -1296,12 +1251,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
     style: {
       color: 'var(--text-main)'
     }
-  }, "Douglas Furbino"), /*#__PURE__*/React.createElement("p", {
-    className: "text-[13px] font-medium mt-0.5",
-    style: {
-      color: 'var(--text-secondary)'
-    }
-  }, "Economista e Cientista de Dados"), /*#__PURE__*/React.createElement("div", {
+  }, "Douglas Furbino"), /*#__PURE__*/React.createElement("div", {
     className: [
     // Layout
     "flex items-center gap-1",
@@ -1320,7 +1270,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
       color: 'var(--text-secondary)',
       borderColor: 'var(--border)'
     }
-  }, "Machine Learning Engineer passionate about turning complex data into actionable insights.")), /*#__PURE__*/React.createElement("div", {
+  }, "Economista pela UFJF especializado em Ci\xEAncia de Dados. Trabalho com modelagem preditiva, desenvolvimento web e automa\xE7\xE3o de fluxos de trabalho.")), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between mt-5 pt-0 px-2 pb-2"
   }, [{
     value: '12',
@@ -1516,7 +1466,7 @@ var Dashboard = function Dashboard(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: [
     // Container
-    "max-w-2xl mx-auto",
+    "max-w-[720px] mx-auto",
     // Espaçamento
     "px-4 py-6",
     // Layout
@@ -1574,7 +1524,7 @@ var Projects = function Projects(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: [
     // Container
-    "max-w-2xl mx-auto",
+    "max-w-[720px] mx-auto",
     // Espaçamento
     "px-4 py-6"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
@@ -1672,7 +1622,7 @@ var Research = function Research(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: [
     // Container
-    "max-w-2xl mx-auto",
+    "max-w-[720px] mx-auto",
     // Espaçamento
     "px-4 py-6"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {

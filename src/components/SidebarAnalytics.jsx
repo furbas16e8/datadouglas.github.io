@@ -333,7 +333,7 @@ const SidebarAnalytics = ({ isDarkMode }) => (
       // Visibilidade / Responsividade
       "hidden xl:block",
       // Posicionamento
-      "fixed right-[max(0px,calc(50%-680px))] top-16",
+      "sticky top-16 self-start",
       // Dimensões
       "w-[370px] h-[calc(100vh-64px)]",
       // Scroll

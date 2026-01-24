@@ -9,7 +9,7 @@ const SidebarProfile = ({ isDarkMode }) => (
       // Visibilidade / Responsividade
       "hidden lg:block",
       // Posicionamento
-      "fixed left-[max(0px,calc(50%-655px))] top-16",
+      "sticky top-16 self-start",
       // Dimensões
       "w-[305px] h-[calc(100vh-64px)]",
       // Scroll
@@ -60,9 +60,9 @@ const SidebarProfile = ({ isDarkMode }) => (
           >
             Douglas Furbino
           </h2>
-          <p className="text-[13px] font-medium mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+          {/*<p className="text-[13px] font-medium mt-0.5" style={{ color: 'var(--text-secondary)' }}>
             Economista e Cientista de Dados
-          </p>
+          </p>*/}
           <div 
             className={[
               // Layout
@@ -81,7 +81,7 @@ const SidebarProfile = ({ isDarkMode }) => (
             className="text-xs font-body leading-relaxed border-t pt-3"
             style={{ color: 'var(--text-secondary)', borderColor: 'var(--border)' }}
           >
-            Machine Learning Engineer passionate about turning complex data into actionable insights.
+            Economista pela UFJF especializado em Ciência de Dados. Trabalho com modelagem preditiva, desenvolvimento web e automação de fluxos de trabalho.
           </p>
         </div>
         

@@ -110,23 +110,16 @@ const App = () => {
     >
       <Header isDarkMode={isDarkMode} onToggleTheme={handleToggleTheme} />
       
-      {/* Sidebars fixas */}
-      <SidebarProfile isDarkMode={isDarkMode} />
-      <SidebarAnalytics isDarkMode={isDarkMode} />
-      
-      {/* Main com scroll - centralizado entre as sidebars */}
-      <main 
-        className={[
-          // Espaçamento do header
-          "pt-16",
-          // Margens responsivas para sidebars
-          "lg:ml-[280px] xl:mr-[320px]",
-          // Altura mínima
-          "min-h-screen"
-        ].join(" ")}
-      >
-        {renderPage()}
-      </main>
+      {/* Layout Principal Centralizado */}
+      <div className="flex justify-center gap-1 pt-16 px-4">
+        <SidebarProfile isDarkMode={isDarkMode} />
+        
+        <main className="w-full max-w-[720px] min-h-screen pb-10">
+          {renderPage()}
+        </main>
+        
+        <SidebarAnalytics isDarkMode={isDarkMode} />
+      </div>
     </div>
   );
 };
