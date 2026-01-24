@@ -13,7 +13,7 @@ const POSTS_DATA = [
     contentExpanded: 'A lógica usa threshold dinâmico (5 vídeos normalmente, 3 se o anterior era Short) para capturar o padrão comportamental de scroll infinito típico do formato curto. Os dados vêm do Google Takeout e são processados em pipeline Python puro, sem dependências externas.',
     codeFileName: 'burst_detection.py',
     codeAltFileName: 'watch-history.json',
-    codeLink: { text: 'Ver no GitHub', url: 'https://github.com/datadouglas/life-analytics-public' },
+    codeLink: { text: 'Ver no GitHub', url: 'https://github.com/furbas16e8/life-analytics-public' },
     code: `<span class="text-gray-500"># Detecção de Shorts via padrão de Burst</span>
 <span class="text-pink-400">def</span> detect_burst_shorts(data):
     <span class="text-pink-400">for</span> i, row <span class="text-pink-400">in</span> enumerate(data):
