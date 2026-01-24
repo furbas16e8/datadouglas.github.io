@@ -316,14 +316,8 @@ var Header = function Header(_ref) {
       color: isDarkMode ? 'var(--text-muted)' : 'var(--text-main)'
     }
   }, isDarkMode ? 'light_mode' : 'dark_mode'))), /*#__PURE__*/React.createElement("div", {
-    className: "flex lg:hidden w-full items-center justify-between"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "#/",
-    className: "text-lg font-bold",
-    style: {
-      color: 'var(--text-main)'
-    }
-  }, "Doug.DS"), /*#__PURE__*/React.createElement("div", {
+    className: "flex lg:hidden w-full items-center justify-end"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement("button", {
     className: "p-2 rounded-lg hover:bg-[var(--surface)]",
@@ -1468,7 +1462,7 @@ var Dashboard = function Dashboard(_ref) {
     // Container
     "max-w-[720px] mx-auto",
     // Espaçamento
-    "px-4 py-6",
+    "py-6 sm:px-4",
     // Layout
     "flex flex-col gap-4"].join(" ")
   }, /*#__PURE__*/React.createElement(MobileProfile, {
@@ -1526,7 +1520,7 @@ var Projects = function Projects(_ref) {
     // Container
     "max-w-[720px] mx-auto",
     // Espaçamento
-    "px-4 py-6"].join(" ")
+    "py-6 sm:px-4"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "mb-6"
   }, /*#__PURE__*/React.createElement("h2", {

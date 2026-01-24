@@ -81,8 +81,7 @@ const Header = ({ isDarkMode, onToggleTheme }) => (
       </div>
 
       {/* Mobile/Tablet View (quando as sidebars estão ocultas) */}
-      <div className="flex lg:hidden w-full items-center justify-between">
-        <a href="#/" className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>Doug.DS</a>
+      <div className="flex lg:hidden w-full items-center justify-end">
         <div className="flex items-center gap-2">
           <button className="p-2 rounded-lg hover:bg-[var(--surface)]" onClick={onToggleTheme}>
             <span className="material-symbols-outlined text-[20px]" style={{ color: 'var(--text-muted)' }}>

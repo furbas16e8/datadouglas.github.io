@@ -9,7 +9,7 @@ const Dashboard = ({ isDarkMode }) => (
       // Container
       "max-w-[720px] mx-auto", 
       // Espaçamento
-      "px-4 py-6",
+      "py-6 sm:px-4",
       // Layout
       "flex flex-col gap-4"
     ].join(" ")}
