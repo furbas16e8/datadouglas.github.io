@@ -1187,25 +1187,110 @@ var SidebarAnalytics = function SidebarAnalytics(_ref2) {
 };
 "use strict";
 
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /*
  * components/SidebarProfile.jsx - Sidebar com perfil do usuário
  * Douglas Furbino - Economista e Cientista de Dados
  */
 
+var _React = React,
+  useState = _React.useState,
+  useEffect = _React.useEffect;
 var SidebarProfile = function SidebarProfile(_ref) {
+  var _metrics$projects, _metrics$work_session, _metrics$streak;
   var isDarkMode = _ref.isDarkMode;
+  var _useState = useState(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    metrics = _useState2[0],
+    setMetrics = _useState2[1];
+  var _useState3 = useState(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+
+  // Busca métricas do Supabase
+  useEffect(function () {
+    var fetchMetrics = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+        var supabase, _yield$supabase$from$, data, error, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
+            case 0:
+              _context.p = 0;
+              supabase = typeof window.getSupabaseClient === 'function' ? window.getSupabaseClient() : null;
+              if (supabase) {
+                _context.n = 1;
+                break;
+              }
+              console.warn('Supabase client not available');
+              setLoading(false);
+              return _context.a(2);
+            case 1:
+              _context.n = 2;
+              return supabase.from('portfolio_metrics').select('*').single();
+            case 2:
+              _yield$supabase$from$ = _context.v;
+              data = _yield$supabase$from$.data;
+              error = _yield$supabase$from$.error;
+              if (error) {
+                console.error('Error fetching metrics:', error);
+              } else if (data) {
+                setMetrics(data);
+              }
+              _context.n = 4;
+              break;
+            case 3:
+              _context.p = 3;
+              _t = _context.v;
+              console.error('Failed to fetch metrics:', _t);
+            case 4:
+              _context.p = 4;
+              setLoading(false);
+              return _context.f(4);
+            case 5:
+              return _context.a(2);
+          }
+        }, _callee, null, [[0, 3, 4, 5]]);
+      }));
+      return function fetchMetrics() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    fetchMetrics();
+  }, []);
+
+  // Componente Skeleton
+  var SkeletonValue = function SkeletonValue() {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "h-5 w-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse mx-auto"
+    });
+  };
+
+  // Configuração das métricas
+  var statsConfig = [{
+    key: 'projects',
+    label: 'Projects',
+    value: (_metrics$projects = metrics === null || metrics === void 0 ? void 0 : metrics.projects) !== null && _metrics$projects !== void 0 ? _metrics$projects : '-'
+  }, {
+    key: 'work_sessions',
+    label: 'Work Sessions',
+    value: (_metrics$work_session = metrics === null || metrics === void 0 ? void 0 : metrics.work_sessions) !== null && _metrics$work_session !== void 0 ? _metrics$work_session : '-'
+  }, {
+    key: 'streak',
+    label: 'Streak',
+    value: (_metrics$streak = metrics === null || metrics === void 0 ? void 0 : metrics.streak) !== null && _metrics$streak !== void 0 ? _metrics$streak : '-'
+  }];
   return /*#__PURE__*/React.createElement("aside", {
-    className: [
-    // Visibilidade / Responsividade
-    "hidden lg:block",
-    // Posicionamento
-    "sticky top-16 self-start",
-    // Dimensões
-    "w-[305px] h-[calc(100vh-64px)]",
-    // Scroll
-    "overflow-y-auto no-scrollbar",
-    // Espaçamento interno
-    "py-6 px-3"].join(" ")
+    className: ["hidden lg:block", "sticky top-16 self-start", "w-[305px] h-[calc(100vh-64px)]", "overflow-y-auto no-scrollbar", "py-6 px-3"].join(" ")
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col gap-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1221,15 +1306,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative -mt-12 mb-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Dimensões
-    "size-24",
-    // Forma e borda
-    "rounded-full border-[4px]",
-    // Background
-    "bg-cover bg-center",
-    // Sombra
-    "shadow-lg"].join(" "),
+    className: "size-24 rounded-full border-[4px] bg-cover bg-center shadow-lg",
     role: "img",
     "aria-label": "Foto de perfil de Douglas Furbino",
     style: {
@@ -1237,22 +1314,12 @@ var SidebarProfile = function SidebarProfile(_ref) {
       backgroundImage: "url('./assets/img/perfil.jpeg')"
     }
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
-    className: [
-    // Tipografia
-    "text-xl font-bold leading-tight",
-    // Layout
-    "flex items-center gap-1.5"].join(" "),
+    className: "text-xl font-bold leading-tight flex items-center gap-1.5",
     style: {
       color: 'var(--text-main)'
     }
   }, "Douglas Furbino"), /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Layout
-    "flex items-center gap-1",
-    // Espaçamento
-    "mt-2 mb-3",
-    // Tipografia
-    "text-xs"].join(" "),
+    className: "flex items-center gap-1 mt-2 mb-3 text-xs",
     style: {
       color: 'var(--text-muted)'
     }
@@ -1266,48 +1333,29 @@ var SidebarProfile = function SidebarProfile(_ref) {
     }
   }, "Economista pela UFJF especializado em Ci\xEAncia de Dados. Trabalho com modelagem preditiva, desenvolvimento web e automa\xE7\xE3o de fluxos de trabalho.")), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between mt-5 pt-0 px-2 pb-2"
-  }, [{
-    value: '12',
-    label: 'Projects'
-  }, {
-    value: '450+',
-    label: 'Commits'
-  }, {
-    value: '8',
-    label: 'Papers'
-  }].map(function (stat, i) {
+  }, statsConfig.map(function (stat, i) {
     return /*#__PURE__*/React.createElement(React.Fragment, {
-      key: stat.label
+      key: stat.key
     }, i > 0 && /*#__PURE__*/React.createElement("div", {
       className: "w-px h-8",
       style: {
         backgroundColor: 'var(--border)'
       }
     }), /*#__PURE__*/React.createElement("div", {
-      className: "text-center group cursor-default"
+      className: "text-center group cursor-default min-w-[60px]"
     }, /*#__PURE__*/React.createElement("div", {
-      className: [
-      // Tipografia
-      "text-sm font-bold font-mono",
-      // Interação
-      "group-hover:text-[var(--primary)] transition-colors"].join(" "),
+      className: "text-sm font-bold font-mono group-hover:text-[var(--primary)] transition-colors h-5 flex items-center justify-center",
       style: {
         color: 'var(--text-main)'
       }
-    }, stat.value), /*#__PURE__*/React.createElement("div", {
+    }, loading ? /*#__PURE__*/React.createElement(SkeletonValue, null) : stat.value), /*#__PURE__*/React.createElement("div", {
       className: "text-[10px] font-medium",
       style: {
         color: 'var(--text-muted)'
       }
     }, stat.label)));
   })), /*#__PURE__*/React.createElement("div", {
-    className: [
-    // Espaçamento
-    "mt-4 pt-4",
-    // Borda
-    "border-t",
-    // Layout Grid
-    "grid grid-cols-2 gap-3"].join(" "),
+    className: "mt-4 pt-4 border-t grid grid-cols-2 gap-3",
     style: {
       borderColor: 'var(--border)'
     }
@@ -1315,17 +1363,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
     href: "https://github.com/furbas16e8",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: [
-    // Layout
-    "flex items-center justify-center gap-2",
-    // Espaçamento
-    "py-1.5 px-4",
-    // Borda e forma
-    "border rounded-md",
-    // Dimensões
-    "h-[34px]",
-    // Interação
-    "hover:opacity-90 transition-all"].join(" "),
+    className: "flex items-center justify-center gap-2 py-1.5 px-4 border rounded-md h-[34px] hover:opacity-90 transition-all",
     style: {
       backgroundColor: '#24292e',
       borderColor: '#444c56'
@@ -1338,17 +1376,7 @@ var SidebarProfile = function SidebarProfile(_ref) {
     href: "https://www.linkedin.com/in/dfurbino/",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: [
-    // Layout
-    "flex items-center justify-center gap-2",
-    // Espaçamento
-    "py-1.5 px-4",
-    // Borda e forma
-    "border rounded-md",
-    // Dimensões
-    "h-[34px]",
-    // Interação
-    "transition-all"].join(" "),
+    className: "flex items-center justify-center gap-2 py-1.5 px-4 border rounded-md h-[34px] transition-all",
     style: {
       backgroundColor: 'rgba(10,102,194,0.05)',
       borderColor: 'rgba(10,102,194,0.2)'
@@ -1447,6 +1475,56 @@ var POSTS_DATA = [{
 
 // Dados pré-definidos para Activity Grid (opacidades estáveis)
 var ACTIVITY_DATA = [10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30, 10, 10, 60, 20, 80, 40, 10, 50, 30, 70, 10, 20, 90, 50, 10, 20, 40, 80, 10, 60, 30, 70, 10, 30, 10, 60, 10, 20, 10, 50, 10, 80, 20, 40, 10, 10, 20, 90, 30, 10, 60, 20, 40, 10, 10, 30, 70, 10, 20, 50, 80, 40, 10, 20, 90, 30];
+"use strict";
+
+/*
+ * lib/supabaseClient.js - Cliente Supabase com inicialização lazy
+ * Douglas Furbino - Economista e Cientista de Dados
+ * 
+ * Inicializa o cliente apenas quando solicitado, garantindo que
+ * todas as dependências (window.supabase SDK, window.ENV) estejam carregadas.
+ */
+
+/**
+ * Obtém ou cria o cliente Supabase
+ * @returns {Object|null} Cliente Supabase ou null se não for possível criar
+ */
+var getSupabaseClient = function getSupabaseClient() {
+  // Se já existe um cliente criado, retorna ele
+  if (window._supabaseClient) {
+    return window._supabaseClient;
+  }
+
+  // Verifica se o SDK do Supabase está disponível
+  if (typeof window === 'undefined' || !window.supabase) {
+    console.error('[Supabase] SDK não encontrado. Certifique-se de carregar:');
+    console.error('  <script src="https://unpkg.com/@supabase/supabase-js@2.91.1/dist/umd/supabase.min.js"></script>');
+    return null;
+  }
+
+  // Verifica se as variáveis de ambiente estão disponíveis
+  if (!window.ENV || !window.ENV.SUPABASE_URL || !window.ENV.SUPABASE_KEY) {
+    console.error('[Supabase] Variáveis de ambiente não encontradas. Certifique-se de:');
+    console.error('  1. Carregar env.js antes deste script');
+    console.error('  2. Verificar se window.ENV.SUPABASE_URL e window.ENV.SUPABASE_KEY existem');
+    return null;
+  }
+  try {
+    // Cria o cliente
+    var client = window.supabase.createClient(window.ENV.SUPABASE_URL, window.ENV.SUPABASE_KEY);
+
+    // Armazena para reuso
+    window._supabaseClient = client;
+    console.log('[Supabase] Cliente inicializado com sucesso');
+    return client;
+  } catch (error) {
+    console.error('[Supabase] Erro ao criar cliente:', error);
+    return null;
+  }
+};
+
+// Exporta a função
+window.getSupabaseClient = getSupabaseClient;
 "use strict";
 
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
